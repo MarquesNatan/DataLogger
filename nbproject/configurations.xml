@@ -27,6 +27,14 @@
           <itemPath>src/pic18f4520/gpio/gpio.c</itemPath>
           <itemPath>src/pic18f4520/gpio/gpio.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="interrupt" displayName="interrupt" projectFiles="true">
+          <itemPath>src/pic18f4520/interrupt/interrupt.c</itemPath>
+          <itemPath>src/pic18f4520/interrupt/interrupt.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="timer" displayName="timer" projectFiles="true">
+          <itemPath>src/pic18f4520/timer/timer.c</itemPath>
+          <itemPath>src/pic18f4520/timer/timer.h</itemPath>
+        </logicalFolder>
       </logicalFolder>
       <logicalFolder name="sys" displayName="sys" projectFiles="true">
       </logicalFolder>
@@ -48,7 +56,7 @@
         <targetDevice>PIC18F4520</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.32</languageToolchainVersion>
         <platform>3</platform>
@@ -90,22 +98,22 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros" value=""/>
-        <property key="disable-optimizations" value="true"/>
+        <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories" value=""/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
         <property key="identifier-length" value="255"/>
-        <property key="local-generation" value="false"/>
+        <property key="local-generation" value="true"/>
         <property key="operation-mode" value="free"/>
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
         <property key="optimization-assembler" value="true"/>
         <property key="optimization-assembler-files" value="true"/>
-        <property key="optimization-debug" value="false"/>
+        <property key="optimization-debug" value="true"/>
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
-        <property key="optimization-level" value="-O0"/>
-        <property key="optimization-speed" value="false"/>
+        <property key="optimization-level" value="-O1"/>
+        <property key="optimization-speed" value="true"/>
         <property key="optimization-stable-enable" value="false"/>
         <property key="pack-struct" value="true"/>
         <property key="preprocess-assembler" value="true"/>
@@ -163,6 +171,9 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
+      <Simulator>
+        <property key="periphADC1.minTacq" value="5"/>
+      </Simulator>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
       </XC8-CO>

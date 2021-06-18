@@ -1,4 +1,4 @@
-# 1 "src/main.c"
+# 1 "src/pic18f4520/timer/timer.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,62 +6,11 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "src/main.c" 2
+# 1 "src/pic18f4520/timer/timer.c" 2
+
+# 1 "src/pic18f4520/timer/timer.h" 1
 
 
-#pragma config OSC = HS
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
-
-
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
 
 
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 1 3
@@ -4574,14 +4523,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 57 "src/main.c" 2
-
-
-# 1 "src/pic18f4520/timer/timer.h" 1
-
-
-
-
+# 5 "src/pic18f4520/timer/timer.h" 2
 
 
 typedef enum {
@@ -4635,51 +4577,53 @@ typedef struct {
     void Timer0_GetGlobalTime( void );
 
     void Time0_WaitMs( void );
-# 59 "src/main.c" 2
-
-# 1 "src/pic18f4520/interrupt/interrupt.h" 1
-# 12 "src/pic18f4520/interrupt/interrupt.h"
-    void Interrupt_GlobalEnable( void );
-# 60 "src/main.c" 2
+# 2 "src/pic18f4520/timer/timer.c" 2
 
 
-# 1 "src/pic18f4520/gpio/gpio.h" 1
-# 62 "src/main.c" 2
-
-# 1 "src/board/pinout/pinout.h" 1
-# 63 "src/main.c" 2
+void Timer0_Config( timer_config_t* timerConfig )
+{
 
 
-timer_config_t timerConfig = {
-    .timer_length = TIMER_LENGTH_16,
-    .timer_clk_src = TIMER_CLKO_SRC,
-    .timer_transition = TIMER_TRANSITION_LOW_HIGH,
-    .timer_prescaler_assign = TIMER_PRESCALER_IS_ASSIGNED,
-    .timer_prescaler_value = TIMER_PRESCALER_16
-};
 
-void __attribute__((picinterrupt(("")))) TC0INT(void){
-     if (INTCONbits.TMR0IF == 0x01) {
 
-      LATB = (PORTB ^ (1 << 0));;
-        TMR0 = 0x00;
-        INTCONbits.T0IF = 0x00;
+
+    T0CONbits.TMR0ON = 0x00;
+
+
+
+
+
+
+
+    T0CONbits.T08BIT = timerConfig->timer_length;
+
+
+
+
+
+
+    T0CONbits.T0CS = timerConfig->timer_clk_src;
+
+
+
+
+
+
+
+    if(!(T0CONbits.PSA = timerConfig->timer_prescaler_assign))
+    {
+# 45 "src/pic18f4520/timer/timer.c"
+        T0CONbits.T0PS = timerConfig->timer_prescaler_value;
     }
-}
+# 60 "src/pic18f4520/timer/timer.c"
+    INTCONbits.TMR0IE = 0x01;
 
 
-void main(void) {
-
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
 
 
-    int i, j;
-    while(1){
-# 104 "src/main.c"
-    }
-    return;
+
+    INTCON2bits.TMR0IP = 0x01;
+
+
+    T0CONbits.TMR0ON = 0x01;
 }

@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"65 src/main.c
-[; ;src/main.c: 65: timer_config_t timerConfig = {
+"4 src/pic18f4520/timer/timer.c
+[; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
 [c E2526 0 1 .. ]
 [n E2526 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
 [c E2530 0 1 .. ]
@@ -15,9 +15,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/timer/timer.h: 39: typedef struct {
 [s S281 `E2526 1 `E2530 1 `E2534 1 `E2538 1 `E2542 1 ]
 [n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
-[t ~ __interrupt . k ]
-[t T41 __interrupt ]
-"6698 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+"6174 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6174:     struct {
+[s S262 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S262 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"6182
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6182:     struct {
+[s S263 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S263 . T0PS0 T0PS1 T0PS2 T0PS3 . T016BIT ]
+"6173
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6173: typedef union {
+[u S261 `S262 1 `S263 1 ]
+[n S261 . . . ]
+"6191
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6191: extern volatile T0CONbits_t T0CONbits __attribute__((address(0xFD5)));
+[v _T0CONbits `VAS261 ~T0 @X0 0 e@4053 ]
+"6698
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6698:     struct {
 [s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S275 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
@@ -36,91 +49,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6724
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VAS274 ~T0 @X0 0 e@4082 ]
-"1089
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `VAuc ~T0 @X0 0 e@3978 ]
-"271
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `VAuc ~T0 @X0 0 e@3969 ]
-"6251
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
-[v _TMR0 `VAus ~T0 @X0 0 e@4054 ]
-[p mainexit ]
-"1699
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `VAuc ~T0 @X0 0 e@3987 ]
-"12 src/pic18f4520/interrupt/interrupt.h
-[; ;src/pic18f4520/interrupt/interrupt.h: 12:     void Interrupt_GlobalEnable( void );
-[v _Interrupt_GlobalEnable `(v ~T0 @X0 0 ef ]
-"51 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 51:     void Timer0_Config( timer_config_t* timerConfig );
-[v _Timer0_Config `(v ~T0 @X0 0 ef1`*S281 ]
-"3 src/main.c
-[p x OSC  =  HS  ]
-"4
-[p x FCMEN  =  OFF ]
-"5
-[p x IESO  =  OFF ]
-"8
-[p x PWRT  =  OFF ]
-"9
-[p x BOREN  =  SBORDIS ]
-"10
-[p x BORV  =  3 ]
-"13
-[p x WDT  =  OFF ]
-"14
-[p x WDTPS  =  32768 ]
-"17
-[p x CCP2MX  =  PORTC ]
-"18
-[p x PBADEN  =  OFF ]
-"19
-[p x LPT1OSC  =  OFF ]
-"20
-[p x MCLRE  =  ON ]
-"23
-[p x STVREN  =  ON ]
-"24
-[p x LVP  =  OFF ]
-"25
-[p x XINST  =  OFF ]
-"28
-[p x CP0  =  OFF ]
-"29
-[p x CP1  =  OFF ]
-"30
-[p x CP2  =  OFF ]
-"31
-[p x CP3  =  OFF ]
-"34
-[p x CPB  =  OFF ]
-"35
-[p x CPD  =  OFF ]
-"38
-[p x WRT0  =  OFF ]
-"39
-[p x WRT1  =  OFF ]
-"40
-[p x WRT2  =  OFF ]
-"41
-[p x WRT3  =  OFF ]
-"44
-[p x WRTC  =  OFF ]
-"45
-[p x WRTB  =  OFF ]
-"46
-[p x WRTD  =  OFF ]
-"49
-[p x EBTR0  =  OFF ]
-"50
-[p x EBTR1  =  OFF ]
-"51
-[p x EBTR2  =  OFF ]
-"52
-[p x EBTR3  =  OFF ]
-"55
-[p x EBTRB  =  OFF ]
+"6628
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6628:     struct {
+[s S271 :7 `uc 1 :1 `uc 1 ]
+[n S271 . . NOT_RBPU ]
+"6632
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6632:     struct {
+[s S272 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S272 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"6642
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6642:     struct {
+[s S273 :7 `uc 1 :1 `uc 1 ]
+[n S273 . . RBPU ]
+"6627
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6627: typedef union {
+[u S270 `S271 1 `S272 1 `S273 1 ]
+[n S270 . . . . ]
+"6647
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6647: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VAS270 ~T0 @X0 0 e@4081 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -535,97 +482,52 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"65 src/main.c
-[; ;src/main.c: 65: timer_config_t timerConfig = {
-[v _timerConfig `AS281 ~T0 @X0 1 e ]
-[i _timerConfig
-:U ..
-:U ..
-. `E2526 0
-. `E2530 0
-. `E2534 0
-. `E2538 0
-. `E2542 3
-..
-..
-]
-[v $root$_TC0INT `(v ~T0 @X0 0 e ]
-[v F2567 `(v ~T0 @X0 1 tf ]
-"73
-[; ;src/main.c: 73: void __attribute__((picinterrupt(("")))) TC0INT(void){
-[v _TC0INT `AF2567 ~T41 @X0 1 e ]
+[v F2565 `(v ~T0 @X0 1 tf1`*S281 ]
+"4 src/pic18f4520/timer/timer.c
+[; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
+[v _Timer0_Config `AF2565 ~T0 @X0 1 e ]
+"5
+[; ;src/pic18f4520/timer/timer.c: 5: {
 {
-[e :U _TC0INT ]
+[e :U _Timer0_Config ]
+"4
+[; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
+[v _timerConfig `*S281 ~T0 @X0 1 r1 ]
+"5
+[; ;src/pic18f4520/timer/timer.c: 5: {
 [f ]
-"74
-[; ;src/main.c: 74:      if (INTCONbits.TMR0IF == 0x01) {
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 283  ]
+"11
+[; ;src/pic18f4520/timer/timer.c: 11:     T0CONbits.TMR0ON = 0x00;
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+"19
+[; ;src/pic18f4520/timer/timer.c: 19:     T0CONbits.T08BIT = timerConfig->timer_length;
+[e = . . _T0CONbits 0 4 -> . *U _timerConfig 0 `uc ]
+"26
+[; ;src/pic18f4520/timer/timer.c: 26:     T0CONbits.T0CS = timerConfig->timer_clk_src;
+[e = . . _T0CONbits 0 3 -> . *U _timerConfig 1 `uc ]
+"34
+[; ;src/pic18f4520/timer/timer.c: 34:     if(!(T0CONbits.PSA = timerConfig->timer_prescaler_assign))
+[e $ ! ! != -> = . . _T0CONbits 0 1 -> . *U _timerConfig 3 `uc `i -> 0 `i 283  ]
+"35
+[; ;src/pic18f4520/timer/timer.c: 35:     {
 {
-"76
-[; ;src/main.c: 76:       LATB = (PORTB ^ (1 << 0));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-"77
-[; ;src/main.c: 77:         TMR0 = 0x00;
-[e = _TMR0 -> -> 0 `i `us ]
-"78
-[; ;src/main.c: 78:         INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"79
-[; ;src/main.c: 79:     }
+"45
+[; ;src/pic18f4520/timer/timer.c: 45:         T0CONbits.T0PS = timerConfig->timer_prescaler_value;
+[e = . . _T0CONbits 0 0 -> . *U _timerConfig 4 `uc ]
+"46
+[; ;src/pic18f4520/timer/timer.c: 46:     }
 }
 [e :U 283 ]
-"80
-[; ;src/main.c: 80: }
+"60
+[; ;src/pic18f4520/timer/timer.c: 60:     INTCONbits.TMR0IE = 0x01;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"66
+[; ;src/pic18f4520/timer/timer.c: 66:     INTCON2bits.TMR0IP = 0x01;
+[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
+"69
+[; ;src/pic18f4520/timer/timer.c: 69:     T0CONbits.TMR0ON = 0x01;
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+"70
+[; ;src/pic18f4520/timer/timer.c: 70: }
 [e :UE 282 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-[v F2569 `(v ~T0 @X0 1 tf ]
-"83
-[; ;src/main.c: 83: void main(void) {
-[v _main `AF2569 ~T0 @X0 1 e ]
-{
-[e :U _main ]
-[f ]
-"85
-[; ;src/main.c: 85:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-[e $ ! == -> 0 `i -> 0 `i 285  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
-[e $U 286  ]
-[e :U 285 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
-[e :U 286 ]
-"86
-[; ;src/main.c: 86:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-[e $ ! == -> 0 `i -> 0 `i 287  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
-[e $U 288  ]
-[e :U 287 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
-[e :U 288 ]
-"88
-[; ;src/main.c: 88:     Interrupt_GlobalEnable();
-[e ( _Interrupt_GlobalEnable ..  ]
-"89
-[; ;src/main.c: 89:     Timer0_Config(&timerConfig);
-[e ( _Timer0_Config (1 &U _timerConfig ]
-"92
-[; ;src/main.c: 92:     int i, j;
-[v _i `i ~T0 @X0 1 a ]
-[v _j `i ~T0 @X0 1 a ]
-"93
-[; ;src/main.c: 93:     while(1){
-[e :U 290 ]
-{
-"104
-[; ;src/main.c: 104:     }
-}
-[e :U 289 ]
-[e $U 290  ]
-[e :U 291 ]
-"105
-[; ;src/main.c: 105:     return;
-[e $UE 284  ]
-"106
-[; ;src/main.c: 106: }
-[e :UE 284 ]
 }

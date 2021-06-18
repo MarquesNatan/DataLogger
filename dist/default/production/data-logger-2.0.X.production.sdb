@@ -3,6 +3,60 @@
 [d edition pro ]
 [d chip 18F4520 ]
 [d frameptr 4065 ]
+"65 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[e E2526 . `uc
+TIMER_LENGTH_16 0
+TIMER_LENGTH_8 1
+]
+[e E2530 . `uc
+TIMER_CLKO_SRC 0
+TIMER_T0CLK_SCR 1
+]
+[e E2534 . `uc
+TIMER_TRANSITION_LOW_HIGH 0
+TIMER_TRANSITION_HIGH_LOW 1
+]
+[e E2538 . `uc
+TIMER_PRESCALER_IS_ASSIGNED 0
+TIMER_PRESCALER_NOT_ASSIGNED 1
+]
+[e E2542 . `uc
+TIMER_PRESCALER_2 0
+TIMER_PRESCALER_4 1
+TIMER_PRESCALER_8 2
+TIMER_PRESCALER_16 3
+TIMER_PRESCALER_32 4
+TIMER_PRESCALER_64 5
+TIMER_PRESCALER_128 6
+TIMER_PRESCALER_256 7
+]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[e E2526 . `uc
+TIMER_LENGTH_16 0
+TIMER_LENGTH_8 1
+]
+[e E2530 . `uc
+TIMER_CLKO_SRC 0
+TIMER_T0CLK_SCR 1
+]
+[e E2534 . `uc
+TIMER_TRANSITION_LOW_HIGH 0
+TIMER_TRANSITION_HIGH_LOW 1
+]
+[e E2538 . `uc
+TIMER_PRESCALER_IS_ASSIGNED 0
+TIMER_PRESCALER_NOT_ASSIGNED 1
+]
+[e E2542 . `uc
+TIMER_PRESCALER_2 0
+TIMER_PRESCALER_4 1
+TIMER_PRESCALER_8 2
+TIMER_PRESCALER_16 3
+TIMER_PRESCALER_32 4
+TIMER_PRESCALER_64 5
+TIMER_PRESCALER_128 6
+TIMER_PRESCALER_256 7
+]
 "4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\float.c
@@ -27,19 +81,135 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"62 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
-[v _main main `(v  1 e 1 0 ]
+"73 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _TC0INT TC0INT `IIAH(v  1 e 1 0 ]
+"83
+[v _main main `A(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/interrupt/interrupt.c
+[v _Interrupt_GlobalEnable Interrupt_GlobalEnable `A(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[v _Timer0_Config Timer0_Config `A(v  1 e 1 0 ]
 "271 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[v _PORTB PORTB `VAEuc  1 e 1 @3969 ]
 "1089
-[v _LATB LATB `VEuc  1 e 1 @3978 ]
+[v _LATB LATB `VAEuc  1 e 1 @3978 ]
 "1699
-[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-"62 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
-[v _main main `(v  1 e 1 0 ]
+[v _TRISB TRISB `VAEuc  1 e 1 @3987 ]
+[s S292 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"5697
+[s S294 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S297 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S300 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S303 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S306 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S315 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+]
+[u S321 . 1 `S292 1 . 1 0 `S294 1 . 1 0 `S297 1 . 1 0 `S300 1 . 1 0 `S303 1 . 1 0 `S306 1 . 1 0 `S315 1 . 1 0 ]
+[v _RCONbits RCONbits `VAES321  1 e 1 @4048 ]
+[s S176 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"6191
+[s S183 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+`uc 1 T0PS3 1 0 :1:3 
+`uc 1 . 1 0 :2:4 
+`uc 1 T016BIT 1 0 :1:6 
+]
+[u S190 . 1 `S176 1 . 1 0 `S183 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VAES190  1 e 1 @4053 ]
+"6251
+[v _TMR0 TMR0 `VAEus  1 e 2 @4054 ]
+[s S235 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"6647
+[s S238 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S247 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S250 . 1 `S235 1 . 1 0 `S238 1 . 1 0 `S247 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VAES250  1 e 1 @4081 ]
+[s S51 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"6724
+[s S60 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S69 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S73 . 1 `S51 1 . 1 0 `S60 1 . 1 0 `S69 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VAES73  1 e 1 @4082 ]
+[s S45 . 5 `E2526 1 timer_length 1 0 `E2530 1 timer_clk_src 1 1 `E2534 1 timer_transition 1 2 `E2538 1 timer_prescaler_assign 1 3 `E2542 1 timer_prescaler_value 1 4 ]
+"65 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _timerConfig timerConfig `AS45  1 e 5 0 ]
+"83
+[v _main main `A(v  1 e 1 0 ]
 {
-"67
-[v main@j j `i  1 a 2 2 ]
-[v main@i i `i  1 a 2 0 ]
-"81
+"106
+} 0
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[v _Timer0_Config Timer0_Config `A(v  1 e 1 0 ]
+{
+[v Timer0_Config@timerConfig timerConfig `*.39S45  1 p 2 0 ]
+"70
+} 0
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/interrupt/interrupt.c
+[v _Interrupt_GlobalEnable Interrupt_GlobalEnable `A(v  1 e 1 0 ]
+{
+"34
+} 0
+"73 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _TC0INT TC0INT `IIAH(v  1 e 1 0 ]
+{
+"80
 } 0
