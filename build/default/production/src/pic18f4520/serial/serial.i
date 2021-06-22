@@ -1,4 +1,4 @@
-# 1 "src/main.c"
+# 1 "src/pic18f4520/serial/serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,62 +6,11 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "src/main.c" 2
+# 1 "src/pic18f4520/serial/serial.c" 2
+
+# 1 "src/pic18f4520/serial/serial.h" 1
 
 
-#pragma config OSC = HS
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
-
-
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
 
 
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 1 3
@@ -4574,80 +4523,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 57 "src/main.c" 2
-
-
-# 1 "src/pic18f4520/timer/timer.h" 1
-
-
-
-
-
-
-typedef enum {
-    TIMER_LENGTH_16 = 0x00,
-    TIMER_LENGTH_8 = 0x01
-}TIMER_LENGTH;
-
-typedef enum {
-    TIMER_CLKO_SRC = 0x00,
-    TIMER_T0CLK_SCR = 0x01
-}TIMER_CLK_SRC;
-
-typedef enum {
-    TIMER_TRANSITION_LOW_HIGH = 0x00,
-    TIMER_TRANSITION_HIGH_LOW = 0x01
-}TIMER_TRANSITION;
-
-typedef enum {
-    TIMER_PRESCALER_IS_ASSIGNED = 0x00,
-    TIMER_PRESCALER_NOT_ASSIGNED = 0x01
-}TIMER_PRESCALER_ASSIGN;
-
-typedef enum {
-    TIMER_PRESCALER_2 = 0b000,
-    TIMER_PRESCALER_4 = 0b001,
-    TIMER_PRESCALER_8 = 0b010,
-    TIMER_PRESCALER_16 = 0b011,
-    TIMER_PRESCALER_32 = 0b100,
-    TIMER_PRESCALER_64 = 0b101,
-    TIMER_PRESCALER_128 = 0b110,
-    TIMER_PRESCALER_256 = 0b111
-}TIMER_PRESCALER_VALUE;
-
-
-typedef struct {
-    TIMER_LENGTH timer_length;
-    TIMER_CLK_SRC timer_clk_src;
-    TIMER_TRANSITION timer_transition;
-    TIMER_PRESCALER_ASSIGN timer_prescaler_assign;
-    TIMER_PRESCALER_VALUE timer_prescaler_value;
-}timer_config_t;
-
-
-
-
-
-    void Timer0_Config( timer_config_t* timerConfig );
-
-    void Timer0_SetTickHook( void );
-
-    void Timer0_GetGlobalTime( void );
-
-    void Time0_WaitMs( void );
-# 59 "src/main.c" 2
-
-# 1 "src/pic18f4520/interrupt/interrupt.h" 1
-# 12 "src/pic18f4520/interrupt/interrupt.h"
-    void Interrupt_GlobalEnable( void );
-# 60 "src/main.c" 2
-
-
-# 1 "src/pic18f4520/serial/serial.h" 1
-
-
-
-
+# 5 "src/pic18f4520/serial/serial.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
@@ -4765,60 +4641,34 @@ typedef enum {
 
     void Serial_BufferTransmit( uint8_t* dataBuffer );
     uint8_t Serial_BufferReceive( void );
-# 62 "src/main.c" 2
+# 2 "src/pic18f4520/serial/serial.c" 2
 
 
-# 1 "src/pic18f4520/gpio/gpio.h" 1
-# 64 "src/main.c" 2
-
-# 1 "src/board/pinout/pinout.h" 1
-# 65 "src/main.c" 2
 
 
-timer_config_t timerConfig = {
-    .timer_length = TIMER_LENGTH_16,
-    .timer_clk_src = TIMER_CLKO_SRC,
-    .timer_transition = TIMER_TRANSITION_LOW_HIGH,
-    .timer_prescaler_assign = TIMER_PRESCALER_IS_ASSIGNED,
-    .timer_prescaler_value = TIMER_PRESCALER_256
-};
+void Serial_Config( long int desired_baud )
+{
+# 37 "src/pic18f4520/serial/serial.c"
+    uint8_t brg_value;
+    brg_value = (10000000 / (desired_baud * 64)) - 1;
 
-void __attribute__((picinterrupt(("")))) TC0INT(void){
-     if (INTCONbits.TMR0IF == 0x01) {
+    SPBRG = brg_value;
 
-      LATB = (PORTB ^ (1 << 0));;
-      LATB = (PORTB ^ (1 << 1));;
+    TXSTAbits.SYNC = 0x00;
 
-      TMR0 = 0xD9D9;
-      INTCONbits.T0IF = 0x00;
-    }
+    RCSTAbits.SPEN = 0x01;
+
+    TXSTAbits.TX9 = 0x00;
+
+    TXSTAbits.TXEN = 0x01;
+
+
+
+
+
+
 }
 
-
-void main(void) {
-
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-
-
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
-
-    Serial_Config(9600);
-
-    int i, j;
-
-    while(1){
-
-        Serial_Transmit(0x41);
-        for(i = 0; i < 200; i++){
-            for(j = 0; j < 200; j++);
-        }
-
-        Serial_Transmit(0x42);
-    }
-    return;
+void Serial_Transmit( uint8_t data ){
+    TXREG = data;
 }

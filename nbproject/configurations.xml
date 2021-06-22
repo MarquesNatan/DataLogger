@@ -31,6 +31,10 @@
           <itemPath>src/pic18f4520/interrupt/interrupt.c</itemPath>
           <itemPath>src/pic18f4520/interrupt/interrupt.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="serial" displayName="serial" projectFiles="true">
+          <itemPath>src/pic18f4520/serial/serial.c</itemPath>
+          <itemPath>src/pic18f4520/serial/serial.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="timer" displayName="timer" projectFiles="true">
           <itemPath>src/pic18f4520/timer/timer.c</itemPath>
           <itemPath>src/pic18f4520/timer/timer.h</itemPath>

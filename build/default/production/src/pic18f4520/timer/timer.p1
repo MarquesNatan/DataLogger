@@ -68,6 +68,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6647
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6647: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
 [v _INTCON2bits `VAS270 ~T0 @X0 0 e@4081 ]
+"6251
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
+[v _TMR0 `VAus ~T0 @X0 0 e@4054 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -525,9 +528,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/timer/timer.c: 66:     INTCON2bits.TMR0IP = 0x01;
 [e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
 "69
-[; ;src/pic18f4520/timer/timer.c: 69:     T0CONbits.TMR0ON = 0x01;
+[; ;src/pic18f4520/timer/timer.c: 69:     TMR0 = 0xD9D9;
+[e = _TMR0 -> -> 55769 `ui `us ]
+"71
+[; ;src/pic18f4520/timer/timer.c: 71:     T0CONbits.TMR0ON = 0x01;
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-"70
-[; ;src/pic18f4520/timer/timer.c: 70: }
+"72
+[; ;src/pic18f4520/timer/timer.c: 72: }
 [e :UE 282 ]
 }

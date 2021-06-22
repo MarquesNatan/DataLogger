@@ -66,6 +66,8 @@ void Timer0_Config( timer_config_t* timerConfig )
     INTCON2bits.TMR0IP = 0x01;
     
     
+    TMR0 = 0xD9D9;
+    
     T0CONbits.TMR0ON = 0x01;
 }
 
