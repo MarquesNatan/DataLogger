@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Sun Jun 20 00:09:23 2021
+                                                                                               Thu Jul 08 22:26:48 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	18F4520
@@ -17,1196 +17,1374 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
     11                           	psect	text2,global,reloc=2,class=CODE,delta=1,minocg
     12                           	psect	text3,global,reloc=2,class=CODE,delta=1,minocg
     13                           	psect	text4,global,reloc=2,class=CODE,delta=1,group=1,minocg
-    14                           	psect	text5,global,reloc=2,class=CODE,delta=1,minocg
-    15                           	psect	intcode,global,reloc=2,class=CODE,delta=1,minocg
-    16                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1,minocg
-    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    18                           	psect	param0,global,class=BANK0,space=1,delta=1,noexec
-    19                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
-    20                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
-    21                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
-    22  0000                     
-    23                           ; Version 2.20
-    24                           ; Generated 12/02/2020 GMT
-    25                           ; 
-    26                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    27                           ; All rights reserved.
-    28                           ; 
-    29                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    14                           	psect	intcode,global,reloc=2,class=CODE,delta=1,minocg
+    15                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1,minocg
+    16                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    17                           	psect	param0,global,class=BANK0,space=1,delta=1,noexec
+    18                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    19                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    20                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    21  0000                     
+    22                           ; Version 2.20
+    23                           ; Generated 12/02/2020 GMT
+    24                           ; 
+    25                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    30                           ; 
-    31                           ; Redistribution and use in source and binary forms, with or without modification, are
-    32                           ; permitted provided that the following conditions are met:
-    33                           ; 
-    34                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    35                           ;        conditions and the following disclaimer.
-    36                           ; 
-    37                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    38                           ;        of conditions and the following disclaimer in the documentation and/or other
-    39                           ;        materials provided with the distribution.
-    40                           ; 
-    41                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    42                           ;        software without specific prior written permission.
-    43                           ; 
-    44                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    45                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    46                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    47                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    48                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    49                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    50                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    51                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
     52                           ; 
-    53                           ; 
-    54                           ; Code-generator required, PIC18F4520 Definitions
-    55                           ; 
-    56                           ; SFR Addresses
-    57  0000                     
-    58                           	psect	idataBANK0
-    59  0002E6                     __pidataBANK0:
-    60                           	callstack 0
-    61                           
-    62                           ;initializer for _timerConfig
-    63  0002E6  00                 	db	0
-    64  0002E7  00                 	db	0
-    65  0002E8  00                 	db	0
-    66  0002E9  00                 	db	0
-    67  0002EA  07                 	db	7
-    68  0000                     _TMR0	set	4054
-    69  0000                     _TXREG	set	4013
-    70  0000                     _RCSTAbits	set	4011
-    71  0000                     _TXSTAbits	set	4012
-    72  0000                     _SPBRG	set	4015
-    73  0000                     _INTCON2bits	set	4081
-    74  0000                     _T0CONbits	set	4053
-    75  0000                     _RCONbits	set	4048
-    76  0000                     _TRISB	set	3987
-    77  0000                     _PORTB	set	3969
-    78  0000                     _LATB	set	3978
-    79  0000                     _INTCONbits	set	4082
-    80                           
-    81                           ; #config settings
-    82                           
-    83                           	psect	cinit
-    84  00028A                     __pcinit:
-    85                           	callstack 0
-    86  00028A                     start_initialization:
-    87                           	callstack 0
-    88  00028A                     __initialization:
-    89                           	callstack 0
-    90                           
-    91                           ; Initialize objects allocated to BANK0 (5 bytes)
-    92                           ; load TBLPTR registers with __pidataBANK0
-    93  00028A  0EE6               	movlw	low __pidataBANK0
-    94  00028C  6EF6               	movwf	tblptrl,c
-    95  00028E  0E02               	movlw	high __pidataBANK0
-    96  000290  6EF7               	movwf	tblptrh,c
-    97  000292  0E00               	movlw	low (__pidataBANK0 shr (0+16))
-    98  000294  6EF8               	movwf	tblptru,c
-    99  000296  EE00  F09B         	lfsr	0,__pdataBANK0
-   100  00029A  EE10 F005          	lfsr	1,5
-   101  00029E                     copy_data0:
-   102  00029E  0009               	tblrd		*+
-   103  0002A0  CFF5 FFEE          	movff	tablat,postinc0
-   104  0002A4  50E5               	movf	postdec1,w,c
-   105  0002A6  50E1               	movf	fsr1l,w,c
-   106  0002A8  E1FA               	bnz	copy_data0
-   107  0002AA                     end_of_initialization:
-   108                           	callstack 0
-   109  0002AA                     __end_of__initialization:
-   110                           	callstack 0
-   111  0002AA  9001               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   112  0002AC  9201               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   113  0002AE  0100               	movlb	0
-   114  0002B0  EF70  F000         	goto	_main	;jump to C main() function
-   115                           
-   116                           	psect	dataBANK0
-   117  00009B                     __pdataBANK0:
-   118                           	callstack 0
-   119  00009B                     _timerConfig:
-   120                           	callstack 0
-   121  00009B                     	ds	5
-   122                           
-   123                           	psect	cstackBANK0
-   124  000080                     __pcstackBANK0:
-   125                           	callstack 0
-   126  000080                     ?___aldiv:
+    53                           ; Code-generator required, PIC18F4520 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     
+    57                           	psect	idataBANK0
+    58  0004A2                     __pidataBANK0:
+    59                           	callstack 0
+    60                           
+    61                           ;initializer for _timerConfig
+    62  0004A2  00                 	db	0
+    63  0004A3  00                 	db	0
+    64  0004A4  00                 	db	0
+    65  0004A5  00                 	db	0
+    66  0004A6  07                 	db	7
+    67                           
+    68                           ;initializer for _serialConfig
+    69  0004A7  00                 	db	0
+    70  0004A8  00                 	db	0
+    71  0004A9  00                 	db	0
+    72  0004AA  C200               	dw	49664
+    73  0004AC  0001               	dw	1
+    74  0000                     _TMR0	set	4054
+    75  0000                     _INTCON2bits	set	4081
+    76  0000                     _T0CONbits	set	4053
+    77  0000                     _RCREG	set	4014
+    78  0000                     _TXREG	set	4013
+    79  0000                     _RCSTAbits	set	4011
+    80  0000                     _SPBRG	set	4015
+    81  0000                     _TXSTAbits	set	4012
+    82  0000                     _BAUDCONbits	set	4024
+    83  0000                     _RCONbits	set	4048
+    84  0000                     _PORTB	set	3969
+    85  0000                     _LATB	set	3978
+    86  0000                     _TRISB	set	3987
+    87  0000                     _INTCONbits	set	4082
+    88  0000                     _RCIF	set	31989
+    89                           
+    90                           ; #config settings
+    91                           
+    92                           	psect	cinit
+    93  000448                     __pcinit:
+    94                           	callstack 0
+    95  000448                     start_initialization:
+    96                           	callstack 0
+    97  000448                     __initialization:
+    98                           	callstack 0
+    99                           
+   100                           ; Initialize objects allocated to BANK0 (12 bytes)
+   101                           ; load TBLPTR registers with __pidataBANK0
+   102  000448  0EA2               	movlw	low __pidataBANK0
+   103  00044A  6EF6               	movwf	tblptrl,c
+   104  00044C  0E04               	movlw	high __pidataBANK0
+   105  00044E  6EF7               	movwf	tblptrh,c
+   106  000450  0E00               	movlw	low (__pidataBANK0 shr (0+16))
+   107  000452  6EF8               	movwf	tblptru,c
+   108  000454  EE00  F09D         	lfsr	0,__pdataBANK0
+   109  000458  EE10 F00C          	lfsr	1,12
+   110  00045C                     copy_data0:
+   111  00045C  0009               	tblrd		*+
+   112  00045E  CFF5 FFEE          	movff	tablat,postinc0
+   113  000462  50E5               	movf	postdec1,w,c
+   114  000464  50E1               	movf	fsr1l,w,c
+   115  000466  E1FA               	bnz	copy_data0
+   116  000468                     end_of_initialization:
+   117                           	callstack 0
+   118  000468                     __end_of__initialization:
+   119                           	callstack 0
+   120  000468  9001               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   121  00046A  9201               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   122  00046C  0100               	movlb	0
+   123  00046E  EFF6  F001         	goto	_main	;jump to C main() function
+   124                           
+   125                           	psect	dataBANK0
+   126  00009D                     __pdataBANK0:
    127                           	callstack 0
-   128  000080                     Serial_Transmit@data:
+   128  00009D                     _timerConfig:
    129                           	callstack 0
-   130  000080                     Timer0_Config@timerConfig:
-   131                           	callstack 0
-   132  000080                     ___aldiv@dividend:
-   133                           	callstack 0
+   130  00009D                     	ds	5
+   131  0000A2                     _serialConfig:
+   132                           	callstack 0
+   133  0000A2                     	ds	7
    134                           
-   135                           ; 4 bytes @ 0x0
-   136  000080                     	ds	2
-   137  000082                     ??_Timer0_Config:
-   138                           
-   139                           ; 1 bytes @ 0x2
-   140  000082                     	ds	2
-   141  000084                     ___aldiv@divisor:
-   142                           	callstack 0
-   143                           
-   144                           ; 4 bytes @ 0x4
-   145  000084                     	ds	4
-   146  000088                     ___aldiv@counter:
-   147                           	callstack 0
-   148                           
-   149                           ; 1 bytes @ 0x8
-   150  000088                     	ds	1
-   151  000089                     ___aldiv@sign:
-   152                           	callstack 0
-   153                           
-   154                           ; 1 bytes @ 0x9
-   155  000089                     	ds	1
-   156  00008A                     ___aldiv@quotient:
-   157                           	callstack 0
-   158                           
-   159                           ; 4 bytes @ 0xA
-   160  00008A                     	ds	4
-   161  00008E                     Serial_Config@desired_baud:
-   162                           	callstack 0
-   163                           
-   164                           ; 4 bytes @ 0xE
-   165  00008E                     	ds	4
-   166  000092                     ??_Serial_Config:
-   167                           
-   168                           ; 1 bytes @ 0x12
-   169  000092                     	ds	4
-   170  000096                     Serial_Config@brg_value:
-   171                           	callstack 0
-   172                           
-   173                           ; 1 bytes @ 0x16
-   174  000096                     	ds	1
-   175  000097                     main@i:
-   176                           	callstack 0
-   177                           
-   178                           ; 2 bytes @ 0x17
-   179  000097                     	ds	2
-   180  000099                     main@j:
-   181                           	callstack 0
-   182                           
-   183                           ; 2 bytes @ 0x19
-   184  000099                     	ds	2
-   185                           
-   186 ;;
-   187 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   188 ;;
-   189 ;; *************** function _main *****************
-   190 ;; Defined at:
-   191 ;;		line 87 in file "src/main.c"
-   192 ;; Parameters:    Size  Location     Type
-   193 ;;		None
-   194 ;; Auto vars:     Size  Location     Type
-   195 ;;  j               2   25[BANK0 ] int 
-   196 ;;  i               2   23[BANK0 ] int 
-   197 ;; Return value:  Size  Location     Type
-   198 ;;                  1    wreg      void 
-   199 ;; Registers used:
-   200 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
-   201 ;; Tracked objects:
-   202 ;;		On entry : 0/0
-   203 ;;		On exit  : 0/0
-   204 ;;		Unchanged: 0/0
-   205 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   206 ;;      Params:         0       0       0       0       0       0       0
-   207 ;;      Locals:         0       4       0       0       0       0       0
-   208 ;;      Temps:          0       0       0       0       0       0       0
-   209 ;;      Totals:         0       4       0       0       0       0       0
-   210 ;;Total ram usage:        4 bytes
-   211 ;; Hardware stack levels required when called: 3
-   212 ;; This function calls:
-   213 ;;		_Interrupt_GlobalEnable
-   214 ;;		_Serial_Config
-   215 ;;		_Serial_Transmit
-   216 ;;		_Timer0_Config
-   217 ;; This function is called by:
-   218 ;;		Startup code after reset
-   219 ;; This function uses a non-reentrant model
-   220 ;;
+   135                           	psect	cstackBANK0
+   136  000080                     __pcstackBANK0:
+   137                           	callstack 0
+   138  000080                     ?___aldiv:
+   139                           	callstack 0
+   140  000080                     Serial_Transmit@data:
+   141                           	callstack 0
+   142  000080                     ___aldiv@dividend:
+   143                           	callstack 0
+   144                           
+   145                           ; 4 bytes @ 0x0
+   146  000080                     	ds	4
+   147  000084                     ___aldiv@divisor:
+   148                           	callstack 0
+   149                           
+   150                           ; 4 bytes @ 0x4
+   151  000084                     	ds	4
+   152  000088                     ___aldiv@counter:
+   153                           	callstack 0
+   154                           
+   155                           ; 1 bytes @ 0x8
+   156  000088                     	ds	1
+   157  000089                     ___aldiv@sign:
+   158                           	callstack 0
+   159                           
+   160                           ; 1 bytes @ 0x9
+   161  000089                     	ds	1
+   162  00008A                     ___aldiv@quotient:
+   163                           	callstack 0
+   164                           
+   165                           ; 4 bytes @ 0xA
+   166  00008A                     	ds	4
+   167  00008E                     Serial_1_Config@serialConfig:
+   168                           	callstack 0
+   169                           
+   170                           ; 2 bytes @ 0xE
+   171  00008E                     	ds	2
+   172  000090                     ??_Serial_1_Config:
+   173                           
+   174                           ; 1 bytes @ 0x10
+   175  000090                     	ds	4
+   176  000094                     Serial_1_Config@error_8LOW:
+   177                           	callstack 0
+   178                           
+   179                           ; 1 bytes @ 0x14
+   180  000094                     	ds	1
+   181  000095                     Serial_1_Config@error_16HIGH:
+   182                           	callstack 0
+   183                           
+   184                           ; 1 bytes @ 0x15
+   185  000095                     	ds	1
+   186  000096                     Serial_1_Config@brg8LOW:
+   187                           	callstack 0
+   188                           
+   189                           ; 1 bytes @ 0x16
+   190  000096                     	ds	1
+   191  000097                     Serial_1_Config@brg8HIGH:
+   192                           	callstack 0
+   193                           
+   194                           ; 1 bytes @ 0x17
+   195  000097                     	ds	1
+   196  000098                     Serial_1_Config@brg16HIGH:
+   197                           	callstack 0
+   198                           
+   199                           ; 1 bytes @ 0x18
+   200  000098                     	ds	1
+   201  000099                     Serial_1_Config@error_8HIGH:
+   202                           	callstack 0
+   203                           
+   204                           ; 1 bytes @ 0x19
+   205  000099                     	ds	1
+   206  00009A                     Serial_1_Config@error_min:
+   207                           	callstack 0
+   208                           
+   209                           ; 1 bytes @ 0x1A
+   210  00009A                     	ds	1
+   211  00009B                     main@serial_data_read:
+   212                           	callstack 0
+   213                           
+   214                           ; 1 bytes @ 0x1B
+   215  00009B                     	ds	1
+   216  00009C                     main@serial_last_read:
+   217                           	callstack 0
+   218                           
+   219                           ; 1 bytes @ 0x1C
+   220  00009C                     	ds	1
    221                           
-   222                           	psect	text0
-   223  0000E0                     __ptext0:
-   224                           	callstack 0
-   225  0000E0                     _main:
-   226                           	callstack 28
-   227                           
-   228                           ;incstack = 0
-   229  0000E0  5093               	movf	147,w,c	;volatile
-   230  0000E2  0BFE               	andlw	254
-   231  0000E4  6E93               	movwf	147,c	;volatile
-   232                           
-   233                           ;src/main.c: 90:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB
-      +                           | (1 << 1));;
-   234  0000E6  5093               	movf	147,w,c	;volatile
-   235  0000E8  0BFD               	andlw	253
-   236  0000EA  6E93               	movwf	147,c	;volatile
-   237  0000EC  5081               	movf	129,w,c	;volatile
-   238  0000EE  0BFE               	andlw	254
-   239  0000F0  6E8A               	movwf	138,c	;volatile
-   240                           
-   241                           ;src/main.c: 93:     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~(
-      +                          (1 << 1)));;
-   242  0000F2  5081               	movf	129,w,c	;volatile
-   243  0000F4  0902               	iorlw	2
-   244  0000F6  6E8A               	movwf	138,c	;volatile
-   245                           
-   246                           ;src/main.c: 96:     Interrupt_GlobalEnable();
-   247  0000F8  EC6F  F001         	call	_Interrupt_GlobalEnable	;wreg free
-   248                           
-   249                           ;src/main.c: 97:     Timer0_Config(&timerConfig);
-   250  0000FC  0E9B               	movlw	low _timerConfig
-   251  0000FE  0100               	movlb	0	; force () banked
-   252  000100  6F80               	movwf	Timer0_Config@timerConfig& (0+255),b
-   253  000102  0E00               	movlw	high _timerConfig
-   254  000104  6F81               	movwf	(Timer0_Config@timerConfig+1)& (0+255),b
-   255  000106  ECC5  F000         	call	_Timer0_Config	;wreg free
-   256                           
-   257                           ;src/main.c: 99:     Serial_Config(9600);
-   258  00010A  0E80               	movlw	128
-   259  00010C  0100               	movlb	0	; force () banked
-   260  00010E  6F8E               	movwf	Serial_Config@desired_baud& (0+255),b
-   261  000110  0E25               	movlw	37
-   262  000112  6F8F               	movwf	(Serial_Config@desired_baud+1)& (0+255),b
-   263  000114  0E00               	movlw	0
-   264  000116  6F90               	movwf	(Serial_Config@desired_baud+2)& (0+255),b
-   265  000118  0E00               	movlw	0
-   266  00011A  6F91               	movwf	(Serial_Config@desired_baud+3)& (0+255),b
-   267  00011C  EC16  F001         	call	_Serial_Config	;wreg free
-   268  000120                     l967:
-   269                           
-   270                           ;src/main.c: 105:         Serial_Transmit(0x41);
-   271  000120  0E41               	movlw	65
-   272  000122  EC6A  F001         	call	_Serial_Transmit
-   273                           
-   274                           ;src/main.c: 106:         for(i = 0; i < 200; i++){
-   275  000126  0E00               	movlw	0
-   276  000128  0100               	movlb	0	; force () banked
-   277  00012A  6F98               	movwf	(main@i+1)& (0+255),b
-   278  00012C  0E00               	movlw	0
-   279  00012E  6F97               	movwf	main@i& (0+255),b
-   280                           
-   281                           ; BSR set to: 0
-   282  000130  0100               	movlb	0	; force () banked
-   283  000132  BF98               	btfsc	(main@i+1)& (0+255),7,b
-   284  000134  D003               	goto	l975
-   285  000136  5198               	movf	(main@i+1)& (0+255),w,b
-   286  000138  E124               	bnz	l989
-   287  00013A  D01F               	goto	L1
-   288  00013C                     l975:
+   222 ;;
+   223 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   224 ;;
+   225 ;; *************** function _main *****************
+   226 ;; Defined at:
+   227 ;;		line 94 in file "src/main.c"
+   228 ;; Parameters:    Size  Location     Type
+   229 ;;		None
+   230 ;; Auto vars:     Size  Location     Type
+   231 ;;  j               2    0        int 
+   232 ;;  i               2    0        int 
+   233 ;;  serial_last_    1   28[BANK0 ] unsigned char 
+   234 ;;  serial_data_    1   27[BANK0 ] unsigned char 
+   235 ;; Return value:  Size  Location     Type
+   236 ;;                  1    wreg      void 
+   237 ;; Registers used:
+   238 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   239 ;; Tracked objects:
+   240 ;;		On entry : 0/0
+   241 ;;		On exit  : 0/0
+   242 ;;		Unchanged: 0/0
+   243 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   244 ;;      Params:         0       0       0       0       0       0       0
+   245 ;;      Locals:         0       2       0       0       0       0       0
+   246 ;;      Temps:          0       0       0       0       0       0       0
+   247 ;;      Totals:         0       2       0       0       0       0       0
+   248 ;;Total ram usage:        2 bytes
+   249 ;; Hardware stack levels required when called: 3
+   250 ;; This function calls:
+   251 ;;		_Serial_1_Config
+   252 ;;		_Serial_Receive
+   253 ;;		_Serial_Transmit
+   254 ;; This function is called by:
+   255 ;;		Startup code after reset
+   256 ;; This function uses a non-reentrant model
+   257 ;;
+   258                           
+   259                           	psect	text0
+   260  0003EC                     __ptext0:
+   261                           	callstack 0
+   262  0003EC                     _main:
+   263                           	callstack 28
+   264  0003EC  5093               	movf	147,w,c	;volatile
+   265  0003EE  0BFE               	andlw	254
+   266  0003F0  6E93               	movwf	147,c	;volatile
+   267  0003F2  5093               	movf	147,w,c	;volatile
+   268  0003F4  0BFD               	andlw	253
+   269  0003F6  6E93               	movwf	147,c	;volatile
+   270  0003F8  5081               	movf	129,w,c	;volatile
+   271  0003FA  0BFE               	andlw	254
+   272  0003FC  6E8A               	movwf	138,c	;volatile
+   273  0003FE  5081               	movf	129,w,c	;volatile
+   274  000400  0902               	iorlw	2
+   275  000402  6E8A               	movwf	138,c	;volatile
+   276  000404                     
+   277                           ;src/main.c: 103:     PORTB = 0x00;
+   278  000404  0E00               	movlw	0
+   279  000406  6E81               	movwf	129,c	;volatile
+   280  000408                     
+   281                           ;src/main.c: 109:     Serial_1_Config(&serialConfig);
+   282  000408  0EA2               	movlw	low _serialConfig
+   283  00040A  0100               	movlb	0	; force () banked
+   284  00040C  6F8E               	movwf	Serial_1_Config@serialConfig& (0+255),b
+   285  00040E  0E00               	movlw	high _serialConfig
+   286  000410  6F8F               	movwf	(Serial_1_Config@serialConfig+1)& (0+255),b
+   287  000412  EC09  F000         	call	_Serial_1_Config	;wreg free
+   288  000416                     l994:
    289                           
-   290                           ; BSR set to: 0
-   291                           ;src/main.c: 107:             for(j = 0; j < 200; j++);
-   292  00013C  0E00               	movlw	0
-   293  00013E  0100               	movlb	0	; force () banked
-   294  000140  6F9A               	movwf	(main@j+1)& (0+255),b
-   295  000142  0E00               	movlw	0
-   296  000144  6F99               	movwf	main@j& (0+255),b
-   297                           
-   298                           ; BSR set to: 0
-   299  000146  0100               	movlb	0	; force () banked
-   300  000148  BF9A               	btfsc	(main@j+1)& (0+255),7,b
-   301  00014A  D003               	goto	l981
-   302  00014C  519A               	movf	(main@j+1)& (0+255),w,b
-   303  00014E  E10D               	bnz	l985
-   304  000150  D008               	goto	L2
-   305  000152                     l981:
-   306                           
-   307                           ; BSR set to: 0
-   308  000152  0100               	movlb	0	; force () banked
-   309  000154  4B99               	infsnz	main@j& (0+255),f,b
-   310  000156  2B9A               	incf	(main@j+1)& (0+255),f,b
-   311                           
+   290                           ;src/main.c: 116:         serial_last_read = Serial_Receive();
+   291  000416  EC48  F002         	call	_Serial_Receive	;wreg free
+   292  00041A  0100               	movlb	0	; force () banked
+   293  00041C  6F9C               	movwf	main@serial_last_read& (0+255),b
+   294  00041E                     
+   295                           ; BSR set to: 0
+   296                           ;src/main.c: 117:         if(serial_last_read != serial_data_read){
+   297  00041E  0100               	movlb	0	; force () banked
+   298  000420  519B               	movf	main@serial_data_read& (0+255),w,b
+   299  000422  0100               	movlb	0	; force () banked
+   300  000424  199C               	xorwf	main@serial_last_read& (0+255),w,b
+   301  000426  B4D8               	btfsc	status,2,c
+   302  000428  EF18  F002         	goto	u291
+   303  00042C  EF1A  F002         	goto	u290
+   304  000430                     u291:
+   305  000430  EF0B  F002         	goto	l994
+   306  000434                     u290:
+   307  000434                     
+   308                           ; BSR set to: 0
+   309                           ;src/main.c: 118:             serial_data_read = serial_last_read;
+   310  000434  C09C  F09B         	movff	main@serial_last_read,main@serial_data_read
+   311  000438                     
    312                           ; BSR set to: 0
-   313  000158  0100               	movlb	0	; force () banked
-   314  00015A  BF9A               	btfsc	(main@j+1)& (0+255),7,b
-   315  00015C  D7FA               	goto	l981
-   316  00015E  519A               	movf	(main@j+1)& (0+255),w,b
-   317  000160  E104               	bnz	u240
-   318  000162                     L2:
-   319  000162  0EC8               	movlw	200
-   320  000164  5D99               	subwf	main@j& (0+255),w,b
-   321  000166  A0D8               	btfss	status,0,c
-   322  000168  D7F4               	goto	l981
-   323  00016A                     u240:
-   324  00016A                     l985:
-   325                           
-   326                           ; BSR set to: 0
-   327                           ;src/main.c: 108:         }
-   328  00016A  0100               	movlb	0	; force () banked
-   329  00016C  4B97               	infsnz	main@i& (0+255),f,b
-   330  00016E  2B98               	incf	(main@i+1)& (0+255),f,b
-   331                           
-   332                           ; BSR set to: 0
-   333  000170  0100               	movlb	0	; force () banked
-   334  000172  BF98               	btfsc	(main@i+1)& (0+255),7,b
-   335  000174  D7E3               	goto	l975
-   336  000176  5198               	movf	(main@i+1)& (0+255),w,b
-   337  000178  E104               	bnz	u250
-   338  00017A                     L1:
-   339  00017A  0EC8               	movlw	200
-   340  00017C  5D97               	subwf	main@i& (0+255),w,b
-   341  00017E  A0D8               	btfss	status,0,c
-   342  000180  D7DD               	goto	l975
-   343  000182                     u250:
-   344  000182                     l989:
-   345                           
-   346                           ; BSR set to: 0
-   347                           ;src/main.c: 110:         Serial_Transmit(0x42);
-   348  000182  0E42               	movlw	66
-   349  000184  EC6A  F001         	call	_Serial_Transmit
-   350  000188  D7CB               	goto	l967
-   351  00018A                     __end_of_main:
-   352                           	callstack 0
-   353                           
-   354 ;; *************** function _Timer0_Config *****************
-   355 ;; Defined at:
-   356 ;;		line 4 in file "src/pic18f4520/timer/timer.c"
-   357 ;; Parameters:    Size  Location     Type
-   358 ;;  timerConfig     2    0[BANK0 ] PTR struct .
-   359 ;;		 -> timerConfig(5), 
-   360 ;; Auto vars:     Size  Location     Type
-   361 ;;		None
-   362 ;; Return value:  Size  Location     Type
-   363 ;;                  1    wreg      void 
-   364 ;; Registers used:
-   365 ;;		wreg, fsr2l, fsr2h, status,2, status,0
-   366 ;; Tracked objects:
-   367 ;;		On entry : 0/0
-   368 ;;		On exit  : 0/0
-   369 ;;		Unchanged: 0/0
-   370 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   371 ;;      Params:         0       2       0       0       0       0       0
-   372 ;;      Locals:         0       0       0       0       0       0       0
-   373 ;;      Temps:          0       1       0       0       0       0       0
-   374 ;;      Totals:         0       3       0       0       0       0       0
-   375 ;;Total ram usage:        3 bytes
-   376 ;; Hardware stack levels used: 1
-   377 ;; Hardware stack levels required when called: 1
-   378 ;; This function calls:
-   379 ;;		Nothing
-   380 ;; This function is called by:
-   381 ;;		_main
-   382 ;; This function uses a non-reentrant model
-   383 ;;
-   384                           
-   385                           	psect	text1
-   386  00018A                     __ptext1:
-   387                           	callstack 0
-   388  00018A                     _Timer0_Config:
-   389                           	callstack 29
-   390                           
-   391                           ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig );src/
-      +                          pic18f4520/timer/timer.c: 5: {;src/pic18f4520/timer/timer.c: 11:     T0CONbits.TMR0ON = 
-      +                          0x00;
-   392                           
-   393                           ;incstack = 0
-   394  00018A  9ED5               	bcf	213,7,c	;volatile
-   395                           
-   396                           ;src/pic18f4520/timer/timer.c: 19:     T0CONbits.T08BIT = timerConfig->timer_length;
-   397  00018C  C080  FFD9         	movff	Timer0_Config@timerConfig,fsr2l
-   398  000190  C081  FFDA         	movff	Timer0_Config@timerConfig+1,fsr2h
-   399  000194  50DF               	movf	indf2,w,c
-   400  000196  0100               	movlb	0	; force () banked
-   401  000198  6F82               	movwf	??_Timer0_Config& (0+255),b
-   402  00019A  3B82               	swapf	??_Timer0_Config& (0+255),f,b
-   403  00019C  4782               	rlncf	??_Timer0_Config& (0+255),f,b
-   404  00019E  4782               	rlncf	??_Timer0_Config& (0+255),f,b
-   405  0001A0  50D5               	movf	213,w,c	;volatile
-   406  0001A2  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   407  0001A4  0BBF               	andlw	-65
-   408  0001A6  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   409  0001A8  6ED5               	movwf	213,c	;volatile
-   410                           
-   411                           ;src/pic18f4520/timer/timer.c: 26:     T0CONbits.T0CS = timerConfig->timer_clk_src;
-   412  0001AA  0100               	movlb	0	; force () banked
-   413  0001AC  EE20 F001          	lfsr	2,1
-   414  0001B0  5180               	movf	Timer0_Config@timerConfig& (0+255),w,b
-   415  0001B2  26D9               	addwf	fsr2l,f,c
-   416  0001B4  5181               	movf	(Timer0_Config@timerConfig+1)& (0+255),w,b
-   417  0001B6  22DA               	addwfc	fsr2h,f,c
-   418  0001B8  50DF               	movf	indf2,w,c
-   419  0001BA  0100               	movlb	0	; force () banked
-   420  0001BC  6F82               	movwf	??_Timer0_Config& (0+255),b
-   421  0001BE  3B82               	swapf	??_Timer0_Config& (0+255),f,b
-   422  0001C0  4782               	rlncf	??_Timer0_Config& (0+255),f,b
-   423  0001C2  50D5               	movf	213,w,c	;volatile
-   424  0001C4  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   425  0001C6  0BDF               	andlw	-33
-   426  0001C8  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   427  0001CA  6ED5               	movwf	213,c	;volatile
-   428                           
-   429                           ;src/pic18f4520/timer/timer.c: 34:     if(!(T0CONbits.PSA = timerConfig->timer_prescaler
-      +                          _assign))
-   430  0001CC  0100               	movlb	0	; force () banked
-   431  0001CE  EE20 F003          	lfsr	2,3
-   432  0001D2  5180               	movf	Timer0_Config@timerConfig& (0+255),w,b
-   433  0001D4  26D9               	addwf	fsr2l,f,c
-   434  0001D6  5181               	movf	(Timer0_Config@timerConfig+1)& (0+255),w,b
-   435  0001D8  22DA               	addwfc	fsr2h,f,c
-   436  0001DA  50DF               	movf	indf2,w,c
-   437  0001DC  0100               	movlb	0	; force () banked
-   438  0001DE  6F82               	movwf	??_Timer0_Config& (0+255),b
-   439  0001E0  4782               	rlncf	??_Timer0_Config& (0+255),f,b
-   440  0001E2  4782               	rlncf	??_Timer0_Config& (0+255),f,b
-   441  0001E4  4782               	rlncf	??_Timer0_Config& (0+255),f,b
-   442  0001E6  50D5               	movf	213,w,c	;volatile
-   443  0001E8  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   444  0001EA  0BF7               	andlw	-9
-   445  0001EC  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   446  0001EE  6ED5               	movwf	213,c	;volatile
-   447  0001F0  30D5               	rrcf	213,w,c	;volatile
-   448  0001F2  32E8               	rrcf	wreg,f,c
-   449  0001F4  32E8               	rrcf	wreg,f,c
-   450  0001F6  0B01               	andlw	1
-   451  0001F8  0900               	iorlw	0
-   452  0001FA  A4D8               	btfss	status,2,c
-   453  0001FC  D00F               	goto	l929
+   313                           ;src/main.c: 119:             Serial_Transmit(serial_data_read);
+   314  000438  0100               	movlb	0	; force () banked
+   315  00043A  519B               	movf	main@serial_data_read& (0+255),w,b
+   316  00043C  EC57  F002         	call	_Serial_Transmit
+   317  000440  EF0B  F002         	goto	l994
+   318  000444  EF07  F000         	goto	start
+   319  000448                     __end_of_main:
+   320                           	callstack 0
+   321                           
+   322 ;; *************** function _Serial_Transmit *****************
+   323 ;; Defined at:
+   324 ;;		line 151 in file "src/pic18f4520/serial/serial.c"
+   325 ;; Parameters:    Size  Location     Type
+   326 ;;  data            1    wreg     unsigned char 
+   327 ;; Auto vars:     Size  Location     Type
+   328 ;;  data            1    0[BANK0 ] unsigned char 
+   329 ;; Return value:  Size  Location     Type
+   330 ;;                  1    wreg      void 
+   331 ;; Registers used:
+   332 ;;		wreg
+   333 ;; Tracked objects:
+   334 ;;		On entry : 0/0
+   335 ;;		On exit  : 0/0
+   336 ;;		Unchanged: 0/0
+   337 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   338 ;;      Params:         0       0       0       0       0       0       0
+   339 ;;      Locals:         0       1       0       0       0       0       0
+   340 ;;      Temps:          0       0       0       0       0       0       0
+   341 ;;      Totals:         0       1       0       0       0       0       0
+   342 ;;Total ram usage:        1 bytes
+   343 ;; Hardware stack levels used: 1
+   344 ;; Hardware stack levels required when called: 1
+   345 ;; This function calls:
+   346 ;;		Nothing
+   347 ;; This function is called by:
+   348 ;;		_main
+   349 ;; This function uses a non-reentrant model
+   350 ;;
+   351                           
+   352                           	psect	text1
+   353  0004AE                     __ptext1:
+   354                           	callstack 0
+   355  0004AE                     _Serial_Transmit:
+   356                           	callstack 29
+   357                           
+   358                           ;incstack = 0
+   359                           ;Serial_Transmit@data stored from wreg
+   360  0004AE  0100               	movlb	0	; force () banked
+   361  0004B0  6F80               	movwf	Serial_Transmit@data& (0+255),b
+   362  0004B2                     
+   363                           ;src/pic18f4520/serial/serial.c: 151: void Serial_Transmit(uint8_t data);src/pic18f4520/
+      +                          serial/serial.c: 152: {;src/pic18f4520/serial/serial.c: 153:     TXREG = data;
+   364  0004B2  C080  FFAD         	movff	Serial_Transmit@data,4013	;volatile
+   365  0004B6  0012               	return		;funcret
+   366  0004B8                     __end_of_Serial_Transmit:
+   367                           	callstack 0
+   368                           
+   369 ;; *************** function _Serial_Receive *****************
+   370 ;; Defined at:
+   371 ;;		line 156 in file "src/pic18f4520/serial/serial.c"
+   372 ;; Parameters:    Size  Location     Type
+   373 ;;		None
+   374 ;; Auto vars:     Size  Location     Type
+   375 ;;		None
+   376 ;; Return value:  Size  Location     Type
+   377 ;;                  1    wreg      unsigned char 
+   378 ;; Registers used:
+   379 ;;		wreg, status,2
+   380 ;; Tracked objects:
+   381 ;;		On entry : 0/0
+   382 ;;		On exit  : 0/0
+   383 ;;		Unchanged: 0/0
+   384 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   385 ;;      Params:         0       0       0       0       0       0       0
+   386 ;;      Locals:         0       0       0       0       0       0       0
+   387 ;;      Temps:          0       0       0       0       0       0       0
+   388 ;;      Totals:         0       0       0       0       0       0       0
+   389 ;;Total ram usage:        0 bytes
+   390 ;; Hardware stack levels used: 1
+   391 ;; Hardware stack levels required when called: 1
+   392 ;; This function calls:
+   393 ;;		Nothing
+   394 ;; This function is called by:
+   395 ;;		_main
+   396 ;; This function uses a non-reentrant model
+   397 ;;
+   398                           
+   399                           	psect	text2
+   400  000490                     __ptext2:
+   401                           	callstack 0
+   402  000490                     _Serial_Receive:
+   403                           	callstack 29
+   404  000490                     l77:
+   405  000490  AA9E               	btfss	3998,5,c	;volatile
+   406  000492  EF4D  F002         	goto	u131
+   407  000496  EF4F  F002         	goto	u130
+   408  00049A                     u131:
+   409  00049A  EF48  F002         	goto	l77
+   410  00049E                     u130:
+   411  00049E                     
+   412                           ;src/pic18f4520/serial/serial.c: 159:     return RCREG;
+   413  00049E  50AE               	movf	174,w,c	;volatile
+   414  0004A0  0012               	return		;funcret
+   415  0004A2                     __end_of_Serial_Receive:
+   416                           	callstack 0
+   417                           
+   418 ;; *************** function _Serial_1_Config *****************
+   419 ;; Defined at:
+   420 ;;		line 7 in file "src/pic18f4520/serial/serial.c"
+   421 ;; Parameters:    Size  Location     Type
+   422 ;;  serialConfig    2   14[BANK0 ] PTR struct .
+   423 ;;		 -> serialConfig(7), 
+   424 ;; Auto vars:     Size  Location     Type
+   425 ;;  error_min       1   26[BANK0 ] unsigned char 
+   426 ;;  error_8HIGH     1   25[BANK0 ] unsigned char 
+   427 ;;  brg16HIGH       1   24[BANK0 ] unsigned char 
+   428 ;;  brg8HIGH        1   23[BANK0 ] unsigned char 
+   429 ;;  brg8LOW         1   22[BANK0 ] unsigned char 
+   430 ;;  error_16HIGH    1   21[BANK0 ] unsigned char 
+   431 ;;  error_8LOW      1   20[BANK0 ] unsigned char 
+   432 ;; Return value:  Size  Location     Type
+   433 ;;                  1    wreg      void 
+   434 ;; Registers used:
+   435 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   436 ;; Tracked objects:
+   437 ;;		On entry : 0/0
+   438 ;;		On exit  : 0/0
+   439 ;;		Unchanged: 0/0
+   440 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   441 ;;      Params:         0       2       0       0       0       0       0
+   442 ;;      Locals:         0       7       0       0       0       0       0
+   443 ;;      Temps:          0       4       0       0       0       0       0
+   444 ;;      Totals:         0      13       0       0       0       0       0
+   445 ;;Total ram usage:       13 bytes
+   446 ;; Hardware stack levels used: 1
+   447 ;; Hardware stack levels required when called: 2
+   448 ;; This function calls:
+   449 ;;		___aldiv
+   450 ;; This function is called by:
+   451 ;;		_main
+   452 ;; This function uses a non-reentrant model
+   453 ;;
    454                           
-   455                           ; BSR set to: 0
-   456                           ;src/pic18f4520/timer/timer.c: 35:     {;src/pic18f4520/timer/timer.c: 45:         T0CON
-      +                          bits.T0PS = timerConfig->timer_prescaler_value;
-   457  0001FE  0100               	movlb	0	; force () banked
-   458  000200  EE20 F004          	lfsr	2,4
-   459  000204  5180               	movf	Timer0_Config@timerConfig& (0+255),w,b
-   460  000206  26D9               	addwf	fsr2l,f,c
-   461  000208  5181               	movf	(Timer0_Config@timerConfig+1)& (0+255),w,b
-   462  00020A  22DA               	addwfc	fsr2h,f,c
-   463  00020C  50DF               	movf	indf2,w,c
-   464  00020E  0100               	movlb	0	; force () banked
-   465  000210  6F82               	movwf	??_Timer0_Config& (0+255),b
-   466  000212  50D5               	movf	213,w,c	;volatile
-   467  000214  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   468  000216  0BF8               	andlw	-8
-   469  000218  1982               	xorwf	??_Timer0_Config& (0+255),w,b
-   470  00021A  6ED5               	movwf	213,c	;volatile
-   471  00021C                     l929:
-   472                           
-   473                           ; BSR set to: 0
-   474                           ;src/pic18f4520/timer/timer.c: 60:     INTCONbits.TMR0IE = 0x01;
-   475  00021C  8AF2               	bsf	242,5,c	;volatile
-   476                           
-   477                           ; BSR set to: 0
-   478                           ;src/pic18f4520/timer/timer.c: 66:     INTCON2bits.TMR0IP = 0x01;
-   479  00021E  84F1               	bsf	241,2,c	;volatile
-   480                           
-   481                           ; BSR set to: 0
-   482                           ;src/pic18f4520/timer/timer.c: 69:     TMR0 = 0xD9D9;
-   483  000220  0ED9               	movlw	217
-   484  000222  6ED7               	movwf	215,c	;volatile
-   485  000224  0ED9               	movlw	217
-   486  000226  6ED6               	movwf	214,c	;volatile
-   487                           
-   488                           ; BSR set to: 0
-   489                           ;src/pic18f4520/timer/timer.c: 71:     T0CONbits.TMR0ON = 0x01;
-   490  000228  8ED5               	bsf	213,7,c	;volatile
-   491                           
-   492                           ; BSR set to: 0
-   493  00022A  0012               	return		;funcret
-   494  00022C                     __end_of_Timer0_Config:
-   495                           	callstack 0
-   496                           
-   497 ;; *************** function _Serial_Transmit *****************
-   498 ;; Defined at:
-   499 ;;		line 57 in file "src/pic18f4520/serial/serial.c"
-   500 ;; Parameters:    Size  Location     Type
-   501 ;;  data            1    wreg     unsigned char 
-   502 ;; Auto vars:     Size  Location     Type
-   503 ;;  data            1    0[BANK0 ] unsigned char 
-   504 ;; Return value:  Size  Location     Type
-   505 ;;                  1    wreg      void 
-   506 ;; Registers used:
-   507 ;;		wreg
-   508 ;; Tracked objects:
-   509 ;;		On entry : 0/0
-   510 ;;		On exit  : 0/0
-   511 ;;		Unchanged: 0/0
-   512 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   513 ;;      Params:         0       0       0       0       0       0       0
-   514 ;;      Locals:         0       1       0       0       0       0       0
-   515 ;;      Temps:          0       0       0       0       0       0       0
-   516 ;;      Totals:         0       1       0       0       0       0       0
-   517 ;;Total ram usage:        1 bytes
-   518 ;; Hardware stack levels used: 1
-   519 ;; Hardware stack levels required when called: 1
-   520 ;; This function calls:
-   521 ;;		Nothing
-   522 ;; This function is called by:
-   523 ;;		_main
-   524 ;; This function uses a non-reentrant model
-   525 ;;
-   526                           
-   527                           	psect	text2
-   528  0002D4                     __ptext2:
-   529                           	callstack 0
-   530  0002D4                     _Serial_Transmit:
-   531                           	callstack 29
-   532                           
-   533                           ; BSR set to: 0
-   534                           ;incstack = 0
-   535                           ;Serial_Transmit@data stored from wreg
-   536  0002D4  0100               	movlb	0	; force () banked
-   537  0002D6  6F80               	movwf	Serial_Transmit@data& (0+255),b
-   538                           
-   539                           ;src/pic18f4520/serial/serial.c: 58:     TXREG = data;
-   540  0002D8  C080  FFAD         	movff	Serial_Transmit@data,4013	;volatile
-   541  0002DC  0012               	return		;funcret
-   542  0002DE                     __end_of_Serial_Transmit:
-   543                           	callstack 0
-   544                           
-   545 ;; *************** function _Serial_Config *****************
-   546 ;; Defined at:
-   547 ;;		line 6 in file "src/pic18f4520/serial/serial.c"
-   548 ;; Parameters:    Size  Location     Type
-   549 ;;  desired_baud    4   14[BANK0 ] long 
-   550 ;; Auto vars:     Size  Location     Type
-   551 ;;  brg_value       1   22[BANK0 ] unsigned char 
-   552 ;; Return value:  Size  Location     Type
-   553 ;;                  1    wreg      void 
-   554 ;; Registers used:
-   555 ;;		wreg, status,2, status,0, cstack
-   556 ;; Tracked objects:
-   557 ;;		On entry : 0/0
-   558 ;;		On exit  : 0/0
-   559 ;;		Unchanged: 0/0
-   560 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   561 ;;      Params:         0       4       0       0       0       0       0
-   562 ;;      Locals:         0       1       0       0       0       0       0
-   563 ;;      Temps:          0       4       0       0       0       0       0
-   564 ;;      Totals:         0       9       0       0       0       0       0
-   565 ;;Total ram usage:        9 bytes
-   566 ;; Hardware stack levels used: 1
-   567 ;; Hardware stack levels required when called: 2
-   568 ;; This function calls:
-   569 ;;		___aldiv
-   570 ;; This function is called by:
-   571 ;;		_main
-   572 ;; This function uses a non-reentrant model
-   573 ;;
-   574                           
-   575                           	psect	text3
-   576  00022C                     __ptext3:
-   577                           	callstack 0
-   578  00022C                     _Serial_Config:
-   579                           	callstack 28
-   580                           
-   581                           ;src/pic18f4520/serial/serial.c: 6: void Serial_Config( long int desired_baud );src/pic1
-      +                          8f4520/serial/serial.c: 7: {;src/pic18f4520/serial/serial.c: 37:     uint8_t brg_value;;
-      +                          src/pic18f4520/serial/serial.c: 38:     brg_value = (10000000 / (desired_baud * 64)) - 1
-      +                          ;
-   582                           
-   583                           ;incstack = 0
-   584  00022C  0E80               	movlw	128
-   585  00022E  0100               	movlb	0	; force () banked
-   586  000230  6F80               	movwf	___aldiv@dividend& (0+255),b
-   587  000232  0E96               	movlw	150
-   588  000234  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
-   589  000236  0E98               	movlw	152
-   590  000238  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
-   591  00023A  0E00               	movlw	0
-   592  00023C  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
-   593  00023E  C08E  F092         	movff	Serial_Config@desired_baud,??_Serial_Config
-   594  000242  C08F  F093         	movff	Serial_Config@desired_baud+1,??_Serial_Config+1
-   595  000246  C090  F094         	movff	Serial_Config@desired_baud+2,??_Serial_Config+2
-   596  00024A  C091  F095         	movff	Serial_Config@desired_baud+3,??_Serial_Config+3
-   597  00024E  0E06               	movlw	6
-   598  000250                     u215:
-   599  000250  90D8               	bcf	status,0,c
-   600  000252  0100               	movlb	0	; force () banked
-   601  000254  3792               	rlcf	??_Serial_Config& (0+255),f,b
-   602  000256  3793               	rlcf	(??_Serial_Config+1)& (0+255),f,b
-   603  000258  3794               	rlcf	(??_Serial_Config+2)& (0+255),f,b
-   604  00025A  3795               	rlcf	(??_Serial_Config+3)& (0+255),f,b
-   605  00025C  2EE8               	decfsz	wreg,f,c
-   606  00025E  D7F8               	goto	u215
-   607  000260  C092  F084         	movff	??_Serial_Config,___aldiv@divisor
-   608  000264  C093  F085         	movff	??_Serial_Config+1,___aldiv@divisor+1
-   609  000268  C094  F086         	movff	??_Serial_Config+2,___aldiv@divisor+2
-   610  00026C  C095  F087         	movff	??_Serial_Config+3,___aldiv@divisor+3
-   611  000270  EC09  F000         	call	___aldiv	;wreg free
-   612  000274  0100               	movlb	0	; force () banked
-   613  000276  0580               	decf	?___aldiv& (0+255),w,b
-   614  000278  0100               	movlb	0	; force () banked
-   615  00027A  6F96               	movwf	Serial_Config@brg_value& (0+255),b
-   616                           
-   617                           ; BSR set to: 0
-   618                           ;src/pic18f4520/serial/serial.c: 40:     SPBRG = brg_value;
-   619  00027C  C096  FFAF         	movff	Serial_Config@brg_value,4015	;volatile
-   620                           
-   621                           ; BSR set to: 0
-   622                           ;src/pic18f4520/serial/serial.c: 42:     TXSTAbits.SYNC = 0x00;
-   623  000280  98AC               	bcf	172,4,c	;volatile
-   624                           
-   625                           ; BSR set to: 0
-   626                           ;src/pic18f4520/serial/serial.c: 44:     RCSTAbits.SPEN = 0x01;
-   627  000282  8EAB               	bsf	171,7,c	;volatile
-   628                           
-   629                           ; BSR set to: 0
-   630                           ;src/pic18f4520/serial/serial.c: 46:     TXSTAbits.TX9 = 0x00;
-   631  000284  9CAC               	bcf	172,6,c	;volatile
-   632                           
-   633                           ; BSR set to: 0
-   634                           ;src/pic18f4520/serial/serial.c: 48:     TXSTAbits.TXEN = 0x01;
-   635  000286  8AAC               	bsf	172,5,c	;volatile
-   636                           
-   637                           ; BSR set to: 0
-   638  000288  0012               	return		;funcret
-   639  00028A                     __end_of_Serial_Config:
-   640                           	callstack 0
-   641                           
-   642 ;; *************** function ___aldiv *****************
-   643 ;; Defined at:
-   644 ;;		line 7 in file "C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\aldiv.c"
-   645 ;; Parameters:    Size  Location     Type
-   646 ;;  dividend        4    0[BANK0 ] long 
-   647 ;;  divisor         4    4[BANK0 ] long 
-   648 ;; Auto vars:     Size  Location     Type
-   649 ;;  quotient        4   10[BANK0 ] long 
-   650 ;;  sign            1    9[BANK0 ] unsigned char 
-   651 ;;  counter         1    8[BANK0 ] unsigned char 
-   652 ;; Return value:  Size  Location     Type
-   653 ;;                  4    0[BANK0 ] long 
-   654 ;; Registers used:
-   655 ;;		wreg, status,2, status,0
-   656 ;; Tracked objects:
-   657 ;;		On entry : 0/0
-   658 ;;		On exit  : 0/0
-   659 ;;		Unchanged: 0/0
-   660 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   661 ;;      Params:         0       8       0       0       0       0       0
-   662 ;;      Locals:         0       6       0       0       0       0       0
-   663 ;;      Temps:          0       0       0       0       0       0       0
-   664 ;;      Totals:         0      14       0       0       0       0       0
-   665 ;;Total ram usage:       14 bytes
-   666 ;; Hardware stack levels used: 1
-   667 ;; Hardware stack levels required when called: 1
-   668 ;; This function calls:
-   669 ;;		Nothing
-   670 ;; This function is called by:
-   671 ;;		_Serial_Config
-   672 ;; This function uses a non-reentrant model
-   673 ;;
-   674                           
-   675                           	psect	text4
-   676  000012                     __ptext4:
-   677                           	callstack 0
-   678  000012                     ___aldiv:
-   679                           	callstack 28
-   680                           
-   681                           ; BSR set to: 0
-   682                           ;incstack = 0
-   683  000012  0E00               	movlw	0
-   684  000014  0100               	movlb	0	; () banked
-   685  000016  6F89               	movwf	___aldiv@sign& (0+255),b
-   686                           
-   687                           ; BSR set to: 0
-   688  000018  AF87               	btfss	(___aldiv@divisor+3)& (0+255),7,b
-   689  00001A  D00A               	goto	l887
-   690                           
-   691                           ; BSR set to: 0
-   692  00001C  1F87               	comf	(___aldiv@divisor+3)& (0+255),f,b
-   693  00001E  1F86               	comf	(___aldiv@divisor+2)& (0+255),f,b
-   694  000020  1F85               	comf	(___aldiv@divisor+1)& (0+255),f,b
-   695  000022  6D84               	negf	___aldiv@divisor& (0+255),b
-   696  000024  0E00               	movlw	0
-   697  000026  2385               	addwfc	(___aldiv@divisor+1)& (0+255),f,b
-   698  000028  2386               	addwfc	(___aldiv@divisor+2)& (0+255),f,b
-   699  00002A  2387               	addwfc	(___aldiv@divisor+3)& (0+255),f,b
-   700                           
-   701                           ; BSR set to: 0
-   702  00002C  0E01               	movlw	1
-   703  00002E  6F89               	movwf	___aldiv@sign& (0+255),b
-   704  000030                     l887:
-   705                           
-   706                           ; BSR set to: 0
-   707  000030  AF83               	btfss	(___aldiv@dividend+3)& (0+255),7,b
-   708  000032  D00A               	goto	l893
-   709                           
-   710                           ; BSR set to: 0
-   711  000034  1F83               	comf	(___aldiv@dividend+3)& (0+255),f,b
-   712  000036  1F82               	comf	(___aldiv@dividend+2)& (0+255),f,b
-   713  000038  1F81               	comf	(___aldiv@dividend+1)& (0+255),f,b
-   714  00003A  6D80               	negf	___aldiv@dividend& (0+255),b
-   715  00003C  0E00               	movlw	0
-   716  00003E  2381               	addwfc	(___aldiv@dividend+1)& (0+255),f,b
-   717  000040  2382               	addwfc	(___aldiv@dividend+2)& (0+255),f,b
-   718  000042  2383               	addwfc	(___aldiv@dividend+3)& (0+255),f,b
-   719                           
-   720                           ; BSR set to: 0
-   721  000044  0E01               	movlw	1
-   722  000046  1B89               	xorwf	___aldiv@sign& (0+255),f,b
-   723  000048                     l893:
-   724                           
-   725                           ; BSR set to: 0
-   726  000048  0E00               	movlw	0
-   727  00004A  6F8A               	movwf	___aldiv@quotient& (0+255),b
-   728  00004C  0E00               	movlw	0
-   729  00004E  6F8B               	movwf	(___aldiv@quotient+1)& (0+255),b
-   730  000050  0E00               	movlw	0
-   731  000052  6F8C               	movwf	(___aldiv@quotient+2)& (0+255),b
-   732  000054  0E00               	movlw	0
-   733  000056  6F8D               	movwf	(___aldiv@quotient+3)& (0+255),b
-   734                           
+   455                           	psect	text3
+   456  000012                     __ptext3:
+   457                           	callstack 0
+   458  000012                     _Serial_1_Config:
+   459                           	callstack 28
+   460  000012                     
+   461                           ;src/pic18f4520/serial/serial.c: 38:     uint8_t brg8LOW;;src/pic18f4520/serial/serial.c
+      +                          : 39:     uint8_t brg8HIGH;;src/pic18f4520/serial/serial.c: 40:     uint8_t brg16HIGH;;s
+      +                          rc/pic18f4520/serial/serial.c: 43:     uint8_t error_8LOW;;src/pic18f4520/serial/serial.
+      +                          c: 44:     uint8_t error_8HIGH;;src/pic18f4520/serial/serial.c: 45:     uint8_t error_16
+      +                          HIGH;;src/pic18f4520/serial/serial.c: 47:     uint8_t error_min;;src/pic18f4520/serial/s
+      +                          erial.c: 50:     brg8LOW = (10000000/(serialConfig->serial_desired_baud * 64));
+   462  000012  0E80               	movlw	128
+   463  000014  0100               	movlb	0	; force () banked
+   464  000016  6F80               	movwf	___aldiv@dividend& (0+255),b
+   465  000018  0E96               	movlw	150
+   466  00001A  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
+   467  00001C  0E98               	movlw	152
+   468  00001E  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
+   469  000020  0E00               	movlw	0
+   470  000022  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
+   471  000024  0100               	movlb	0	; force () banked
+   472  000026  EE20 F003          	lfsr	2,3
+   473  00002A  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   474  00002C  26D9               	addwf	fsr2l,f,c
+   475  00002E  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   476  000030  22DA               	addwfc	fsr2h,f,c
+   477  000032  CFDE F090          	movff	postinc2,??_Serial_1_Config
+   478  000036  CFDE F091          	movff	postinc2,??_Serial_1_Config+1
+   479  00003A  CFDE F092          	movff	postinc2,??_Serial_1_Config+2
+   480  00003E  CFDE F093          	movff	postinc2,??_Serial_1_Config+3
+   481  000042  0E06               	movlw	6
+   482  000044                     u235:
+   483  000044  90D8               	bcf	status,0,c
+   484  000046  0100               	movlb	0	; force () banked
+   485  000048  3790               	rlcf	??_Serial_1_Config& (0+255),f,b
+   486  00004A  3791               	rlcf	(??_Serial_1_Config+1)& (0+255),f,b
+   487  00004C  3792               	rlcf	(??_Serial_1_Config+2)& (0+255),f,b
+   488  00004E  3793               	rlcf	(??_Serial_1_Config+3)& (0+255),f,b
+   489  000050  2EE8               	decfsz	wreg,f,c
+   490  000052  EF22  F000         	goto	u235
+   491  000056  C090  F084         	movff	??_Serial_1_Config,___aldiv@divisor
+   492  00005A  C091  F085         	movff	??_Serial_1_Config+1,___aldiv@divisor+1
+   493  00005E  C092  F086         	movff	??_Serial_1_Config+2,___aldiv@divisor+2
+   494  000062  C093  F087         	movff	??_Serial_1_Config+3,___aldiv@divisor+3
+   495  000066  EC6F  F001         	call	___aldiv	;wreg free
+   496  00006A  0100               	movlb	0	; force () banked
+   497  00006C  5180               	movf	?___aldiv& (0+255),w,b
+   498  00006E  0100               	movlb	0	; force () banked
+   499  000070  6F96               	movwf	Serial_1_Config@brg8LOW& (0+255),b
+   500                           
+   501                           ;src/pic18f4520/serial/serial.c: 51:     brg8HIGH = (10000000/(serialConfig->serial_desi
+      +                          red_baud * 16));
+   502  000072  0E80               	movlw	128
+   503  000074  0100               	movlb	0	; force () banked
+   504  000076  6F80               	movwf	___aldiv@dividend& (0+255),b
+   505  000078  0E96               	movlw	150
+   506  00007A  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
+   507  00007C  0E98               	movlw	152
+   508  00007E  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
+   509  000080  0E00               	movlw	0
+   510  000082  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
+   511  000084  0100               	movlb	0	; force () banked
+   512  000086  EE20 F003          	lfsr	2,3
+   513  00008A  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   514  00008C  26D9               	addwf	fsr2l,f,c
+   515  00008E  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   516  000090  22DA               	addwfc	fsr2h,f,c
+   517  000092  CFDE F090          	movff	postinc2,??_Serial_1_Config
+   518  000096  CFDE F091          	movff	postinc2,??_Serial_1_Config+1
+   519  00009A  CFDE F092          	movff	postinc2,??_Serial_1_Config+2
+   520  00009E  CFDE F093          	movff	postinc2,??_Serial_1_Config+3
+   521  0000A2  0E04               	movlw	4
+   522  0000A4                     u245:
+   523  0000A4  90D8               	bcf	status,0,c
+   524  0000A6  0100               	movlb	0	; force () banked
+   525  0000A8  3790               	rlcf	??_Serial_1_Config& (0+255),f,b
+   526  0000AA  3791               	rlcf	(??_Serial_1_Config+1)& (0+255),f,b
+   527  0000AC  3792               	rlcf	(??_Serial_1_Config+2)& (0+255),f,b
+   528  0000AE  3793               	rlcf	(??_Serial_1_Config+3)& (0+255),f,b
+   529  0000B0  2EE8               	decfsz	wreg,f,c
+   530  0000B2  EF52  F000         	goto	u245
+   531  0000B6  C090  F084         	movff	??_Serial_1_Config,___aldiv@divisor
+   532  0000BA  C091  F085         	movff	??_Serial_1_Config+1,___aldiv@divisor+1
+   533  0000BE  C092  F086         	movff	??_Serial_1_Config+2,___aldiv@divisor+2
+   534  0000C2  C093  F087         	movff	??_Serial_1_Config+3,___aldiv@divisor+3
+   535  0000C6  EC6F  F001         	call	___aldiv	;wreg free
+   536  0000CA  0100               	movlb	0	; force () banked
+   537  0000CC  5180               	movf	?___aldiv& (0+255),w,b
+   538  0000CE  0100               	movlb	0	; force () banked
+   539  0000D0  6F97               	movwf	Serial_1_Config@brg8HIGH& (0+255),b
+   540                           
+   541                           ;src/pic18f4520/serial/serial.c: 52:     brg16HIGH = (10000000/(serialConfig->serial_des
+      +                          ired_baud * 4));
+   542  0000D2  0E80               	movlw	128
+   543  0000D4  0100               	movlb	0	; force () banked
+   544  0000D6  6F80               	movwf	___aldiv@dividend& (0+255),b
+   545  0000D8  0E96               	movlw	150
+   546  0000DA  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
+   547  0000DC  0E98               	movlw	152
+   548  0000DE  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
+   549  0000E0  0E00               	movlw	0
+   550  0000E2  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
+   551  0000E4  0100               	movlb	0	; force () banked
+   552  0000E6  EE20 F003          	lfsr	2,3
+   553  0000EA  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   554  0000EC  26D9               	addwf	fsr2l,f,c
+   555  0000EE  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   556  0000F0  22DA               	addwfc	fsr2h,f,c
+   557  0000F2  CFDE F090          	movff	postinc2,??_Serial_1_Config
+   558  0000F6  CFDE F091          	movff	postinc2,??_Serial_1_Config+1
+   559  0000FA  CFDE F092          	movff	postinc2,??_Serial_1_Config+2
+   560  0000FE  CFDE F093          	movff	postinc2,??_Serial_1_Config+3
+   561  000102  0E02               	movlw	2
+   562  000104                     u255:
+   563  000104  90D8               	bcf	status,0,c
+   564  000106  0100               	movlb	0	; force () banked
+   565  000108  3790               	rlcf	??_Serial_1_Config& (0+255),f,b
+   566  00010A  3791               	rlcf	(??_Serial_1_Config+1)& (0+255),f,b
+   567  00010C  3792               	rlcf	(??_Serial_1_Config+2)& (0+255),f,b
+   568  00010E  3793               	rlcf	(??_Serial_1_Config+3)& (0+255),f,b
+   569  000110  2EE8               	decfsz	wreg,f,c
+   570  000112  EF82  F000         	goto	u255
+   571  000116  C090  F084         	movff	??_Serial_1_Config,___aldiv@divisor
+   572  00011A  C091  F085         	movff	??_Serial_1_Config+1,___aldiv@divisor+1
+   573  00011E  C092  F086         	movff	??_Serial_1_Config+2,___aldiv@divisor+2
+   574  000122  C093  F087         	movff	??_Serial_1_Config+3,___aldiv@divisor+3
+   575  000126  EC6F  F001         	call	___aldiv	;wreg free
+   576  00012A  0100               	movlb	0	; force () banked
+   577  00012C  5180               	movf	?___aldiv& (0+255),w,b
+   578  00012E  0100               	movlb	0	; force () banked
+   579  000130  6F98               	movwf	Serial_1_Config@brg16HIGH& (0+255),b
+   580  000132                     
+   581                           ; BSR set to: 0
+   582                           ;src/pic18f4520/serial/serial.c: 55:     error_8LOW = (10000000/(brg8LOW * 64)) - serial
+      +                          Config->serial_desired_baud;
+   583  000132  0100               	movlb	0	; force () banked
+   584  000134  EE20 F003          	lfsr	2,3
+   585  000138  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   586  00013A  26D9               	addwf	fsr2l,f,c
+   587  00013C  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   588  00013E  22DA               	addwfc	fsr2h,f,c
+   589  000140  50DF               	movf	indf2,w,c
+   590  000142  0100               	movlb	0	; force () banked
+   591  000144  6F90               	movwf	??_Serial_1_Config& (0+255),b
+   592  000146  0E80               	movlw	128
+   593  000148  0100               	movlb	0	; force () banked
+   594  00014A  6F80               	movwf	___aldiv@dividend& (0+255),b
+   595  00014C  0E96               	movlw	150
+   596  00014E  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
+   597  000150  0E98               	movlw	152
+   598  000152  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
+   599  000154  0E00               	movlw	0
+   600  000156  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
+   601  000158  0100               	movlb	0	; force () banked
+   602  00015A  5196               	movf	Serial_1_Config@brg8LOW& (0+255),w,b
+   603  00015C  0D40               	mullw	64
+   604  00015E  CFF3 F091          	movff	prodl,??_Serial_1_Config+1
+   605  000162  CFF4 F092          	movff	prodh,??_Serial_1_Config+2
+   606  000166  C091  F084         	movff	??_Serial_1_Config+1,___aldiv@divisor
+   607  00016A  C092  F085         	movff	??_Serial_1_Config+2,___aldiv@divisor+1
+   608  00016E  0100               	movlb	0	; force () banked
+   609  000170  0E00               	movlw	0
+   610  000172  BF85               	btfsc	(___aldiv@divisor+1)& (0+255),7,b
+   611  000174  0EFF               	movlw	-1
+   612  000176  6F86               	movwf	(___aldiv@divisor+2)& (0+255),b
+   613  000178  6F87               	movwf	(___aldiv@divisor+3)& (0+255),b
+   614  00017A  EC6F  F001         	call	___aldiv	;wreg free
+   615  00017E  0100               	movlb	0	; force () banked
+   616  000180  5190               	movf	??_Serial_1_Config& (0+255),w,b
+   617  000182  0100               	movlb	0	; force () banked
+   618  000184  5D80               	subwf	?___aldiv& (0+255),w,b
+   619  000186  0100               	movlb	0	; force () banked
+   620  000188  6F94               	movwf	Serial_1_Config@error_8LOW& (0+255),b
+   621  00018A                     
+   622                           ; BSR set to: 0
+   623                           ;src/pic18f4520/serial/serial.c: 56:     error_8HIGH = (10000000/(brg8HIGH * 16)) - seri
+      +                          alConfig->serial_desired_baud;
+   624  00018A  0100               	movlb	0	; force () banked
+   625  00018C  EE20 F003          	lfsr	2,3
+   626  000190  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   627  000192  26D9               	addwf	fsr2l,f,c
+   628  000194  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   629  000196  22DA               	addwfc	fsr2h,f,c
+   630  000198  50DF               	movf	indf2,w,c
+   631  00019A  0100               	movlb	0	; force () banked
+   632  00019C  6F90               	movwf	??_Serial_1_Config& (0+255),b
+   633  00019E  0E80               	movlw	128
+   634  0001A0  0100               	movlb	0	; force () banked
+   635  0001A2  6F80               	movwf	___aldiv@dividend& (0+255),b
+   636  0001A4  0E96               	movlw	150
+   637  0001A6  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
+   638  0001A8  0E98               	movlw	152
+   639  0001AA  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
+   640  0001AC  0E00               	movlw	0
+   641  0001AE  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
+   642  0001B0  0100               	movlb	0	; force () banked
+   643  0001B2  5197               	movf	Serial_1_Config@brg8HIGH& (0+255),w,b
+   644  0001B4  0D10               	mullw	16
+   645  0001B6  CFF3 F091          	movff	prodl,??_Serial_1_Config+1
+   646  0001BA  CFF4 F092          	movff	prodh,??_Serial_1_Config+2
+   647  0001BE  C091  F084         	movff	??_Serial_1_Config+1,___aldiv@divisor
+   648  0001C2  C092  F085         	movff	??_Serial_1_Config+2,___aldiv@divisor+1
+   649  0001C6  0100               	movlb	0	; force () banked
+   650  0001C8  0E00               	movlw	0
+   651  0001CA  BF85               	btfsc	(___aldiv@divisor+1)& (0+255),7,b
+   652  0001CC  0EFF               	movlw	-1
+   653  0001CE  6F86               	movwf	(___aldiv@divisor+2)& (0+255),b
+   654  0001D0  6F87               	movwf	(___aldiv@divisor+3)& (0+255),b
+   655  0001D2  EC6F  F001         	call	___aldiv	;wreg free
+   656  0001D6  0100               	movlb	0	; force () banked
+   657  0001D8  5190               	movf	??_Serial_1_Config& (0+255),w,b
+   658  0001DA  0100               	movlb	0	; force () banked
+   659  0001DC  5D80               	subwf	?___aldiv& (0+255),w,b
+   660  0001DE  0100               	movlb	0	; force () banked
+   661  0001E0  6F99               	movwf	Serial_1_Config@error_8HIGH& (0+255),b
+   662  0001E2                     
+   663                           ; BSR set to: 0
+   664                           ;src/pic18f4520/serial/serial.c: 57:     error_16HIGH = (10000000/(brg16HIGH * 4)) - ser
+      +                          ialConfig->serial_desired_baud;
+   665  0001E2  0100               	movlb	0	; force () banked
+   666  0001E4  EE20 F003          	lfsr	2,3
+   667  0001E8  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   668  0001EA  26D9               	addwf	fsr2l,f,c
+   669  0001EC  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   670  0001EE  22DA               	addwfc	fsr2h,f,c
+   671  0001F0  50DF               	movf	indf2,w,c
+   672  0001F2  0100               	movlb	0	; force () banked
+   673  0001F4  6F90               	movwf	??_Serial_1_Config& (0+255),b
+   674  0001F6  0E80               	movlw	128
+   675  0001F8  0100               	movlb	0	; force () banked
+   676  0001FA  6F80               	movwf	___aldiv@dividend& (0+255),b
+   677  0001FC  0E96               	movlw	150
+   678  0001FE  6F81               	movwf	(___aldiv@dividend+1)& (0+255),b
+   679  000200  0E98               	movlw	152
+   680  000202  6F82               	movwf	(___aldiv@dividend+2)& (0+255),b
+   681  000204  0E00               	movlw	0
+   682  000206  6F83               	movwf	(___aldiv@dividend+3)& (0+255),b
+   683  000208  0100               	movlb	0	; force () banked
+   684  00020A  5198               	movf	Serial_1_Config@brg16HIGH& (0+255),w,b
+   685  00020C  0D04               	mullw	4
+   686  00020E  CFF3 F091          	movff	prodl,??_Serial_1_Config+1
+   687  000212  CFF4 F092          	movff	prodh,??_Serial_1_Config+2
+   688  000216  C091  F084         	movff	??_Serial_1_Config+1,___aldiv@divisor
+   689  00021A  C092  F085         	movff	??_Serial_1_Config+2,___aldiv@divisor+1
+   690  00021E  0100               	movlb	0	; force () banked
+   691  000220  0E00               	movlw	0
+   692  000222  BF85               	btfsc	(___aldiv@divisor+1)& (0+255),7,b
+   693  000224  0EFF               	movlw	-1
+   694  000226  6F86               	movwf	(___aldiv@divisor+2)& (0+255),b
+   695  000228  6F87               	movwf	(___aldiv@divisor+3)& (0+255),b
+   696  00022A  EC6F  F001         	call	___aldiv	;wreg free
+   697  00022E  0100               	movlb	0	; force () banked
+   698  000230  5190               	movf	??_Serial_1_Config& (0+255),w,b
+   699  000232  0100               	movlb	0	; force () banked
+   700  000234  5D80               	subwf	?___aldiv& (0+255),w,b
+   701  000236  0100               	movlb	0	; force () banked
+   702  000238  6F95               	movwf	Serial_1_Config@error_16HIGH& (0+255),b
+   703  00023A                     
+   704                           ; BSR set to: 0
+   705                           ;src/pic18f4520/serial/serial.c: 60:     error_min = error_8LOW;
+   706  00023A  C094  F09A         	movff	Serial_1_Config@error_8LOW,Serial_1_Config@error_min
+   707  00023E                     
+   708                           ; BSR set to: 0
+   709                           ;src/pic18f4520/serial/serial.c: 62:     BAUDCONbits.BRG16 = 0x00;
+   710  00023E  96B8               	bcf	184,3,c	;volatile
+   711  000240                     
+   712                           ; BSR set to: 0
+   713                           ;src/pic18f4520/serial/serial.c: 63:     TXSTAbits.BRGH = 0x00;
+   714  000240  94AC               	bcf	172,2,c	;volatile
+   715  000242                     
+   716                           ; BSR set to: 0
+   717                           ;src/pic18f4520/serial/serial.c: 65:     SPBRG = (brg8LOW - 1);
+   718  000242  0100               	movlb	0	; force () banked
+   719  000244  0596               	decf	Serial_1_Config@brg8LOW& (0+255),w,b
+   720  000246  6EAF               	movwf	175,c	;volatile
+   721  000248                     
+   722                           ; BSR set to: 0
+   723                           ;src/pic18f4520/serial/serial.c: 67:     if(error_8HIGH < error_min)
+   724  000248  0100               	movlb	0	; force () banked
+   725  00024A  519A               	movf	Serial_1_Config@error_min& (0+255),w,b
+   726  00024C  0100               	movlb	0	; force () banked
+   727  00024E  5D99               	subwf	Serial_1_Config@error_8HIGH& (0+255),w,b
+   728  000250  B0D8               	btfsc	status,0,c
+   729  000252  EF2D  F001         	goto	u261
+   730  000256  EF2F  F001         	goto	u260
+   731  00025A                     u261:
+   732  00025A  EF36  F001         	goto	l67
+   733  00025E                     u260:
+   734  00025E                     
    735                           ; BSR set to: 0
-   736  000058  5184               	movf	___aldiv@divisor& (0+255),w,b
-   737  00005A  1185               	iorwf	(___aldiv@divisor+1)& (0+255),w,b
-   738  00005C  1186               	iorwf	(___aldiv@divisor+2)& (0+255),w,b
-   739  00005E  1187               	iorwf	(___aldiv@divisor+3)& (0+255),w,b
-   740  000060  B4D8               	btfsc	status,2,c
-   741  000062  D02A               	goto	l915
-   742                           
-   743                           ; BSR set to: 0
-   744  000064  0E01               	movlw	1
-   745  000066  6F88               	movwf	___aldiv@counter& (0+255),b
-   746  000068  D006               	goto	l901
-   747  00006A                     l899:
-   748                           
-   749                           ; BSR set to: 0
-   750  00006A  90D8               	bcf	status,0,c
-   751  00006C  3784               	rlcf	___aldiv@divisor& (0+255),f,b
-   752  00006E  3785               	rlcf	(___aldiv@divisor+1)& (0+255),f,b
-   753  000070  3786               	rlcf	(___aldiv@divisor+2)& (0+255),f,b
-   754  000072  3787               	rlcf	(___aldiv@divisor+3)& (0+255),f,b
-   755  000074  2B88               	incf	___aldiv@counter& (0+255),f,b
-   756  000076                     l901:
-   757                           
-   758                           ; BSR set to: 0
-   759  000076  AF87               	btfss	(___aldiv@divisor+3)& (0+255),7,b
-   760  000078  D7F8               	goto	l899
-   761  00007A                     u170:
-   762                           
-   763                           ; BSR set to: 0
-   764  00007A  90D8               	bcf	status,0,c
-   765  00007C  378A               	rlcf	___aldiv@quotient& (0+255),f,b
-   766  00007E  378B               	rlcf	(___aldiv@quotient+1)& (0+255),f,b
-   767  000080  378C               	rlcf	(___aldiv@quotient+2)& (0+255),f,b
-   768  000082  378D               	rlcf	(___aldiv@quotient+3)& (0+255),f,b
-   769                           
-   770                           ; BSR set to: 0
-   771  000084  5184               	movf	___aldiv@divisor& (0+255),w,b
-   772  000086  5D80               	subwf	___aldiv@dividend& (0+255),w,b
-   773  000088  5185               	movf	(___aldiv@divisor+1)& (0+255),w,b
-   774  00008A  5981               	subwfb	(___aldiv@dividend+1)& (0+255),w,b
-   775  00008C  5186               	movf	(___aldiv@divisor+2)& (0+255),w,b
-   776  00008E  5982               	subwfb	(___aldiv@dividend+2)& (0+255),w,b
-   777  000090  5187               	movf	(___aldiv@divisor+3)& (0+255),w,b
-   778  000092  5983               	subwfb	(___aldiv@dividend+3)& (0+255),w,b
-   779  000094  A0D8               	btfss	status,0,c
-   780  000096  D009               	goto	l911
-   781                           
-   782                           ; BSR set to: 0
-   783  000098  5184               	movf	___aldiv@divisor& (0+255),w,b
-   784  00009A  5F80               	subwf	___aldiv@dividend& (0+255),f,b
-   785  00009C  5185               	movf	(___aldiv@divisor+1)& (0+255),w,b
-   786  00009E  5B81               	subwfb	(___aldiv@dividend+1)& (0+255),f,b
-   787  0000A0  5186               	movf	(___aldiv@divisor+2)& (0+255),w,b
-   788  0000A2  5B82               	subwfb	(___aldiv@dividend+2)& (0+255),f,b
-   789  0000A4  5187               	movf	(___aldiv@divisor+3)& (0+255),w,b
-   790  0000A6  5B83               	subwfb	(___aldiv@dividend+3)& (0+255),f,b
-   791                           
-   792                           ; BSR set to: 0
-   793  0000A8  818A               	bsf	___aldiv@quotient& (0+255),0,b
-   794  0000AA                     l911:
-   795                           
-   796                           ; BSR set to: 0
-   797  0000AA  90D8               	bcf	status,0,c
-   798  0000AC  3387               	rrcf	(___aldiv@divisor+3)& (0+255),f,b
-   799  0000AE  3386               	rrcf	(___aldiv@divisor+2)& (0+255),f,b
-   800  0000B0  3385               	rrcf	(___aldiv@divisor+1)& (0+255),f,b
-   801  0000B2  3384               	rrcf	___aldiv@divisor& (0+255),f,b
-   802                           
-   803                           ; BSR set to: 0
-   804  0000B4  2F88               	decfsz	___aldiv@counter& (0+255),f,b
-   805  0000B6  D7E1               	goto	u170
-   806  0000B8                     l915:
-   807                           
-   808                           ; BSR set to: 0
-   809  0000B8  5189               	movf	___aldiv@sign& (0+255),w,b
-   810  0000BA  B4D8               	btfsc	status,2,c
-   811  0000BC  D008               	goto	l919
-   812                           
-   813                           ; BSR set to: 0
-   814  0000BE  1F8D               	comf	(___aldiv@quotient+3)& (0+255),f,b
-   815  0000C0  1F8C               	comf	(___aldiv@quotient+2)& (0+255),f,b
-   816  0000C2  1F8B               	comf	(___aldiv@quotient+1)& (0+255),f,b
-   817  0000C4  6D8A               	negf	___aldiv@quotient& (0+255),b
-   818  0000C6  0E00               	movlw	0
-   819  0000C8  238B               	addwfc	(___aldiv@quotient+1)& (0+255),f,b
-   820  0000CA  238C               	addwfc	(___aldiv@quotient+2)& (0+255),f,b
-   821  0000CC  238D               	addwfc	(___aldiv@quotient+3)& (0+255),f,b
-   822  0000CE                     l919:
+   736                           ;src/pic18f4520/serial/serial.c: 68:     {;src/pic18f4520/serial/serial.c: 69:         e
+      +                          rror_min = error_8HIGH;
+   737  00025E  C099  F09A         	movff	Serial_1_Config@error_8HIGH,Serial_1_Config@error_min
+   738                           
+   739                           ;src/pic18f4520/serial/serial.c: 71:         BAUDCONbits.BRG16 = 0x00;
+   740  000262  96B8               	bcf	184,3,c	;volatile
+   741                           
+   742                           ;src/pic18f4520/serial/serial.c: 72:         TXSTAbits.BRGH = 0x01;
+   743  000264  84AC               	bsf	172,2,c	;volatile
+   744  000266                     
+   745                           ; BSR set to: 0
+   746                           ;src/pic18f4520/serial/serial.c: 74:         SPBRG = (brg8HIGH - 1);
+   747  000266  0100               	movlb	0	; force () banked
+   748  000268  0597               	decf	Serial_1_Config@brg8HIGH& (0+255),w,b
+   749  00026A  6EAF               	movwf	175,c	;volatile
+   750  00026C                     l67:
+   751                           
+   752                           ; BSR set to: 0
+   753                           ;src/pic18f4520/serial/serial.c: 76:     if(error_16HIGH < error_min)
+   754  00026C  0100               	movlb	0	; force () banked
+   755  00026E  519A               	movf	Serial_1_Config@error_min& (0+255),w,b
+   756  000270  0100               	movlb	0	; force () banked
+   757  000272  5D95               	subwf	Serial_1_Config@error_16HIGH& (0+255),w,b
+   758  000274  B0D8               	btfsc	status,0,c
+   759  000276  EF3F  F001         	goto	u271
+   760  00027A  EF41  F001         	goto	u270
+   761  00027E                     u271:
+   762  00027E  EF46  F001         	goto	l970
+   763  000282                     u270:
+   764  000282                     
+   765                           ; BSR set to: 0
+   766                           ;src/pic18f4520/serial/serial.c: 77:     {;src/pic18f4520/serial/serial.c: 78:         B
+      +                          AUDCONbits.BRG16 = 0x01;
+   767  000282  86B8               	bsf	184,3,c	;volatile
+   768                           
+   769                           ;src/pic18f4520/serial/serial.c: 79:         TXSTAbits.BRGH = 0x01;
+   770  000284  84AC               	bsf	172,2,c	;volatile
+   771  000286                     
+   772                           ; BSR set to: 0
+   773                           ;src/pic18f4520/serial/serial.c: 81:         SPBRG = (brg16HIGH - 1);
+   774  000286  0100               	movlb	0	; force () banked
+   775  000288  0598               	decf	Serial_1_Config@brg16HIGH& (0+255),w,b
+   776  00028A  6EAF               	movwf	175,c	;volatile
+   777  00028C                     l970:
+   778                           
+   779                           ; BSR set to: 0
+   780                           ;src/pic18f4520/serial/serial.c: 94:     TXSTAbits.SYNC = serialConfig->serial_op_mode;
+   781  00028C  0100               	movlb	0	; force () banked
+   782  00028E  EE20 F002          	lfsr	2,2
+   783  000292  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   784  000294  26D9               	addwf	fsr2l,f,c
+   785  000296  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   786  000298  22DA               	addwfc	fsr2h,f,c
+   787  00029A  50DF               	movf	indf2,w,c
+   788  00029C  0100               	movlb	0	; force () banked
+   789  00029E  6F90               	movwf	??_Serial_1_Config& (0+255),b
+   790  0002A0  3B90               	swapf	??_Serial_1_Config& (0+255),f,b
+   791  0002A2  50AC               	movf	172,w,c	;volatile
+   792  0002A4  1990               	xorwf	??_Serial_1_Config& (0+255),w,b
+   793  0002A6  0BEF               	andlw	-17
+   794  0002A8  1990               	xorwf	??_Serial_1_Config& (0+255),w,b
+   795  0002AA  6EAC               	movwf	172,c	;volatile
+   796  0002AC                     
+   797                           ; BSR set to: 0
+   798                           ;src/pic18f4520/serial/serial.c: 100:     RCSTAbits.SPEN = 0x01;
+   799  0002AC  8EAB               	bsf	171,7,c	;volatile
+   800  0002AE                     
+   801                           ; BSR set to: 0
+   802                           ;src/pic18f4520/serial/serial.c: 120:     if(serialConfig->serial_data_length == SERIAL_
+      +                          DATA_LENGTH_9)
+   803  0002AE  0100               	movlb	0	; force () banked
+   804  0002B0  EE20 F001          	lfsr	2,1
+   805  0002B4  518E               	movf	Serial_1_Config@serialConfig& (0+255),w,b
+   806  0002B6  26D9               	addwf	fsr2l,f,c
+   807  0002B8  518F               	movf	(Serial_1_Config@serialConfig+1)& (0+255),w,b
+   808  0002BA  22DA               	addwfc	fsr2h,f,c
+   809  0002BC  04DE               	decf	postinc2,w,c
+   810  0002BE  A4D8               	btfss	status,2,c
+   811  0002C0  EF64  F001         	goto	u281
+   812  0002C4  EF66  F001         	goto	u280
+   813  0002C8                     u281:
+   814  0002C8  EF6A  F001         	goto	l69
+   815  0002CC                     u280:
+   816  0002CC                     
+   817                           ; BSR set to: 0
+   818                           ;src/pic18f4520/serial/serial.c: 121:     {;src/pic18f4520/serial/serial.c: 122:        
+      +                           TXSTAbits.TX9 = 0x01;
+   819  0002CC  8CAC               	bsf	172,6,c	;volatile
+   820                           
+   821                           ;src/pic18f4520/serial/serial.c: 123:         RCSTAbits.RC9 = 0x01;
+   822  0002CE  8CAB               	bsf	171,6,c	;volatile
    823                           
-   824                           ; BSR set to: 0
-   825  0000CE  C08A  F080         	movff	___aldiv@quotient,?___aldiv
-   826  0000D2  C08B  F081         	movff	___aldiv@quotient+1,?___aldiv+1
-   827  0000D6  C08C  F082         	movff	___aldiv@quotient+2,?___aldiv+2
-   828  0000DA  C08D  F083         	movff	___aldiv@quotient+3,?___aldiv+3
-   829                           
-   830                           ; BSR set to: 0
-   831  0000DE  0012               	return		;funcret
-   832  0000E0                     __end_of___aldiv:
-   833                           	callstack 0
-   834                           
-   835 ;; *************** function _Interrupt_GlobalEnable *****************
-   836 ;; Defined at:
-   837 ;;		line 4 in file "src/pic18f4520/interrupt/interrupt.c"
-   838 ;; Parameters:    Size  Location     Type
-   839 ;;		None
-   840 ;; Auto vars:     Size  Location     Type
-   841 ;;		None
-   842 ;; Return value:  Size  Location     Type
-   843 ;;                  1    wreg      void 
-   844 ;; Registers used:
-   845 ;;		None
-   846 ;; Tracked objects:
-   847 ;;		On entry : 0/0
-   848 ;;		On exit  : 0/0
-   849 ;;		Unchanged: 0/0
-   850 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   851 ;;      Params:         0       0       0       0       0       0       0
-   852 ;;      Locals:         0       0       0       0       0       0       0
-   853 ;;      Temps:          0       0       0       0       0       0       0
-   854 ;;      Totals:         0       0       0       0       0       0       0
-   855 ;;Total ram usage:        0 bytes
-   856 ;; Hardware stack levels used: 1
-   857 ;; Hardware stack levels required when called: 1
-   858 ;; This function calls:
-   859 ;;		Nothing
-   860 ;; This function is called by:
-   861 ;;		_main
-   862 ;; This function uses a non-reentrant model
-   863 ;;
-   864                           
-   865                           	psect	text5
-   866  0002DE                     __ptext5:
-   867                           	callstack 0
-   868  0002DE                     _Interrupt_GlobalEnable:
-   869                           	callstack 29
-   870                           
-   871                           ;src/pic18f4520/interrupt/interrupt.c: 11:     RCONbits.IPEN = 0x01;
-   872                           
-   873                           ; BSR set to: 0
-   874                           ;incstack = 0
-   875  0002DE  8ED0               	bsf	208,7,c	;volatile
-   876                           
-   877                           ;src/pic18f4520/interrupt/interrupt.c: 22:     INTCONbits.GIE_GIEH = 0x01;
-   878  0002E0  8EF2               	bsf	242,7,c	;volatile
-   879                           
-   880                           ;src/pic18f4520/interrupt/interrupt.c: 33:     INTCONbits.PEIE_GIEL = 0x01;
-   881  0002E2  8CF2               	bsf	242,6,c	;volatile
-   882  0002E4  0012               	return		;funcret
-   883  0002E6                     __end_of_Interrupt_GlobalEnable:
-   884                           	callstack 0
-   885                           
-   886 ;; *************** function _TC0INT *****************
-   887 ;; Defined at:
-   888 ;;		line 75 in file "src/main.c"
-   889 ;; Parameters:    Size  Location     Type
-   890 ;;		None
-   891 ;; Auto vars:     Size  Location     Type
-   892 ;;		None
-   893 ;; Return value:  Size  Location     Type
-   894 ;;                  1    wreg      void 
-   895 ;; Registers used:
-   896 ;;		wreg, status,2, status,0
-   897 ;; Tracked objects:
-   898 ;;		On entry : 0/0
-   899 ;;		On exit  : 0/0
-   900 ;;		Unchanged: 0/0
-   901 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
-   902 ;;      Params:         0       0       0       0       0       0       0
-   903 ;;      Locals:         0       0       0       0       0       0       0
-   904 ;;      Temps:          0       0       0       0       0       0       0
-   905 ;;      Totals:         0       0       0       0       0       0       0
-   906 ;;Total ram usage:        0 bytes
-   907 ;; Hardware stack levels used: 1
-   908 ;; This function calls:
-   909 ;;		Nothing
-   910 ;; This function is called by:
-   911 ;;		Interrupt level 2
-   912 ;; This function uses a non-reentrant model
-   913 ;;
-   914                           
-   915                           	psect	intcode
-   916  000008                     __pintcode:
-   917                           	callstack 0
-   918  000008                     _TC0INT:
-   919                           	callstack 28
-   920                           
-   921                           ;incstack = 0
-   922  000008  8201               	bsf	btemp,1,c	;set compiler interrupt flag (level 2)
-   923  00000A  ED5A  F001         	call	int_func,f	;refresh shadow registers
-   924                           
-   925                           	psect	intcode_body
-   926  0002B4                     __pintcode_body:
-   927                           	callstack 28
-   928  0002B4                     int_func:
-   929                           	callstack 28
-   930  0002B4  0006               	pop		; remove dummy address from shadow register refresh
-   931                           
-   932                           ;src/main.c: 76:      if (INTCONbits.TMR0IF == 0x01) {
-   933  0002B6  A4F2               	btfss	242,2,c	;volatile
-   934  0002B8  D00B               	goto	i2l26
+   824                           ;src/pic18f4520/serial/serial.c: 124:     }else
+   825  0002D0  EF6C  F001         	goto	l70
+   826  0002D4                     l69:
+   827                           
+   828                           ; BSR set to: 0
+   829                           ;src/pic18f4520/serial/serial.c: 125:     {;src/pic18f4520/serial/serial.c: 126:        
+      +                           TXSTAbits.TX9 = 0x00;
+   830  0002D4  9CAC               	bcf	172,6,c	;volatile
+   831                           
+   832                           ;src/pic18f4520/serial/serial.c: 127:         RCSTAbits.RC9 = 0x00;
+   833  0002D6  9CAB               	bcf	171,6,c	;volatile
+   834  0002D8                     l70:
+   835                           
+   836                           ; BSR set to: 0
+   837                           ;src/pic18f4520/serial/serial.c: 147:     TXSTAbits.TXEN = 0x01;
+   838  0002D8  8AAC               	bsf	172,5,c	;volatile
+   839                           
+   840                           ;src/pic18f4520/serial/serial.c: 148:     RCSTAbits.CREN = 0x01;
+   841  0002DA  88AB               	bsf	171,4,c	;volatile
+   842  0002DC                     
+   843                           ; BSR set to: 0
+   844  0002DC  0012               	return		;funcret
+   845  0002DE                     __end_of_Serial_1_Config:
+   846                           	callstack 0
+   847                           
+   848 ;; *************** function ___aldiv *****************
+   849 ;; Defined at:
+   850 ;;		line 7 in file "C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\aldiv.c"
+   851 ;; Parameters:    Size  Location     Type
+   852 ;;  dividend        4    0[BANK0 ] long 
+   853 ;;  divisor         4    4[BANK0 ] long 
+   854 ;; Auto vars:     Size  Location     Type
+   855 ;;  quotient        4   10[BANK0 ] long 
+   856 ;;  sign            1    9[BANK0 ] unsigned char 
+   857 ;;  counter         1    8[BANK0 ] unsigned char 
+   858 ;; Return value:  Size  Location     Type
+   859 ;;                  4    0[BANK0 ] long 
+   860 ;; Registers used:
+   861 ;;		wreg, status,2, status,0
+   862 ;; Tracked objects:
+   863 ;;		On entry : 0/0
+   864 ;;		On exit  : 0/0
+   865 ;;		Unchanged: 0/0
+   866 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   867 ;;      Params:         0       8       0       0       0       0       0
+   868 ;;      Locals:         0       6       0       0       0       0       0
+   869 ;;      Temps:          0       0       0       0       0       0       0
+   870 ;;      Totals:         0      14       0       0       0       0       0
+   871 ;;Total ram usage:       14 bytes
+   872 ;; Hardware stack levels used: 1
+   873 ;; Hardware stack levels required when called: 1
+   874 ;; This function calls:
+   875 ;;		Nothing
+   876 ;; This function is called by:
+   877 ;;		_Serial_1_Config
+   878 ;; This function uses a non-reentrant model
+   879 ;;
+   880                           
+   881                           	psect	text4
+   882  0002DE                     __ptext4:
+   883                           	callstack 0
+   884  0002DE                     ___aldiv:
+   885                           	callstack 28
+   886  0002DE  0E00               	movlw	0
+   887  0002E0  0100               	movlb	0	; () banked
+   888  0002E2  6F89               	movwf	___aldiv@sign& (0+255),b
+   889  0002E4                     
+   890                           ; BSR set to: 0
+   891  0002E4  BF87               	btfsc	(___aldiv@divisor+3)& (0+255),7,b
+   892  0002E6  EF79  F001         	goto	u170
+   893  0002EA  EF77  F001         	goto	u171
+   894  0002EE                     u171:
+   895  0002EE  EF83  F001         	goto	l908
+   896  0002F2                     u170:
+   897  0002F2                     
+   898                           ; BSR set to: 0
+   899  0002F2  1F87               	comf	(___aldiv@divisor+3)& (0+255),f,b
+   900  0002F4  1F86               	comf	(___aldiv@divisor+2)& (0+255),f,b
+   901  0002F6  1F85               	comf	(___aldiv@divisor+1)& (0+255),f,b
+   902  0002F8  6D84               	negf	___aldiv@divisor& (0+255),b
+   903  0002FA  0E00               	movlw	0
+   904  0002FC  2385               	addwfc	(___aldiv@divisor+1)& (0+255),f,b
+   905  0002FE  2386               	addwfc	(___aldiv@divisor+2)& (0+255),f,b
+   906  000300  2387               	addwfc	(___aldiv@divisor+3)& (0+255),f,b
+   907  000302                     
+   908                           ; BSR set to: 0
+   909  000302  0E01               	movlw	1
+   910  000304  6F89               	movwf	___aldiv@sign& (0+255),b
+   911  000306                     l908:
+   912                           
+   913                           ; BSR set to: 0
+   914  000306  BF83               	btfsc	(___aldiv@dividend+3)& (0+255),7,b
+   915  000308  EF8A  F001         	goto	u180
+   916  00030C  EF88  F001         	goto	u181
+   917  000310                     u181:
+   918  000310  EF94  F001         	goto	l914
+   919  000314                     u180:
+   920  000314                     
+   921                           ; BSR set to: 0
+   922  000314  1F83               	comf	(___aldiv@dividend+3)& (0+255),f,b
+   923  000316  1F82               	comf	(___aldiv@dividend+2)& (0+255),f,b
+   924  000318  1F81               	comf	(___aldiv@dividend+1)& (0+255),f,b
+   925  00031A  6D80               	negf	___aldiv@dividend& (0+255),b
+   926  00031C  0E00               	movlw	0
+   927  00031E  2381               	addwfc	(___aldiv@dividend+1)& (0+255),f,b
+   928  000320  2382               	addwfc	(___aldiv@dividend+2)& (0+255),f,b
+   929  000322  2383               	addwfc	(___aldiv@dividend+3)& (0+255),f,b
+   930  000324                     
+   931                           ; BSR set to: 0
+   932  000324  0E01               	movlw	1
+   933  000326  1B89               	xorwf	___aldiv@sign& (0+255),f,b
+   934  000328                     l914:
    935                           
-   936                           ;src/main.c: 78:       LATB = (PORTB ^ (1 << 0));;
-   937  0002BA  5081               	movf	129,w,c	;volatile
-   938  0002BC  0A01               	xorlw	1
-   939  0002BE  6E8A               	movwf	138,c	;volatile
-   940                           
-   941                           ;src/main.c: 79:       LATB = (PORTB ^ (1 << 1));;
-   942  0002C0  5081               	movf	129,w,c	;volatile
-   943  0002C2  0A02               	xorlw	2
-   944  0002C4  6E8A               	movwf	138,c	;volatile
-   945                           
-   946                           ;src/main.c: 81:       TMR0 = 0xD9D9;
-   947  0002C6  0ED9               	movlw	217
-   948  0002C8  6ED7               	movwf	215,c	;volatile
-   949  0002CA  0ED9               	movlw	217
-   950  0002CC  6ED6               	movwf	214,c	;volatile
-   951                           
-   952                           ;src/main.c: 82:       INTCONbits.T0IF = 0x00;
-   953  0002CE  94F2               	bcf	242,2,c	;volatile
-   954  0002D0                     i2l26:
-   955  0002D0  9201               	bcf	btemp,1,c	;clear compiler interrupt flag (level 2)
-   956  0002D2  0011               	retfie		f
-   957  0002D4                     __end_of_TC0INT:
-   958                           	callstack 0
-   959  0000                     
-   960                           	psect	param0
-   961  0000                     
-   962                           	psect	temp
-   963  000001                     btemp:
-   964                           	callstack 0
-   965  000001                     	ds	1
-   966  0000                     int$flags	set	btemp
-   967  0000                     wtemp8	set	btemp+1
-   968  0000                     ttemp5	set	btemp+1
-   969  0000                     ttemp6	set	btemp+4
-   970  0000                     ttemp7	set	btemp+8
-   971                           
-   972                           	psect	idloc
-   973                           
-   974                           ;Config register IDLOC0 @ 0x200000
-   975                           ;	unspecified, using default values
-   976  200000                     	org	2097152
-   977  200000  FF                 	db	255
-   978                           
-   979                           ;Config register IDLOC1 @ 0x200001
-   980                           ;	unspecified, using default values
-   981  200001                     	org	2097153
-   982  200001  FF                 	db	255
-   983                           
-   984                           ;Config register IDLOC2 @ 0x200002
-   985                           ;	unspecified, using default values
-   986  200002                     	org	2097154
-   987  200002  FF                 	db	255
-   988                           
-   989                           ;Config register IDLOC3 @ 0x200003
-   990                           ;	unspecified, using default values
-   991  200003                     	org	2097155
-   992  200003  FF                 	db	255
-   993                           
-   994                           ;Config register IDLOC4 @ 0x200004
-   995                           ;	unspecified, using default values
-   996  200004                     	org	2097156
-   997  200004  FF                 	db	255
-   998                           
-   999                           ;Config register IDLOC5 @ 0x200005
-  1000                           ;	unspecified, using default values
-  1001  200005                     	org	2097157
-  1002  200005  FF                 	db	255
-  1003                           
-  1004                           ;Config register IDLOC6 @ 0x200006
-  1005                           ;	unspecified, using default values
-  1006  200006                     	org	2097158
-  1007  200006  FF                 	db	255
-  1008                           
-  1009                           ;Config register IDLOC7 @ 0x200007
-  1010                           ;	unspecified, using default values
-  1011  200007                     	org	2097159
-  1012  200007  FF                 	db	255
-  1013                           
-  1014                           	psect	config
-  1015                           
-  1016                           ; Padding undefined space
-  1017  300000                     	org	3145728
-  1018  300000  FF                 	db	255
-  1019                           
-  1020                           ;Config register CONFIG1H @ 0x300001
-  1021                           ;	Oscillator Selection bits
-  1022                           ;	OSC = HS, HS oscillator
-  1023                           ;	Fail-Safe Clock Monitor Enable bit
-  1024                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
-  1025                           ;	Internal/External Oscillator Switchover bit
-  1026                           ;	IESO = OFF, Oscillator Switchover mode disabled
-  1027  300001                     	org	3145729
-  1028  300001  02                 	db	2
-  1029                           
-  1030                           ;Config register CONFIG2L @ 0x300002
-  1031                           ;	Power-up Timer Enable bit
-  1032                           ;	PWRT = OFF, PWRT disabled
-  1033                           ;	Brown-out Reset Enable bits
-  1034                           ;	BOREN = SBORDIS, Brown-out Reset enabled in hardware only (SBOREN is disabled)
-  1035                           ;	Brown Out Reset Voltage bits
-  1036                           ;	BORV = 3, Minimum setting
-  1037  300002                     	org	3145730
-  1038  300002  1F                 	db	31
-  1039                           
-  1040                           ;Config register CONFIG2H @ 0x300003
-  1041                           ;	Watchdog Timer Enable bit
-  1042                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
-  1043                           ;	Watchdog Timer Postscale Select bits
-  1044                           ;	WDTPS = 32768, 1:32768
-  1045  300003                     	org	3145731
-  1046  300003  1E                 	db	30
-  1047                           
-  1048                           ; Padding undefined space
-  1049  300004                     	org	3145732
-  1050  300004  FF                 	db	255
-  1051                           
-  1052                           ;Config register CONFIG3H @ 0x300005
-  1053                           ;	CCP2 MUX bit
-  1054                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
-  1055                           ;	PORTB A/D Enable bit
-  1056                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
-  1057                           ;	Low-Power Timer1 Oscillator Enable bit
-  1058                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
-  1059                           ;	MCLR Pin Enable bit
-  1060                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
-  1061  300005                     	org	3145733
-  1062  300005  81                 	db	129
-  1063                           
-  1064                           ;Config register CONFIG4L @ 0x300006
-  1065                           ;	Stack Full/Underflow Reset Enable bit
-  1066                           ;	STVREN = ON, Stack full/underflow will cause Reset
-  1067                           ;	Single-Supply ICSP Enable bit
-  1068                           ;	LVP = OFF, Single-Supply ICSP disabled
-  1069                           ;	Extended Instruction Set Enable bit
-  1070                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+   936                           ; BSR set to: 0
+   937  000328  0E00               	movlw	0
+   938  00032A  6F8A               	movwf	___aldiv@quotient& (0+255),b
+   939  00032C  0E00               	movlw	0
+   940  00032E  6F8B               	movwf	(___aldiv@quotient+1)& (0+255),b
+   941  000330  0E00               	movlw	0
+   942  000332  6F8C               	movwf	(___aldiv@quotient+2)& (0+255),b
+   943  000334  0E00               	movlw	0
+   944  000336  6F8D               	movwf	(___aldiv@quotient+3)& (0+255),b
+   945  000338                     
+   946                           ; BSR set to: 0
+   947  000338  5184               	movf	___aldiv@divisor& (0+255),w,b
+   948  00033A  1185               	iorwf	(___aldiv@divisor+1)& (0+255),w,b
+   949  00033C  1186               	iorwf	(___aldiv@divisor+2)& (0+255),w,b
+   950  00033E  1187               	iorwf	(___aldiv@divisor+3)& (0+255),w,b
+   951  000340  B4D8               	btfsc	status,2,c
+   952  000342  EFA5  F001         	goto	u191
+   953  000346  EFA7  F001         	goto	u190
+   954  00034A                     u191:
+   955  00034A  EFDD  F001         	goto	l936
+   956  00034E                     u190:
+   957  00034E                     
+   958                           ; BSR set to: 0
+   959  00034E  0E01               	movlw	1
+   960  000350  6F88               	movwf	___aldiv@counter& (0+255),b
+   961  000352  EFB1  F001         	goto	l922
+   962  000356                     l920:
+   963                           
+   964                           ; BSR set to: 0
+   965  000356  90D8               	bcf	status,0,c
+   966  000358  3784               	rlcf	___aldiv@divisor& (0+255),f,b
+   967  00035A  3785               	rlcf	(___aldiv@divisor+1)& (0+255),f,b
+   968  00035C  3786               	rlcf	(___aldiv@divisor+2)& (0+255),f,b
+   969  00035E  3787               	rlcf	(___aldiv@divisor+3)& (0+255),f,b
+   970  000360  2B88               	incf	___aldiv@counter& (0+255),f,b
+   971  000362                     l922:
+   972                           
+   973                           ; BSR set to: 0
+   974  000362  AF87               	btfss	(___aldiv@divisor+3)& (0+255),7,b
+   975  000364  EFB6  F001         	goto	u201
+   976  000368  EFB8  F001         	goto	u200
+   977  00036C                     u201:
+   978  00036C  EFAB  F001         	goto	l920
+   979  000370                     u200:
+   980  000370                     l924:
+   981                           
+   982                           ; BSR set to: 0
+   983  000370  90D8               	bcf	status,0,c
+   984  000372  378A               	rlcf	___aldiv@quotient& (0+255),f,b
+   985  000374  378B               	rlcf	(___aldiv@quotient+1)& (0+255),f,b
+   986  000376  378C               	rlcf	(___aldiv@quotient+2)& (0+255),f,b
+   987  000378  378D               	rlcf	(___aldiv@quotient+3)& (0+255),f,b
+   988  00037A                     
+   989                           ; BSR set to: 0
+   990  00037A  5184               	movf	___aldiv@divisor& (0+255),w,b
+   991  00037C  5D80               	subwf	___aldiv@dividend& (0+255),w,b
+   992  00037E  5185               	movf	(___aldiv@divisor+1)& (0+255),w,b
+   993  000380  5981               	subwfb	(___aldiv@dividend+1)& (0+255),w,b
+   994  000382  5186               	movf	(___aldiv@divisor+2)& (0+255),w,b
+   995  000384  5982               	subwfb	(___aldiv@dividend+2)& (0+255),w,b
+   996  000386  5187               	movf	(___aldiv@divisor+3)& (0+255),w,b
+   997  000388  5983               	subwfb	(___aldiv@dividend+3)& (0+255),w,b
+   998  00038A  A0D8               	btfss	status,0,c
+   999  00038C  EFCA  F001         	goto	u211
+  1000  000390  EFCC  F001         	goto	u210
+  1001  000394                     u211:
+  1002  000394  EFD5  F001         	goto	l932
+  1003  000398                     u210:
+  1004  000398                     
+  1005                           ; BSR set to: 0
+  1006  000398  5184               	movf	___aldiv@divisor& (0+255),w,b
+  1007  00039A  5F80               	subwf	___aldiv@dividend& (0+255),f,b
+  1008  00039C  5185               	movf	(___aldiv@divisor+1)& (0+255),w,b
+  1009  00039E  5B81               	subwfb	(___aldiv@dividend+1)& (0+255),f,b
+  1010  0003A0  5186               	movf	(___aldiv@divisor+2)& (0+255),w,b
+  1011  0003A2  5B82               	subwfb	(___aldiv@dividend+2)& (0+255),f,b
+  1012  0003A4  5187               	movf	(___aldiv@divisor+3)& (0+255),w,b
+  1013  0003A6  5B83               	subwfb	(___aldiv@dividend+3)& (0+255),f,b
+  1014  0003A8                     
+  1015                           ; BSR set to: 0
+  1016  0003A8  818A               	bsf	___aldiv@quotient& (0+255),0,b
+  1017  0003AA                     l932:
+  1018                           
+  1019                           ; BSR set to: 0
+  1020  0003AA  90D8               	bcf	status,0,c
+  1021  0003AC  3387               	rrcf	(___aldiv@divisor+3)& (0+255),f,b
+  1022  0003AE  3386               	rrcf	(___aldiv@divisor+2)& (0+255),f,b
+  1023  0003B0  3385               	rrcf	(___aldiv@divisor+1)& (0+255),f,b
+  1024  0003B2  3384               	rrcf	___aldiv@divisor& (0+255),f,b
+  1025  0003B4                     
+  1026                           ; BSR set to: 0
+  1027  0003B4  2F88               	decfsz	___aldiv@counter& (0+255),f,b
+  1028  0003B6  EFB8  F001         	goto	l924
+  1029  0003BA                     l936:
+  1030                           
+  1031                           ; BSR set to: 0
+  1032  0003BA  5189               	movf	___aldiv@sign& (0+255),w,b
+  1033  0003BC  B4D8               	btfsc	status,2,c
+  1034  0003BE  EFE3  F001         	goto	u221
+  1035  0003C2  EFE5  F001         	goto	u220
+  1036  0003C6                     u221:
+  1037  0003C6  EFED  F001         	goto	l940
+  1038  0003CA                     u220:
+  1039  0003CA                     
+  1040                           ; BSR set to: 0
+  1041  0003CA  1F8D               	comf	(___aldiv@quotient+3)& (0+255),f,b
+  1042  0003CC  1F8C               	comf	(___aldiv@quotient+2)& (0+255),f,b
+  1043  0003CE  1F8B               	comf	(___aldiv@quotient+1)& (0+255),f,b
+  1044  0003D0  6D8A               	negf	___aldiv@quotient& (0+255),b
+  1045  0003D2  0E00               	movlw	0
+  1046  0003D4  238B               	addwfc	(___aldiv@quotient+1)& (0+255),f,b
+  1047  0003D6  238C               	addwfc	(___aldiv@quotient+2)& (0+255),f,b
+  1048  0003D8  238D               	addwfc	(___aldiv@quotient+3)& (0+255),f,b
+  1049  0003DA                     l940:
+  1050                           
+  1051                           ; BSR set to: 0
+  1052  0003DA  C08A  F080         	movff	___aldiv@quotient,?___aldiv
+  1053  0003DE  C08B  F081         	movff	___aldiv@quotient+1,?___aldiv+1
+  1054  0003E2  C08C  F082         	movff	___aldiv@quotient+2,?___aldiv+2
+  1055  0003E6  C08D  F083         	movff	___aldiv@quotient+3,?___aldiv+3
+  1056  0003EA                     
+  1057                           ; BSR set to: 0
+  1058  0003EA  0012               	return		;funcret
+  1059  0003EC                     __end_of___aldiv:
+  1060                           	callstack 0
+  1061                           
+  1062 ;; *************** function _TC0INT *****************
+  1063 ;; Defined at:
+  1064 ;;		line 82 in file "src/main.c"
+  1065 ;; Parameters:    Size  Location     Type
+  1066 ;;		None
+  1067 ;; Auto vars:     Size  Location     Type
+  1068 ;;		None
+  1069 ;; Return value:  Size  Location     Type
+  1070 ;;                  1    wreg      void 
+  1071 ;; Registers used:
+  1072 ;;		wreg, status,2
+  1073 ;; Tracked objects:
+  1074 ;;		On entry : 0/0
+  1075 ;;		On exit  : 0/0
+  1076 ;;		Unchanged: 0/0
+  1077 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1078 ;;      Params:         0       0       0       0       0       0       0
+  1079 ;;      Locals:         0       0       0       0       0       0       0
+  1080 ;;      Temps:          0       0       0       0       0       0       0
+  1081 ;;      Totals:         0       0       0       0       0       0       0
+  1082 ;;Total ram usage:        0 bytes
+  1083 ;; Hardware stack levels used: 1
+  1084 ;; This function calls:
+  1085 ;;		Nothing
+  1086 ;; This function is called by:
+  1087 ;;		Interrupt level 2
+  1088 ;; This function uses a non-reentrant model
+  1089 ;;
+  1090                           
+  1091                           	psect	intcode
+  1092  000008                     __pintcode:
+  1093                           	callstack 0
+  1094  000008                     _TC0INT:
+  1095                           	callstack 28
+  1096                           
+  1097                           ; BSR set to: 0
+  1098                           ;incstack = 0
+  1099  000008  8201               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+  1100  00000A  ED39  F002         	call	int_func,f	;refresh shadow registers
+  1101                           
+  1102                           	psect	intcode_body
+  1103  000472                     __pintcode_body:
+  1104                           	callstack 28
+  1105  000472                     int_func:
+  1106                           	callstack 28
+  1107  000472  0006               	pop		; remove dummy address from shadow register refresh
+  1108  000474                     
+  1109                           ;src/main.c: 83:      if (INTCONbits.TMR0IF == 0x01) {
+  1110  000474  A4F2               	btfss	242,2,c	;volatile
+  1111  000476  EF3F  F002         	goto	i2u14_41
+  1112  00047A  EF41  F002         	goto	i2u14_40
+  1113  00047E                     i2u14_41:
+  1114  00047E  EF46  F002         	goto	i2l26
+  1115  000482                     i2u14_40:
+  1116  000482                     
+  1117                           ;src/main.c: 88:       TMR0 = 0xE17B;
+  1118  000482  0EE1               	movlw	225
+  1119  000484  6ED7               	movwf	215,c	;volatile
+  1120  000486  0E7B               	movlw	123
+  1121  000488  6ED6               	movwf	214,c	;volatile
+  1122  00048A                     
+  1123                           ;src/main.c: 89:       INTCONbits.T0IF = 0x00;
+  1124  00048A  94F2               	bcf	242,2,c	;volatile
+  1125  00048C                     i2l26:
+  1126  00048C  9201               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1127  00048E  0011               	retfie		f
+  1128  000490                     __end_of_TC0INT:
+  1129                           	callstack 0
+  1130  0000                     
+  1131                           	psect	param0
+  1132  0000                     
+  1133                           	psect	temp
+  1134  000001                     btemp:
+  1135                           	callstack 0
+  1136  000001                     	ds	1
+  1137  0000                     int$flags	set	btemp
+  1138  0000                     wtemp8	set	btemp+1
+  1139  0000                     ttemp5	set	btemp+1
+  1140  0000                     ttemp6	set	btemp+4
+  1141  0000                     ttemp7	set	btemp+8
+  1142                           
+  1143                           	psect	idloc
+  1144                           
+  1145                           ;Config register IDLOC0 @ 0x200000
+  1146                           ;	unspecified, using default values
+  1147  200000                     	org	2097152
+  1148  200000  FF                 	db	255
+  1149                           
+  1150                           ;Config register IDLOC1 @ 0x200001
+  1151                           ;	unspecified, using default values
+  1152  200001                     	org	2097153
+  1153  200001  FF                 	db	255
+  1154                           
+  1155                           ;Config register IDLOC2 @ 0x200002
+  1156                           ;	unspecified, using default values
+  1157  200002                     	org	2097154
+  1158  200002  FF                 	db	255
+  1159                           
+  1160                           ;Config register IDLOC3 @ 0x200003
+  1161                           ;	unspecified, using default values
+  1162  200003                     	org	2097155
+  1163  200003  FF                 	db	255
+  1164                           
+  1165                           ;Config register IDLOC4 @ 0x200004
+  1166                           ;	unspecified, using default values
+  1167  200004                     	org	2097156
+  1168  200004  FF                 	db	255
+  1169                           
+  1170                           ;Config register IDLOC5 @ 0x200005
+  1171                           ;	unspecified, using default values
+  1172  200005                     	org	2097157
+  1173  200005  FF                 	db	255
+  1174                           
+  1175                           ;Config register IDLOC6 @ 0x200006
+  1176                           ;	unspecified, using default values
+  1177  200006                     	org	2097158
+  1178  200006  FF                 	db	255
+  1179                           
+  1180                           ;Config register IDLOC7 @ 0x200007
+  1181                           ;	unspecified, using default values
+  1182  200007                     	org	2097159
+  1183  200007  FF                 	db	255
+  1184                           
+  1185                           	psect	config
+  1186                           
+  1187                           ; Padding undefined space
+  1188  300000                     	org	3145728
+  1189  300000  FF                 	db	255
+  1190                           
+  1191                           ;Config register CONFIG1H @ 0x300001
+  1192                           ;	Oscillator Selection bits
+  1193                           ;	OSC = HS, HS oscillator
+  1194                           ;	Fail-Safe Clock Monitor Enable bit
+  1195                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  1196                           ;	Internal/External Oscillator Switchover bit
+  1197                           ;	IESO = OFF, Oscillator Switchover mode disabled
+  1198  300001                     	org	3145729
+  1199  300001  02                 	db	2
+  1200                           
+  1201                           ;Config register CONFIG2L @ 0x300002
+  1202                           ;	Power-up Timer Enable bit
+  1203                           ;	PWRT = OFF, PWRT disabled
+  1204                           ;	Brown-out Reset Enable bits
+  1205                           ;	BOREN = SBORDIS, Brown-out Reset enabled in hardware only (SBOREN is disabled)
+  1206                           ;	Brown Out Reset Voltage bits
+  1207                           ;	BORV = 3, Minimum setting
+  1208  300002                     	org	3145730
+  1209  300002  1F                 	db	31
+  1210                           
+  1211                           ;Config register CONFIG2H @ 0x300003
+  1212                           ;	Watchdog Timer Enable bit
+  1213                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+  1214                           ;	Watchdog Timer Postscale Select bits
+  1215                           ;	WDTPS = 32768, 1:32768
+  1216  300003                     	org	3145731
+  1217  300003  1E                 	db	30
+  1218                           
+  1219                           ; Padding undefined space
+  1220  300004                     	org	3145732
+  1221  300004  FF                 	db	255
+  1222                           
+  1223                           ;Config register CONFIG3H @ 0x300005
+  1224                           ;	CCP2 MUX bit
+  1225                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+  1226                           ;	PORTB A/D Enable bit
+  1227                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+  1228                           ;	Low-Power Timer1 Oscillator Enable bit
+  1229                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  1230                           ;	MCLR Pin Enable bit
+  1231                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+  1232  300005                     	org	3145733
+  1233  300005  81                 	db	129
+  1234                           
+  1235                           ;Config register CONFIG4L @ 0x300006
+  1236                           ;	Stack Full/Underflow Reset Enable bit
+  1237                           ;	STVREN = ON, Stack full/underflow will cause Reset
+  1238                           ;	Single-Supply ICSP Enable bit
+  1239                           ;	LVP = OFF, Single-Supply ICSP disabled
+  1240                           ;	Extended Instruction Set Enable bit
+  1241                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
       +                          de)
-  1071                           ;	Background Debugger Enable bit
-  1072                           ;	DEBUG = 0x1, unprogrammed default
-  1073  300006                     	org	3145734
-  1074  300006  81                 	db	129
-  1075                           
-  1076                           ; Padding undefined space
-  1077  300007                     	org	3145735
-  1078  300007  FF                 	db	255
-  1079                           
-  1080                           ;Config register CONFIG5L @ 0x300008
-  1081                           ;	Code Protection bit
-  1082                           ;	CP0 = OFF, Block 0 (000800-001FFFh) not code-protected
-  1083                           ;	Code Protection bit
-  1084                           ;	CP1 = OFF, Block 1 (002000-003FFFh) not code-protected
-  1085                           ;	Code Protection bit
-  1086                           ;	CP2 = OFF, Block 2 (004000-005FFFh) not code-protected
-  1087                           ;	Code Protection bit
-  1088                           ;	CP3 = OFF, Block 3 (006000-007FFFh) not code-protected
-  1089  300008                     	org	3145736
-  1090  300008  0F                 	db	15
-  1091                           
-  1092                           ;Config register CONFIG5H @ 0x300009
-  1093                           ;	Boot Block Code Protection bit
-  1094                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
-  1095                           ;	Data EEPROM Code Protection bit
-  1096                           ;	CPD = OFF, Data EEPROM not code-protected
-  1097  300009                     	org	3145737
-  1098  300009  C0                 	db	192
-  1099                           
-  1100                           ;Config register CONFIG6L @ 0x30000A
-  1101                           ;	Write Protection bit
-  1102                           ;	WRT0 = OFF, Block 0 (000800-001FFFh) not write-protected
-  1103                           ;	Write Protection bit
-  1104                           ;	WRT1 = OFF, Block 1 (002000-003FFFh) not write-protected
-  1105                           ;	Write Protection bit
-  1106                           ;	WRT2 = OFF, Block 2 (004000-005FFFh) not write-protected
-  1107                           ;	Write Protection bit
-  1108                           ;	WRT3 = OFF, Block 3 (006000-007FFFh) not write-protected
-  1109  30000A                     	org	3145738
-  1110  30000A  0F                 	db	15
-  1111                           
-  1112                           ;Config register CONFIG6H @ 0x30000B
-  1113                           ;	Configuration Register Write Protection bit
-  1114                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
-  1115                           ;	Boot Block Write Protection bit
-  1116                           ;	WRTB = OFF, Boot block (000000-0007FFh) not write-protected
-  1117                           ;	Data EEPROM Write Protection bit
-  1118                           ;	WRTD = OFF, Data EEPROM not write-protected
-  1119  30000B                     	org	3145739
-  1120  30000B  E0                 	db	224
-  1121                           
-  1122                           ;Config register CONFIG7L @ 0x30000C
-  1123                           ;	Table Read Protection bit
-  1124                           ;	EBTR0 = OFF, Block 0 (000800-001FFFh) not protected from table reads executed in other
+  1242                           ;	Background Debugger Enable bit
+  1243                           ;	DEBUG = 0x1, unprogrammed default
+  1244  300006                     	org	3145734
+  1245  300006  81                 	db	129
+  1246                           
+  1247                           ; Padding undefined space
+  1248  300007                     	org	3145735
+  1249  300007  FF                 	db	255
+  1250                           
+  1251                           ;Config register CONFIG5L @ 0x300008
+  1252                           ;	Code Protection bit
+  1253                           ;	CP0 = OFF, Block 0 (000800-001FFFh) not code-protected
+  1254                           ;	Code Protection bit
+  1255                           ;	CP1 = OFF, Block 1 (002000-003FFFh) not code-protected
+  1256                           ;	Code Protection bit
+  1257                           ;	CP2 = OFF, Block 2 (004000-005FFFh) not code-protected
+  1258                           ;	Code Protection bit
+  1259                           ;	CP3 = OFF, Block 3 (006000-007FFFh) not code-protected
+  1260  300008                     	org	3145736
+  1261  300008  0F                 	db	15
+  1262                           
+  1263                           ;Config register CONFIG5H @ 0x300009
+  1264                           ;	Boot Block Code Protection bit
+  1265                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+  1266                           ;	Data EEPROM Code Protection bit
+  1267                           ;	CPD = OFF, Data EEPROM not code-protected
+  1268  300009                     	org	3145737
+  1269  300009  C0                 	db	192
+  1270                           
+  1271                           ;Config register CONFIG6L @ 0x30000A
+  1272                           ;	Write Protection bit
+  1273                           ;	WRT0 = OFF, Block 0 (000800-001FFFh) not write-protected
+  1274                           ;	Write Protection bit
+  1275                           ;	WRT1 = OFF, Block 1 (002000-003FFFh) not write-protected
+  1276                           ;	Write Protection bit
+  1277                           ;	WRT2 = OFF, Block 2 (004000-005FFFh) not write-protected
+  1278                           ;	Write Protection bit
+  1279                           ;	WRT3 = OFF, Block 3 (006000-007FFFh) not write-protected
+  1280  30000A                     	org	3145738
+  1281  30000A  0F                 	db	15
+  1282                           
+  1283                           ;Config register CONFIG6H @ 0x30000B
+  1284                           ;	Configuration Register Write Protection bit
+  1285                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  1286                           ;	Boot Block Write Protection bit
+  1287                           ;	WRTB = OFF, Boot block (000000-0007FFh) not write-protected
+  1288                           ;	Data EEPROM Write Protection bit
+  1289                           ;	WRTD = OFF, Data EEPROM not write-protected
+  1290  30000B                     	org	3145739
+  1291  30000B  E0                 	db	224
+  1292                           
+  1293                           ;Config register CONFIG7L @ 0x30000C
+  1294                           ;	Table Read Protection bit
+  1295                           ;	EBTR0 = OFF, Block 0 (000800-001FFFh) not protected from table reads executed in other
       +                           blocks
-  1125                           ;	Table Read Protection bit
-  1126                           ;	EBTR1 = OFF, Block 1 (002000-003FFFh) not protected from table reads executed in other
+  1296                           ;	Table Read Protection bit
+  1297                           ;	EBTR1 = OFF, Block 1 (002000-003FFFh) not protected from table reads executed in other
       +                           blocks
-  1127                           ;	Table Read Protection bit
-  1128                           ;	EBTR2 = OFF, Block 2 (004000-005FFFh) not protected from table reads executed in other
+  1298                           ;	Table Read Protection bit
+  1299                           ;	EBTR2 = OFF, Block 2 (004000-005FFFh) not protected from table reads executed in other
       +                           blocks
-  1129                           ;	Table Read Protection bit
-  1130                           ;	EBTR3 = OFF, Block 3 (006000-007FFFh) not protected from table reads executed in other
+  1300                           ;	Table Read Protection bit
+  1301                           ;	EBTR3 = OFF, Block 3 (006000-007FFFh) not protected from table reads executed in other
       +                           blocks
-  1131  30000C                     	org	3145740
-  1132  30000C  0F                 	db	15
-  1133                           
-  1134                           ;Config register CONFIG7H @ 0x30000D
-  1135                           ;	Boot Block Table Read Protection bit
-  1136                           ;	EBTRB = OFF, Boot block (000000-0007FFh) not protected from table reads executed in ot
+  1302  30000C                     	org	3145740
+  1303  30000C  0F                 	db	15
+  1304                           
+  1305                           ;Config register CONFIG7H @ 0x30000D
+  1306                           ;	Boot Block Table Read Protection bit
+  1307                           ;	EBTRB = OFF, Boot block (000000-0007FFh) not protected from table reads executed in ot
       +                          her blocks
-  1137  30000D                     	org	3145741
-  1138  30000D  40                 	db	64
-  1139                           tosu	equ	0xFFF
-  1140                           tosh	equ	0xFFE
-  1141                           tosl	equ	0xFFD
-  1142                           stkptr	equ	0xFFC
-  1143                           pclatu	equ	0xFFB
-  1144                           pclath	equ	0xFFA
-  1145                           pcl	equ	0xFF9
-  1146                           tblptru	equ	0xFF8
-  1147                           tblptrh	equ	0xFF7
-  1148                           tblptrl	equ	0xFF6
-  1149                           tablat	equ	0xFF5
-  1150                           prodh	equ	0xFF4
-  1151                           prodl	equ	0xFF3
-  1152                           indf0	equ	0xFEF
-  1153                           postinc0	equ	0xFEE
-  1154                           postdec0	equ	0xFED
-  1155                           preinc0	equ	0xFEC
-  1156                           plusw0	equ	0xFEB
-  1157                           fsr0h	equ	0xFEA
-  1158                           fsr0l	equ	0xFE9
-  1159                           wreg	equ	0xFE8
-  1160                           indf1	equ	0xFE7
-  1161                           postinc1	equ	0xFE6
-  1162                           postdec1	equ	0xFE5
-  1163                           preinc1	equ	0xFE4
-  1164                           plusw1	equ	0xFE3
-  1165                           fsr1h	equ	0xFE2
-  1166                           fsr1l	equ	0xFE1
-  1167                           bsr	equ	0xFE0
-  1168                           indf2	equ	0xFDF
-  1169                           postinc2	equ	0xFDE
-  1170                           postdec2	equ	0xFDD
-  1171                           preinc2	equ	0xFDC
-  1172                           plusw2	equ	0xFDB
-  1173                           fsr2h	equ	0xFDA
-  1174                           fsr2l	equ	0xFD9
-  1175                           status	equ	0xFD8
+  1308  30000D                     	org	3145741
+  1309  30000D  40                 	db	64
+  1310                           tosu	equ	0xFFF
+  1311                           tosh	equ	0xFFE
+  1312                           tosl	equ	0xFFD
+  1313                           stkptr	equ	0xFFC
+  1314                           pclatu	equ	0xFFB
+  1315                           pclath	equ	0xFFA
+  1316                           pcl	equ	0xFF9
+  1317                           tblptru	equ	0xFF8
+  1318                           tblptrh	equ	0xFF7
+  1319                           tblptrl	equ	0xFF6
+  1320                           tablat	equ	0xFF5
+  1321                           prodh	equ	0xFF4
+  1322                           prodl	equ	0xFF3
+  1323                           indf0	equ	0xFEF
+  1324                           postinc0	equ	0xFEE
+  1325                           postdec0	equ	0xFED
+  1326                           preinc0	equ	0xFEC
+  1327                           plusw0	equ	0xFEB
+  1328                           fsr0h	equ	0xFEA
+  1329                           fsr0l	equ	0xFE9
+  1330                           wreg	equ	0xFE8
+  1331                           indf1	equ	0xFE7
+  1332                           postinc1	equ	0xFE6
+  1333                           postdec1	equ	0xFE5
+  1334                           preinc1	equ	0xFE4
+  1335                           plusw1	equ	0xFE3
+  1336                           fsr1h	equ	0xFE2
+  1337                           fsr1l	equ	0xFE1
+  1338                           bsr	equ	0xFE0
+  1339                           indf2	equ	0xFDF
+  1340                           postinc2	equ	0xFDE
+  1341                           postdec2	equ	0xFDD
+  1342                           preinc2	equ	0xFDC
+  1343                           plusw2	equ	0xFDB
+  1344                           fsr2h	equ	0xFDA
+  1345                           fsr2l	equ	0xFD9
+  1346                           status	equ	0xFD8
 
 Data Sizes:
     Strings     0
     Constant    0
-    Data        5
+    Data        12
     BSS         0
     Persistent  0
     Stack       0
@@ -1214,7 +1392,7 @@ Data Sizes:
 Auto Spaces:
     Space          Size  Autos    Used
     COMRAM          126      0       0
-    BANK0           128     27      32
+    BANK0           128     29      41
     BANK1           256      0       0
     BANK2           256      0       0
     BANK3           256      0       0
@@ -1223,8 +1401,8 @@ Auto Spaces:
 
 Pointer List with Targets:
 
-    Timer0_Config@timerConfig	PTR struct . size(2) Largest target is 5
-		 -> timerConfig(BANK0[5]), 
+    Serial_1_Config@serialConfig	PTR struct . size(2) Largest target is 7
+		 -> serialConfig(BANK0[7]), 
 
 
 Critical Paths under _main in COMRAM
@@ -1237,8 +1415,8 @@ Critical Paths under _TC0INT in COMRAM
 
 Critical Paths under _main in BANK0
 
-    _main->_Serial_Config
-    _Serial_Config->___aldiv
+    _main->_Serial_1_Config
+    _Serial_1_Config->___aldiv
 
 Critical Paths under _TC0INT in BANK0
 
@@ -1289,27 +1467,23 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 4     4      0     844
-                                             23 BANK0      4     4      0
-             _Interrupt_GlobalEnable
-                      _Serial_Config
+ (0) _main                                                 6     6      0    1679
+                                             27 BANK0      2     2      0
+                    _Serial_1_Config
+                     _Serial_Receive
                     _Serial_Transmit
-                      _Timer0_Config
- ---------------------------------------------------------------------------------
- (1) _Timer0_Config                                        3     1      2     164
-                                              0 BANK0      3     1      2
  ---------------------------------------------------------------------------------
  (1) _Serial_Transmit                                      1     1      0      15
                                               0 BANK0      1     1      0
  ---------------------------------------------------------------------------------
- (1) _Serial_Config                                        9     5      4     573
-                                             14 BANK0      9     5      4
+ (1) _Serial_Receive                                       0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Serial_1_Config                                     13    11      2    1574
+                                             14 BANK0     13    11      2
                             ___aldiv
  ---------------------------------------------------------------------------------
- (2) ___aldiv                                             14     6      8     452
+ (2) ___aldiv                                             14     6      8    1050
                                               0 BANK0     14     6      8
- ---------------------------------------------------------------------------------
- (1) _Interrupt_GlobalEnable                               0     0      0       0
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 2
  ---------------------------------------------------------------------------------
@@ -1323,11 +1497,10 @@ Call Graph Tables:
  Call Graph Graphs:
 
  _main (ROOT)
-   _Interrupt_GlobalEnable
-   _Serial_Config
+   _Serial_1_Config
      ___aldiv
+   _Serial_Receive
    _Serial_Transmit
-   _Timer0_Config
 
  _TC0INT (ROOT)
 
@@ -1346,81 +1519,86 @@ BANK2              100      0       0       9        0.0%
 BITBANK1           100      0       0       6        0.0%
 BANK1              100      0       0       7        0.0%
 BITBANK0            80      0       0       4        0.0%
-BANK0               80     1B      20       5       25.0%
+BANK0               80     1D      29       5       32.0%
 BITCOMRAM           7E      0       0       0        0.0%
 COMRAM              7E      0       0       1        0.0%
 BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      20      15        0.0%
-DATA                 0      0      20       3        0.0%
+ABS                  0      0      29      15        0.0%
+DATA                 0      0      29       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Sun Jun 20 00:09:23 2021
+Symbol Table                                                                                   Thu Jul 08 22:26:48 2021
 
-              ??_Serial_Transmit 0080                              l901 0076  
-                            l911 00AA                              l915 00B8  
-                            l919 00CE                              l929 021C  
-                            l893 0048                              l981 0152  
-                            l887 0030                              l975 013C  
-                            l967 0120                              l985 016A  
-                            l899 006A                              l989 0182  
-                            u215 0250                              u240 016A  
-                            u170 007A                              u250 0182  
-                            wreg 000FE8   __end_of_Interrupt_GlobalEnable 02E6  
-                           _LATB 000F8A                             i2l26 02D0  
-                           _TMR0 000FD6                             _main 00E0  
-                           fsr2h 000FDA                             indf2 000FDF  
-                           fsr1l 000FE1                             fsr2l 000FD9  
-                           btemp 0001                             start 000E  
-                   ___param_bank 000000            __end_of_Serial_Config 028A  
-                __end_of___aldiv 00E0                            ?_main 0080  
-                          _SPBRG 000FAF                            _PORTB 000F81  
-                          _TRISB 000F93                            _TXREG 000FAD  
-                          main@i 0097                            main@j 0099  
-                          tablat 000FF5            __end_of_Timer0_Config 022C  
-                          ttemp5 0002                            ttemp6 0005  
-                          ttemp7 0009                            status 000FD8  
-                          wtemp8 0002                  __initialization 028A  
-                   __end_of_main 018A                           ??_main 0097  
-                  __activetblptr 000003                           _TC0INT 0008  
-                      ??___aldiv 0088                           isa$std 000001  
-                         tblptrh 000FF7                           tblptrl 000FF6  
-                         tblptru 000FF8                       __accesstop 0080  
-        __end_of__initialization 02AA                  _Serial_Transmit 02D4  
-                  ___rparam_used 000000                     __pidataBANK0 02E6  
-                        ?_TC0INT 0080          __end_of_Serial_Transmit 02DE  
-                __size_of_TC0INT 02CC                          __Hparam 0000  
-                        __Lparam 0000                          ___aldiv 0012  
-                        __pcinit 028A                          __ramtop 0600  
-                        __ptext0 00E0                          __ptext1 018A  
-                        __ptext2 02D4                          __ptext3 022C  
-                        __ptext4 0012                          __ptext5 02DE  
-                      _T0CONbits 000FD5                 ___aldiv@dividend 0080  
-                 __pintcode_body 02B4             end_of_initialization 02AA  
-                        int_func 02B4           __size_of_Serial_Config 005E  
-                      _RCSTAbits 000FAB                 ___aldiv@quotient 008A  
-                        postdec1 000FE5                          postinc0 000FEE  
-         __size_of_Timer0_Config 00A2         ??_Interrupt_GlobalEnable 0080  
-         Serial_Config@brg_value 0096              Serial_Transmit@data 0080  
-               ?_Serial_Transmit 0080                   __end_of_TC0INT 02D4  
-                      _TXSTAbits 000FAC                    _Serial_Config 022C  
-            start_initialization 028A        Serial_Config@desired_baud 008E  
-                       ??_TC0INT 0080         Timer0_Config@timerConfig 0080  
-                  _Timer0_Config 018A                      __pdataBANK0 009B  
-                 ?_Serial_Config 008E  __size_of_Interrupt_GlobalEnable 0008  
-                  __pcstackBANK0 0080                   ?_Timer0_Config 0080  
-                      __pintcode 0008                         ?___aldiv 0080  
-                ___aldiv@divisor 0084                  ___aldiv@counter 0088  
-         _Interrupt_GlobalEnable 02DE                         _RCONbits 000FD0  
-                ??_Serial_Config 0092                  ??_Timer0_Config 0082  
-                    _INTCON2bits 000FF1                        copy_data0 029E  
-                       __Hparam0 0000                         __Lparam0 0000  
-               __size_of___aldiv 00CE                    __size_of_main 00AA  
-       __size_of_Serial_Transmit 000A                         isa$xinst 000000  
-                       int$flags 0001                       _INTCONbits 000FF2  
-                       intlevel2 0000                      _timerConfig 009B  
-                   ___aldiv@sign 0089          ?_Interrupt_GlobalEnable 0080  
+                         l32 03F2                           l36 03FE                           l70 02D8  
+                         l71 02DC                           l80 04A0                           l74 04B6  
+                         l67 026C                           l69 02D4                           l77 0490  
+          ??_Serial_Transmit 0080                          l174 03EA                          l900 02DE  
+                        l910 0314                          l902 02E4                          l920 0356  
+                        l912 0324                          l904 02F2                          l930 03A8  
+                        l922 0362                          l914 0328                          l906 0302  
+                        l940 03DA                          l932 03AA                          l924 0370  
+                        l916 0338                          l908 0306                          l852 04B2  
+                        l934 03B4                          l926 037A                          l918 034E  
+                        l950 01E2                          l846 0490                          l928 0398  
+                        l936 03BA                          l960 0248                          l952 023A  
+                        l944 0012                          l848 049E                          l938 03CA  
+                        l970 028C                          l962 025E                          l954 023E  
+                        l946 0132                          l972 02AC                          l964 0266  
+                        l956 0240                          l948 018A                          l974 02AE  
+                        l966 0282                          l958 0242                          l990 0404  
+                        l976 02CC                          l968 0286                          l992 0408  
+                        l994 0416                          l986 03F8                          l978 03EC  
+                        l996 041E                          l998 0434                          u200 0370  
+                        u201 036C                          u210 0398                          u130 049E  
+                        u211 0394                          u131 049A                          u220 03CA  
+                        u221 03C6                          u170 02F2                          u171 02EE  
+                        u235 0044                          u180 0314                          u260 025E  
+                        u181 0310                          u261 025A                          u245 00A4  
+                        u190 034E                          u270 0282                          u191 034A  
+                        u271 027E                          u255 0104                          u280 02CC  
+                        u281 02C8                          u290 0434                          u291 0430  
+                        wreg 000FE8                         l1000 0438                         _LATB 000F8A  
+                       _RCIF 007CF5                         i2l26 048C                         _TMR0 000FD6  
+                       _main 03EC                         fsr2h 000FDA                         indf2 000FDF  
+                       fsr1l 000FE1                         fsr2l 000FD9                         btemp 0001  
+                       prodh 000FF4                         prodl 000FF3                         start 000E  
+               ___param_bank 000000              __end_of___aldiv 03EC                        ?_main 0080  
+                      i2l854 0474                        i2l856 0482                        i2l858 048A  
+                      _RCREG 000FAE                        _SPBRG 000FAF                        _PORTB 000F81  
+                      _TRISB 000F93                        _TXREG 000FAD                        tablat 000FF5  
+             _Serial_Receive 0490                        ttemp5 0002                        ttemp6 0005  
+                      ttemp7 0009                        status 000FD8                        wtemp8 0002  
+            __initialization 0448                 __end_of_main 0448              _Serial_1_Config 0012  
+                     ??_main 009B  Serial_1_Config@serialConfig 008E                __activetblptr 000003  
+ Serial_1_Config@error_8HIGH 0099       __end_of_Serial_Receive 04A2                       _TC0INT 0008  
+                  ??___aldiv 0088      Serial_1_Config@brg8HIGH 0097                       isa$std 000001  
+                     tblptrh 000FF7                       tblptrl 000FF6                       tblptru 000FF8  
+            ?_Serial_Receive 0080                   __accesstop 0080      __end_of__initialization 0468  
+            _Serial_Transmit 04AE                ___rparam_used 000000      __end_of_Serial_1_Config 02DE  
+               __pidataBANK0 04A2                      ?_TC0INT 0080                      i2u14_40 0482  
+                    i2u14_41 047E      __end_of_Serial_Transmit 04B8              __size_of_TC0INT 0488  
+                    __Hparam 0000             ?_Serial_1_Config 008E                      __Lparam 0000  
+                    ___aldiv 02DE                      __pcinit 0448                      __ramtop 0600  
+                    __ptext0 03EC                      __ptext1 04AE                      __ptext2 0490  
+                    __ptext3 0012                      __ptext4 02DE                    _T0CONbits 000FD5  
+   Serial_1_Config@brg16HIGH 0098             ___aldiv@dividend 0080               __pintcode_body 0472  
+       end_of_initialization 0468                      int_func 0472                    _RCSTAbits 000FAB  
+           ___aldiv@quotient 008A                      postdec1 000FE5                      postinc0 000FEE  
+                    postinc2 000FDE             ??_Serial_Receive 0080     Serial_1_Config@error_min 009A  
+        Serial_Transmit@data 0080             ?_Serial_Transmit 0080               __end_of_TC0INT 0490  
+                  _TXSTAbits 000FAC                  _BAUDCONbits 000FB8          start_initialization 0448  
+                   ??_TC0INT 0080    Serial_1_Config@error_8LOW 0094       Serial_1_Config@brg8LOW 0096  
+                __pdataBANK0 009D                __pcstackBANK0 0080                    __pintcode 0008  
+                   ?___aldiv 0080              ___aldiv@divisor 0084              ___aldiv@counter 0088  
+                   _RCONbits 000FD0         main@serial_data_read 009B     __size_of_Serial_1_Config 02CC  
+                _INTCON2bits 000FF1                    copy_data0 045C         main@serial_last_read 009C  
+                   __Hparam0 0000                     __Lparam0 0000             __size_of___aldiv 010E  
+              __size_of_main 005C                 _serialConfig 00A2     __size_of_Serial_Transmit 000A  
+                   isa$xinst 000000                     int$flags 0001                   _INTCONbits 000FF2  
+          ??_Serial_1_Config 0090                     intlevel2 0000  Serial_1_Config@error_16HIGH 0095  
+    __size_of_Serial_Receive 0012                  _timerConfig 009D                 ___aldiv@sign 0089  

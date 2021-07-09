@@ -15,6 +15,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/timer/timer.h: 39: typedef struct {
 [s S281 `E2526 1 `E2530 1 `E2534 1 `E2538 1 `E2542 1 ]
 [n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
+"75 src/main.c
+[; ;src/main.c: 75: serial_config_t serialConfig = {
+[c E2597 0 1 .. ]
+[n E2597 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
+[c E2601 0 1 .. ]
+[n E2601 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
+[c E2605 0 1 .. ]
+[n E2605 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
+"31 src/pic18f4520/serial/serial.h
+[; ;src/pic18f4520/serial/serial.h: 31: typedef struct {
+[s S282 `E2597 1 `E2601 1 `E2605 1 `l 1 ]
+[n S282 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
 [t ~ __interrupt . k ]
 [t T41 __interrupt ]
 "6698 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
@@ -36,12 +48,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6724
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VAS274 ~T0 @X0 0 e@4082 ]
-"1089
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `VAuc ~T0 @X0 0 e@3978 ]
-"271
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `VAuc ~T0 @X0 0 e@3969 ]
 "6251
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
 [v _TMR0 `VAus ~T0 @X0 0 e@4054 ]
@@ -49,17 +55,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1699
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
 [v _TRISB `VAuc ~T0 @X0 0 e@3987 ]
-"12 src/pic18f4520/interrupt/interrupt.h
-[; ;src/pic18f4520/interrupt/interrupt.h: 12:     void Interrupt_GlobalEnable( void );
-[v _Interrupt_GlobalEnable `(v ~T0 @X0 0 ef ]
-"51 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 51:     void Timer0_Config( timer_config_t* timerConfig );
-[v _Timer0_Config `(v ~T0 @X0 0 ef1`*S281 ]
-"29 src/pic18f4520/serial/serial.h
-[; ;src/pic18f4520/serial/serial.h: 29:     void Serial_Config( long int desired_baud );
-[v _Serial_Config `(v ~T0 @X0 0 ef1`l ]
-"31
-[; ;src/pic18f4520/serial/serial.h: 31:     void Serial_Transmit( uint8_t data );
+"1089
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `VAuc ~T0 @X0 0 e@3978 ]
+"271
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `VAuc ~T0 @X0 0 e@3969 ]
+"43 src/pic18f4520/serial/serial.h
+[; ;src/pic18f4520/serial/serial.h: 43:     void Serial_1_Config(serial_config_t* serialConfig);
+[v _Serial_1_Config `(v ~T0 @X0 0 ef1`*S282 ]
+"46
+[; ;src/pic18f4520/serial/serial.h: 46:     uint8_t Serial_Receive(void);
+[v _Serial_Receive `(uc ~T0 @X0 0 ef ]
+"45
+[; ;src/pic18f4520/serial/serial.h: 45:     void Serial_Transmit( uint8_t data );
 [v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
 "3 src/main.c
 [p x OSC  =  HS  ]
@@ -555,137 +564,132 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[v $root$_TC0INT `(v ~T0 @X0 0 e ]
-[v F2619 `(v ~T0 @X0 1 tf ]
 "75
-[; ;src/main.c: 75: void __attribute__((picinterrupt(("")))) TC0INT(void){
-[v _TC0INT `AF2619 ~T41 @X0 1 e ]
+[; ;src/main.c: 75: serial_config_t serialConfig = {
+[v _serialConfig `AS282 ~T0 @X0 1 e ]
+[i _serialConfig
+:U ..
+:U ..
+. `E2597 0
+. `E2601 0
+. `E2605 0
+-> 115200 `l
+..
+..
+]
+[v $root$_TC0INT `(v ~T0 @X0 0 e ]
+[v F2629 `(v ~T0 @X0 1 tf ]
+"82
+[; ;src/main.c: 82: void __attribute__((picinterrupt(("")))) TC0INT(void){
+[v _TC0INT `AF2629 ~T41 @X0 1 e ]
 {
 [e :U _TC0INT ]
 [f ]
-"76
-[; ;src/main.c: 76:      if (INTCONbits.TMR0IF == 0x01) {
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 283  ]
-{
-"78
-[; ;src/main.c: 78:       LATB = (PORTB ^ (1 << 0));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-"79
-[; ;src/main.c: 79:       LATB = (PORTB ^ (1 << 1));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
-"81
-[; ;src/main.c: 81:       TMR0 = 0xD9D9;
-[e = _TMR0 -> -> 55769 `ui `us ]
-"82
-[; ;src/main.c: 82:       INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
 "83
-[; ;src/main.c: 83:     }
+[; ;src/main.c: 83:      if (INTCONbits.TMR0IF == 0x01) {
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 284  ]
+{
+"88
+[; ;src/main.c: 88:       TMR0 = 0xE17B;
+[e = _TMR0 -> -> 57723 `ui `us ]
+"89
+[; ;src/main.c: 89:       INTCONbits.T0IF = 0x00;
+[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
+"90
+[; ;src/main.c: 90:     }
 }
-[e :U 283 ]
-"84
-[; ;src/main.c: 84: }
-[e :UE 282 ]
+[e :U 284 ]
+"91
+[; ;src/main.c: 91: }
+[e :UE 283 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-[v F2621 `(v ~T0 @X0 1 tf ]
-"87
-[; ;src/main.c: 87: void main(void) {
-[v _main `AF2621 ~T0 @X0 1 e ]
+[v F2631 `(v ~T0 @X0 1 tf ]
+"94
+[; ;src/main.c: 94: void main(void) {
+[v _main `AF2631 ~T0 @X0 1 e ]
 {
 [e :U _main ]
 [f ]
-"89
-[; ;src/main.c: 89:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-[e $ ! == -> 0 `i -> 0 `i 285  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
-[e $U 286  ]
-[e :U 285 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
-[e :U 286 ]
-"90
-[; ;src/main.c: 90:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-[e $ ! == -> 0 `i -> 0 `i 287  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
-[e $U 288  ]
-[e :U 287 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
-[e :U 288 ]
-"92
-[; ;src/main.c: 92:     if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-[e $ ! == -> 0 `i -> 1 `i 289  ]
-[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-[e $U 290  ]
-[e :U 289 ]
-[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 290 ]
-"93
-[; ;src/main.c: 93:     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 291  ]
-[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
-[e $U 292  ]
-[e :U 291 ]
-[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 292 ]
 "96
-[; ;src/main.c: 96:     Interrupt_GlobalEnable();
-[e ( _Interrupt_GlobalEnable ..  ]
+[; ;src/main.c: 96:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+[e $ ! == -> 0 `i -> 0 `i 286  ]
+[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
+[e $U 287  ]
+[e :U 286 ]
+[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
+[e :U 287 ]
 "97
-[; ;src/main.c: 97:     Timer0_Config(&timerConfig);
-[e ( _Timer0_Config (1 &U _timerConfig ]
+[; ;src/main.c: 97:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
+[e $ ! == -> 0 `i -> 0 `i 288  ]
+[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e $U 289  ]
+[e :U 288 ]
+[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
+[e :U 289 ]
 "99
-[; ;src/main.c: 99:     Serial_Config(9600);
-[e ( _Serial_Config (1 -> -> 9600 `i `l ]
-"101
-[; ;src/main.c: 101:     int i, j;
+[; ;src/main.c: 99:     if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+[e $ ! == -> 0 `i -> 1 `i 290  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
+[e $U 291  ]
+[e :U 290 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 291 ]
+"100
+[; ;src/main.c: 100:     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+[e $ ! == -> 1 `i -> 1 `i 292  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
+[e $U 293  ]
+[e :U 292 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e :U 293 ]
+"103
+[; ;src/main.c: 103:     PORTB = 0x00;
+[e = _PORTB -> -> 0 `i `uc ]
+"109
+[; ;src/main.c: 109:     Serial_1_Config(&serialConfig);
+[e ( _Serial_1_Config (1 &U _serialConfig ]
+"111
+[; ;src/main.c: 111:     int i, j;
 [v _i `i ~T0 @X0 1 a ]
 [v _j `i ~T0 @X0 1 a ]
-"103
-[; ;src/main.c: 103:     while(1){
-[e :U 294 ]
-{
-"105
-[; ;src/main.c: 105:         Serial_Transmit(0x41);
-[e ( _Serial_Transmit (1 -> -> 65 `i `uc ]
-"106
-[; ;src/main.c: 106:         for(i = 0; i < 200; i++){
-{
-[e = _i -> 0 `i ]
-[e $ < _i -> 200 `i 296  ]
-[e $U 297  ]
-[e :U 296 ]
-{
-"107
-[; ;src/main.c: 107:             for(j = 0; j < 200; j++);
-{
-[e = _j -> 0 `i ]
-[e $ < _j -> 200 `i 299  ]
-[e $U 300  ]
-[e :U 299 ]
-[e ++ _j -> 1 `i ]
-[e $ < _j -> 200 `i 299  ]
-[e :U 300 ]
-}
-"108
-[; ;src/main.c: 108:         }
-}
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 200 `i 296  ]
-[e :U 297 ]
-}
-"110
-[; ;src/main.c: 110:         Serial_Transmit(0x42);
-[e ( _Serial_Transmit (1 -> -> 66 `i `uc ]
-"111
-[; ;src/main.c: 111:     }
-}
-[e :U 293 ]
-[e $U 294  ]
-[e :U 295 ]
 "112
-[; ;src/main.c: 112:     return;
-[e $UE 284  ]
+[; ;src/main.c: 112:     uint8_t serial_data_read;
+[v _serial_data_read `uc ~T0 @X0 1 a ]
 "113
-[; ;src/main.c: 113: }
-[e :UE 284 ]
+[; ;src/main.c: 113:     uint8_t serial_last_read;
+[v _serial_last_read `uc ~T0 @X0 1 a ]
+"115
+[; ;src/main.c: 115:     while(1){
+[e :U 295 ]
+{
+"116
+[; ;src/main.c: 116:         serial_last_read = Serial_Receive();
+[e = _serial_last_read ( _Serial_Receive ..  ]
+"117
+[; ;src/main.c: 117:         if(serial_last_read != serial_data_read){
+[e $ ! != -> _serial_last_read `i -> _serial_data_read `i 297  ]
+{
+"118
+[; ;src/main.c: 118:             serial_data_read = serial_last_read;
+[e = _serial_data_read _serial_last_read ]
+"119
+[; ;src/main.c: 119:             Serial_Transmit(serial_data_read);
+[e ( _Serial_Transmit (1 _serial_data_read ]
+"120
+[; ;src/main.c: 120:         }
+}
+[e :U 297 ]
+"122
+[; ;src/main.c: 122:     }
+}
+[e :U 294 ]
+[e $U 295  ]
+[e :U 296 ]
+"123
+[; ;src/main.c: 123:     return;
+[e $UE 285  ]
+"124
+[; ;src/main.c: 124: }
+[e :UE 285 ]
 }

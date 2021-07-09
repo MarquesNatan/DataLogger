@@ -6,6 +6,7 @@
 #include <stdint.h>
 /*============================================================================*/
 #define _XTAL_FREQ 10000000
+#define SPEED_SERIAL    115200
 /*============================================================================*/
 typedef enum {
     SERIAL_ASSYNC_MODE = 0x00,
@@ -31,6 +32,7 @@ typedef struct {
     SERIAL_SYNC_COM serial_sync_com;
     SERIAL_DATA_LENGTH serial_data_length; 
     SERIAL_OP_MODE serial_op_mode;
+    int32_t serial_desired_baud; 
 }serial_config_t;
 /*============================================================================*/
 #ifdef	__cplusplus
@@ -38,13 +40,10 @@ extern "C" {
 #endif /* __cplusplus */
 /*============================================================================*/    
     void Serial_Config( long int desired_baud /* serial_config_t* serialConfig */);
+    void Serial_1_Config(serial_config_t* serialConfig);
 /*============================================================================*/
     void Serial_Transmit( uint8_t data );
-    uint8_t Serial_Receive( void );     
-/*============================================================================*/
-    void Serial_BufferTransmit( uint8_t* dataBuffer );
-    uint8_t Serial_BufferReceive( void );
-/*============================================================================*/
+    uint8_t Serial_Receive(void);
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */

@@ -4739,6 +4739,7 @@ typedef uint32_t uint_fast32_t;
 
 
 
+
 typedef enum {
     SERIAL_ASSYNC_MODE = 0x00,
     SERIAL_SYNC_MODE = 0x01
@@ -4752,19 +4753,29 @@ typedef enum {
 typedef enum {
     SERIAL_MASTER_MODE = 0x00,
     SERIAL_SLAVE_MODE = 0x01
-}SERIAL_MODE;
+}SERIAL_OP_MODE;
+
+typedef enum {
+    SERIAL_BAUD_9600 = 0x00,
+    SERIAL_BAUD_11250 = 0x01,
+}SERIAL_DESIRED_BAUD;
+
+typedef struct {
+    SERIAL_SYNC_COM serial_sync_com;
+    SERIAL_DATA_LENGTH serial_data_length;
+    SERIAL_OP_MODE serial_op_mode;
+    int32_t serial_desired_baud;
+}serial_config_t;
 
 
 
 
 
     void Serial_Config( long int desired_baud );
+    void Serial_1_Config(serial_config_t* serialConfig);
 
     void Serial_Transmit( uint8_t data );
-    uint8_t Serial_Receive( void );
-
-    void Serial_BufferTransmit( uint8_t* dataBuffer );
-    uint8_t Serial_BufferReceive( void );
+    uint8_t Serial_Receive(void);
 # 62 "src/main.c" 2
 
 
@@ -4783,13 +4794,20 @@ timer_config_t timerConfig = {
     .timer_prescaler_value = TIMER_PRESCALER_256
 };
 
+serial_config_t serialConfig = {
+    .serial_sync_com = SERIAL_ASSYNC_MODE,
+    .serial_data_length = SERIAL_DATA_LENGTH_8,
+    .serial_op_mode = SERIAL_MASTER_MODE,
+    .serial_desired_baud = 115200
+};
+
 void __attribute__((picinterrupt(("")))) TC0INT(void){
      if (INTCONbits.TMR0IF == 0x01) {
 
-      LATB = (PORTB ^ (1 << 0));;
-      LATB = (PORTB ^ (1 << 1));;
 
-      TMR0 = 0xD9D9;
+
+
+      TMR0 = 0xE17B;
       INTCONbits.T0IF = 0x00;
     }
 }
@@ -4804,21 +4822,25 @@ void main(void) {
     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
 
 
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
+    PORTB = 0x00;
 
-    Serial_Config(9600);
+
+
+
+
+    Serial_1_Config(&serialConfig);
 
     int i, j;
+    uint8_t serial_data_read;
+    uint8_t serial_last_read;
 
     while(1){
-
-        Serial_Transmit(0x41);
-        for(i = 0; i < 200; i++){
-            for(j = 0; j < 200; j++);
+        serial_last_read = Serial_Receive();
+        if(serial_last_read != serial_data_read){
+            serial_data_read = serial_last_read;
+            Serial_Transmit(serial_data_read);
         }
 
-        Serial_Transmit(0x42);
     }
     return;
 }

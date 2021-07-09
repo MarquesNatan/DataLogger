@@ -4615,6 +4615,7 @@ typedef uint32_t uint_fast32_t;
 
 
 
+
 typedef enum {
     SERIAL_ASSYNC_MODE = 0x00,
     SERIAL_SYNC_MODE = 0x01
@@ -4628,47 +4629,112 @@ typedef enum {
 typedef enum {
     SERIAL_MASTER_MODE = 0x00,
     SERIAL_SLAVE_MODE = 0x01
-}SERIAL_MODE;
+}SERIAL_OP_MODE;
+
+typedef enum {
+    SERIAL_BAUD_9600 = 0x00,
+    SERIAL_BAUD_11250 = 0x01,
+}SERIAL_DESIRED_BAUD;
+
+typedef struct {
+    SERIAL_SYNC_COM serial_sync_com;
+    SERIAL_DATA_LENGTH serial_data_length;
+    SERIAL_OP_MODE serial_op_mode;
+    int32_t serial_desired_baud;
+}serial_config_t;
 
 
 
 
 
     void Serial_Config( long int desired_baud );
+    void Serial_1_Config(serial_config_t* serialConfig);
 
     void Serial_Transmit( uint8_t data );
-    uint8_t Serial_Receive( void );
-
-    void Serial_BufferTransmit( uint8_t* dataBuffer );
-    uint8_t Serial_BufferReceive( void );
+    uint8_t Serial_Receive(void);
 # 2 "src/pic18f4520/serial/serial.c" 2
 
 
 
 
-void Serial_Config( long int desired_baud )
-{
-# 37 "src/pic18f4520/serial/serial.c"
-    uint8_t brg_value;
-    brg_value = (10000000 / (desired_baud * 64)) - 1;
 
-    SPBRG = brg_value;
+void Serial_1_Config(serial_config_t* serialConfig) {
+# 38 "src/pic18f4520/serial/serial.c"
+    uint8_t brg8LOW;
+    uint8_t brg8HIGH;
+    uint8_t brg16HIGH;
 
-    TXSTAbits.SYNC = 0x00;
+
+    uint8_t error_8LOW;
+    uint8_t error_8HIGH;
+    uint8_t error_16HIGH;
+
+    uint8_t error_min;
+
+
+    brg8LOW = (10000000/(serialConfig->serial_desired_baud * 64));
+    brg8HIGH = (10000000/(serialConfig->serial_desired_baud * 16));
+    brg16HIGH = (10000000/(serialConfig->serial_desired_baud * 4));
+
+
+    error_8LOW = (10000000/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
+    error_8HIGH = (10000000/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
+    error_16HIGH = (10000000/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
+
+
+    error_min = error_8LOW;
+
+    BAUDCONbits.BRG16 = 0x00;
+    TXSTAbits.BRGH = 0x00;
+
+    SPBRG = (brg8LOW - 1);
+
+    if(error_8HIGH < error_min)
+    {
+        error_min = error_8HIGH;
+
+        BAUDCONbits.BRG16 = 0x00;
+        TXSTAbits.BRGH = 0x01;
+
+        SPBRG = (brg8HIGH - 1);
+    }
+    if(error_16HIGH < error_min)
+    {
+        BAUDCONbits.BRG16 = 0x01;
+        TXSTAbits.BRGH = 0x01;
+
+        SPBRG = (brg16HIGH - 1);
+    }
+# 94 "src/pic18f4520/serial/serial.c"
+    TXSTAbits.SYNC = serialConfig->serial_op_mode;
+
+
+
+
 
     RCSTAbits.SPEN = 0x01;
-
-    TXSTAbits.TX9 = 0x00;
-
+# 120 "src/pic18f4520/serial/serial.c"
+    if(serialConfig->serial_data_length == SERIAL_DATA_LENGTH_9)
+    {
+        TXSTAbits.TX9 = 0x01;
+        RCSTAbits.RC9 = 0x01;
+    }else
+    {
+        TXSTAbits.TX9 = 0x00;
+        RCSTAbits.RC9 = 0x00;
+    }
+# 147 "src/pic18f4520/serial/serial.c"
     TXSTAbits.TXEN = 0x01;
-
-
-
-
-
-
+    RCSTAbits.CREN = 0x01;
 }
 
-void Serial_Transmit( uint8_t data ){
+void Serial_Transmit(uint8_t data)
+{
     TXREG = data;
+}
+
+uint8_t Serial_Receive(void)
+{
+    while(!RCIF);
+    return RCREG;
 }

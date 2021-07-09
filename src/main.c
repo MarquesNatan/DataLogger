@@ -72,13 +72,20 @@ timer_config_t timerConfig = {
     .timer_prescaler_value = TIMER_PRESCALER_256
 };
 /*============================================================================*/
+serial_config_t serialConfig = {
+    .serial_sync_com = SERIAL_ASSYNC_MODE,
+    .serial_data_length = SERIAL_DATA_LENGTH_8,
+    .serial_op_mode = SERIAL_MASTER_MODE,
+    .serial_desired_baud = SPEED_SERIAL
+};
+/*============================================================================*/
 void __interrupt() TC0INT(void){
      if (INTCONbits.TMR0IF == 0x01) {
         
-      DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-      DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+      // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+      // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
       
-      TMR0 = 0xD9D9; // TMR0 = 0x00; 
+      TMR0 = 0xE17B; // TMR0 = 0x00; 
       INTCONbits.T0IF = 0x00;   // Clean Timer Flag
     }
 }
@@ -93,21 +100,25 @@ void main(void) {
     PIN_DIGITAL_WRITE(PIN_HIGH,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
     
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
+    PORTB = 0x00;
     
-    Serial_Config(9600);
+    // Interrupt_GlobalEnable();
+    // Timer0_Config(&timerConfig);
     
-    int i, j; 
+    // Serial_Config(115200);
+    Serial_1_Config(&serialConfig);
+    
+    int i, j;
+    uint8_t serial_data_read;
+    uint8_t serial_last_read;
     
     while(1){
-        
-        Serial_Transmit(0x41);
-        for(i = 0; i < 200; i++){
-            for(j = 0; j < 200; j++);
+        serial_last_read = Serial_Receive();
+        if(serial_last_read != serial_data_read){
+            serial_data_read = serial_last_read;
+            Serial_Transmit(serial_data_read);
         }
         
-        Serial_Transmit(0x42);
     }
     return;
 }
