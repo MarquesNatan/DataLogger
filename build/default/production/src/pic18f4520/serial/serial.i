@@ -4650,7 +4650,7 @@ typedef struct {
     void Serial_Config( long int desired_baud );
     void Serial_1_Config(serial_config_t* serialConfig);
 
-    void Serial_Transmit( uint8_t data );
+    void Serial_Transmit( char data );
     uint8_t Serial_Receive(void);
 # 2 "src/pic18f4520/serial/serial.c" 2
 
@@ -4659,7 +4659,7 @@ typedef struct {
 
 
 void Serial_1_Config(serial_config_t* serialConfig) {
-# 38 "src/pic18f4520/serial/serial.c"
+# 30 "src/pic18f4520/serial/serial.c"
     uint8_t brg8LOW;
     uint8_t brg8HIGH;
     uint8_t brg16HIGH;
@@ -4705,7 +4705,12 @@ void Serial_1_Config(serial_config_t* serialConfig) {
 
         SPBRG = (brg16HIGH - 1);
     }
-# 94 "src/pic18f4520/serial/serial.c"
+
+
+
+
+
+
     TXSTAbits.SYNC = serialConfig->serial_op_mode;
 
 
@@ -4713,7 +4718,7 @@ void Serial_1_Config(serial_config_t* serialConfig) {
 
 
     RCSTAbits.SPEN = 0x01;
-# 120 "src/pic18f4520/serial/serial.c"
+# 101 "src/pic18f4520/serial/serial.c"
     if(serialConfig->serial_data_length == SERIAL_DATA_LENGTH_9)
     {
         TXSTAbits.TX9 = 0x01;
@@ -4723,18 +4728,22 @@ void Serial_1_Config(serial_config_t* serialConfig) {
         TXSTAbits.TX9 = 0x00;
         RCSTAbits.RC9 = 0x00;
     }
-# 147 "src/pic18f4520/serial/serial.c"
+# 124 "src/pic18f4520/serial/serial.c"
     TXSTAbits.TXEN = 0x01;
     RCSTAbits.CREN = 0x01;
+
+    PIE1bits.RCIE = 0x01;
+
+
 }
 
-void Serial_Transmit(uint8_t data)
+void Serial_Transmit(char data)
 {
     TXREG = data;
+    while(!TRMT);
 }
 
 uint8_t Serial_Receive(void)
 {
-    while(!RCIF);
     return RCREG;
 }

@@ -29,7 +29,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S261 . . . ]
 "6191
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6191: extern volatile T0CONbits_t T0CONbits __attribute__((address(0xFD5)));
-[v _T0CONbits `VAS261 ~T0 @X0 0 e@4053 ]
+[v _T0CONbits `VS261 ~T0 @X0 0 e@4053 ]
 "6698
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6698:     struct {
 [s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -48,7 +48,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S274 . . . . ]
 "6724
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VAS274 ~T0 @X0 0 e@4082 ]
+[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
 "6628
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6628:     struct {
 [s S271 :7 `uc 1 :1 `uc 1 ]
@@ -67,10 +67,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S270 . . . . ]
 "6647
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6647: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
-[v _INTCON2bits `VAS270 ~T0 @X0 0 e@4081 ]
+[v _INTCON2bits `VS270 ~T0 @X0 0 e@4081 ]
 "6251
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
-[v _TMR0 `VAus ~T0 @X0 0 e@4054 ]
+[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -485,10 +485,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v F2565 `(v ~T0 @X0 1 tf1`*S281 ]
 "4 src/pic18f4520/timer/timer.c
 [; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
-[v _Timer0_Config `AF2565 ~T0 @X0 1 e ]
+[v _Timer0_Config `(v ~T0 @X0 1 ef1`*S281 ]
 "5
 [; ;src/pic18f4520/timer/timer.c: 5: {
 {

@@ -33,7 +33,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S237 . . . . . . . . ]
 "5697
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 5697: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
-[v _RCONbits `VAS237 ~T0 @X0 0 e@4048 ]
+[v _RCONbits `VS237 ~T0 @X0 0 e@4048 ]
 "6698
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6698:     struct {
 [s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -52,7 +52,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S274 . . . . ]
 "6724
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VAS274 ~T0 @X0 0 e@4082 ]
+[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -467,10 +467,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v F2528 `(v ~T0 @X0 1 tf ]
 "4 src/pic18f4520/interrupt/interrupt.c
 [; ;src/pic18f4520/interrupt/interrupt.c: 4: void Interrupt_GlobalEnable( void )
-[v _Interrupt_GlobalEnable `AF2528 ~T0 @X0 1 e ]
+[v _Interrupt_GlobalEnable `(v ~T0 @X0 1 ef ]
 "5
 [; ;src/pic18f4520/interrupt/interrupt.c: 5: {
 {

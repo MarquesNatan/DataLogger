@@ -4774,7 +4774,7 @@ typedef struct {
     void Serial_Config( long int desired_baud );
     void Serial_1_Config(serial_config_t* serialConfig);
 
-    void Serial_Transmit( uint8_t data );
+    void Serial_Transmit( char data );
     uint8_t Serial_Receive(void);
 # 62 "src/main.c" 2
 
@@ -4798,19 +4798,43 @@ serial_config_t serialConfig = {
     .serial_sync_com = SERIAL_ASSYNC_MODE,
     .serial_data_length = SERIAL_DATA_LENGTH_8,
     .serial_op_mode = SERIAL_MASTER_MODE,
-    .serial_desired_baud = 115200
+    .serial_desired_baud = 9600
 };
+
+
+uint8_t AT_VERSION [] = {0x41, 0x43, 0x2B, 0x56, 0x45, 0x52, 0x53, 0x49, 0x4f, 0x4e};
+uint8_t count = 0;
+int i;
 
 void __attribute__((picinterrupt(("")))) TC0INT(void){
      if (INTCONbits.TMR0IF == 0x01) {
 
-
-
+      LATB = (PORTB ^ (1 << 0));;
+      LATB = (PORTB ^ (1 << 1));;
 
       TMR0 = 0xE17B;
       INTCONbits.T0IF = 0x00;
+
+    }
+
+    if(PIR1bits.RCIF){
+
+
+
+        count = RCREG;
+
+
+
+        if(count == 0x41){
+            for(i = 0; i < sizeof(AT_VERSION); i++){
+               Serial_Transmit(AT_VERSION[i]);
+                while(!TRMT);
+            }
+        }
+        PIR1bits.RCIF = 0x00;
     }
 }
+
 
 
 void main(void) {
@@ -4822,24 +4846,15 @@ void main(void) {
     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
 
 
-    PORTB = 0x00;
 
-
-
-
+    Interrupt_GlobalEnable();
+    Timer0_Config(&timerConfig);
 
     Serial_1_Config(&serialConfig);
 
-    int i, j;
-    uint8_t serial_data_read;
-    uint8_t serial_last_read;
+
 
     while(1){
-        serial_last_read = Serial_Receive();
-        if(serial_last_read != serial_data_read){
-            serial_data_read = serial_last_read;
-            Serial_Transmit(serial_data_read);
-        }
 
     }
     return;

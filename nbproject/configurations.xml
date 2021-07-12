@@ -16,8 +16,25 @@
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <logicalFolder name="app" displayName="app" projectFiles="true">
+        <logicalFolder name="bluetooth-hc-06"
+                       displayName="bluetooth-hc-06"
+                       projectFiles="true">
+          <itemPath>src/app/bluetooth-hc-06/bluetooth_hc_06.c</itemPath>
+          <itemPath>src/app/bluetooth-hc-06/bluetooth_hc_06.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="packet_factory"
+                       displayName="packet_factory"
+                       projectFiles="true">
+          <itemPath>src/app/packet_factory/packet_factory.h</itemPath>
+          <itemPath>src/app/packet_factory/packet_factory.c</itemPath>
+        </logicalFolder>
       </logicalFolder>
       <logicalFolder name="board" displayName="board" projectFiles="true">
+        <logicalFolder name="board_definitions"
+                       displayName="board_definitions"
+                       projectFiles="true">
+          <itemPath>src/board/board_definitions/board_definitions.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="pinout" displayName="pinout" projectFiles="true">
           <itemPath>src/board/pinout/pinout.h</itemPath>
         </logicalFolder>
@@ -109,16 +126,16 @@
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
         <property key="identifier-length" value="255"/>
-        <property key="local-generation" value="true"/>
+        <property key="local-generation" value="false"/>
         <property key="operation-mode" value="free"/>
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
         <property key="optimization-assembler" value="true"/>
         <property key="optimization-assembler-files" value="true"/>
-        <property key="optimization-debug" value="true"/>
+        <property key="optimization-debug" value="false"/>
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
         <property key="optimization-level" value="-O0"/>
-        <property key="optimization-speed" value="true"/>
+        <property key="optimization-speed" value="false"/>
         <property key="optimization-stable-enable" value="false"/>
         <property key="pack-struct" value="true"/>
         <property key="preprocess-assembler" value="true"/>

@@ -47,29 +47,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S274 . . . . ]
 "6724
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VAS274 ~T0 @X0 0 e@4082 ]
+[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
+"1089
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"271
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "6251
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
-[v _TMR0 `VAus ~T0 @X0 0 e@4054 ]
+[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
+"2677
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2677:     struct {
+[s S96 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S96 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
+"2687
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2687:     struct {
+[s S97 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S97 . . TX1IF RC1IF ]
+"2676
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2676: typedef union {
+[u S95 `S96 1 `S97 1 ]
+[n S95 . . . ]
+"2693
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2693: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
+[v _PIR1bits `VS95 ~T0 @X0 0 e@3998 ]
+"3588
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3588: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"45 src/pic18f4520/serial/serial.h
+[; ;src/pic18f4520/serial/serial.h: 45:     void Serial_Transmit( char data );
+[v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
+"8668 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 8668: extern volatile __bit TRMT __attribute__((address(0x7D61)));
+[v _TRMT `Vb ~T0 @X0 0 e@32097 ]
 [p mainexit ]
 "1699
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `VAuc ~T0 @X0 0 e@3987 ]
-"1089
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `VAuc ~T0 @X0 0 e@3978 ]
-"271
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `VAuc ~T0 @X0 0 e@3969 ]
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"12 src/pic18f4520/interrupt/interrupt.h
+[; ;src/pic18f4520/interrupt/interrupt.h: 12:     void Interrupt_GlobalEnable( void );
+[v _Interrupt_GlobalEnable `(v ~T0 @X0 0 ef ]
+"51 src/pic18f4520/timer/timer.h
+[; ;src/pic18f4520/timer/timer.h: 51:     void Timer0_Config( timer_config_t* timerConfig );
+[v _Timer0_Config `(v ~T0 @X0 0 ef1`*S281 ]
 "43 src/pic18f4520/serial/serial.h
 [; ;src/pic18f4520/serial/serial.h: 43:     void Serial_1_Config(serial_config_t* serialConfig);
 [v _Serial_1_Config `(v ~T0 @X0 0 ef1`*S282 ]
-"46
-[; ;src/pic18f4520/serial/serial.h: 46:     uint8_t Serial_Receive(void);
-[v _Serial_Receive `(uc ~T0 @X0 0 ef ]
-"45
-[; ;src/pic18f4520/serial/serial.h: 45:     void Serial_Transmit( uint8_t data );
-[v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
 "3 src/main.c
 [p x OSC  =  HS  ]
 "4
@@ -552,7 +576,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSU equ 0FFFh ;# ">
 "67 src/main.c
 [; ;src/main.c: 67: timer_config_t timerConfig = {
-[v _timerConfig `AS281 ~T0 @X0 1 e ]
+[v _timerConfig `S281 ~T0 @X0 1 e ]
 [i _timerConfig
 :U ..
 :U ..
@@ -566,130 +590,183 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "75
 [; ;src/main.c: 75: serial_config_t serialConfig = {
-[v _serialConfig `AS282 ~T0 @X0 1 e ]
+[v _serialConfig `S282 ~T0 @X0 1 e ]
 [i _serialConfig
 :U ..
 :U ..
 . `E2597 0
 . `E2601 0
 . `E2605 0
--> 115200 `l
+-> -> 9600 `i `l
 ..
 ..
 ]
+"83
+[; ;src/main.c: 83: uint8_t AT_VERSION [] = {0x41, 0x43, 0x2B, 0x56, 0x45, 0x52, 0x53, 0x49, 0x4f, 0x4e};
+[v _AT_VERSION `uc ~T0 @X0 -> 10 `i e ]
+[i _AT_VERSION
+:U ..
+-> -> 65 `i `uc
+-> -> 67 `i `uc
+-> -> 43 `i `uc
+-> -> 86 `i `uc
+-> -> 69 `i `uc
+-> -> 82 `i `uc
+-> -> 83 `i `uc
+-> -> 73 `i `uc
+-> -> 79 `i `uc
+-> -> 78 `i `uc
+..
+]
+"84
+[; ;src/main.c: 84: uint8_t count = 0;
+[v _count `uc ~T0 @X0 1 e ]
+[i _count
+-> -> 0 `i `uc
+]
+"85
+[; ;src/main.c: 85: int i;
+[v _i `i ~T0 @X0 1 e ]
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-[v F2629 `(v ~T0 @X0 1 tf ]
-"82
-[; ;src/main.c: 82: void __attribute__((picinterrupt(("")))) TC0INT(void){
-[v _TC0INT `AF2629 ~T41 @X0 1 e ]
+"87
+[; ;src/main.c: 87: void __attribute__((picinterrupt(("")))) TC0INT(void){
+[v _TC0INT `(v ~T41 @X0 1 ef ]
 {
 [e :U _TC0INT ]
 [f ]
-"83
-[; ;src/main.c: 83:      if (INTCONbits.TMR0IF == 0x01) {
+"88
+[; ;src/main.c: 88:      if (INTCONbits.TMR0IF == 0x01) {
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 284  ]
 {
-"88
-[; ;src/main.c: 88:       TMR0 = 0xE17B;
-[e = _TMR0 -> -> 57723 `ui `us ]
-"89
-[; ;src/main.c: 89:       INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
 "90
-[; ;src/main.c: 90:     }
+[; ;src/main.c: 90:       LATB = (PORTB ^ (1 << 0));;
+[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
+"91
+[; ;src/main.c: 91:       LATB = (PORTB ^ (1 << 1));;
+[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
+"93
+[; ;src/main.c: 93:       TMR0 = 0xE17B;
+[e = _TMR0 -> -> 57723 `ui `us ]
+"94
+[; ;src/main.c: 94:       INTCONbits.T0IF = 0x00;
+[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
+"96
+[; ;src/main.c: 96:     }
 }
 [e :U 284 ]
-"91
-[; ;src/main.c: 91: }
+"98
+[; ;src/main.c: 98:     if(PIR1bits.RCIF){
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 285  ]
+{
+"102
+[; ;src/main.c: 102:         count = RCREG;
+[e = _count _RCREG ]
+"106
+[; ;src/main.c: 106:         if(count == 0x41){
+[e $ ! == -> _count `i -> 65 `i 286  ]
+{
+"107
+[; ;src/main.c: 107:             for(i = 0; i < sizeof(AT_VERSION); i++){
+{
+[e = _i -> 0 `i ]
+[e $ < -> _i `ui -> # _AT_VERSION `ui 287  ]
+[e $U 288  ]
+[e :U 287 ]
+{
+"108
+[; ;src/main.c: 108:                Serial_Transmit(AT_VERSION[i]);
+[e ( _Serial_Transmit (1 -> *U + &U _AT_VERSION * -> -> _i `ui `ux -> -> # *U &U _AT_VERSION `ui `ux `uc ]
+"109
+[; ;src/main.c: 109:                 while(!TRMT);
+[e $U 290  ]
+[e :U 291 ]
+[e :U 290 ]
+[e $ ! _TRMT 291  ]
+[e :U 292 ]
+"110
+[; ;src/main.c: 110:             }
+}
+[e ++ _i -> 1 `i ]
+[e $ < -> _i `ui -> # _AT_VERSION `ui 287  ]
+[e :U 288 ]
+}
+"111
+[; ;src/main.c: 111:         }
+}
+[e :U 286 ]
+"112
+[; ;src/main.c: 112:         PIR1bits.RCIF = 0x00;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+"113
+[; ;src/main.c: 113:     }
+}
+[e :U 285 ]
+"114
+[; ;src/main.c: 114: }
 [e :UE 283 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-[v F2631 `(v ~T0 @X0 1 tf ]
-"94
-[; ;src/main.c: 94: void main(void) {
-[v _main `AF2631 ~T0 @X0 1 e ]
+"118
+[; ;src/main.c: 118: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"96
-[; ;src/main.c: 96:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-[e $ ! == -> 0 `i -> 0 `i 286  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
-[e $U 287  ]
-[e :U 286 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
-[e :U 287 ]
-"97
-[; ;src/main.c: 97:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-[e $ ! == -> 0 `i -> 0 `i 288  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
-[e $U 289  ]
-[e :U 288 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
-[e :U 289 ]
-"99
-[; ;src/main.c: 99:     if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-[e $ ! == -> 0 `i -> 1 `i 290  ]
-[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-[e $U 291  ]
-[e :U 290 ]
-[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 291 ]
-"100
-[; ;src/main.c: 100:     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 292  ]
-[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
-[e $U 293  ]
-[e :U 292 ]
-[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 293 ]
-"103
-[; ;src/main.c: 103:     PORTB = 0x00;
-[e = _PORTB -> -> 0 `i `uc ]
-"109
-[; ;src/main.c: 109:     Serial_1_Config(&serialConfig);
-[e ( _Serial_1_Config (1 &U _serialConfig ]
-"111
-[; ;src/main.c: 111:     int i, j;
-[v _i `i ~T0 @X0 1 a ]
-[v _j `i ~T0 @X0 1 a ]
-"112
-[; ;src/main.c: 112:     uint8_t serial_data_read;
-[v _serial_data_read `uc ~T0 @X0 1 a ]
-"113
-[; ;src/main.c: 113:     uint8_t serial_last_read;
-[v _serial_last_read `uc ~T0 @X0 1 a ]
-"115
-[; ;src/main.c: 115:     while(1){
-[e :U 295 ]
-{
-"116
-[; ;src/main.c: 116:         serial_last_read = Serial_Receive();
-[e = _serial_last_read ( _Serial_Receive ..  ]
-"117
-[; ;src/main.c: 117:         if(serial_last_read != serial_data_read){
-[e $ ! != -> _serial_last_read `i -> _serial_data_read `i 297  ]
-{
-"118
-[; ;src/main.c: 118:             serial_data_read = serial_last_read;
-[e = _serial_data_read _serial_last_read ]
-"119
-[; ;src/main.c: 119:             Serial_Transmit(serial_data_read);
-[e ( _Serial_Transmit (1 _serial_data_read ]
 "120
-[; ;src/main.c: 120:         }
-}
-[e :U 297 ]
-"122
-[; ;src/main.c: 122:     }
-}
-[e :U 294 ]
+[; ;src/main.c: 120:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+[e $ ! == -> 0 `i -> 0 `i 294  ]
+[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e $U 295  ]
+[e :U 294 ]
+[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
+[e :U 295 ]
+"121
+[; ;src/main.c: 121:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
+[e $ ! == -> 0 `i -> 0 `i 296  ]
+[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e $U 297  ]
 [e :U 296 ]
+[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
+[e :U 297 ]
 "123
-[; ;src/main.c: 123:     return;
-[e $UE 285  ]
+[; ;src/main.c: 123:     if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+[e $ ! == -> 0 `i -> 1 `i 298  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
+[e $U 299  ]
+[e :U 298 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 299 ]
 "124
-[; ;src/main.c: 124: }
-[e :UE 285 ]
+[; ;src/main.c: 124:     if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+[e $ ! == -> 1 `i -> 1 `i 300  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
+[e $U 301  ]
+[e :U 300 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e :U 301 ]
+"128
+[; ;src/main.c: 128:     Interrupt_GlobalEnable();
+[e ( _Interrupt_GlobalEnable ..  ]
+"129
+[; ;src/main.c: 129:     Timer0_Config(&timerConfig);
+[e ( _Timer0_Config (1 &U _timerConfig ]
+"131
+[; ;src/main.c: 131:     Serial_1_Config(&serialConfig);
+[e ( _Serial_1_Config (1 &U _serialConfig ]
+"135
+[; ;src/main.c: 135:     while(1){
+[e :U 303 ]
+{
+"137
+[; ;src/main.c: 137:     }
+}
+[e :U 302 ]
+[e $U 303  ]
+[e :U 304 ]
+"138
+[; ;src/main.c: 138:     return;
+[e $UE 293  ]
+"139
+[; ;src/main.c: 139: }
+[e :UE 293 ]
 }

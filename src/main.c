@@ -79,16 +79,38 @@ serial_config_t serialConfig = {
     .serial_desired_baud = SPEED_SERIAL
 };
 /*============================================================================*/
+#define AT_COMMAND          "AT"
+uint8_t AT_VERSION [] = {0x41, 0x43, 0x2B, 0x56, 0x45, 0x52, 0x53, 0x49, 0x4f, 0x4e};
+uint8_t count = 0;
+int i;
+/*============================================================================*/    
 void __interrupt() TC0INT(void){
      if (INTCONbits.TMR0IF == 0x01) {
         
-      // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-      // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+      DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+      DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
       
       TMR0 = 0xE17B; // TMR0 = 0x00; 
       INTCONbits.T0IF = 0x00;   // Clean Timer Flag
+      
+    }
+     
+    if(PIR1bits.RCIF){
+        
+        // TXREG = count;
+        
+        count = RCREG;
+        
+        if(count == 0x41){
+            for(i = 0; i < sizeof(AT_VERSION); i++){
+               Serial_Transmit(AT_VERSION[i]);
+                while(!TRMT);
+            }
+        }
+        PIR1bits.RCIF = 0x00; 
     }
 }
+
 
 /*============================================================================*/
 void main(void) {
@@ -99,25 +121,16 @@ void main(void) {
     PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
     PIN_DIGITAL_WRITE(PIN_HIGH,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
+    //static volatile char AT_VERSION [7] = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47};
     
-    PORTB = 0x00;
+    Interrupt_GlobalEnable();
+    Timer0_Config(&timerConfig);
     
-    // Interrupt_GlobalEnable();
-    // Timer0_Config(&timerConfig);
-    
-    // Serial_Config(115200);
     Serial_1_Config(&serialConfig);
     
-    int i, j;
-    uint8_t serial_data_read;
-    uint8_t serial_last_read;
+
     
     while(1){
-        serial_last_read = Serial_Receive();
-        if(serial_last_read != serial_data_read){
-            serial_data_read = serial_last_read;
-            Serial_Transmit(serial_data_read);
-        }
         
     }
     return;

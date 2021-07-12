@@ -1,25 +1,7 @@
+/*==============================================================================
+ *                                   Modules
+ =============================================================================*/
+        - Serial (UART)
+        - Timer 0
+        - Bluetooth
 /*============================================================================*/
-void Serial_Config(long int desired_baud) {
-    /*
-     *                  BAUD RATE FORMULAS
-     *  BRG16 | BRGH  |   UART MODE     |  Baud Rate Formula
-     *   1    |   1   | 16 bit   async  |   FOSC/[4 (n + 1) ]
-     * 1 - 0  | 0 - 1 | 8/16 bit async  |   FOSC/[16 (n + 1)]
-     *   0    |   0   | 8 bit    async  |   FOSC/[64 (n + 1)]
-     */
-
-    uint8_t brg_value;
-    brg_value = (_XTAL_FREQ / (desired_baud * 64)) - 1;
-
-    SPBRG = brg_value;
-
-    TXSTAbits.SYNC = 0x00; // Asynchronous mode
-
-    RCSTAbits.SPEN = 0x01; // Enable serial port
-
-    TXSTAbits.TX9 = 0x00; // Define 9 bits of data
-
-    TXSTAbits.TXEN = 0x01; // Enabel serial transmit
-
-
-}

@@ -109,23 +109,57 @@ TIMER_PRESCALER_256 7
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"82 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
-[v _TC0INT TC0INT `IIAH(v  1 e 1 0 ]
-"94
-[v _main main `A(v  1 e 1 0 ]
+"87 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
+"118
+[v _main main `(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/interrupt/interrupt.c
+[v _Interrupt_GlobalEnable Interrupt_GlobalEnable `(v  1 e 1 0 ]
 "7 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
-[v _Serial_1_Config Serial_1_Config `A(v  1 e 1 0 ]
-"151
-[v _Serial_Transmit Serial_Transmit `A(v  1 e 1 0 ]
-"156
-[v _Serial_Receive Serial_Receive `A(uc  1 e 1 0 ]
+[v _Serial_1_Config Serial_1_Config `(v  1 e 1 0 ]
+"132
+[v _Serial_Transmit Serial_Transmit `(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[v _Timer0_Config Timer0_Config `(v  1 e 1 0 ]
 "271 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[v _PORTB PORTB `VAEuc  1 e 1 @3969 ]
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 "1089
-[v _LATB LATB `VAEuc  1 e 1 @3978 ]
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
 "1699
-[v _TRISB TRISB `VAEuc  1 e 1 @3987 ]
-[s S392 . 1 `uc 1 RX9D 1 0 :1:0 
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S487 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 PSPIE 1 0 :1:7 
+]
+"2616
+[s S496 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IE 1 0 :1:4 
+`uc 1 RC1IE 1 0 :1:5 
+]
+[u S500 . 1 `S487 1 . 1 0 `S496 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES500  1 e 1 @3997 ]
+[s S117 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+"2693
+[s S126 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S130 . 1 `S117 1 . 1 0 `S126 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES130  1 e 1 @3998 ]
+[s S433 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -135,23 +169,23 @@ TIMER_PRESCALER_256 7
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3151
-[s S401 . 1 `uc 1 . 1 0 :3:0 
+[s S442 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S404 . 1 `uc 1 . 1 0 :5:0 
+[s S445 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S407 . 1 `uc 1 . 1 0 :6:0 
+[s S448 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S410 . 1 `uc 1 . 1 0 :6:0 
+[s S451 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S413 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S454 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S415 . 1 `S392 1 . 1 0 `S401 1 . 1 0 `S404 1 . 1 0 `S407 1 . 1 0 `S410 1 . 1 0 `S413 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VAES415  1 e 1 @4011 ]
-[s S339 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S456 . 1 `S433 1 . 1 0 `S442 1 . 1 0 `S445 1 . 1 0 `S448 1 . 1 0 `S451 1 . 1 0 `S454 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES456  1 e 1 @4011 ]
+[s S380 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -161,7 +195,7 @@ TIMER_PRESCALER_256 7
 `uc 1 CSRC 1 0 :1:7 
 ]
 "3359
-[s S348 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S389 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -170,20 +204,20 @@ TIMER_PRESCALER_256 7
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S357 . 1 `uc 1 . 1 0 :6:0 
+[s S398 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S360 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S401 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S362 . 1 `S339 1 . 1 0 `S348 1 . 1 0 `S357 1 . 1 0 `S360 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VAES362  1 e 1 @4012 ]
+[u S403 . 1 `S380 1 . 1 0 `S389 1 . 1 0 `S398 1 . 1 0 `S401 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES403  1 e 1 @4012 ]
 "3576
-[v _TXREG TXREG `VAEuc  1 e 1 @4013 ]
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "3588
-[v _RCREG RCREG `VAEuc  1 e 1 @4014 ]
+[v _RCREG RCREG `VEuc  1 e 1 @4014 ]
 "3600
-[v _SPBRG SPBRG `VAEuc  1 e 1 @4015 ]
-[s S293 . 1 `uc 1 ABDEN 1 0 :1:0 
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+[s S334 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -193,35 +227,35 @@ TIMER_PRESCALER_256 7
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "4257
-[s S302 . 1 `uc 1 . 1 0 :4:0 
+[s S343 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SCKP 1 0 :1:4 
 `uc 1 . 1 0 :1:5 
 `uc 1 RCMT 1 0 :1:6 
 ]
-[s S307 . 1 `uc 1 . 1 0 :5:0 
+[s S348 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RXCKP 1 0 :1:5 
 ]
-[s S310 . 1 `uc 1 . 1 0 :1:0 
+[s S351 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 W4E 1 0 :1:1 
 ]
-[u S313 . 1 `S293 1 . 1 0 `S302 1 . 1 0 `S307 1 . 1 0 `S310 1 . 1 0 ]
-[v _BAUDCONbits BAUDCONbits `VAES313  1 e 1 @4024 ]
-[s S175 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[u S354 . 1 `S334 1 . 1 0 `S343 1 . 1 0 `S348 1 . 1 0 `S351 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES354  1 e 1 @4024 ]
+[s S217 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "5697
-[s S177 . 1 `uc 1 . 1 0 :1:0 
+[s S219 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S180 . 1 `uc 1 . 1 0 :2:0 
+[s S222 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S183 . 1 `uc 1 . 1 0 :3:0 
+[s S225 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S186 . 1 `uc 1 . 1 0 :4:0 
+[s S228 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S189 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S231 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -230,15 +264,15 @@ TIMER_PRESCALER_256 7
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S198 . 1 `uc 1 BOR 1 0 :1:0 
+[s S240 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S204 . 1 `S175 1 . 1 0 `S177 1 . 1 0 `S180 1 . 1 0 `S183 1 . 1 0 `S186 1 . 1 0 `S189 1 . 1 0 `S198 1 . 1 0 ]
-[v _RCONbits RCONbits `VAES204  1 e 1 @4048 ]
-[s S521 . 1 `uc 1 T0PS 1 0 :3:0 
+[u S246 . 1 `S217 1 . 1 0 `S219 1 . 1 0 `S222 1 . 1 0 `S225 1 . 1 0 `S228 1 . 1 0 `S231 1 . 1 0 `S240 1 . 1 0 ]
+[v _RCONbits RCONbits `VES246  1 e 1 @4048 ]
+[s S597 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -246,22 +280,22 @@ TIMER_PRESCALER_256 7
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "6191
-[s S528 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S604 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 `uc 1 . 1 0 :2:4 
 `uc 1 T016BIT 1 0 :1:6 
 ]
-[u S535 . 1 `S521 1 . 1 0 `S528 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VAES535  1 e 1 @4053 ]
+[u S611 . 1 `S597 1 . 1 0 `S604 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES611  1 e 1 @4053 ]
 "6251
-[v _TMR0 TMR0 `VAEus  1 e 2 @4054 ]
-[s S580 . 1 `uc 1 . 1 0 :7:0 
+[v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
+[s S656 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "6647
-[s S583 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S659 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -270,11 +304,11 @@ TIMER_PRESCALER_256 7
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S592 . 1 `uc 1 . 1 0 :7:0 
+[s S668 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S595 . 1 `S580 1 . 1 0 `S583 1 . 1 0 `S592 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VAES595  1 e 1 @4081 ]
+[u S671 . 1 `S656 1 . 1 0 `S659 1 . 1 0 `S668 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES671  1 e 1 @4081 ]
 [s S65 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -299,72 +333,83 @@ TIMER_PRESCALER_256 7
 `uc 1 GIEH 1 0 :1:7 
 ]
 [u S87 . 1 `S65 1 . 1 0 `S74 1 . 1 0 `S83 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VAES87  1 e 1 @4082 ]
-"8176
-[v _RCIF RCIF `VAEb  1 e 0 @31989 ]
+[v _INTCONbits INTCONbits `VES87  1 e 1 @4082 ]
+"8668
+[v _TRMT TRMT `VEb  1 e 0 @32097 ]
+[s S45 . 5 `E2526 1 timer_length 1 0 `E2530 1 timer_clk_src 1 1 `E2534 1 timer_transition 1 2 `E2538 1 timer_prescaler_assign 1 3 `E2542 1 timer_prescaler_value 1 4 ]
+"67 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _timerConfig timerConfig `S45  1 e 5 0 ]
 [s S60 . 7 `E2597 1 serial_sync_com 1 0 `E2601 1 serial_data_length 1 1 `E2605 1 serial_op_mode 1 2 `l 1 serial_desired_baud 4 3 ]
-"75 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
-[v _serialConfig serialConfig `AS60  1 e 7 0 ]
-"94
-[v _main main `A(v  1 e 1 0 ]
+"75
+[v _serialConfig serialConfig `S60  1 e 7 0 ]
+"83
+[v _AT_VERSION AT_VERSION `[10]uc  1 e 10 0 ]
+"84
+[v _count count `uc  1 e 1 0 ]
+"85
+[v _i i `i  1 e 2 0 ]
+"118
+[v _main main `(v  1 e 1 0 ]
 {
-"113
-[v main@serial_last_read serial_last_read `uc  1 a 1 28 ]
-"112
-[v main@serial_data_read serial_data_read `uc  1 a 1 27 ]
-"124
+"139
 } 0
-"151 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
-[v _Serial_Transmit Serial_Transmit `A(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[v _Timer0_Config Timer0_Config `(v  1 e 1 0 ]
 {
-[v Serial_Transmit@data data `uc  1 a 1 wreg ]
-[v Serial_Transmit@data data `uc  1 a 1 wreg ]
-"153
-[v Serial_Transmit@data data `uc  1 a 1 0 ]
-"154
+[v Timer0_Config@timerConfig timerConfig `*.39S45  1 p 2 3 ]
+"72
 } 0
-"156
-[v _Serial_Receive Serial_Receive `A(uc  1 e 1 0 ]
+"7 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
+[v _Serial_1_Config Serial_1_Config `(v  1 e 1 0 ]
 {
-"160
-} 0
-"7
-[v _Serial_1_Config Serial_1_Config `A(v  1 e 1 0 ]
-{
-"47
-[v Serial_1_Config@error_min error_min `uc  1 a 1 26 ]
-"44
-[v Serial_1_Config@error_8HIGH error_8HIGH `uc  1 a 1 25 ]
-"40
-[v Serial_1_Config@brg16HIGH brg16HIGH `uc  1 a 1 24 ]
 "39
-[v Serial_1_Config@brg8HIGH brg8HIGH `uc  1 a 1 23 ]
-"38
-[v Serial_1_Config@brg8LOW brg8LOW `uc  1 a 1 22 ]
-"45
-[v Serial_1_Config@error_16HIGH error_16HIGH `uc  1 a 1 21 ]
-"43
-[v Serial_1_Config@error_8LOW error_8LOW `uc  1 a 1 20 ]
+[v Serial_1_Config@error_min error_min `uc  1 a 1 29 ]
+"36
+[v Serial_1_Config@error_8HIGH error_8HIGH `uc  1 a 1 28 ]
+"32
+[v Serial_1_Config@brg16HIGH brg16HIGH `uc  1 a 1 27 ]
+"31
+[v Serial_1_Config@brg8HIGH brg8HIGH `uc  1 a 1 26 ]
+"30
+[v Serial_1_Config@brg8LOW brg8LOW `uc  1 a 1 25 ]
+"37
+[v Serial_1_Config@error_16HIGH error_16HIGH `uc  1 a 1 24 ]
+"35
+[v Serial_1_Config@error_8LOW error_8LOW `uc  1 a 1 23 ]
 [s S60 . 7 `E2597 1 serial_sync_com 1 0 `E2601 1 serial_data_length 1 1 `E2605 1 serial_op_mode 1 2 `l 1 serial_desired_baud 4 3 ]
 "7
-[v Serial_1_Config@serialConfig serialConfig `*.39S60  1 p 2 14 ]
-"149
+[v Serial_1_Config@serialConfig serialConfig `*.39S60  1 p 2 17 ]
+"130
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
 {
 "10
-[v ___aldiv@quotient quotient `l  1 a 4 10 ]
+[v ___aldiv@quotient quotient `l  1 a 4 13 ]
 "11
-[v ___aldiv@sign sign `uc  1 a 1 9 ]
-[v ___aldiv@counter counter `uc  1 a 1 8 ]
+[v ___aldiv@sign sign `uc  1 a 1 12 ]
+[v ___aldiv@counter counter `uc  1 a 1 11 ]
 "7
-[v ___aldiv@dividend dividend `l  1 p 4 0 ]
-[v ___aldiv@divisor divisor `l  1 p 4 4 ]
+[v ___aldiv@dividend dividend `l  1 p 4 3 ]
+[v ___aldiv@divisor divisor `l  1 p 4 7 ]
 "41
 } 0
-"82 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
-[v _TC0INT TC0INT `IIAH(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/interrupt/interrupt.c
+[v _Interrupt_GlobalEnable Interrupt_GlobalEnable `(v  1 e 1 0 ]
 {
-"91
+"34
+} 0
+"87 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
+{
+"114
+} 0
+"132 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
+[v _Serial_Transmit Serial_Transmit `(v  1 e 1 0 ]
+{
+[v Serial_Transmit@data data `uc  1 a 1 wreg ]
+[v Serial_Transmit@data data `uc  1 a 1 wreg ]
+"134
+[v Serial_Transmit@data data `uc  1 a 1 0 ]
+"136
 } 0

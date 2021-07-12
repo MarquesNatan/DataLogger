@@ -5,14 +5,6 @@
 
 /*============================================================================*/
 void Serial_1_Config(serial_config_t* serialConfig) {
-    
-    /*
-     * 1. Initialize the SPBRGH:SPBRG registers for the appropriate baud rate.
-     *     Set or clear the BRGH and BRG16 bits, as required, to achieve the 
-     *     desired baud rate.
-    */
-    
-    
     /*
      * BRG16: 16-Bit Baud Rate Register Enable bit
             1 = 16-bit Baud Rate Generator ? SPBRGH and SPBRG
@@ -81,11 +73,6 @@ void Serial_1_Config(serial_config_t* serialConfig) {
         SPBRG = (brg16HIGH - 1);
     }
     
-    /*
-     * 2. Enable the asynchronous serial port by clearing bit, SYNC, and 
-     *     setting bit, SPEN.
-     */
-    
     /*SYNC: EUSART Mode Select bit
      *  1 = Synchronous mode
      *  0 = Asynchronous mode
@@ -98,13 +85,7 @@ void Serial_1_Config(serial_config_t* serialConfig) {
      * 0 = Serial port disabled (held in Reset)
      */
     RCSTAbits.SPEN = 0x01;
-    
-    
-    /*
-     *4. If 9-bit transmission is desired, set transmit bit, TX9. Can be used 
-     *     as address/data bit.
-     * *  4. If 9-bit reception is desired, set bit, RX9.
-     */
+
     
     /*
      * TX9: 9-Bit Transmit Enable bit
@@ -127,10 +108,6 @@ void Serial_1_Config(serial_config_t* serialConfig) {
         RCSTAbits.RC9 = 0x00; 
     }
     
-    /*
-     * 5. Enable the transmission by setting bit, TXEN, which will also set bit, TXIF.
-     * 5. Enable the reception by setting bit, CREN.
-    */
     
     /* 
      * TXEN: Transmit Enable bit(1)
@@ -146,16 +123,20 @@ void Serial_1_Config(serial_config_t* serialConfig) {
      */
     TXSTAbits.TXEN = 0x01;
     RCSTAbits.CREN = 0x01;
+    
+    PIE1bits.RCIE = 0x01;
+    
+    
 }
 /*============================================================================*/
-void Serial_Transmit(uint8_t data)
+void Serial_Transmit(char data)
 {
     TXREG = data;
+    while(!TRMT);
 }
 /*============================================================================*/
 uint8_t Serial_Receive(void)
 {
-    while(!RCIF);
     return RCREG;
 }
 /*============================================================================*/

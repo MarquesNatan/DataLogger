@@ -33,7 +33,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S163 . . . . . ]
 "4257
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4257: extern volatile BAUDCONbits_t BAUDCONbits __attribute__((address(0xFB8)));
-[v _BAUDCONbits `VAS163 ~T0 @X0 0 e@4024 ]
+[v _BAUDCONbits `VS163 ~T0 @X0 0 e@4024 ]
 "3331
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3331:     struct {
 [s S128 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -56,10 +56,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S127 . . . . . ]
 "3359
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3359: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0xFAC)));
-[v _TXSTAbits `VAS127 ~T0 @X0 0 e@4012 ]
+[v _TXSTAbits `VS127 ~T0 @X0 0 e@4012 ]
 "3600
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3600: extern volatile unsigned char SPBRG __attribute__((address(0xFAF)));
-[v _SPBRG `VAuc ~T0 @X0 0 e@4015 ]
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
 "3121
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3121:     struct {
 [s S114 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -90,16 +90,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S113 . . . . . . . ]
 "3151
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3151: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0xFAB)));
-[v _RCSTAbits `VAS113 ~T0 @X0 0 e@4011 ]
+[v _RCSTAbits `VS113 ~T0 @X0 0 e@4011 ]
+"2600
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2600:     struct {
+[s S93 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S93 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
+"2610
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2610:     struct {
+[s S94 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S94 . . TX1IE RC1IE ]
+"2599
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2599: typedef union {
+[u S92 `S93 1 `S94 1 ]
+[n S92 . . . ]
+"2616
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2616: extern volatile PIE1bits_t PIE1bits __attribute__((address(0xF9D)));
+[v _PIE1bits `VS92 ~T0 @X0 0 e@3997 ]
 "3576
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3576: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
-[v _TXREG `VAuc ~T0 @X0 0 e@4013 ]
-"8176
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 8176: extern volatile __bit RCIF __attribute__((address(0x7CF5)));
-[v _RCIF `VAb ~T0 @X0 0 e@31989 ]
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"8668
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 8668: extern volatile __bit TRMT __attribute__((address(0x7D61)));
+[v _TRMT `Vb ~T0 @X0 0 e@32097 ]
 "3588
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3588: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
-[v _RCREG `VAuc ~T0 @X0 0 e@4014 ]
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -514,194 +529,194 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v F2588 `(v ~T0 @X0 1 tf1`*S281 ]
 "7 src/pic18f4520/serial/serial.c
 [; ;src/pic18f4520/serial/serial.c: 7: void Serial_1_Config(serial_config_t* serialConfig) {
-[v _Serial_1_Config `AF2588 ~T0 @X0 1 e ]
+[v _Serial_1_Config `(v ~T0 @X0 1 ef1`*S281 ]
 {
 [e :U _Serial_1_Config ]
 [v _serialConfig `*S281 ~T0 @X0 1 r1 ]
 [f ]
-"38
-[; ;src/pic18f4520/serial/serial.c: 38:     uint8_t brg8LOW;
+"30
+[; ;src/pic18f4520/serial/serial.c: 30:     uint8_t brg8LOW;
 [v _brg8LOW `uc ~T0 @X0 1 a ]
-"39
-[; ;src/pic18f4520/serial/serial.c: 39:     uint8_t brg8HIGH;
+"31
+[; ;src/pic18f4520/serial/serial.c: 31:     uint8_t brg8HIGH;
 [v _brg8HIGH `uc ~T0 @X0 1 a ]
-"40
-[; ;src/pic18f4520/serial/serial.c: 40:     uint8_t brg16HIGH;
+"32
+[; ;src/pic18f4520/serial/serial.c: 32:     uint8_t brg16HIGH;
 [v _brg16HIGH `uc ~T0 @X0 1 a ]
-"43
-[; ;src/pic18f4520/serial/serial.c: 43:     uint8_t error_8LOW;
+"35
+[; ;src/pic18f4520/serial/serial.c: 35:     uint8_t error_8LOW;
 [v _error_8LOW `uc ~T0 @X0 1 a ]
-"44
-[; ;src/pic18f4520/serial/serial.c: 44:     uint8_t error_8HIGH;
+"36
+[; ;src/pic18f4520/serial/serial.c: 36:     uint8_t error_8HIGH;
 [v _error_8HIGH `uc ~T0 @X0 1 a ]
-"45
-[; ;src/pic18f4520/serial/serial.c: 45:     uint8_t error_16HIGH;
+"37
+[; ;src/pic18f4520/serial/serial.c: 37:     uint8_t error_16HIGH;
 [v _error_16HIGH `uc ~T0 @X0 1 a ]
-"47
-[; ;src/pic18f4520/serial/serial.c: 47:     uint8_t error_min;
+"39
+[; ;src/pic18f4520/serial/serial.c: 39:     uint8_t error_min;
 [v _error_min `uc ~T0 @X0 1 a ]
-"50
-[; ;src/pic18f4520/serial/serial.c: 50:     brg8LOW = (10000000/(serialConfig->serial_desired_baud * 64));
+"42
+[; ;src/pic18f4520/serial/serial.c: 42:     brg8LOW = (10000000/(serialConfig->serial_desired_baud * 64));
 [e = _brg8LOW -> / -> 10000000 `l * . *U _serialConfig 3 -> -> 64 `i `l `uc ]
-"51
-[; ;src/pic18f4520/serial/serial.c: 51:     brg8HIGH = (10000000/(serialConfig->serial_desired_baud * 16));
+"43
+[; ;src/pic18f4520/serial/serial.c: 43:     brg8HIGH = (10000000/(serialConfig->serial_desired_baud * 16));
 [e = _brg8HIGH -> / -> 10000000 `l * . *U _serialConfig 3 -> -> 16 `i `l `uc ]
-"52
-[; ;src/pic18f4520/serial/serial.c: 52:     brg16HIGH = (10000000/(serialConfig->serial_desired_baud * 4));
+"44
+[; ;src/pic18f4520/serial/serial.c: 44:     brg16HIGH = (10000000/(serialConfig->serial_desired_baud * 4));
 [e = _brg16HIGH -> / -> 10000000 `l * . *U _serialConfig 3 -> -> 4 `i `l `uc ]
-"55
-[; ;src/pic18f4520/serial/serial.c: 55:     error_8LOW = (10000000/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
+"47
+[; ;src/pic18f4520/serial/serial.c: 47:     error_8LOW = (10000000/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
 [e = _error_8LOW -> - / -> 10000000 `l -> * -> _brg8LOW `i -> 64 `i `l . *U _serialConfig 3 `uc ]
-"56
-[; ;src/pic18f4520/serial/serial.c: 56:     error_8HIGH = (10000000/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
+"48
+[; ;src/pic18f4520/serial/serial.c: 48:     error_8HIGH = (10000000/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
 [e = _error_8HIGH -> - / -> 10000000 `l -> * -> _brg8HIGH `i -> 16 `i `l . *U _serialConfig 3 `uc ]
-"57
-[; ;src/pic18f4520/serial/serial.c: 57:     error_16HIGH = (10000000/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
+"49
+[; ;src/pic18f4520/serial/serial.c: 49:     error_16HIGH = (10000000/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
 [e = _error_16HIGH -> - / -> 10000000 `l -> * -> _brg16HIGH `i -> 4 `i `l . *U _serialConfig 3 `uc ]
-"60
-[; ;src/pic18f4520/serial/serial.c: 60:     error_min = error_8LOW;
+"52
+[; ;src/pic18f4520/serial/serial.c: 52:     error_min = error_8LOW;
 [e = _error_min _error_8LOW ]
-"62
-[; ;src/pic18f4520/serial/serial.c: 62:     BAUDCONbits.BRG16 = 0x00;
+"54
+[; ;src/pic18f4520/serial/serial.c: 54:     BAUDCONbits.BRG16 = 0x00;
 [e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
-"63
-[; ;src/pic18f4520/serial/serial.c: 63:     TXSTAbits.BRGH = 0x00;
+"55
+[; ;src/pic18f4520/serial/serial.c: 55:     TXSTAbits.BRGH = 0x00;
 [e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
-"65
-[; ;src/pic18f4520/serial/serial.c: 65:     SPBRG = (brg8LOW - 1);
+"57
+[; ;src/pic18f4520/serial/serial.c: 57:     SPBRG = (brg8LOW - 1);
 [e = _SPBRG -> - -> _brg8LOW `i -> 1 `i `uc ]
-"67
-[; ;src/pic18f4520/serial/serial.c: 67:     if(error_8HIGH < error_min)
+"59
+[; ;src/pic18f4520/serial/serial.c: 59:     if(error_8HIGH < error_min)
 [e $ ! < -> _error_8HIGH `i -> _error_min `i 283  ]
-"68
-[; ;src/pic18f4520/serial/serial.c: 68:     {
+"60
+[; ;src/pic18f4520/serial/serial.c: 60:     {
 {
-"69
-[; ;src/pic18f4520/serial/serial.c: 69:         error_min = error_8HIGH;
+"61
+[; ;src/pic18f4520/serial/serial.c: 61:         error_min = error_8HIGH;
 [e = _error_min _error_8HIGH ]
-"71
-[; ;src/pic18f4520/serial/serial.c: 71:         BAUDCONbits.BRG16 = 0x00;
+"63
+[; ;src/pic18f4520/serial/serial.c: 63:         BAUDCONbits.BRG16 = 0x00;
 [e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
-"72
-[; ;src/pic18f4520/serial/serial.c: 72:         TXSTAbits.BRGH = 0x01;
+"64
+[; ;src/pic18f4520/serial/serial.c: 64:         TXSTAbits.BRGH = 0x01;
 [e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
-"74
-[; ;src/pic18f4520/serial/serial.c: 74:         SPBRG = (brg8HIGH - 1);
+"66
+[; ;src/pic18f4520/serial/serial.c: 66:         SPBRG = (brg8HIGH - 1);
 [e = _SPBRG -> - -> _brg8HIGH `i -> 1 `i `uc ]
-"75
-[; ;src/pic18f4520/serial/serial.c: 75:     }
+"67
+[; ;src/pic18f4520/serial/serial.c: 67:     }
 }
 [e :U 283 ]
-"76
-[; ;src/pic18f4520/serial/serial.c: 76:     if(error_16HIGH < error_min)
+"68
+[; ;src/pic18f4520/serial/serial.c: 68:     if(error_16HIGH < error_min)
 [e $ ! < -> _error_16HIGH `i -> _error_min `i 284  ]
-"77
-[; ;src/pic18f4520/serial/serial.c: 77:     {
+"69
+[; ;src/pic18f4520/serial/serial.c: 69:     {
 {
-"78
-[; ;src/pic18f4520/serial/serial.c: 78:         BAUDCONbits.BRG16 = 0x01;
+"70
+[; ;src/pic18f4520/serial/serial.c: 70:         BAUDCONbits.BRG16 = 0x01;
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
-"79
-[; ;src/pic18f4520/serial/serial.c: 79:         TXSTAbits.BRGH = 0x01;
+"71
+[; ;src/pic18f4520/serial/serial.c: 71:         TXSTAbits.BRGH = 0x01;
 [e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
-"81
-[; ;src/pic18f4520/serial/serial.c: 81:         SPBRG = (brg16HIGH - 1);
+"73
+[; ;src/pic18f4520/serial/serial.c: 73:         SPBRG = (brg16HIGH - 1);
 [e = _SPBRG -> - -> _brg16HIGH `i -> 1 `i `uc ]
-"82
-[; ;src/pic18f4520/serial/serial.c: 82:     }
+"74
+[; ;src/pic18f4520/serial/serial.c: 74:     }
 }
 [e :U 284 ]
-"94
-[; ;src/pic18f4520/serial/serial.c: 94:     TXSTAbits.SYNC = serialConfig->serial_op_mode;
+"81
+[; ;src/pic18f4520/serial/serial.c: 81:     TXSTAbits.SYNC = serialConfig->serial_op_mode;
 [e = . . _TXSTAbits 0 4 -> . *U _serialConfig 2 `uc ]
-"100
-[; ;src/pic18f4520/serial/serial.c: 100:     RCSTAbits.SPEN = 0x01;
+"87
+[; ;src/pic18f4520/serial/serial.c: 87:     RCSTAbits.SPEN = 0x01;
 [e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
-"120
-[; ;src/pic18f4520/serial/serial.c: 120:     if(serialConfig->serial_data_length == SERIAL_DATA_LENGTH_9)
+"101
+[; ;src/pic18f4520/serial/serial.c: 101:     if(serialConfig->serial_data_length == SERIAL_DATA_LENGTH_9)
 [e $ ! == -> . *U _serialConfig 1 `ui -> . `E2562 1 `ui 285  ]
-"121
-[; ;src/pic18f4520/serial/serial.c: 121:     {
+"102
+[; ;src/pic18f4520/serial/serial.c: 102:     {
 {
-"122
-[; ;src/pic18f4520/serial/serial.c: 122:         TXSTAbits.TX9 = 0x01;
+"103
+[; ;src/pic18f4520/serial/serial.c: 103:         TXSTAbits.TX9 = 0x01;
 [e = . . _TXSTAbits 0 6 -> -> 1 `i `uc ]
-"123
-[; ;src/pic18f4520/serial/serial.c: 123:         RCSTAbits.RC9 = 0x01;
+"104
+[; ;src/pic18f4520/serial/serial.c: 104:         RCSTAbits.RC9 = 0x01;
 [e = . . _RCSTAbits 4 1 -> -> 1 `i `uc ]
-"124
-[; ;src/pic18f4520/serial/serial.c: 124:     }else
+"105
+[; ;src/pic18f4520/serial/serial.c: 105:     }else
 }
 [e $U 286  ]
 [e :U 285 ]
-"125
-[; ;src/pic18f4520/serial/serial.c: 125:     {
+"106
+[; ;src/pic18f4520/serial/serial.c: 106:     {
 {
-"126
-[; ;src/pic18f4520/serial/serial.c: 126:         TXSTAbits.TX9 = 0x00;
+"107
+[; ;src/pic18f4520/serial/serial.c: 107:         TXSTAbits.TX9 = 0x00;
 [e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
-"127
-[; ;src/pic18f4520/serial/serial.c: 127:         RCSTAbits.RC9 = 0x00;
+"108
+[; ;src/pic18f4520/serial/serial.c: 108:         RCSTAbits.RC9 = 0x00;
 [e = . . _RCSTAbits 4 1 -> -> 0 `i `uc ]
-"128
-[; ;src/pic18f4520/serial/serial.c: 128:     }
+"109
+[; ;src/pic18f4520/serial/serial.c: 109:     }
 }
 [e :U 286 ]
-"147
-[; ;src/pic18f4520/serial/serial.c: 147:     TXSTAbits.TXEN = 0x01;
+"124
+[; ;src/pic18f4520/serial/serial.c: 124:     TXSTAbits.TXEN = 0x01;
 [e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
-"148
-[; ;src/pic18f4520/serial/serial.c: 148:     RCSTAbits.CREN = 0x01;
+"125
+[; ;src/pic18f4520/serial/serial.c: 125:     RCSTAbits.CREN = 0x01;
 [e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-"149
-[; ;src/pic18f4520/serial/serial.c: 149: }
+"127
+[; ;src/pic18f4520/serial/serial.c: 127:     PIE1bits.RCIE = 0x01;
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
+"130
+[; ;src/pic18f4520/serial/serial.c: 130: }
 [e :UE 282 ]
 }
-[v F2598 `(v ~T0 @X0 1 tf1`uc ]
-"151
-[; ;src/pic18f4520/serial/serial.c: 151: void Serial_Transmit(uint8_t data)
-[v _Serial_Transmit `AF2598 ~T0 @X0 1 e ]
-"152
-[; ;src/pic18f4520/serial/serial.c: 152: {
+"132
+[; ;src/pic18f4520/serial/serial.c: 132: void Serial_Transmit(char data)
+[v _Serial_Transmit `(v ~T0 @X0 1 ef1`uc ]
+"133
+[; ;src/pic18f4520/serial/serial.c: 133: {
 {
 [e :U _Serial_Transmit ]
-"151
-[; ;src/pic18f4520/serial/serial.c: 151: void Serial_Transmit(uint8_t data)
+"132
+[; ;src/pic18f4520/serial/serial.c: 132: void Serial_Transmit(char data)
 [v _data `uc ~T0 @X0 1 r1 ]
-"152
-[; ;src/pic18f4520/serial/serial.c: 152: {
+"133
+[; ;src/pic18f4520/serial/serial.c: 133: {
 [f ]
-"153
-[; ;src/pic18f4520/serial/serial.c: 153:     TXREG = data;
-[e = _TXREG _data ]
-"154
-[; ;src/pic18f4520/serial/serial.c: 154: }
+"134
+[; ;src/pic18f4520/serial/serial.c: 134:     TXREG = data;
+[e = _TXREG -> _data `uc ]
+"135
+[; ;src/pic18f4520/serial/serial.c: 135:     while(!TRMT);
+[e $U 288  ]
+[e :U 289 ]
+[e :U 288 ]
+[e $ ! _TRMT 289  ]
+[e :U 290 ]
+"136
+[; ;src/pic18f4520/serial/serial.c: 136: }
 [e :UE 287 ]
 }
-[v F2601 `(uc ~T0 @X0 1 tf ]
-"156
-[; ;src/pic18f4520/serial/serial.c: 156: uint8_t Serial_Receive(void)
-[v _Serial_Receive `AF2601 ~T0 @X0 1 e ]
-"157
-[; ;src/pic18f4520/serial/serial.c: 157: {
+"138
+[; ;src/pic18f4520/serial/serial.c: 138: uint8_t Serial_Receive(void)
+[v _Serial_Receive `(uc ~T0 @X0 1 ef ]
+"139
+[; ;src/pic18f4520/serial/serial.c: 139: {
 {
 [e :U _Serial_Receive ]
 [f ]
-"158
-[; ;src/pic18f4520/serial/serial.c: 158:     while(!RCIF);
-[e $U 289  ]
-[e :U 290 ]
-[e :U 289 ]
-[e $ ! _RCIF 290  ]
-[e :U 291 ]
-"159
-[; ;src/pic18f4520/serial/serial.c: 159:     return RCREG;
+"140
+[; ;src/pic18f4520/serial/serial.c: 140:     return RCREG;
 [e ) _RCREG ]
-[e $UE 288  ]
-"160
-[; ;src/pic18f4520/serial/serial.c: 160: }
-[e :UE 288 ]
+[e $UE 291  ]
+"141
+[; ;src/pic18f4520/serial/serial.c: 141: }
+[e :UE 291 ]
 }

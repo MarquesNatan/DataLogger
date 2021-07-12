@@ -6,7 +6,7 @@
 #include <stdint.h>
 /*============================================================================*/
 #define _XTAL_FREQ 10000000
-#define SPEED_SERIAL    115200
+#define SPEED_SERIAL    9600
 /*============================================================================*/
 typedef enum {
     SERIAL_ASSYNC_MODE = 0x00,
@@ -42,7 +42,7 @@ extern "C" {
     void Serial_Config( long int desired_baud /* serial_config_t* serialConfig */);
     void Serial_1_Config(serial_config_t* serialConfig);
 /*============================================================================*/
-    void Serial_Transmit( uint8_t data );
+    void Serial_Transmit( char data );
     uint8_t Serial_Receive(void);
 #ifdef	__cplusplus
 }
