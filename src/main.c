@@ -17,7 +17,7 @@
 #pragma config CCP2MX = PORTC
 #pragma config PBADEN = OFF
 #pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
+#pragma config MCLRE = OFF
 
 // CONFIG4L
 #pragma config STVREN = ON
@@ -58,6 +58,7 @@
 /*============================================================================*/
 #include "pic18f4520/timer/timer.h"
 #include "pic18f4520/interrupt/interrupt.h"
+#include "app/display_lcd/display_lcd.h"
 /*============================================================================*/
 #include "pic18f4520/serial/serial.h"
 /*============================================================================*/
@@ -72,65 +73,57 @@ timer_config_t timerConfig = {
     .timer_prescaler_value = TIMER_PRESCALER_256
 };
 /*============================================================================*/
-serial_config_t serialConfig = {
+serial_config_t serialConfig = 
+{
     .serial_sync_com = SERIAL_ASSYNC_MODE,
     .serial_data_length = SERIAL_DATA_LENGTH_8,
     .serial_op_mode = SERIAL_MASTER_MODE,
     .serial_desired_baud = SPEED_SERIAL
 };
-/*============================================================================*/
-#define AT_COMMAND          "AT"
-uint8_t AT_VERSION [] = {0x41, 0x43, 0x2B, 0x56, 0x45, 0x52, 0x53, 0x49, 0x4f, 0x4e};
 uint8_t count = 0;
-int i;
 /*============================================================================*/    
-void __interrupt() TC0INT(void){
-     if (INTCONbits.TMR0IF == 0x01) {
+void __interrupt() TC0INT(void)
+{
+     if (INTCONbits.TMR0IF == 0x01)
+     {
         
       DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
       DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
       
       TMR0 = 0xE17B; // TMR0 = 0x00; 
-      INTCONbits.T0IF = 0x00;   // Clean Timer Flag
-      
+      INTCONbits.T0IF = 0x00;   // Clean Timer Flag 
     }
      
-    if(PIR1bits.RCIF){
-        
-        // TXREG = count;
-        
+    if(PIR1bits.RCIF)
+    {    
         count = RCREG;
-        
-        if(count == 0x41){
-            for(i = 0; i < sizeof(AT_VERSION); i++){
-               Serial_Transmit(AT_VERSION[i]);
-                while(!TRMT);
-            }
-        }
+
         PIR1bits.RCIF = 0x00; 
     }
 }
-
-
 /*============================================================================*/
-void main(void) {
+void main(void)
+{
     
-    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+   PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+   PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
-    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-    PIN_DIGITAL_WRITE(PIN_HIGH,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+   PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+   PIN_DIGITAL_WRITE(PIN_HIGH,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
-    //static volatile char AT_VERSION [7] = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47};
+   Interrupt_GlobalEnable();
+   Timer0_Config(&timerConfig);
     
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
+    // Serial_1_Config(&serialConfig);
+ 
+   
     
-    Serial_1_Config(&serialConfig);
+    LCD_Init();
     
-
     
-    while(1){
+    
+    while(1)
+    {
         
     }
     return;

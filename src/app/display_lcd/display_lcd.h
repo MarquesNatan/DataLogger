@@ -1,19 +1,21 @@
 /*============================================================================*/
-#ifndef BLUETOOTH_HC_06_H
-#define	BLUETOOTH_HC_06_H
+#ifndef DISPLAY_LCD_H
+#define	DISPLAY_LCD_H
 /*============================================================================*/
-#include <xc.h>
+#include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
+/*============================================================================*/
 /*============================================================================*/
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
 /*============================================================================*/
-    void Bluetooth_HC_06_Configure(void);
+    void LCD_Init(void);
+    void LCD_Command(uint8_t command);
+    void LCD_Byte(uint8_t byte);
 /*============================================================================*/
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */
-
-#endif	/* BLUETOOTH_HC_06_H */
-
+#endif	/* DISPLAY_LCD_H */
+/*============================================================================*/
