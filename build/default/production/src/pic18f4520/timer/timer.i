@@ -4525,6 +4525,97 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
 # 5 "src/pic18f4520/timer/timer.h" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 127 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
+# 6 "src/pic18f4520/timer/timer.h" 2
+
+
+
+
+uint32_t global_timer_value = 0x01;
 
 typedef enum {
     TIMER_LENGTH_16 = 0x00,
@@ -4557,7 +4648,6 @@ typedef enum {
     TIMER_PRESCALER_256 = 0b111
 }TIMER_PRESCALER_VALUE;
 
-
 typedef struct {
     TIMER_LENGTH timer_length;
     TIMER_CLK_SRC timer_clk_src;
@@ -4572,13 +4662,18 @@ typedef struct {
 
     void Timer0_Config( timer_config_t* timerConfig );
 
-    void Timer0_SetTickHook( void );
+    void Timer0_SetTickHook(void (*tickFunc)(uint32_t*));
 
-    void Timer0_GetGlobalTime( void );
+    void tickHook_Execute(uint32_t* global_timer_value);
 
-    void Time0_WaitMs( void );
+    uint32_t Timer0_GetGlobalTime( void );
+
+    void Timer0_WaitMS( uint16_t timeWait );
 # 2 "src/pic18f4520/timer/timer.c" 2
 
+
+
+static void (*tickHook_func_prt)(uint32_t*);
 
 void Timer0_Config( timer_config_t* timerConfig )
 {
@@ -4612,10 +4707,10 @@ void Timer0_Config( timer_config_t* timerConfig )
 
     if(!(T0CONbits.PSA = timerConfig->timer_prescaler_assign))
     {
-# 45 "src/pic18f4520/timer/timer.c"
+# 48 "src/pic18f4520/timer/timer.c"
         T0CONbits.T0PS = timerConfig->timer_prescaler_value;
     }
-# 60 "src/pic18f4520/timer/timer.c"
+# 63 "src/pic18f4520/timer/timer.c"
     INTCONbits.TMR0IE = 0x01;
 
 
@@ -4625,7 +4720,34 @@ void Timer0_Config( timer_config_t* timerConfig )
     INTCON2bits.TMR0IP = 0x01;
 
 
-    TMR0 = 0xD9D9;
+
+    TMR0 = 0xFB1E;
+
 
     T0CONbits.TMR0ON = 0x01;
+}
+
+uint32_t Timer0_GetGlobalTime( void )
+{
+    return global_timer_value;
+}
+
+void Timer0_SetTickHook(void (*tickFunc)(uint32_t*))
+{
+    tickHook_func_prt = tickFunc;
+}
+
+void tickHook_Execute(uint32_t* global_timer_value)
+{
+    tickHook_func_prt(global_timer_value);
+}
+
+void Timer0_WaitMS(uint16_t timerWait)
+{
+    static uint32_t timeStart;
+    timeStart = global_timer_value;
+
+    while((global_timer_value - timeStart) <= timerWait){
+
+    }
 }

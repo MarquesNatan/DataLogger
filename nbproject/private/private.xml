@@ -5,10 +5,7 @@
         <group>
             <file>file:/C:/Users/Natan/MPLABXProjects/data-logger-2.0.X/src/main.c</file>
             <file>file:/C:/Users/Natan/MPLABXProjects/data-logger-2.0.X/src/app/display_lcd/display_lcd.h</file>
-            <file>file:/C:/Users/Natan/MPLABXProjects/data-logger-2.0.X/src/pic18f4520/interrupt/interrupt.c</file>
             <file>file:/C:/Users/Natan/MPLABXProjects/data-logger-2.0.X/src/app/display_lcd/display_lcd.c</file>
-            <file>file:/C:/Users/Natan/MPLABXProjects/data-logger-2.0.X/src/board/pinout/pinout.h</file>
-            <file>file:/C:/Users/Natan/MPLABXProjects/data-logger-2.0.X/src/pic18f4520/timer/timer.c</file>
         </group>
     </open-files>
 </project-private>

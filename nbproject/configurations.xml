@@ -44,6 +44,9 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="pic18f4520" displayName="pic18f4520" projectFiles="true">
+        <logicalFolder name="fuse" displayName="fuse" projectFiles="true">
+          <itemPath>src/pic18f4520/fuse/fuse.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="gpio" displayName="gpio" projectFiles="true">
           <itemPath>src/pic18f4520/gpio/gpio.c</itemPath>
           <itemPath>src/pic18f4520/gpio/gpio.h</itemPath>
@@ -203,7 +206,7 @@
         <property key="codecoverage.outputfile" value=""/>
         <property key="oscillator.auxfrequency" value="120"/>
         <property key="oscillator.auxfrequencyunit" value="Mega"/>
-        <property key="oscillator.frequency" value="1"/>
+        <property key="oscillator.frequency" value="10"/>
         <property key="oscillator.frequencyunit" value="Mega"/>
         <property key="oscillator.rcfrequency" value="250"/>
         <property key="oscillator.rcfrequencyunit" value="Kilo"/>

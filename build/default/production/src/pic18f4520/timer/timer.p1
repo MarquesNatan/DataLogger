@@ -1,19 +1,20 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"4 src/pic18f4520/timer/timer.c
-[; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
-[c E2526 0 1 .. ]
-[n E2526 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
-[c E2530 0 1 .. ]
-[n E2530 . TIMER_CLKO_SRC TIMER_T0CLK_SCR  ]
-[c E2534 0 1 .. ]
-[n E2534 . TIMER_TRANSITION_LOW_HIGH TIMER_TRANSITION_HIGH_LOW  ]
-[c E2538 0 1 .. ]
-[n E2538 . TIMER_PRESCALER_IS_ASSIGNED TIMER_PRESCALER_NOT_ASSIGNED  ]
-[c E2542 0 1 2 3 4 5 6 7 .. ]
-[n E2542 . TIMER_PRESCALER_2 TIMER_PRESCALER_4 TIMER_PRESCALER_8 TIMER_PRESCALER_16 TIMER_PRESCALER_32 TIMER_PRESCALER_64 TIMER_PRESCALER_128 TIMER_PRESCALER_256  ]
-"39 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 39: typedef struct {
-[s S281 `E2526 1 `E2530 1 `E2534 1 `E2538 1 `E2542 1 ]
+[v F2606 `(v ~T0 @X0 0 tf1`*ul ]
+"7 src/pic18f4520/timer/timer.c
+[; ;src/pic18f4520/timer/timer.c: 7: void Timer0_Config( timer_config_t* timerConfig )
+[c E2559 0 1 .. ]
+[n E2559 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
+[c E2563 0 1 .. ]
+[n E2563 . TIMER_CLKO_SRC TIMER_T0CLK_SCR  ]
+[c E2567 0 1 .. ]
+[n E2567 . TIMER_TRANSITION_LOW_HIGH TIMER_TRANSITION_HIGH_LOW  ]
+[c E2571 0 1 .. ]
+[n E2571 . TIMER_PRESCALER_IS_ASSIGNED TIMER_PRESCALER_NOT_ASSIGNED  ]
+[c E2575 0 1 2 3 4 5 6 7 .. ]
+[n E2575 . TIMER_PRESCALER_2 TIMER_PRESCALER_4 TIMER_PRESCALER_8 TIMER_PRESCALER_16 TIMER_PRESCALER_32 TIMER_PRESCALER_64 TIMER_PRESCALER_128 TIMER_PRESCALER_256  ]
+"43 src/pic18f4520/timer/timer.h
+[; ;src/pic18f4520/timer/timer.h: 43: typedef struct {
+[s S281 `E2559 1 `E2563 1 `E2567 1 `E2571 1 `E2575 1 ]
 [n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
 "6174 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6174:     struct {
@@ -71,6 +72,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6251
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
 [v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
+[v F2612 `(v ~T0 @X0 0 tf1`*ul ]
+[v F2615 `(v ~T0 @X0 0 tf1`*ul ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -485,54 +488,155 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"4 src/pic18f4520/timer/timer.c
-[; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
+"10 src/pic18f4520/timer/timer.h
+[; ;src/pic18f4520/timer/timer.h: 10: uint32_t global_timer_value = 0x01;
+[v _global_timer_value `ul ~T0 @X0 1 e ]
+[i _global_timer_value
+-> -> -> 1 `i `l `ul
+]
+"5 src/pic18f4520/timer/timer.c
+[; ;src/pic18f4520/timer/timer.c: 5: static void (*tickHook_func_prt)(uint32_t*);
+[v _tickHook_func_prt `*F2606 ~T0 @X0 1 s ]
+"7
+[; ;src/pic18f4520/timer/timer.c: 7: void Timer0_Config( timer_config_t* timerConfig )
 [v _Timer0_Config `(v ~T0 @X0 1 ef1`*S281 ]
-"5
-[; ;src/pic18f4520/timer/timer.c: 5: {
+"8
+[; ;src/pic18f4520/timer/timer.c: 8: {
 {
 [e :U _Timer0_Config ]
-"4
-[; ;src/pic18f4520/timer/timer.c: 4: void Timer0_Config( timer_config_t* timerConfig )
+"7
+[; ;src/pic18f4520/timer/timer.c: 7: void Timer0_Config( timer_config_t* timerConfig )
 [v _timerConfig `*S281 ~T0 @X0 1 r1 ]
-"5
-[; ;src/pic18f4520/timer/timer.c: 5: {
+"8
+[; ;src/pic18f4520/timer/timer.c: 8: {
 [f ]
-"11
-[; ;src/pic18f4520/timer/timer.c: 11:     T0CONbits.TMR0ON = 0x00;
+"14
+[; ;src/pic18f4520/timer/timer.c: 14:     T0CONbits.TMR0ON = 0x00;
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-"19
-[; ;src/pic18f4520/timer/timer.c: 19:     T0CONbits.T08BIT = timerConfig->timer_length;
+"22
+[; ;src/pic18f4520/timer/timer.c: 22:     T0CONbits.T08BIT = timerConfig->timer_length;
 [e = . . _T0CONbits 0 4 -> . *U _timerConfig 0 `uc ]
-"26
-[; ;src/pic18f4520/timer/timer.c: 26:     T0CONbits.T0CS = timerConfig->timer_clk_src;
+"29
+[; ;src/pic18f4520/timer/timer.c: 29:     T0CONbits.T0CS = timerConfig->timer_clk_src;
 [e = . . _T0CONbits 0 3 -> . *U _timerConfig 1 `uc ]
-"34
-[; ;src/pic18f4520/timer/timer.c: 34:     if(!(T0CONbits.PSA = timerConfig->timer_prescaler_assign))
+"37
+[; ;src/pic18f4520/timer/timer.c: 37:     if(!(T0CONbits.PSA = timerConfig->timer_prescaler_assign))
 [e $ ! ! != -> = . . _T0CONbits 0 1 -> . *U _timerConfig 3 `uc `i -> 0 `i 283  ]
-"35
-[; ;src/pic18f4520/timer/timer.c: 35:     {
+"38
+[; ;src/pic18f4520/timer/timer.c: 38:     {
 {
-"45
-[; ;src/pic18f4520/timer/timer.c: 45:         T0CONbits.T0PS = timerConfig->timer_prescaler_value;
+"48
+[; ;src/pic18f4520/timer/timer.c: 48:         T0CONbits.T0PS = timerConfig->timer_prescaler_value;
 [e = . . _T0CONbits 0 0 -> . *U _timerConfig 4 `uc ]
-"46
-[; ;src/pic18f4520/timer/timer.c: 46:     }
+"49
+[; ;src/pic18f4520/timer/timer.c: 49:     }
 }
 [e :U 283 ]
-"60
-[; ;src/pic18f4520/timer/timer.c: 60:     INTCONbits.TMR0IE = 0x01;
+"63
+[; ;src/pic18f4520/timer/timer.c: 63:     INTCONbits.TMR0IE = 0x01;
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"66
-[; ;src/pic18f4520/timer/timer.c: 66:     INTCON2bits.TMR0IP = 0x01;
-[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
 "69
-[; ;src/pic18f4520/timer/timer.c: 69:     TMR0 = 0xD9D9;
-[e = _TMR0 -> -> 55769 `ui `us ]
-"71
-[; ;src/pic18f4520/timer/timer.c: 71:     T0CONbits.TMR0ON = 0x01;
+[; ;src/pic18f4520/timer/timer.c: 69:     INTCON2bits.TMR0IP = 0x01;
+[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
+"73
+[; ;src/pic18f4520/timer/timer.c: 73:     TMR0 = 0xFB1E;
+[e = _TMR0 -> -> 64286 `ui `us ]
+"76
+[; ;src/pic18f4520/timer/timer.c: 76:     T0CONbits.TMR0ON = 0x01;
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-"72
-[; ;src/pic18f4520/timer/timer.c: 72: }
+"77
+[; ;src/pic18f4520/timer/timer.c: 77: }
 [e :UE 282 ]
+}
+"79
+[; ;src/pic18f4520/timer/timer.c: 79: uint32_t Timer0_GetGlobalTime( void )
+[v _Timer0_GetGlobalTime `(ul ~T0 @X0 1 ef ]
+"80
+[; ;src/pic18f4520/timer/timer.c: 80: {
+{
+[e :U _Timer0_GetGlobalTime ]
+[f ]
+"81
+[; ;src/pic18f4520/timer/timer.c: 81:     return global_timer_value;
+[e ) _global_timer_value ]
+[e $UE 284  ]
+"82
+[; ;src/pic18f4520/timer/timer.c: 82: }
+[e :UE 284 ]
+}
+"84
+[; ;src/pic18f4520/timer/timer.c: 84: void Timer0_SetTickHook(void (*tickFunc)(uint32_t*))
+[v _Timer0_SetTickHook `(v ~T0 @X0 1 ef1`*F2612 ]
+"85
+[; ;src/pic18f4520/timer/timer.c: 85: {
+{
+[e :U _Timer0_SetTickHook ]
+"84
+[; ;src/pic18f4520/timer/timer.c: 84: void Timer0_SetTickHook(void (*tickFunc)(uint32_t*))
+[v _tickFunc `*F2615 ~T0 @X0 1 r1 ]
+"85
+[; ;src/pic18f4520/timer/timer.c: 85: {
+[f ]
+"86
+[; ;src/pic18f4520/timer/timer.c: 86:     tickHook_func_prt = tickFunc;
+[e = _tickHook_func_prt _tickFunc ]
+"87
+[; ;src/pic18f4520/timer/timer.c: 87: }
+[e :UE 285 ]
+}
+"89
+[; ;src/pic18f4520/timer/timer.c: 89: void tickHook_Execute(uint32_t* global_timer_value)
+[v _tickHook_Execute `(v ~T0 @X0 1 ef1`*ul ]
+"90
+[; ;src/pic18f4520/timer/timer.c: 90: {
+{
+[e :U _tickHook_Execute ]
+"89
+[; ;src/pic18f4520/timer/timer.c: 89: void tickHook_Execute(uint32_t* global_timer_value)
+[v _global_timer_value `*ul ~T0 @X0 1 r1 ]
+"90
+[; ;src/pic18f4520/timer/timer.c: 90: {
+[f ]
+"91
+[; ;src/pic18f4520/timer/timer.c: 91:     tickHook_func_prt(global_timer_value);
+[e ( *U _tickHook_func_prt (1 _global_timer_value ]
+"92
+[; ;src/pic18f4520/timer/timer.c: 92: }
+[e :UE 286 ]
+}
+"94
+[; ;src/pic18f4520/timer/timer.c: 94: void Timer0_WaitMS(uint16_t timerWait)
+[v _Timer0_WaitMS `(v ~T0 @X0 1 ef1`us ]
+"95
+[; ;src/pic18f4520/timer/timer.c: 95: {
+{
+[e :U _Timer0_WaitMS ]
+"94
+[; ;src/pic18f4520/timer/timer.c: 94: void Timer0_WaitMS(uint16_t timerWait)
+[v _timerWait `us ~T0 @X0 1 r1 ]
+"95
+[; ;src/pic18f4520/timer/timer.c: 95: {
+[f ]
+"96
+[; ;src/pic18f4520/timer/timer.c: 96:     static uint32_t timeStart;
+[v F2623 `ul ~T0 @X0 1 s timeStart ]
+"97
+[; ;src/pic18f4520/timer/timer.c: 97:     timeStart = global_timer_value;
+[e = F2623 _global_timer_value ]
+"99
+[; ;src/pic18f4520/timer/timer.c: 99:     while((global_timer_value - timeStart) <= timerWait){
+[e $U 288  ]
+[e :U 289 ]
+{
+"101
+[; ;src/pic18f4520/timer/timer.c: 101:     }
+}
+[e :U 288 ]
+"99
+[; ;src/pic18f4520/timer/timer.c: 99:     while((global_timer_value - timeStart) <= timerWait){
+[e $ <= - _global_timer_value F2623 -> _timerWait `ul 289  ]
+[e :U 290 ]
+"102
+[; ;src/pic18f4520/timer/timer.c: 102: }
+[e :UE 287 ]
 }

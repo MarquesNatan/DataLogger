@@ -1,60 +1,6 @@
 /*============================================================================*/
-// CONFIG1H
-#pragma config OSC = HS 
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-// CONFIG2L
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
-
-// CONFIG2H
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-
-// CONFIG3H
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = OFF
-
-// CONFIG4L
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-
-// CONFIG5L
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-// CONFIG5H
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-// CONFIG6L
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-// CONFIG6H
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-// CONFIG7L
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-// CONFIG7H
-#pragma config EBTRB = OFF
-/*============================================================================*/
 #include <xc.h>
+#include "pic18f4520/fuse/fuse.h"
 /*============================================================================*/
 #include "pic18f4520/timer/timer.h"
 #include "pic18f4520/interrupt/interrupt.h"
@@ -70,7 +16,7 @@ timer_config_t timerConfig = {
     .timer_clk_src = TIMER_CLKO_SRC,
     .timer_transition = TIMER_TRANSITION_LOW_HIGH,
     .timer_prescaler_assign = TIMER_PRESCALER_IS_ASSIGNED,
-    .timer_prescaler_value = TIMER_PRESCALER_256
+    .timer_prescaler_value = TIMER_PRESCALER_2
 };
 /*============================================================================*/
 serial_config_t serialConfig = 
@@ -80,28 +26,34 @@ serial_config_t serialConfig =
     .serial_op_mode = SERIAL_MASTER_MODE,
     .serial_desired_baud = SPEED_SERIAL
 };
-uint8_t count = 0;
-/*============================================================================*/    
-void __interrupt() TC0INT(void)
+/*============================================================================*/
+extern global_timer_t global_timer_value;
+/*============================================================================*/
+void tickHook_func(global_timer_t *timer_value)
 {
-     if (INTCONbits.TMR0IF == 0x01)
-     {
-        
-      DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-      DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-      
-      TMR0 = 0xE17B; // TMR0 = 0x00; 
-      INTCONbits.T0IF = 0x00;   // Clean Timer Flag 
+    // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+    // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+    (*timer_value)++;
+}
+/*============================================================================*/    
+    void __interrupt() TC0INT(void)
+{
+    if (INTCONbits.TMR0IF == 0x01)
+    {
+        // tickHook_Execute(&global_timer_value);
+        global_timer_value++;
+        TMR0 = 0xFB1E;// TMR0 = 0x9E58; 
+        INTCONbits.T0IF = 0x00;   // Clean Timer Flag 
     }
      
     if(PIR1bits.RCIF)
     {    
-        count = RCREG;
+        // count = RCREG;
 
         PIR1bits.RCIF = 0x00; 
     }
 }
-/*============================================================================*/
+/*============================================================================*/    
 void main(void)
 {
     
@@ -109,22 +61,20 @@ void main(void)
    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-   PIN_DIGITAL_WRITE(PIN_HIGH,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+   PIN_DIGITAL_WRITE(PIN_LOW,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
    Interrupt_GlobalEnable();
    Timer0_Config(&timerConfig);
+   // Timer0_SetTickHook(tickHook_func);
+   // Serial_1_Config(&serialConfig);
     
-    // Serial_1_Config(&serialConfig);
- 
-   
-    
-    LCD_Init();
-    
-    
-    
+    // DisplayLCD_Init();
     while(1)
     {
-        
+        DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+        Timer0_WaitMS(500);
+        DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+        Timer0_WaitMS(500);
     }
     return;
 }

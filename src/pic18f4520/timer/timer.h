@@ -2,7 +2,12 @@
 #ifndef TIMER_H
 #define	TIMER_H
 /*============================================================================*/
-#include <xc.h> // include processor files - each processor file is guarded.  
+#include <xc.h> // include processor files - each processor file is guarded.
+#include <stdint.h>
+/*============================================================================*/
+#define global_timer_t uint32_t 
+/*============================================================================*/
+global_timer_t global_timer_value = 0x01;
 /*============================================================================*/
 typedef enum {
     TIMER_LENGTH_16 = 0x00,
@@ -35,7 +40,6 @@ typedef enum {
     TIMER_PRESCALER_256 = 0b111
 }TIMER_PRESCALER_VALUE;
 /*============================================================================*/
-
 typedef struct {
     TIMER_LENGTH           timer_length; 
     TIMER_CLK_SRC          timer_clk_src; 
@@ -50,11 +54,13 @@ extern "C" {
 /*============================================================================*/
     void Timer0_Config( timer_config_t* timerConfig );
 /*============================================================================*/
-    void Timer0_SetTickHook( void );
+    void Timer0_SetTickHook(void (*tickFunc)(global_timer_t*));
 /*============================================================================*/
-    void Timer0_GetGlobalTime( void );
+    void tickHook_Execute(global_timer_t* global_timer_value);
 /*============================================================================*/
-    void Time0_WaitMs( void );
+    uint32_t Timer0_GetGlobalTime( void );
+/*============================================================================*/
+    void Timer0_WaitMS( uint16_t timeWait );
 /*============================================================================*/
 #ifdef	__cplusplus
 }

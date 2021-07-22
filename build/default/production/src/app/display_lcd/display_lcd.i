@@ -4612,117 +4612,20 @@ typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
 # 6 "src/app/display_lcd/display_lcd.h" 2
 
-
-
-
-
-
-
-    void LCD_Init(void);
-    void LCD_Command(uint8_t command);
-    void LCD_Byte(uint8_t byte);
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
+# 7 "src/app/display_lcd/display_lcd.h" 2
+# 79 "src/app/display_lcd/display_lcd.h"
+    void DisplayLCD_Init( void );
 # 2 "src/app/display_lcd/display_lcd.c" 2
 
-# 1 "src/app/display_lcd/../../pic18f4520/gpio/gpio.h" 1
-# 3 "src/app/display_lcd/display_lcd.c" 2
 
-# 1 "src/app/display_lcd/../../board/pinout/pinout.h" 1
-# 4 "src/app/display_lcd/display_lcd.c" 2
-
-
-
-void LCD_WriteByte(uint8_t byte);
-
-void LCD_Init(void)
+void displayLcd_CMD(uint8_t cmd)
 {
-    TRISB = 0x00;
-    TRISD = 0x00;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 2)); else LATD = (PORTD & ~((1 << 2)));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 3)); else LATD = (PORTD & ~((1 << 3)));;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((1)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-
-
-
-    LCD_Command(0b00100000);
-    LCD_Command(0b00001110);
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 2)); else LATD = (PORTD & ~((1 << 2)));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 3)); else LATD = (PORTD & ~((1 << 3)));;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((10)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 2)); else LATD = (PORTD & ~((1 << 2)));;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 3)); else LATD = (PORTD & ~((1 << 3)));;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((10)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-
-    LCD_WriteByte(0x4E);
+    uint8_t auxCmd;
+    auxCmd = cmd >> 4;
 }
 
-void LCD_Command(uint8_t command)
+void DisplayLCD_Init( void )
 {
-    uint8_t commandAux;
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    commandAux = command >> 0x04;
-
-    PORTD = commandAux;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((10)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-
-    commandAux = 0x00;
-    commandAux = (command & 0x0F);
-
-    PORTD = commandAux;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((10)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-
-}
-
-void LCD_WriteByte(uint8_t byte)
-{
-    uint8_t auxByte;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    auxByte = byte >> 0x04;
-
-    PORTD = auxByte;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((10)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-
-    auxByte = 0x00;
-    auxByte = (byte & 0x0F);
-
-    PORTD = auxByte;
-
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-    _delay((unsigned long)((10)*(10000000/4000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
 
 }

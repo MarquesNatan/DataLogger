@@ -1,101 +1,52 @@
 /*============================================================================*/
 #include "display_lcd.h"
-#include "../../pic18f4520/gpio/gpio.h"
-#include "../../board/pinout/pinout.h"
 /*============================================================================*/
-#define _XTAL_FREQ  10000000
-void LCD_WriteByte(uint8_t byte);
-/*============================================================================*/
-void LCD_Init(void)
+void displayLcd_CMD(uint8_t cmd)
 {
-    TRISB = 0x00;
-    TRISD = 0x00;
-    
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_RS_PORT, DISPLAY_LCD_RS_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D4_PORT, DISPLAY_LCD_D4_MASK);
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_D5_PORT, DISPLAY_LCD_D5_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D6_PORT, DISPLAY_LCD_D6_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D7_PORT, DISPLAY_LCD_D7_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(1);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    
-    
-    
-    LCD_Command(0b00100000);            // Envia 20 para o display lcd 
-    LCD_Command(0b00001110);            // Envia 20 para o display lcd 
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_RS_PORT, DISPLAY_LCD_RS_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D4_PORT, DISPLAY_LCD_D4_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D5_PORT, DISPLAY_LCD_D5_MASK);
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_D6_PORT, DISPLAY_LCD_D6_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D7_PORT, DISPLAY_LCD_D7_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(10);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_RS_PORT, DISPLAY_LCD_RS_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D4_PORT, DISPLAY_LCD_D4_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D5_PORT, DISPLAY_LCD_D5_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_D6_PORT, DISPLAY_LCD_D6_MASK);
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_D7_PORT, DISPLAY_LCD_D7_MASK);
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(10);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    
-    LCD_WriteByte(0x4E);
+    uint8_t auxCmd; 
+    auxCmd = cmd >> 4;
 }
 /*============================================================================*/
-void LCD_Command(uint8_t command)
+void DisplayLCD_Init( void )
 {
-    uint8_t commandAux;
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_RS_PORT, DISPLAY_LCD_RS_MASK);
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    commandAux = command >> 0x04;
-    
-    PORTD = commandAux;
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(10);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    
-    commandAux = 0x00;
-    commandAux = (command & 0x0F);
-    
-    PORTD = commandAux; 
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(10);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
     
 }
-
-void LCD_WriteByte(uint8_t byte)
-{
-    uint8_t auxByte;
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_RS_PORT, DISPLAY_LCD_RS_MASK);
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    auxByte = byte >> 0x04;
-    
-    PORTD = auxByte;
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(10);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    
-    auxByte = 0x00;
-    auxByte = (byte & 0x0F);
-    
-    PORTD = auxByte; 
-    
-    PIN_DIGITAL_WRITE(PIN_HIGH, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    __delay_ms(10);
-    PIN_DIGITAL_WRITE(PIN_LOW, DISPLAY_LCD_EN_PORT, DISPLAY_LCD_EN_MASK);
-    
-}
+/*==============================================================================
+ * 
+ *                  Wait 15 ms
+ *                      |
+ *              |---------------|
+ *              |    00 0010    |   Function set (interface 4 bits long)
+ *              |---------------|
+ *                      |
+ *                  Wait 4.1 ms
+ *                      |
+ *              |---------------|
+ *              |    00 0010    |   Function set (interface 4 bits long))
+ *              |---------------|
+ *                      |
+ *                  Wait 100 us
+ *                      |
+ *              |---------------|
+ *              |    00 0010    |   Function set (interface 4 bits long))
+ *              |---------------|
+ *                      |
+ *              |---------------|
+ *              |    00 0010    |   Function set (interface 4 bits long))
+ *              |---------------|
+ *              |    00 0010    |   Function set (interface 4 bits long)
+ *              |    00 NF**    |   N -> Number lines, F -> Set Fonts
+ *              |---------------|
+ *              |    00 0000    |   Display ON OFF Control
+ *              |    00 1DCB    |   D - ON/OFF C - CURSOR ON/OFF B - BLINK CURSOR
+ *              |---------------|                      
+ *              |    00 0000    |   Display Clear
+ *              |    00 0001    |   
+ *              |---------------|                      
+ *              |    00 0000    |   ENTRY SET MODE
+ *              |    00 01 ID S |   I/D -> Increment/Decrement
+ *              |---------------|   S - > Shift Display
+ *                      | 
+ *              Initialization ends
+ * 
+ * ============================================================================*/

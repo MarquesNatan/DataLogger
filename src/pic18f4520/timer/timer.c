@@ -1,5 +1,8 @@
 /*============================================================================*/
 #include "timer.h"
+#include <stdint.h>
+/*============================================================================*/
+static void (*tickHook_func_prt)(global_timer_t*);
 /*============================================================================*/
 void Timer0_Config( timer_config_t* timerConfig )
 {
@@ -66,10 +69,35 @@ void Timer0_Config( timer_config_t* timerConfig )
     INTCON2bits.TMR0IP = 0x01;
     
     
-    TMR0 = 0xD9D9;
+    // TMR0 = 0xD9D9;
+    TMR0 = 0xFB1E;
+    // TMR0 = 0xE17B;
     
     T0CONbits.TMR0ON = 0x01;
 }
-
-
+/*============================================================================*/
+uint32_t Timer0_GetGlobalTime( void )
+{
+    return global_timer_value;
+}
+/*============================================================================*/
+void Timer0_SetTickHook(void (*tickFunc)(global_timer_t*))
+{
+    tickHook_func_prt = tickFunc;
+}
+/*============================================================================*/
+void tickHook_Execute(global_timer_t* global_timer_value)
+{
+    tickHook_func_prt(global_timer_value);
+}
+/*============================================================================*/
+void Timer0_WaitMS(uint16_t timerWait)
+{
+    static uint32_t timeStart; 
+    timeStart = global_timer_value; 
+    
+    while((global_timer_value - timeStart) <= timerWait){
+        
+    }
+}
 /*============================================================================*/
