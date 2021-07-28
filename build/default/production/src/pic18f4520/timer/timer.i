@@ -4739,7 +4739,10 @@ void Timer0_SetTickHook(void (*tickFunc)(uint32_t*))
 
 void tickHook_Execute(uint32_t* global_timer_value)
 {
-    tickHook_func_prt(global_timer_value);
+    if(tickHook_func_prt != ((void*)0))
+    {
+        tickHook_func_prt(global_timer_value);
+    }
 }
 
 void Timer0_WaitMS(uint16_t timerWait)

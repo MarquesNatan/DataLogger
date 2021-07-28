@@ -4821,8 +4821,6 @@ extern uint32_t global_timer_value;
 
 void tickHook_func(uint32_t *timer_value)
 {
-
-
     (*timer_value)++;
 }
 
@@ -4830,8 +4828,7 @@ void tickHook_func(uint32_t *timer_value)
 {
     if (INTCONbits.TMR0IF == 0x01)
     {
-
-        global_timer_value++;
+        tickHook_Execute(&global_timer_value);
         TMR0 = 0xFB1E;
         INTCONbits.T0IF = 0x00;
     }
@@ -4851,20 +4848,17 @@ void main(void)
    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
 
    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
-   if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+   if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
 
    Interrupt_GlobalEnable();
    Timer0_Config(&timerConfig);
-
+   Timer0_SetTickHook(tickHook_func);
 
 
 
     while(1)
     {
-        LATB = (PORTB ^ (1 << 0));;
-        Timer0_WaitMS(500);
-        LATB = (PORTB ^ (1 << 0));;
-        Timer0_WaitMS(500);
+
     }
     return;
 }

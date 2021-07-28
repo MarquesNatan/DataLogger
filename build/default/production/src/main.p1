@@ -48,6 +48,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6724
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
+"59 src/pic18f4520/timer/timer.h
+[; ;src/pic18f4520/timer/timer.h: 59:     void tickHook_Execute(uint32_t* global_timer_value);
+[v _tickHook_Execute `(v ~T0 @X0 0 ef1`*ul ]
 "30 src/main.c
 [; ;src/main.c: 30: extern uint32_t global_timer_value;
 [v _global_timer_value `ul ~T0 @X0 0 e ]
@@ -85,9 +88,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "55 src/pic18f4520/timer/timer.h
 [; ;src/pic18f4520/timer/timer.h: 55:     void Timer0_Config( timer_config_t* timerConfig );
 [v _Timer0_Config `(v ~T0 @X0 0 ef1`*S281 ]
-"63
-[; ;src/pic18f4520/timer/timer.h: 63:     void Timer0_WaitMS( uint16_t timeWait );
-[v _Timer0_WaitMS `(v ~T0 @X0 0 ef1`us ]
+[v F2595 `(v ~T0 @X0 0 tf1`*ul ]
+"57
+[; ;src/pic18f4520/timer/timer.h: 57:     void Timer0_SetTickHook(void (*tickFunc)(uint32_t*));
+[v _Timer0_SetTickHook `(v ~T0 @X0 0 ef1`*F2595 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -614,133 +618,124 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;src/main.c: 33: {
 [f ]
-"36
-[; ;src/main.c: 36:     (*timer_value)++;
+"34
+[; ;src/main.c: 34:     (*timer_value)++;
 [e ++ *U _timer_value -> -> -> 1 `i `l `ul ]
-"37
-[; ;src/main.c: 37: }
+"35
+[; ;src/main.c: 35: }
 [e :UE 283 ]
 }
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"39
-[; ;src/main.c: 39:     void __attribute__((picinterrupt(("")))) TC0INT(void)
+"37
+[; ;src/main.c: 37:     void __attribute__((picinterrupt(("")))) TC0INT(void)
 [v _TC0INT `(v ~T41 @X0 1 ef ]
-"40
-[; ;src/main.c: 40: {
+"38
+[; ;src/main.c: 38: {
 {
 [e :U _TC0INT ]
 [f ]
-"41
-[; ;src/main.c: 41:     if (INTCONbits.TMR0IF == 0x01)
+"39
+[; ;src/main.c: 39:     if (INTCONbits.TMR0IF == 0x01)
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 285  ]
-"42
-[; ;src/main.c: 42:     {
+"40
+[; ;src/main.c: 40:     {
 {
-"44
-[; ;src/main.c: 44:         global_timer_value++;
-[e ++ _global_timer_value -> -> -> 1 `i `l `ul ]
-"45
-[; ;src/main.c: 45:         TMR0 = 0xFB1E;
+"41
+[; ;src/main.c: 41:         tickHook_Execute(&global_timer_value);
+[e ( _tickHook_Execute (1 &U _global_timer_value ]
+"42
+[; ;src/main.c: 42:         TMR0 = 0xFB1E;
 [e = _TMR0 -> -> 64286 `ui `us ]
-"46
-[; ;src/main.c: 46:         INTCONbits.T0IF = 0x00;
+"43
+[; ;src/main.c: 43:         INTCONbits.T0IF = 0x00;
 [e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"47
-[; ;src/main.c: 47:     }
+"44
+[; ;src/main.c: 44:     }
 }
 [e :U 285 ]
-"49
-[; ;src/main.c: 49:     if(PIR1bits.RCIF)
+"46
+[; ;src/main.c: 46:     if(PIR1bits.RCIF)
 [e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 286  ]
-"50
-[; ;src/main.c: 50:     {
+"47
+[; ;src/main.c: 47:     {
 {
-"53
-[; ;src/main.c: 53:         PIR1bits.RCIF = 0x00;
+"50
+[; ;src/main.c: 50:         PIR1bits.RCIF = 0x00;
 [e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"54
-[; ;src/main.c: 54:     }
+"51
+[; ;src/main.c: 51:     }
 }
 [e :U 286 ]
-"55
-[; ;src/main.c: 55: }
+"52
+[; ;src/main.c: 52: }
 [e :UE 284 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"57
-[; ;src/main.c: 57: void main(void)
+"54
+[; ;src/main.c: 54: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"58
-[; ;src/main.c: 58: {
+"55
+[; ;src/main.c: 55: {
 {
 [e :U _main ]
 [f ]
-"60
-[; ;src/main.c: 60:    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+"57
+[; ;src/main.c: 57:    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 288  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e $U 289  ]
 [e :U 288 ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 289 ]
-"61
-[; ;src/main.c: 61:    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
+"58
+[; ;src/main.c: 58:    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 290  ]
 [e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e $U 291  ]
 [e :U 290 ]
 [e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
 [e :U 291 ]
-"63
-[; ;src/main.c: 63:    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+"60
+[; ;src/main.c: 60:    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
 [e $ ! == -> 0 `i -> 1 `i 292  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 [e $U 293  ]
 [e :U 292 ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 0 `i `uc ]
 [e :U 293 ]
-"64
-[; ;src/main.c: 64:    if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-[e $ ! == -> 0 `i -> 1 `i 294  ]
+"61
+[; ;src/main.c: 61:    if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+[e $ ! == -> 1 `i -> 1 `i 294  ]
 [e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 [e $U 295  ]
 [e :U 294 ]
 [e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
 [e :U 295 ]
-"66
-[; ;src/main.c: 66:    Interrupt_GlobalEnable();
+"63
+[; ;src/main.c: 63:    Interrupt_GlobalEnable();
 [e ( _Interrupt_GlobalEnable ..  ]
-"67
-[; ;src/main.c: 67:    Timer0_Config(&timerConfig);
+"64
+[; ;src/main.c: 64:    Timer0_Config(&timerConfig);
 [e ( _Timer0_Config (1 &U _timerConfig ]
-"72
-[; ;src/main.c: 72:     while(1)
+"65
+[; ;src/main.c: 65:    Timer0_SetTickHook(tickHook_func);
+[e ( _Timer0_SetTickHook (1 &U _tickHook_func ]
+"69
+[; ;src/main.c: 69:     while(1)
 [e :U 297 ]
-"73
-[; ;src/main.c: 73:     {
+"70
+[; ;src/main.c: 70:     {
 {
-"74
-[; ;src/main.c: 74:         LATB = (PORTB ^ (1 << 0));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-"75
-[; ;src/main.c: 75:         Timer0_WaitMS(500);
-[e ( _Timer0_WaitMS (1 -> -> 500 `i `us ]
-"76
-[; ;src/main.c: 76:         LATB = (PORTB ^ (1 << 0));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-"77
-[; ;src/main.c: 77:         Timer0_WaitMS(500);
-[e ( _Timer0_WaitMS (1 -> -> 500 `i `us ]
-"78
-[; ;src/main.c: 78:     }
+"72
+[; ;src/main.c: 72:     }
 }
 [e :U 296 ]
 [e $U 297  ]
 [e :U 298 ]
-"79
-[; ;src/main.c: 79:     return;
+"73
+[; ;src/main.c: 73:     return;
 [e $UE 287  ]
-"80
-[; ;src/main.c: 80: }
+"74
+[; ;src/main.c: 74: }
 [e :UE 287 ]
 }

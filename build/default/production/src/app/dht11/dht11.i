@@ -1,4 +1,4 @@
-# 1 "src/app/display_lcd/display_lcd.c"
+# 1 "src/app/dht11/dht11.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,9 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "src/app/display_lcd/display_lcd.c" 2
-
-# 1 "src/app/display_lcd/display_lcd.h" 1
+# 1 "src/app/dht11/dht11.c" 2
+# 24 "src/app/dht11/dht11.c"
+# 1 "src/app/dht11/dht11.h" 1
 
 
 
@@ -4523,7 +4523,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 5 "src/app/display_lcd/display_lcd.h" 2
+# 5 "src/app/dht11/dht11.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
@@ -4610,88 +4610,185 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-# 6 "src/app/display_lcd/display_lcd.h" 2
+# 6 "src/app/dht11/dht11.h" 2
+# 16 "src/app/dht11/dht11.h"
+    int8_t DHT11_RequestData(void);
+    int8_t DHT11_ReadData( void );
+    int8_t DHT11_ReadByte( void );
+# 24 "src/app/dht11/dht11.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
-# 7 "src/app/display_lcd/display_lcd.h" 2
-# 79 "src/app/display_lcd/display_lcd.h"
-    void DisplayLCD_Init( void );
-# 2 "src/app/display_lcd/display_lcd.c" 2
+# 1 "src/app/dht11/../../board/board_definitions/board_definitions.h" 1
+# 25 "src/app/dht11/dht11.c" 2
 
-# 1 "src/app/display_lcd/../../board/pinout/pinout.h" 1
-# 3 "src/app/display_lcd/display_lcd.c" 2
+# 1 "src/app/dht11/../../pic18f4520/gpio/gpio.h" 1
+# 26 "src/app/dht11/dht11.c" 2
 
-# 1 "src/app/display_lcd/../../pic18f4520/gpio/gpio.h" 1
-# 4 "src/app/display_lcd/display_lcd.c" 2
+# 1 "src/app/dht11/../../board/pinout/pinout.h" 1
+# 27 "src/app/dht11/dht11.c" 2
+
+# 1 "src/app/dht11/../../pic18f4520/timer/timer.h" 1
+# 10 "src/app/dht11/../../pic18f4520/timer/timer.h"
+uint32_t global_timer_value = 0x01;
+
+typedef enum {
+    TIMER_LENGTH_16 = 0x00,
+    TIMER_LENGTH_8 = 0x01
+}TIMER_LENGTH;
+
+typedef enum {
+    TIMER_CLKO_SRC = 0x00,
+    TIMER_T0CLK_SCR = 0x01
+}TIMER_CLK_SRC;
+
+typedef enum {
+    TIMER_TRANSITION_LOW_HIGH = 0x00,
+    TIMER_TRANSITION_HIGH_LOW = 0x01
+}TIMER_TRANSITION;
+
+typedef enum {
+    TIMER_PRESCALER_IS_ASSIGNED = 0x00,
+    TIMER_PRESCALER_NOT_ASSIGNED = 0x01
+}TIMER_PRESCALER_ASSIGN;
+
+typedef enum {
+    TIMER_PRESCALER_2 = 0b000,
+    TIMER_PRESCALER_4 = 0b001,
+    TIMER_PRESCALER_8 = 0b010,
+    TIMER_PRESCALER_16 = 0b011,
+    TIMER_PRESCALER_32 = 0b100,
+    TIMER_PRESCALER_64 = 0b101,
+    TIMER_PRESCALER_128 = 0b110,
+    TIMER_PRESCALER_256 = 0b111
+}TIMER_PRESCALER_VALUE;
+
+typedef struct {
+    TIMER_LENGTH timer_length;
+    TIMER_CLK_SRC timer_clk_src;
+    TIMER_TRANSITION timer_transition;
+    TIMER_PRESCALER_ASSIGN timer_prescaler_assign;
+    TIMER_PRESCALER_VALUE timer_prescaler_value;
+}timer_config_t;
 
 
 
 
-void displayLcd_CMD(uint8_t cmd)
+
+    void Timer0_Config( timer_config_t* timerConfig );
+
+    void Timer0_SetTickHook(void (*tickFunc)(uint32_t*));
+
+    void tickHook_Execute(uint32_t* global_timer_value);
+
+    uint32_t Timer0_GetGlobalTime( void );
+
+    void Timer0_WaitMS( uint16_t timeWait );
+# 28 "src/app/dht11/dht11.c" 2
+
+
+static volatile uint8_t temperature [2];
+static volatile uint8_t humidity [2];
+
+int8_t DHT11_RequestData( void )
 {
-    uint8_t auxCmd;
-    auxCmd = (cmd >> 4);
-    PORTB = auxCmd;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+    uint16_t timeout = 0xFFFF;
+
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+    if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+
+    Timer0_WaitMS(20);
 
     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    _delay((unsigned long)((100)*(10000000/4000000.0)));
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
 
-    auxCmd = (cmd & 0x0F);
-    PORTB = auxCmd;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+    _delay((unsigned long)((30)*(10000000UL/4000000.0)));
 
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    _delay((unsigned long)((100)*(10000000/4000000.0)));
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+    if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+
+
+
+    while(!((PORTD >> 0)& 0b00000001))
+    {
+        if(!--timeout)
+        {
+            return 1;
+        }
+    }
+
+
+    while(((PORTD >> 0)& 0b00000001))
+    {
+        if(!--timeout)
+        {
+            return 1;
+        }
+    }
+
+
+    return 0;
 }
 
-void displayLCD_Nibble(uint8_t nibble)
+int8_t DHT11_ReadData( void )
 {
-    PORTB = nibble;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+    uint8_t resquestResult = 0x00;
+    uint8_t checkSum = 0x00;
 
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    _delay((unsigned long)((100)*(10000000/4000000.0)));
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+    resquestResult = DHT11_ReadByte();
+
+    if(!resquestResult)
+    {
+        humidity[0] = DHT11_ReadByte();
+        humidity[1] = DHT11_ReadByte();
+
+        temperature[0] = DHT11_ReadByte();
+        temperature[1] = DHT11_ReadByte();
+
+        checkSum = DHT11_ReadByte();
+
+        if(checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1]))
+        {
+            return 2;
+        }
+    }
+    else
+    {
+        return resquestResult;
+    }
+
+
+
+
 }
 
-void DisplayLCD_Init( void )
+int8_t DHT11_ReadByte( void )
 {
-    TRISB = 0x00;
-    TRISD = 0x00;
-    PORTB = 0x00;
-    PORTD = 0x00;
-    _delay((unsigned long)((40)*(10000000/4000.0)));
+    uint16_t timeout;
+    uint8_t i;
+    uint8_t byte;
 
+    for(i = 0x80; i; i = (i >> 1))
+    {
+        timeout = 0xFFFF;
+        while(!((PORTD >> 0)& 0b00000001))
+        {
+            if(!--timeout)
+            {
+                return 1;
+            }
+        }
 
+        _delay((unsigned long)((40)*(10000000UL/4000000.0)));
 
-    displayLCD_Nibble(0x02);
-    _delay((unsigned long)((1)*(10000000/4000.0)));
-    displayLCD_Nibble(0x02);
-    _delay((unsigned long)((1)*(10000000/4000.0)));
-    displayLCD_Nibble(0x02);
-    _delay((unsigned long)((1)*(10000000/4000.0)));
-    displayLCD_Nibble(0x00);
-    _delay((unsigned long)((1)*(10000000/4000.0)));
-    displayLCD_Nibble(0x0E);
-    _delay((unsigned long)((1)*(10000000/4000.0)));
+        if(((PORTD >> 0)& 0b00000001))
+        {
+            byte = byte | i;
+            timeout = 0xFFFF;
+            while(!((PORTD >> 0)& 0b00000001))
+            {
+                if(!--timeout)
+                    return 1;
+            }
 
-    PORTB = 0x04;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+        }
+    }
 
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    _delay((unsigned long)((100)*(10000000/4000000.0)));
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-
-    PORTB = 0x08;
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    _delay((unsigned long)((100)*(10000000/4000000.0)));
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-
-
-
+    return byte;
 }

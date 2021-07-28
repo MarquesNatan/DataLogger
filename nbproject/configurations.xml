@@ -22,6 +22,10 @@
           <itemPath>src/app/bluetooth-hc-06/bluetooth_hc_06.c</itemPath>
           <itemPath>src/app/bluetooth-hc-06/bluetooth_hc_06.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="dht11" displayName="dht11" projectFiles="true">
+          <itemPath>src/app/dht11/dht11.c</itemPath>
+          <itemPath>src/app/dht11/dht11.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="display_lcd" displayName="display_lcd" projectFiles="true">
           <itemPath>src/app/display_lcd/display_lcd.c</itemPath>
           <itemPath>src/app/display_lcd/display_lcd.h</itemPath>

@@ -31,8 +31,6 @@ extern global_timer_t global_timer_value;
 /*============================================================================*/
 void tickHook_func(global_timer_t *timer_value)
 {
-    // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-    // DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     (*timer_value)++;
 }
 /*============================================================================*/    
@@ -40,8 +38,7 @@ void tickHook_func(global_timer_t *timer_value)
 {
     if (INTCONbits.TMR0IF == 0x01)
     {
-        // tickHook_Execute(&global_timer_value);
-        global_timer_value++;
+        tickHook_Execute(&global_timer_value);
         TMR0 = 0xFB1E;// TMR0 = 0x9E58; 
         INTCONbits.T0IF = 0x00;   // Clean Timer Flag 
     }
@@ -61,20 +58,17 @@ void main(void)
    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-   PIN_DIGITAL_WRITE(PIN_LOW,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+   PIN_DIGITAL_WRITE(PIN_HIGH,LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
    Interrupt_GlobalEnable();
    Timer0_Config(&timerConfig);
-   // Timer0_SetTickHook(tickHook_func);
+   Timer0_SetTickHook(tickHook_func);
    // Serial_1_Config(&serialConfig);
     
     // DisplayLCD_Init();
     while(1)
     {
-        DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-        Timer0_WaitMS(500);
-        DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-        Timer0_WaitMS(500);
+        
     }
     return;
 }

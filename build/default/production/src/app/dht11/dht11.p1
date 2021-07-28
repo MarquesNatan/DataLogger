@@ -1,23 +1,23 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"271 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"2143 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2143: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
 "1313
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1313: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
 [v _LATD `Vuc ~T0 @X0 0 e@3980 ]
 "632
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"63 src/app/dht11/../../pic18f4520/timer/timer.h
+[; ;src/app/dht11/../../pic18f4520/timer/timer.h: 63:     void Timer0_WaitMS( uint16_t timeWait );
+[v _Timer0_WaitMS `(v ~T0 @X0 0 ef1`us ]
 [v F2518 `(v ~T0 @X0 1 tf1`ul ]
 "203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
 [v __delay `JF2518 ~T0 @X0 0 e ]
 [p i __delay ]
-"1699 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"2143
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2143: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"18 src/app/dht11/dht11.h
+[; ;src/app/dht11/dht11.h: 18:     int8_t DHT11_ReadByte( void );
+[v _DHT11_ReadByte `(c ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -432,253 +432,323 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"8 src/app/display_lcd/display_lcd.c
-[; ;src/app/display_lcd/display_lcd.c: 8: void displayLcd_CMD(uint8_t cmd)
-[v _displayLcd_CMD `(v ~T0 @X0 1 ef1`uc ]
-"9
-[; ;src/app/display_lcd/display_lcd.c: 9: {
-{
-[e :U _displayLcd_CMD ]
-"8
-[; ;src/app/display_lcd/display_lcd.c: 8: void displayLcd_CMD(uint8_t cmd)
-[v _cmd `uc ~T0 @X0 1 r1 ]
-"9
-[; ;src/app/display_lcd/display_lcd.c: 9: {
-[f ]
-"10
-[; ;src/app/display_lcd/display_lcd.c: 10:     uint8_t auxCmd;
-[v _auxCmd `uc ~T0 @X0 1 a ]
-"11
-[; ;src/app/display_lcd/display_lcd.c: 11:     auxCmd = (cmd >> 4);
-[e = _auxCmd -> >> -> _cmd `i -> 4 `i `uc ]
-"12
-[; ;src/app/display_lcd/display_lcd.c: 12:     PORTB = auxCmd;
-[e = _PORTB _auxCmd ]
-"13
-[; ;src/app/display_lcd/display_lcd.c: 13:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 282  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 283  ]
-[e :U 282 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 283 ]
-"15
-[; ;src/app/display_lcd/display_lcd.c: 15:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 284  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 285  ]
-[e :U 284 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 285 ]
-"16
-[; ;src/app/display_lcd/display_lcd.c: 16:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"17
-[; ;src/app/display_lcd/display_lcd.c: 17:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 286  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 287  ]
-[e :U 286 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 287 ]
-"19
-[; ;src/app/display_lcd/display_lcd.c: 19:     auxCmd = (cmd & 0x0F);
-[e = _auxCmd -> & -> _cmd `i -> 15 `i `uc ]
-"20
-[; ;src/app/display_lcd/display_lcd.c: 20:     PORTB = auxCmd;
-[e = _PORTB _auxCmd ]
-"21
-[; ;src/app/display_lcd/display_lcd.c: 21:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 288  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 289  ]
-[e :U 288 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 289 ]
-"23
-[; ;src/app/display_lcd/display_lcd.c: 23:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 290  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 291  ]
-[e :U 290 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 291 ]
-"24
-[; ;src/app/display_lcd/display_lcd.c: 24:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"25
-[; ;src/app/display_lcd/display_lcd.c: 25:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 292  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 293  ]
-[e :U 292 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 293 ]
-"26
-[; ;src/app/display_lcd/display_lcd.c: 26: }
-[e :UE 281 ]
-}
-"28
-[; ;src/app/display_lcd/display_lcd.c: 28: void displayLCD_Nibble(uint8_t nibble)
-[v _displayLCD_Nibble `(v ~T0 @X0 1 ef1`uc ]
-"29
-[; ;src/app/display_lcd/display_lcd.c: 29: {
-{
-[e :U _displayLCD_Nibble ]
-"28
-[; ;src/app/display_lcd/display_lcd.c: 28: void displayLCD_Nibble(uint8_t nibble)
-[v _nibble `uc ~T0 @X0 1 r1 ]
-"29
-[; ;src/app/display_lcd/display_lcd.c: 29: {
-[f ]
-"30
-[; ;src/app/display_lcd/display_lcd.c: 30:     PORTB = nibble;
-[e = _PORTB _nibble ]
+"10 src/app/dht11/../../pic18f4520/timer/timer.h
+[; ;src/app/dht11/../../pic18f4520/timer/timer.h: 10: uint32_t global_timer_value = 0x01;
+[v _global_timer_value `ul ~T0 @X0 1 e ]
+[i _global_timer_value
+-> -> -> 1 `i `l `ul
+]
+"30 src/app/dht11/dht11.c
+[; ;src/app/dht11/dht11.c: 30: static volatile uint8_t temperature [2];
+[v _temperature `Vuc ~T0 @X0 -> 2 `i s ]
 "31
-[; ;src/app/display_lcd/display_lcd.c: 31:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 295  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 296  ]
-[e :U 295 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 296 ]
+[; ;src/app/dht11/dht11.c: 31: static volatile uint8_t humidity [2];
+[v _humidity `Vuc ~T0 @X0 -> 2 `i s ]
 "33
-[; ;src/app/display_lcd/display_lcd.c: 33:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 297  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 298  ]
-[e :U 297 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 298 ]
+[; ;src/app/dht11/dht11.c: 33: int8_t DHT11_RequestData( void )
+[v _DHT11_RequestData `(c ~T0 @X0 1 ef ]
 "34
-[; ;src/app/display_lcd/display_lcd.c: 34:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"35
-[; ;src/app/display_lcd/display_lcd.c: 35:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 299  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 300  ]
-[e :U 299 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 300 ]
-"36
-[; ;src/app/display_lcd/display_lcd.c: 36: }
-[e :UE 294 ]
-}
-"38
-[; ;src/app/display_lcd/display_lcd.c: 38: void DisplayLCD_Init( void )
-[v _DisplayLCD_Init `(v ~T0 @X0 1 ef ]
-"39
-[; ;src/app/display_lcd/display_lcd.c: 39: {
+[; ;src/app/dht11/dht11.c: 34: {
 {
-[e :U _DisplayLCD_Init ]
+[e :U _DHT11_RequestData ]
 [f ]
+"35
+[; ;src/app/dht11/dht11.c: 35:     uint16_t timeout = 0xFFFF;
+[v _timeout `us ~T0 @X0 1 a ]
+[e = _timeout -> -> 65535 `ui `us ]
+"37
+[; ;src/app/dht11/dht11.c: 37:     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+[e $ ! == -> 0 `i -> 0 `i 283  ]
+[e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e $U 284  ]
+[e :U 283 ]
+[e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 0 `i `uc ]
+[e :U 284 ]
+"38
+[; ;src/app/dht11/dht11.c: 38:     if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+[e $ ! == -> 0 `i -> 1 `i 285  ]
+[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
+[e $U 286  ]
+[e :U 285 ]
+[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 286 ]
 "40
-[; ;src/app/display_lcd/display_lcd.c: 40:     TRISB = 0x00;
-[e = _TRISB -> -> 0 `i `uc ]
-"41
-[; ;src/app/display_lcd/display_lcd.c: 41:     TRISD = 0x00;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;src/app/dht11/dht11.c: 40:     Timer0_WaitMS(20);
+[e ( _Timer0_WaitMS (1 -> -> 20 `i `us ]
 "42
-[; ;src/app/display_lcd/display_lcd.c: 42:     PORTB = 0x00;
-[e = _PORTB -> -> 0 `i `uc ]
-"43
-[; ;src/app/display_lcd/display_lcd.c: 43:     PORTD = 0x00;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;src/app/dht11/dht11.c: 42:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+[e $ ! == -> 1 `i -> 1 `i 287  ]
+[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
+[e $U 288  ]
+[e :U 287 ]
+[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 288 ]
 "44
-[; ;src/app/display_lcd/display_lcd.c: 44:     _delay((unsigned long)((40)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
-"48
-[; ;src/app/display_lcd/display_lcd.c: 48:     displayLCD_Nibble(0x02);
-[e ( _displayLCD_Nibble (1 -> -> 2 `i `uc ]
-"49
-[; ;src/app/display_lcd/display_lcd.c: 49:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 44:     _delay((unsigned long)((30)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"46
+[; ;src/app/dht11/dht11.c: 46:     if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+[e $ ! == -> 1 `i -> 0 `i 289  ]
+[e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e $U 290  ]
+[e :U 289 ]
+[e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 0 `i `uc ]
+[e :U 290 ]
 "50
-[; ;src/app/display_lcd/display_lcd.c: 50:     displayLCD_Nibble(0x02);
-[e ( _displayLCD_Nibble (1 -> -> 2 `i `uc ]
+[; ;src/app/dht11/dht11.c: 50:     while(!((PORTD >> 0)& 0b00000001))
+[e $U 291  ]
+[e :U 292 ]
 "51
-[; ;src/app/display_lcd/display_lcd.c: 51:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 51:     {
+{
 "52
-[; ;src/app/display_lcd/display_lcd.c: 52:     displayLCD_Nibble(0x02);
-[e ( _displayLCD_Nibble (1 -> -> 2 `i `uc ]
+[; ;src/app/dht11/dht11.c: 52:         if(!--timeout)
+[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 294  ]
 "53
-[; ;src/app/display_lcd/display_lcd.c: 53:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 53:         {
+{
 "54
-[; ;src/app/display_lcd/display_lcd.c: 54:     displayLCD_Nibble(0x00);
-[e ( _displayLCD_Nibble (1 -> -> 0 `i `uc ]
+[; ;src/app/dht11/dht11.c: 54:             return 1;
+[e ) -> -> 1 `i `c ]
+[e $UE 282  ]
 "55
-[; ;src/app/display_lcd/display_lcd.c: 55:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 55:         }
+}
+[e :U 294 ]
 "56
-[; ;src/app/display_lcd/display_lcd.c: 56:     displayLCD_Nibble(0x0E);
-[e ( _displayLCD_Nibble (1 -> -> 14 `i `uc ]
-"57
-[; ;src/app/display_lcd/display_lcd.c: 57:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 56:     }
+}
+[e :U 291 ]
+"50
+[; ;src/app/dht11/dht11.c: 50:     while(!((PORTD >> 0)& 0b00000001))
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 292  ]
+[e :U 293 ]
 "59
-[; ;src/app/display_lcd/display_lcd.c: 59:     PORTB = 0x04;
-[e = _PORTB -> -> 4 `i `uc ]
+[; ;src/app/dht11/dht11.c: 59:     while(((PORTD >> 0)& 0b00000001))
+[e $U 295  ]
+[e :U 296 ]
 "60
-[; ;src/app/display_lcd/display_lcd.c: 60:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 302  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 303  ]
-[e :U 302 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 303 ]
+[; ;src/app/dht11/dht11.c: 60:     {
+{
+"61
+[; ;src/app/dht11/dht11.c: 61:         if(!--timeout)
+[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 298  ]
 "62
-[; ;src/app/display_lcd/display_lcd.c: 62:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 304  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 305  ]
-[e :U 304 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 305 ]
+[; ;src/app/dht11/dht11.c: 62:         {
+{
 "63
-[; ;src/app/display_lcd/display_lcd.c: 63:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 63:             return 1;
+[e ) -> -> 1 `i `c ]
+[e $UE 282  ]
 "64
-[; ;src/app/display_lcd/display_lcd.c: 64:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 306  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 307  ]
-[e :U 306 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 307 ]
-"66
-[; ;src/app/display_lcd/display_lcd.c: 66:     PORTB = 0x08;
-[e = _PORTB -> -> 8 `i `uc ]
-"67
-[; ;src/app/display_lcd/display_lcd.c: 67:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 308  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 309  ]
-[e :U 308 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 309 ]
+[; ;src/app/dht11/dht11.c: 64:         }
+}
+[e :U 298 ]
+"65
+[; ;src/app/dht11/dht11.c: 65:     }
+}
+[e :U 295 ]
+"59
+[; ;src/app/dht11/dht11.c: 59:     while(((PORTD >> 0)& 0b00000001))
+[e $ != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 296  ]
+[e :U 297 ]
+"68
+[; ;src/app/dht11/dht11.c: 68:     return 0;
+[e ) -> -> 0 `i `c ]
+[e $UE 282  ]
 "69
-[; ;src/app/display_lcd/display_lcd.c: 69:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 310  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 311  ]
-[e :U 310 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 311 ]
-"70
-[; ;src/app/display_lcd/display_lcd.c: 70:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
+[; ;src/app/dht11/dht11.c: 69: }
+[e :UE 282 ]
+}
 "71
-[; ;src/app/display_lcd/display_lcd.c: 71:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 312  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
+[; ;src/app/dht11/dht11.c: 71: int8_t DHT11_ReadData( void )
+[v _DHT11_ReadData `(c ~T0 @X0 1 ef ]
+"72
+[; ;src/app/dht11/dht11.c: 72: {
+{
+[e :U _DHT11_ReadData ]
+[f ]
+"73
+[; ;src/app/dht11/dht11.c: 73:     uint8_t resquestResult = 0x00;
+[v _resquestResult `uc ~T0 @X0 1 a ]
+[e = _resquestResult -> -> 0 `i `uc ]
+"74
+[; ;src/app/dht11/dht11.c: 74:     uint8_t checkSum = 0x00;
+[v _checkSum `uc ~T0 @X0 1 a ]
+[e = _checkSum -> -> 0 `i `uc ]
+"76
+[; ;src/app/dht11/dht11.c: 76:     resquestResult = DHT11_ReadByte();
+[e = _resquestResult -> ( _DHT11_ReadByte ..  `uc ]
+"78
+[; ;src/app/dht11/dht11.c: 78:     if(!resquestResult)
+[e $ ! ! != -> _resquestResult `i -> 0 `i 300  ]
+"79
+[; ;src/app/dht11/dht11.c: 79:     {
+{
+"80
+[; ;src/app/dht11/dht11.c: 80:         humidity[0] = DHT11_ReadByte();
+[e = *U + &U _humidity * -> -> -> 0 `i `ui `ux -> -> # *U &U _humidity `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+"81
+[; ;src/app/dht11/dht11.c: 81:         humidity[1] = DHT11_ReadByte();
+[e = *U + &U _humidity * -> -> -> 1 `i `ui `ux -> -> # *U &U _humidity `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+"83
+[; ;src/app/dht11/dht11.c: 83:         temperature[0] = DHT11_ReadByte();
+[e = *U + &U _temperature * -> -> -> 0 `i `ui `ux -> -> # *U &U _temperature `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+"84
+[; ;src/app/dht11/dht11.c: 84:         temperature[1] = DHT11_ReadByte();
+[e = *U + &U _temperature * -> -> -> 1 `i `ui `ux -> -> # *U &U _temperature `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+"86
+[; ;src/app/dht11/dht11.c: 86:         checkSum = DHT11_ReadByte();
+[e = _checkSum -> ( _DHT11_ReadByte ..  `uc ]
+"88
+[; ;src/app/dht11/dht11.c: 88:         if(checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1]))
+[e $ ! != -> _checkSum `i + + + -> *U + &U _humidity * -> -> -> 0 `i `ui `ux -> -> # *U &U _humidity `ui `ux `i -> *U + &U _humidity * -> -> -> 1 `i `ui `ux -> -> # *U &U _humidity `ui `ux `i -> *U + &U _temperature * -> -> -> 0 `i `ui `ux -> -> # *U &U _temperature `ui `ux `i -> *U + &U _temperature * -> -> -> 1 `i `ui `ux -> -> # *U &U _temperature `ui `ux `i 301  ]
+"89
+[; ;src/app/dht11/dht11.c: 89:         {
+{
+"90
+[; ;src/app/dht11/dht11.c: 90:             return 2;
+[e ) -> -> 2 `i `c ]
+[e $UE 299  ]
+"91
+[; ;src/app/dht11/dht11.c: 91:         }
+}
+[e :U 301 ]
+"92
+[; ;src/app/dht11/dht11.c: 92:     }
+}
+[e $U 302  ]
+"93
+[; ;src/app/dht11/dht11.c: 93:     else
+[e :U 300 ]
+"94
+[; ;src/app/dht11/dht11.c: 94:     {
+{
+"95
+[; ;src/app/dht11/dht11.c: 95:         return resquestResult;
+[e ) -> _resquestResult `c ]
+[e $UE 299  ]
+"96
+[; ;src/app/dht11/dht11.c: 96:     }
+}
+[e :U 302 ]
+"101
+[; ;src/app/dht11/dht11.c: 101: }
+[e :UE 299 ]
+}
+"103
+[; ;src/app/dht11/dht11.c: 103: int8_t DHT11_ReadByte( void )
+[v _DHT11_ReadByte `(c ~T0 @X0 1 ef ]
+"104
+[; ;src/app/dht11/dht11.c: 104: {
+{
+[e :U _DHT11_ReadByte ]
+[f ]
+"105
+[; ;src/app/dht11/dht11.c: 105:     uint16_t timeout;
+[v _timeout `us ~T0 @X0 1 a ]
+"106
+[; ;src/app/dht11/dht11.c: 106:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"107
+[; ;src/app/dht11/dht11.c: 107:     uint8_t byte;
+[v _byte `uc ~T0 @X0 1 a ]
+"109
+[; ;src/app/dht11/dht11.c: 109:     for(i = 0x80; i; i = (i >> 1))
+{
+[e = _i -> -> 128 `i `uc ]
+[e $U 307  ]
+[e :U 304 ]
+"110
+[; ;src/app/dht11/dht11.c: 110:     {
+{
+"111
+[; ;src/app/dht11/dht11.c: 111:         timeout = 0xFFFF;
+[e = _timeout -> -> 65535 `ui `us ]
+"112
+[; ;src/app/dht11/dht11.c: 112:         while(!((PORTD >> 0)& 0b00000001))
+[e $U 308  ]
+[e :U 309 ]
+"113
+[; ;src/app/dht11/dht11.c: 113:         {
+{
+"114
+[; ;src/app/dht11/dht11.c: 114:             if(!--timeout)
+[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 311  ]
+"115
+[; ;src/app/dht11/dht11.c: 115:             {
+{
+"116
+[; ;src/app/dht11/dht11.c: 116:                 return 1;
+[e ) -> -> 1 `i `c ]
+[e $UE 303  ]
+"117
+[; ;src/app/dht11/dht11.c: 117:             }
+}
+[e :U 311 ]
+"118
+[; ;src/app/dht11/dht11.c: 118:         }
+}
+[e :U 308 ]
+"112
+[; ;src/app/dht11/dht11.c: 112:         while(!((PORTD >> 0)& 0b00000001))
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 309  ]
+[e :U 310 ]
+"120
+[; ;src/app/dht11/dht11.c: 120:         _delay((unsigned long)((40)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"122
+[; ;src/app/dht11/dht11.c: 122:         if(((PORTD >> 0)& 0b00000001))
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 312  ]
+"123
+[; ;src/app/dht11/dht11.c: 123:         {
+{
+"124
+[; ;src/app/dht11/dht11.c: 124:             byte = byte | i;
+[e = _byte -> | -> _byte `i -> _i `i `uc ]
+"125
+[; ;src/app/dht11/dht11.c: 125:             timeout = 0xFFFF;
+[e = _timeout -> -> 65535 `ui `us ]
+"126
+[; ;src/app/dht11/dht11.c: 126:             while(!((PORTD >> 0)& 0b00000001))
 [e $U 313  ]
-[e :U 312 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 314 ]
+"127
+[; ;src/app/dht11/dht11.c: 127:             {
+{
+"128
+[; ;src/app/dht11/dht11.c: 128:                 if(!--timeout)
+[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 316  ]
+"129
+[; ;src/app/dht11/dht11.c: 129:                     return 1;
+[e ) -> -> 1 `i `c ]
+[e $UE 303  ]
+[e :U 316 ]
+"130
+[; ;src/app/dht11/dht11.c: 130:             }
+}
 [e :U 313 ]
-"75
-[; ;src/app/display_lcd/display_lcd.c: 75: }
-[e :UE 301 ]
+"126
+[; ;src/app/dht11/dht11.c: 126:             while(!((PORTD >> 0)& 0b00000001))
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 314  ]
+[e :U 315 ]
+"132
+[; ;src/app/dht11/dht11.c: 132:         }
+}
+[e :U 312 ]
+"133
+[; ;src/app/dht11/dht11.c: 133:     }
+}
+[e = _i -> >> -> _i `i -> 1 `i `uc ]
+[e :U 307 ]
+[e $ != -> _i `i -> 0 `i 304  ]
+[e :U 305 ]
+}
+"135
+[; ;src/app/dht11/dht11.c: 135:     return byte;
+[e ) -> _byte `c ]
+[e $UE 303  ]
+"136
+[; ;src/app/dht11/dht11.c: 136: }
+[e :UE 303 ]
 }
