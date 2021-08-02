@@ -4612,6 +4612,8 @@ typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
 # 6 "src/pic18f4520/serial/serial.h" 2
 
+# 1 "src/pic18f4520/serial/../../board/board_definitions/board_definitions.h" 1
+# 7 "src/pic18f4520/serial/serial.h" 2
 
 
 
@@ -4650,7 +4652,7 @@ typedef struct {
     void Serial_Config( long int desired_baud );
     void Serial_1_Config(serial_config_t* serialConfig);
 
-    void Serial_Transmit( char data );
+    void Serial_Transmit( uint8_t data );
     uint8_t Serial_Receive(void);
 # 2 "src/pic18f4520/serial/serial.c" 2
 
@@ -4672,14 +4674,14 @@ void Serial_1_Config(serial_config_t* serialConfig) {
     uint8_t error_min;
 
 
-    brg8LOW = (10000000/(serialConfig->serial_desired_baud * 64));
-    brg8HIGH = (10000000/(serialConfig->serial_desired_baud * 16));
-    brg16HIGH = (10000000/(serialConfig->serial_desired_baud * 4));
+    brg8LOW = (10000000UL/(serialConfig->serial_desired_baud * 64));
+    brg8HIGH = (10000000UL/(serialConfig->serial_desired_baud * 16));
+    brg16HIGH = (10000000UL/(serialConfig->serial_desired_baud * 4));
 
 
-    error_8LOW = (10000000/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
-    error_8HIGH = (10000000/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
-    error_16HIGH = (10000000/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
+    error_8LOW = (10000000UL/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
+    error_8HIGH = (10000000UL/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
+    error_16HIGH = (10000000UL/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
 
 
     error_min = error_8LOW;
@@ -4737,7 +4739,7 @@ void Serial_1_Config(serial_config_t* serialConfig) {
 
 }
 
-void Serial_Transmit(char data)
+void Serial_Transmit(uint8_t data)
 {
     TXREG = data;
     while(!TRMT);

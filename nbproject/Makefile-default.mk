@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/main.c src/app/bluetooth-hc-06/bluetooth_hc_06.c src/app/display_lcd/display_lcd.c src/app/packet_factory/packet_factory.c src/pic18f4520/gpio/gpio.c src/pic18f4520/interrupt/interrupt.c src/pic18f4520/serial/serial.c src/pic18f4520/timer/timer.c src/app/dht11/dht11.c
+SOURCEFILES_QUOTED_IF_SPACED=src/main.c src/app/bluetooth-hc-06/bluetooth_hc_06.c src/app/dht11/dht11.c src/app/display_lcd/display_lcd.c src/app/packet_factory/packet_factory.c src/pic18f4520/gpio/gpio.c src/pic18f4520/interrupt/interrupt.c src/pic18f4520/serial/serial.c src/pic18f4520/timer/timer.c src/app/main-app/main-app.c src/board/peripheral-controller/peripheral_controller.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1 ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1 ${OBJECTDIR}/src/app/packet_factory/packet_factory.p1 ${OBJECTDIR}/src/pic18f4520/gpio/gpio.p1 ${OBJECTDIR}/src/pic18f4520/interrupt/interrupt.p1 ${OBJECTDIR}/src/pic18f4520/serial/serial.p1 ${OBJECTDIR}/src/pic18f4520/timer/timer.p1 ${OBJECTDIR}/src/app/dht11/dht11.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/main.p1.d ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1.d ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1.d ${OBJECTDIR}/src/app/packet_factory/packet_factory.p1.d ${OBJECTDIR}/src/pic18f4520/gpio/gpio.p1.d ${OBJECTDIR}/src/pic18f4520/interrupt/interrupt.p1.d ${OBJECTDIR}/src/pic18f4520/serial/serial.p1.d ${OBJECTDIR}/src/pic18f4520/timer/timer.p1.d ${OBJECTDIR}/src/app/dht11/dht11.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1 ${OBJECTDIR}/src/app/dht11/dht11.p1 ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1 ${OBJECTDIR}/src/app/packet_factory/packet_factory.p1 ${OBJECTDIR}/src/pic18f4520/gpio/gpio.p1 ${OBJECTDIR}/src/pic18f4520/interrupt/interrupt.p1 ${OBJECTDIR}/src/pic18f4520/serial/serial.p1 ${OBJECTDIR}/src/pic18f4520/timer/timer.p1 ${OBJECTDIR}/src/app/main-app/main-app.p1 ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/main.p1.d ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1.d ${OBJECTDIR}/src/app/dht11/dht11.p1.d ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1.d ${OBJECTDIR}/src/app/packet_factory/packet_factory.p1.d ${OBJECTDIR}/src/pic18f4520/gpio/gpio.p1.d ${OBJECTDIR}/src/pic18f4520/interrupt/interrupt.p1.d ${OBJECTDIR}/src/pic18f4520/serial/serial.p1.d ${OBJECTDIR}/src/pic18f4520/timer/timer.p1.d ${OBJECTDIR}/src/app/main-app/main-app.p1.d ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1 ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1 ${OBJECTDIR}/src/app/packet_factory/packet_factory.p1 ${OBJECTDIR}/src/pic18f4520/gpio/gpio.p1 ${OBJECTDIR}/src/pic18f4520/interrupt/interrupt.p1 ${OBJECTDIR}/src/pic18f4520/serial/serial.p1 ${OBJECTDIR}/src/pic18f4520/timer/timer.p1 ${OBJECTDIR}/src/app/dht11/dht11.p1
+OBJECTFILES=${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1 ${OBJECTDIR}/src/app/dht11/dht11.p1 ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1 ${OBJECTDIR}/src/app/packet_factory/packet_factory.p1 ${OBJECTDIR}/src/pic18f4520/gpio/gpio.p1 ${OBJECTDIR}/src/pic18f4520/interrupt/interrupt.p1 ${OBJECTDIR}/src/pic18f4520/serial/serial.p1 ${OBJECTDIR}/src/pic18f4520/timer/timer.p1 ${OBJECTDIR}/src/app/main-app/main-app.p1 ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1
 
 # Source Files
-SOURCEFILES=src/main.c src/app/bluetooth-hc-06/bluetooth_hc_06.c src/app/display_lcd/display_lcd.c src/app/packet_factory/packet_factory.c src/pic18f4520/gpio/gpio.c src/pic18f4520/interrupt/interrupt.c src/pic18f4520/serial/serial.c src/pic18f4520/timer/timer.c src/app/dht11/dht11.c
+SOURCEFILES=src/main.c src/app/bluetooth-hc-06/bluetooth_hc_06.c src/app/dht11/dht11.c src/app/display_lcd/display_lcd.c src/app/packet_factory/packet_factory.c src/pic18f4520/gpio/gpio.c src/pic18f4520/interrupt/interrupt.c src/pic18f4520/serial/serial.c src/pic18f4520/timer/timer.c src/app/main-app/main-app.c src/board/peripheral-controller/peripheral_controller.c
 
 
 
@@ -109,6 +109,14 @@ ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1: src/app/bluetooth-hc-06
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1 src/app/bluetooth-hc-06/bluetooth_hc_06.c 
 	@-${MV} ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.d ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/src/app/dht11/dht11.p1: src/app/dht11/dht11.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/src/app/dht11" 
+	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
+	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/dht11/dht11.p1 src/app/dht11/dht11.c 
+	@-${MV} ${OBJECTDIR}/src/app/dht11/dht11.d ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/app/dht11/dht11.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1: src/app/display_lcd/display_lcd.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/src/app/display_lcd" 
@@ -158,13 +166,21 @@ ${OBJECTDIR}/src/pic18f4520/timer/timer.p1: src/pic18f4520/timer/timer.c  nbproj
 	@-${MV} ${OBJECTDIR}/src/pic18f4520/timer/timer.d ${OBJECTDIR}/src/pic18f4520/timer/timer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/pic18f4520/timer/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/src/app/dht11/dht11.p1: src/app/dht11/dht11.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/src/app/dht11" 
-	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
-	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/dht11/dht11.p1 src/app/dht11/dht11.c 
-	@-${MV} ${OBJECTDIR}/src/app/dht11/dht11.d ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/app/dht11/dht11.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/src/app/main-app/main-app.p1: src/app/main-app/main-app.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/src/app/main-app" 
+	@${RM} ${OBJECTDIR}/src/app/main-app/main-app.p1.d 
+	@${RM} ${OBJECTDIR}/src/app/main-app/main-app.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/main-app/main-app.p1 src/app/main-app/main-app.c 
+	@-${MV} ${OBJECTDIR}/src/app/main-app/main-app.d ${OBJECTDIR}/src/app/main-app/main-app.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/app/main-app/main-app.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1: src/board/peripheral-controller/peripheral_controller.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/src/board/peripheral-controller" 
+	@${RM} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d 
+	@${RM} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1 src/board/peripheral-controller/peripheral_controller.c 
+	@-${MV} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.d ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk 
@@ -182,6 +198,14 @@ ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1: src/app/bluetooth-hc-06
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1 src/app/bluetooth-hc-06/bluetooth_hc_06.c 
 	@-${MV} ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.d ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/app/bluetooth-hc-06/bluetooth_hc_06.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/src/app/dht11/dht11.p1: src/app/dht11/dht11.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/src/app/dht11" 
+	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
+	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/dht11/dht11.p1 src/app/dht11/dht11.c 
+	@-${MV} ${OBJECTDIR}/src/app/dht11/dht11.d ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/app/dht11/dht11.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/src/app/display_lcd/display_lcd.p1: src/app/display_lcd/display_lcd.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/src/app/display_lcd" 
@@ -231,13 +255,21 @@ ${OBJECTDIR}/src/pic18f4520/timer/timer.p1: src/pic18f4520/timer/timer.c  nbproj
 	@-${MV} ${OBJECTDIR}/src/pic18f4520/timer/timer.d ${OBJECTDIR}/src/pic18f4520/timer/timer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/pic18f4520/timer/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/src/app/dht11/dht11.p1: src/app/dht11/dht11.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/src/app/dht11" 
-	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
-	@${RM} ${OBJECTDIR}/src/app/dht11/dht11.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/dht11/dht11.p1 src/app/dht11/dht11.c 
-	@-${MV} ${OBJECTDIR}/src/app/dht11/dht11.d ${OBJECTDIR}/src/app/dht11/dht11.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/app/dht11/dht11.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/src/app/main-app/main-app.p1: src/app/main-app/main-app.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/src/app/main-app" 
+	@${RM} ${OBJECTDIR}/src/app/main-app/main-app.p1.d 
+	@${RM} ${OBJECTDIR}/src/app/main-app/main-app.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/app/main-app/main-app.p1 src/app/main-app/main-app.c 
+	@-${MV} ${OBJECTDIR}/src/app/main-app/main-app.d ${OBJECTDIR}/src/app/main-app/main-app.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/app/main-app/main-app.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1: src/board/peripheral-controller/peripheral_controller.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/src/board/peripheral-controller" 
+	@${RM} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d 
+	@${RM} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1 src/board/peripheral-controller/peripheral_controller.c 
+	@-${MV} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.d ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/board/peripheral-controller/peripheral_controller.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

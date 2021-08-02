@@ -8,16 +8,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "632
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"63 src/app/dht11/../../pic18f4520/timer/timer.h
-[; ;src/app/dht11/../../pic18f4520/timer/timer.h: 63:     void Timer0_WaitMS( uint16_t timeWait );
-[v _Timer0_WaitMS `(v ~T0 @X0 0 ef1`us ]
 [v F2518 `(v ~T0 @X0 1 tf1`ul ]
 "203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
 [v __delay `JF2518 ~T0 @X0 0 e ]
 [p i __delay ]
 "18 src/app/dht11/dht11.h
-[; ;src/app/dht11/dht11.h: 18:     int8_t DHT11_ReadByte( void );
-[v _DHT11_ReadByte `(c ~T0 @X0 0 ef ]
+[; ;src/app/dht11/dht11.h: 18:     uint8_t DHT11_ReadByte( void );
+[v _DHT11_ReadByte `(uc ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -438,317 +435,301 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _global_timer_value
 -> -> -> 1 `i `l `ul
 ]
-"30 src/app/dht11/dht11.c
-[; ;src/app/dht11/dht11.c: 30: static volatile uint8_t temperature [2];
-[v _temperature `Vuc ~T0 @X0 -> 2 `i s ]
-"31
-[; ;src/app/dht11/dht11.c: 31: static volatile uint8_t humidity [2];
-[v _humidity `Vuc ~T0 @X0 -> 2 `i s ]
-"33
-[; ;src/app/dht11/dht11.c: 33: int8_t DHT11_RequestData( void )
-[v _DHT11_RequestData `(c ~T0 @X0 1 ef ]
-"34
-[; ;src/app/dht11/dht11.c: 34: {
+"31 src/app/dht11/dht11.c
+[; ;src/app/dht11/dht11.c: 31: volatile uint8_t temperature [2];
+[v _temperature `Vuc ~T0 @X0 -> 2 `i e ]
+"32
+[; ;src/app/dht11/dht11.c: 32: volatile uint8_t humidity [2];
+[v _humidity `Vuc ~T0 @X0 -> 2 `i e ]
+"35
+[; ;src/app/dht11/dht11.c: 35: uint8_t DHT11_RequestData(void) {
+[v _DHT11_RequestData `(uc ~T0 @X0 1 ef ]
 {
 [e :U _DHT11_RequestData ]
 [f ]
-"35
-[; ;src/app/dht11/dht11.c: 35:     uint16_t timeout = 0xFFFF;
-[v _timeout `us ~T0 @X0 1 a ]
-[e = _timeout -> -> 65535 `ui `us ]
-"37
-[; ;src/app/dht11/dht11.c: 37:     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
-[e $ ! == -> 0 `i -> 0 `i 283  ]
-[e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e $U 284  ]
-[e :U 283 ]
-[e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 0 `i `uc ]
-[e :U 284 ]
+"36
+[; ;src/app/dht11/dht11.c: 36:     uint16_t timeOut = 0xFFFF;
+[v _timeOut `us ~T0 @X0 1 a ]
+[e = _timeOut -> -> 65535 `ui `us ]
 "38
-[; ;src/app/dht11/dht11.c: 38:     if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 0 `i -> 1 `i 285  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 286  ]
-[e :U 285 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 286 ]
-"40
-[; ;src/app/dht11/dht11.c: 40:     Timer0_WaitMS(20);
-[e ( _Timer0_WaitMS (1 -> -> 20 `i `us ]
-"42
-[; ;src/app/dht11/dht11.c: 42:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 287  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 288  ]
-[e :U 287 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 288 ]
-"44
-[; ;src/app/dht11/dht11.c: 44:     _delay((unsigned long)((30)*(10000000UL/4000000.0)));
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
-"46
-[; ;src/app/dht11/dht11.c: 46:     if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
-[e $ ! == -> 1 `i -> 0 `i 289  ]
+[; ;src/app/dht11/dht11.c: 38:     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+[e $ ! == -> 0 `i -> 0 `i 284  ]
 [e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e $U 290  ]
-[e :U 289 ]
+[e $U 285  ]
+[e :U 284 ]
 [e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 0 `i `uc ]
-[e :U 290 ]
-"50
-[; ;src/app/dht11/dht11.c: 50:     while(!((PORTD >> 0)& 0b00000001))
+[e :U 285 ]
+"39
+[; ;src/app/dht11/dht11.c: 39:     if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+[e $ ! == -> 0 `i -> 1 `i 286  ]
+[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
+[e $U 287  ]
+[e :U 286 ]
+[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 287 ]
+"41
+[; ;src/app/dht11/dht11.c: 41:     _delay((unsigned long)((20)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"43
+[; ;src/app/dht11/dht11.c: 43:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+[e $ ! == -> 1 `i -> 1 `i 288  ]
+[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
+[e $U 289  ]
+[e :U 288 ]
+[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
+[e :U 289 ]
+"44
+[; ;src/app/dht11/dht11.c: 44:     if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+[e $ ! == -> 1 `i -> 0 `i 290  ]
+[e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 0 `i `uc ]
 [e $U 291  ]
-[e :U 292 ]
-"51
-[; ;src/app/dht11/dht11.c: 51:     {
-{
-"52
-[; ;src/app/dht11/dht11.c: 52:         if(!--timeout)
-[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 294  ]
-"53
-[; ;src/app/dht11/dht11.c: 53:         {
-{
-"54
-[; ;src/app/dht11/dht11.c: 54:             return 1;
-[e ) -> -> 1 `i `c ]
-[e $UE 282  ]
-"55
-[; ;src/app/dht11/dht11.c: 55:         }
-}
-[e :U 294 ]
-"56
-[; ;src/app/dht11/dht11.c: 56:     }
-}
+[e :U 290 ]
+[e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 0 `i `uc ]
 [e :U 291 ]
-"50
-[; ;src/app/dht11/dht11.c: 50:     while(!((PORTD >> 0)& 0b00000001))
-[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 292  ]
+"45
+[; ;src/app/dht11/dht11.c: 45:     _delay((unsigned long)((60)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 60 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"47
+[; ;src/app/dht11/dht11.c: 47:     while( !((PORTD >> 0)& 0b00000001))
+[e $U 292  ]
 [e :U 293 ]
-"59
-[; ;src/app/dht11/dht11.c: 59:     while(((PORTD >> 0)& 0b00000001))
-[e $U 295  ]
-[e :U 296 ]
-"60
-[; ;src/app/dht11/dht11.c: 60:     {
+"48
+[; ;src/app/dht11/dht11.c: 48:     {
 {
-"61
-[; ;src/app/dht11/dht11.c: 61:         if(!--timeout)
-[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 298  ]
-"62
-[; ;src/app/dht11/dht11.c: 62:         {
+"49
+[; ;src/app/dht11/dht11.c: 49:         if(!--timeOut )
+[e $ ! ! != -> =- _timeOut -> -> 1 `i `us `ui -> -> 0 `i `ui 295  ]
+"50
+[; ;src/app/dht11/dht11.c: 50:         {
 {
-"63
-[; ;src/app/dht11/dht11.c: 63:             return 1;
-[e ) -> -> 1 `i `c ]
-[e $UE 282  ]
-"64
-[; ;src/app/dht11/dht11.c: 64:         }
-}
-[e :U 298 ]
-"65
-[; ;src/app/dht11/dht11.c: 65:     }
+"51
+[; ;src/app/dht11/dht11.c: 51:             return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 283  ]
+"52
+[; ;src/app/dht11/dht11.c: 52:         }
 }
 [e :U 295 ]
-"59
-[; ;src/app/dht11/dht11.c: 59:     while(((PORTD >> 0)& 0b00000001))
-[e $ != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 296  ]
+"54
+[; ;src/app/dht11/dht11.c: 54:     }
+}
+[e :U 292 ]
+"47
+[; ;src/app/dht11/dht11.c: 47:     while( !((PORTD >> 0)& 0b00000001))
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 293  ]
+[e :U 294 ]
+"56
+[; ;src/app/dht11/dht11.c: 56:     timeOut = 0xFFFF;
+[e = _timeOut -> -> 65535 `ui `us ]
+"58
+[; ;src/app/dht11/dht11.c: 58:     while(((PORTD >> 0)& 0b00000001))
+[e $U 296  ]
 [e :U 297 ]
+"59
+[; ;src/app/dht11/dht11.c: 59:     {
+{
+"60
+[; ;src/app/dht11/dht11.c: 60:         if(!--timeOut)
+[e $ ! ! != -> =- _timeOut -> -> 1 `i `us `ui -> -> 0 `i `ui 299  ]
+"61
+[; ;src/app/dht11/dht11.c: 61:         {
+{
+"62
+[; ;src/app/dht11/dht11.c: 62:             return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 283  ]
+"63
+[; ;src/app/dht11/dht11.c: 63:         }
+}
+[e :U 299 ]
+"64
+[; ;src/app/dht11/dht11.c: 64:     }
+}
+[e :U 296 ]
+"58
+[; ;src/app/dht11/dht11.c: 58:     while(((PORTD >> 0)& 0b00000001))
+[e $ != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 297  ]
+[e :U 298 ]
+"67
+[; ;src/app/dht11/dht11.c: 67:     return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 283  ]
 "68
-[; ;src/app/dht11/dht11.c: 68:     return 0;
-[e ) -> -> 0 `i `c ]
-[e $UE 282  ]
-"69
-[; ;src/app/dht11/dht11.c: 69: }
-[e :UE 282 ]
+[; ;src/app/dht11/dht11.c: 68: }
+[e :UE 283 ]
 }
 "71
-[; ;src/app/dht11/dht11.c: 71: int8_t DHT11_ReadData( void )
-[v _DHT11_ReadData `(c ~T0 @X0 1 ef ]
-"72
-[; ;src/app/dht11/dht11.c: 72: {
+[; ;src/app/dht11/dht11.c: 71: uint8_t DHT11_ReadData(void) {
+[v _DHT11_ReadData `(uc ~T0 @X0 1 ef ]
 {
 [e :U _DHT11_ReadData ]
 [f ]
-"73
-[; ;src/app/dht11/dht11.c: 73:     uint8_t resquestResult = 0x00;
+"72
+[; ;src/app/dht11/dht11.c: 72:     uint8_t resquestResult = 0x00;
 [v _resquestResult `uc ~T0 @X0 1 a ]
 [e = _resquestResult -> -> 0 `i `uc ]
-"74
-[; ;src/app/dht11/dht11.c: 74:     uint8_t checkSum = 0x00;
+"73
+[; ;src/app/dht11/dht11.c: 73:     uint8_t checkSum = 0x00;
 [v _checkSum `uc ~T0 @X0 1 a ]
 [e = _checkSum -> -> 0 `i `uc ]
 "76
-[; ;src/app/dht11/dht11.c: 76:     resquestResult = DHT11_ReadByte();
-[e = _resquestResult -> ( _DHT11_ReadByte ..  `uc ]
-"78
-[; ;src/app/dht11/dht11.c: 78:     if(!resquestResult)
-[e $ ! ! != -> _resquestResult `i -> 0 `i 300  ]
+[; ;src/app/dht11/dht11.c: 76:     resquestResult = DHT11_RequestData();
+[e = _resquestResult ( _DHT11_RequestData ..  ]
 "79
-[; ;src/app/dht11/dht11.c: 79:     {
+[; ;src/app/dht11/dht11.c: 79:     if (!resquestResult) {
+[e $ ! ! != -> _resquestResult `i -> 0 `i 301  ]
 {
 "80
 [; ;src/app/dht11/dht11.c: 80:         humidity[0] = DHT11_ReadByte();
-[e = *U + &U _humidity * -> -> -> 0 `i `ui `ux -> -> # *U &U _humidity `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+[e = *U + &U _humidity * -> -> -> 0 `i `ui `ux -> -> # *U &U _humidity `ui `ux ( _DHT11_ReadByte ..  ]
 "81
 [; ;src/app/dht11/dht11.c: 81:         humidity[1] = DHT11_ReadByte();
-[e = *U + &U _humidity * -> -> -> 1 `i `ui `ux -> -> # *U &U _humidity `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+[e = *U + &U _humidity * -> -> -> 1 `i `ui `ux -> -> # *U &U _humidity `ui `ux ( _DHT11_ReadByte ..  ]
 "83
 [; ;src/app/dht11/dht11.c: 83:         temperature[0] = DHT11_ReadByte();
-[e = *U + &U _temperature * -> -> -> 0 `i `ui `ux -> -> # *U &U _temperature `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+[e = *U + &U _temperature * -> -> -> 0 `i `ui `ux -> -> # *U &U _temperature `ui `ux ( _DHT11_ReadByte ..  ]
 "84
 [; ;src/app/dht11/dht11.c: 84:         temperature[1] = DHT11_ReadByte();
-[e = *U + &U _temperature * -> -> -> 1 `i `ui `ux -> -> # *U &U _temperature `ui `ux -> ( _DHT11_ReadByte ..  `uc ]
+[e = *U + &U _temperature * -> -> -> 1 `i `ui `ux -> -> # *U &U _temperature `ui `ux ( _DHT11_ReadByte ..  ]
 "86
 [; ;src/app/dht11/dht11.c: 86:         checkSum = DHT11_ReadByte();
-[e = _checkSum -> ( _DHT11_ReadByte ..  `uc ]
-"88
-[; ;src/app/dht11/dht11.c: 88:         if(checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1]))
-[e $ ! != -> _checkSum `i + + + -> *U + &U _humidity * -> -> -> 0 `i `ui `ux -> -> # *U &U _humidity `ui `ux `i -> *U + &U _humidity * -> -> -> 1 `i `ui `ux -> -> # *U &U _humidity `ui `ux `i -> *U + &U _temperature * -> -> -> 0 `i `ui `ux -> -> # *U &U _temperature `ui `ux `i -> *U + &U _temperature * -> -> -> 1 `i `ui `ux -> -> # *U &U _temperature `ui `ux `i 301  ]
+[e = _checkSum ( _DHT11_ReadByte ..  ]
 "89
-[; ;src/app/dht11/dht11.c: 89:         {
+[; ;src/app/dht11/dht11.c: 89:         if (checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1])) {
+[e $ ! != -> _checkSum `i + + + -> *U + &U _humidity * -> -> -> 0 `i `ui `ux -> -> # *U &U _humidity `ui `ux `i -> *U + &U _humidity * -> -> -> 1 `i `ui `ux -> -> # *U &U _humidity `ui `ux `i -> *U + &U _temperature * -> -> -> 0 `i `ui `ux -> -> # *U &U _temperature `ui `ux `i -> *U + &U _temperature * -> -> -> 1 `i `ui `ux -> -> # *U &U _temperature `ui `ux `i 302  ]
 {
 "90
 [; ;src/app/dht11/dht11.c: 90:             return 2;
-[e ) -> -> 2 `i `c ]
-[e $UE 299  ]
+[e ) -> -> 2 `i `uc ]
+[e $UE 300  ]
 "91
 [; ;src/app/dht11/dht11.c: 91:         }
 }
-[e :U 301 ]
-"92
-[; ;src/app/dht11/dht11.c: 92:     }
-}
-[e $U 302  ]
-"93
-[; ;src/app/dht11/dht11.c: 93:     else
-[e :U 300 ]
-"94
-[; ;src/app/dht11/dht11.c: 94:     {
-{
-"95
-[; ;src/app/dht11/dht11.c: 95:         return resquestResult;
-[e ) -> _resquestResult `c ]
-[e $UE 299  ]
-"96
-[; ;src/app/dht11/dht11.c: 96:     }
-}
 [e :U 302 ]
-"101
-[; ;src/app/dht11/dht11.c: 101: }
-[e :UE 299 ]
+"92
+[; ;src/app/dht11/dht11.c: 92:     } else {
 }
-"103
-[; ;src/app/dht11/dht11.c: 103: int8_t DHT11_ReadByte( void )
-[v _DHT11_ReadByte `(c ~T0 @X0 1 ef ]
-"104
-[; ;src/app/dht11/dht11.c: 104: {
+[e $U 303  ]
+[e :U 301 ]
+{
+"93
+[; ;src/app/dht11/dht11.c: 93:         return resquestResult;
+[e ) _resquestResult ]
+[e $UE 300  ]
+"94
+[; ;src/app/dht11/dht11.c: 94:     }
+}
+[e :U 303 ]
+"96
+[; ;src/app/dht11/dht11.c: 96:     return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 300  ]
+"97
+[; ;src/app/dht11/dht11.c: 97: }
+[e :UE 300 ]
+}
+"100
+[; ;src/app/dht11/dht11.c: 100: uint8_t DHT11_ReadByte(void) {
+[v _DHT11_ReadByte `(uc ~T0 @X0 1 ef ]
 {
 [e :U _DHT11_ReadByte ]
 [f ]
-"105
-[; ;src/app/dht11/dht11.c: 105:     uint16_t timeout;
+"101
+[; ;src/app/dht11/dht11.c: 101:     uint16_t timeout = 0xFFFF;
 [v _timeout `us ~T0 @X0 1 a ]
-"106
-[; ;src/app/dht11/dht11.c: 106:     uint8_t i;
+[e = _timeout -> -> 65535 `ui `us ]
+"102
+[; ;src/app/dht11/dht11.c: 102:     uint8_t i;
 [v _i `uc ~T0 @X0 1 a ]
-"107
-[; ;src/app/dht11/dht11.c: 107:     uint8_t byte;
+"103
+[; ;src/app/dht11/dht11.c: 103:     uint8_t byte;
 [v _byte `uc ~T0 @X0 1 a ]
-"109
-[; ;src/app/dht11/dht11.c: 109:     for(i = 0x80; i; i = (i >> 1))
+"105
+[; ;src/app/dht11/dht11.c: 105:     for (i = 0b10000000; i; i = (i >> 1)) {
 {
 [e = _i -> -> 128 `i `uc ]
-[e $U 307  ]
-[e :U 304 ]
-"110
-[; ;src/app/dht11/dht11.c: 110:     {
-{
-"111
-[; ;src/app/dht11/dht11.c: 111:         timeout = 0xFFFF;
-[e = _timeout -> -> 65535 `ui `us ]
-"112
-[; ;src/app/dht11/dht11.c: 112:         while(!((PORTD >> 0)& 0b00000001))
 [e $U 308  ]
-[e :U 309 ]
-"113
-[; ;src/app/dht11/dht11.c: 113:         {
+[e :U 305 ]
 {
-"114
-[; ;src/app/dht11/dht11.c: 114:             if(!--timeout)
-[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 311  ]
-"115
-[; ;src/app/dht11/dht11.c: 115:             {
-{
-"116
-[; ;src/app/dht11/dht11.c: 116:                 return 1;
-[e ) -> -> 1 `i `c ]
-[e $UE 303  ]
-"117
-[; ;src/app/dht11/dht11.c: 117:             }
-}
-[e :U 311 ]
-"118
-[; ;src/app/dht11/dht11.c: 118:         }
-}
-[e :U 308 ]
-"112
-[; ;src/app/dht11/dht11.c: 112:         while(!((PORTD >> 0)& 0b00000001))
-[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 309  ]
-[e :U 310 ]
-"120
-[; ;src/app/dht11/dht11.c: 120:         _delay((unsigned long)((40)*(10000000UL/4000000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
-"122
-[; ;src/app/dht11/dht11.c: 122:         if(((PORTD >> 0)& 0b00000001))
-[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 312  ]
-"123
-[; ;src/app/dht11/dht11.c: 123:         {
-{
-"124
-[; ;src/app/dht11/dht11.c: 124:             byte = byte | i;
-[e = _byte -> | -> _byte `i -> _i `i `uc ]
-"125
-[; ;src/app/dht11/dht11.c: 125:             timeout = 0xFFFF;
+"106
+[; ;src/app/dht11/dht11.c: 106:         timeout = 0xFFFF;
 [e = _timeout -> -> 65535 `ui `us ]
-"126
-[; ;src/app/dht11/dht11.c: 126:             while(!((PORTD >> 0)& 0b00000001))
-[e $U 313  ]
-[e :U 314 ]
-"127
-[; ;src/app/dht11/dht11.c: 127:             {
+"107
+[; ;src/app/dht11/dht11.c: 107:         while (!((PORTD >> 0)& 0b00000001)) {
+[e $U 309  ]
+[e :U 310 ]
 {
-"128
-[; ;src/app/dht11/dht11.c: 128:                 if(!--timeout)
-[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 316  ]
-"129
-[; ;src/app/dht11/dht11.c: 129:                     return 1;
-[e ) -> -> 1 `i `c ]
-[e $UE 303  ]
-[e :U 316 ]
-"130
-[; ;src/app/dht11/dht11.c: 130:             }
-}
-[e :U 313 ]
-"126
-[; ;src/app/dht11/dht11.c: 126:             while(!((PORTD >> 0)& 0b00000001))
-[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 314  ]
-[e :U 315 ]
-"132
-[; ;src/app/dht11/dht11.c: 132:         }
+"108
+[; ;src/app/dht11/dht11.c: 108:             if (!--timeout) {
+[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 312  ]
+{
+"109
+[; ;src/app/dht11/dht11.c: 109:                 return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 304  ]
+"110
+[; ;src/app/dht11/dht11.c: 110:             }
 }
 [e :U 312 ]
-"133
-[; ;src/app/dht11/dht11.c: 133:     }
+"111
+[; ;src/app/dht11/dht11.c: 111:         }
+}
+[e :U 309 ]
+"107
+[; ;src/app/dht11/dht11.c: 107:         while (!((PORTD >> 0)& 0b00000001)) {
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 310  ]
+[e :U 311 ]
+"113
+[; ;src/app/dht11/dht11.c: 113:         _delay((unsigned long)((40)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"115
+[; ;src/app/dht11/dht11.c: 115:         if (((PORTD >> 0)& 0b00000001)) {
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 313  ]
+{
+"116
+[; ;src/app/dht11/dht11.c: 116:             byte = byte | i;
+[e = _byte -> | -> _byte `i -> _i `i `uc ]
+"117
+[; ;src/app/dht11/dht11.c: 117:             timeout = 0xFFFF;
+[e = _timeout -> -> 65535 `ui `us ]
+"118
+[; ;src/app/dht11/dht11.c: 118:             while (!((PORTD >> 0)& 0b00000001)) {
+[e $U 314  ]
+[e :U 315 ]
+{
+"119
+[; ;src/app/dht11/dht11.c: 119:                 if (!--timeout)
+[e $ ! ! != -> =- _timeout -> -> 1 `i `us `ui -> -> 0 `i `ui 317  ]
+"120
+[; ;src/app/dht11/dht11.c: 120:                     return 1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 304  ]
+[e :U 317 ]
+"121
+[; ;src/app/dht11/dht11.c: 121:             }
+}
+[e :U 314 ]
+"118
+[; ;src/app/dht11/dht11.c: 118:             while (!((PORTD >> 0)& 0b00000001)) {
+[e $ ! != & >> -> _PORTD `i -> 0 `i -> 1 `i -> 0 `i 315  ]
+[e :U 316 ]
+"123
+[; ;src/app/dht11/dht11.c: 123:         }
+}
+[e :U 313 ]
+"124
+[; ;src/app/dht11/dht11.c: 124:     }
 }
 [e = _i -> >> -> _i `i -> 1 `i `uc ]
-[e :U 307 ]
-[e $ != -> _i `i -> 0 `i 304  ]
-[e :U 305 ]
+[e :U 308 ]
+[e $ != -> _i `i -> 0 `i 305  ]
+[e :U 306 ]
 }
-"135
-[; ;src/app/dht11/dht11.c: 135:     return byte;
-[e ) -> _byte `c ]
-[e $UE 303  ]
-"136
-[; ;src/app/dht11/dht11.c: 136: }
-[e :UE 303 ]
+"126
+[; ;src/app/dht11/dht11.c: 126:     return byte;
+[e ) _byte ]
+[e $UE 304  ]
+"127
+[; ;src/app/dht11/dht11.c: 127: }
+[e :UE 304 ]
 }

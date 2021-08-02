@@ -1,87 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"15 src/main.c
-[; ;src/main.c: 15: timer_config_t timerConfig = {
-[c E2559 0 1 .. ]
-[n E2559 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
-[c E2563 0 1 .. ]
-[n E2563 . TIMER_CLKO_SRC TIMER_T0CLK_SCR  ]
-[c E2567 0 1 .. ]
-[n E2567 . TIMER_TRANSITION_LOW_HIGH TIMER_TRANSITION_HIGH_LOW  ]
-[c E2571 0 1 .. ]
-[n E2571 . TIMER_PRESCALER_IS_ASSIGNED TIMER_PRESCALER_NOT_ASSIGNED  ]
-[c E2575 0 1 2 3 4 5 6 7 .. ]
-[n E2575 . TIMER_PRESCALER_2 TIMER_PRESCALER_4 TIMER_PRESCALER_8 TIMER_PRESCALER_16 TIMER_PRESCALER_32 TIMER_PRESCALER_64 TIMER_PRESCALER_128 TIMER_PRESCALER_256  ]
-"43 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 43: typedef struct {
-[s S281 `E2559 1 `E2563 1 `E2567 1 `E2571 1 `E2575 1 ]
-[n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
-"23 src/main.c
-[; ;src/main.c: 23: serial_config_t serialConfig = {
-[c E2617 0 1 .. ]
-[n E2617 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
-[c E2621 0 1 .. ]
-[n E2621 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
-[c E2625 0 1 .. ]
-[n E2625 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
-"31 src/pic18f4520/serial/serial.h
-[; ;src/pic18f4520/serial/serial.h: 31: typedef struct {
-[s S282 `E2617 1 `E2621 1 `E2625 1 `l 1 ]
-[n S282 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
-[t ~ __interrupt . k ]
-[t T41 __interrupt ]
-"6698 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6698:     struct {
-[s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S275 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"6708
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6708:     struct {
-[s S276 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S276 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"6718
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6718:     struct {
-[s S277 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S277 . . GIEL GIEH ]
-"6697
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6697: typedef union {
-[u S274 `S275 1 `S276 1 `S277 1 ]
-[n S274 . . . . ]
-"6724
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
-"59 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 59:     void tickHook_Execute(uint32_t* global_timer_value);
-[v _tickHook_Execute `(v ~T0 @X0 0 ef1`*ul ]
-"30 src/main.c
-[; ;src/main.c: 30: extern uint32_t global_timer_value;
-[v _global_timer_value `ul ~T0 @X0 0 e ]
-"6251 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
-[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
-"2677
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2677:     struct {
-[s S96 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S96 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
-"2687
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2687:     struct {
-[s S97 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S97 . . TX1IF RC1IF ]
-"2676
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2676: typedef union {
-[u S95 `S96 1 `S97 1 ]
-[n S95 . . . ]
-"2693
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2693: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
-[v _PIR1bits `VS95 ~T0 @X0 0 e@3998 ]
-"3588
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3588: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"45 src/pic18f4520/serial/serial.h
-[; ;src/pic18f4520/serial/serial.h: 45:     void Serial_Transmit( uint8_t data );
-[v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
-[p mainexit ]
-"34 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 34:     void DisplayLCD_Init( void );
-[v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
+"13 src/app/main-app/../../board/peripheral-controller/peripheral_controller.h
+[; ;src/app/main-app/../../board/peripheral-controller/peripheral_controller.h: 13:     void Peripheral_Controller(void* args);
+[v _Peripheral_Controller `(v ~T0 @X0 0 ef1`*v ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -496,196 +416,40 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"6 src/pic18f4520/fuse/fuse.h
-[p x OSC      =  HS  ]
-"7
-[p x FCMEN  =  OFF ]
-"8
-[p x IESO    =  OFF ]
-"11
-[p x PWRT    =  OFF ]
-"12
-[p x BOREN  =  SBORDIS ]
-"13
-[p x BORV    =  3 ]
-"16
-[p x WDT      =  OFF ]
-"17
-[p x WDTPS  =  32768 ]
-"20
-[p x CCP2MX    =  PORTC ]
-"21
-[p x PBADEN    =  OFF ]
-"22
-[p x LPT1OSC  =  OFF ]
-"23
-[p x MCLRE      =  OFF ]
-"26
-[p x STVREN  =  ON ]
-"27
-[p x LVP        =  OFF ]
-"28
-[p x XINST    =  OFF ]
-"31
-[p x CP0  =  OFF ]
-"32
-[p x CP1  =  OFF ]
-"33
-[p x CP2  =  OFF ]
-"34
-[p x CP3  =  OFF ]
-"37
-[p x CPB  =  OFF ]
-"38
-[p x CPD  =  OFF ]
-"41
-[p x WRT0  =  OFF ]
-"42
-[p x WRT1  =  OFF ]
-"43
-[p x WRT2  =  OFF ]
-"44
-[p x WRT3  =  OFF ]
-"47
-[p x WRTC  =  OFF ]
-"48
-[p x WRTB  =  OFF ]
-"49
-[p x WRTD  =  OFF ]
-"52
-[p x EBTR0  =  OFF ]
-"53
-[p x EBTR1  =  OFF ]
-"54
-[p x EBTR2  =  OFF ]
-"55
-[p x EBTR3  =  OFF ]
-"58
-[p x EBTRB  =  OFF ]
-"10 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 10: uint32_t global_timer_value = 0x01;
-[v _global_timer_value `ul ~T0 @X0 1 e ]
-[i _global_timer_value
--> -> -> 1 `i `l `ul
-]
-"15 src/main.c
-[; ;src/main.c: 15: timer_config_t timerConfig = {
-[v _timerConfig `S281 ~T0 @X0 1 e ]
-[i _timerConfig
-:U ..
-:U ..
-. `E2559 0
-. `E2563 0
-. `E2567 0
-. `E2571 0
-. `E2575 0
-..
-..
-]
-"23
-[; ;src/main.c: 23: serial_config_t serialConfig = {
-[v _serialConfig `S282 ~T0 @X0 1 e ]
-[i _serialConfig
-:U ..
-:U ..
-. `E2617 0
-. `E2621 0
-. `E2625 0
--> -> 9600 `i `l
-..
-..
-]
-"33
-[; ;src/main.c: 33: uint8_t count = 0x00;
-[v _count `uc ~T0 @X0 1 e ]
-[i _count
--> -> 0 `i `uc
-]
-"36
-[; ;src/main.c: 36: void tickHook_func(uint32_t *timer_value) {
-[v _tickHook_func `(v ~T0 @X0 1 ef1`*ul ]
+"8 src/app/main-app/main-app.c
+[; ;src/app/main-app/main-app.c: 8: void main_application( void* args)
+[v _main_application `(v ~T0 @X0 1 ef1`*v ]
+"9
+[; ;src/app/main-app/main-app.c: 9: {
 {
-[e :U _tickHook_func ]
-[v _timer_value `*ul ~T0 @X0 1 r1 ]
+[e :U _main_application ]
+"8
+[; ;src/app/main-app/main-app.c: 8: void main_application( void* args)
+[v _args `*v ~T0 @X0 1 r1 ]
+"9
+[; ;src/app/main-app/main-app.c: 9: {
 [f ]
-"37
-[; ;src/main.c: 37:     (*timer_value)++;
-[e ++ *U _timer_value -> -> -> 1 `i `l `ul ]
-"38
-[; ;src/main.c: 38: }
+"12
+[; ;src/app/main-app/main-app.c: 12: }
 [e :UE 283 ]
 }
-[v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"41
-[; ;src/main.c: 41: void __attribute__((picinterrupt(("")))) TC0INT(void) {
-[v _TC0INT `(v ~T41 @X0 1 ef ]
+"14
+[; ;src/app/main-app/main-app.c: 14: void StartSystem( void* args )
+[v _StartSystem `(v ~T0 @X0 1 ef1`*v ]
+"15
+[; ;src/app/main-app/main-app.c: 15: {
 {
-[e :U _TC0INT ]
+[e :U _StartSystem ]
+"14
+[; ;src/app/main-app/main-app.c: 14: void StartSystem( void* args )
+[v _args `*v ~T0 @X0 1 r1 ]
+"15
+[; ;src/app/main-app/main-app.c: 15: {
 [f ]
-"42
-[; ;src/main.c: 42:     if (INTCONbits.TMR0IF == 0x01) {
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 285  ]
-{
-"43
-[; ;src/main.c: 43:         tickHook_Execute(&global_timer_value);
-[e ( _tickHook_Execute (1 &U _global_timer_value ]
-"44
-[; ;src/main.c: 44:         TMR0 = 0xFB1E;
-[e = _TMR0 -> -> 64286 `ui `us ]
-"45
-[; ;src/main.c: 45:         INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"46
-[; ;src/main.c: 46:     }
-}
-[e :U 285 ]
-"48
-[; ;src/main.c: 48:     if (PIR1bits.RCIF) {
-[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 286  ]
-{
-"49
-[; ;src/main.c: 49:         count = RCREG;
-[e = _count _RCREG ]
-"50
-[; ;src/main.c: 50:         Serial_Transmit(count);
-[e ( _Serial_Transmit (1 _count ]
-"52
-[; ;src/main.c: 52:         PIR1bits.RCIF = 0x00;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"53
-[; ;src/main.c: 53:     }
-}
-[e :U 286 ]
-"54
-[; ;src/main.c: 54: }
+"18
+[; ;src/app/main-app/main-app.c: 18:     Peripheral_Controller(((void*)0));
+[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
+"25
+[; ;src/app/main-app/main-app.c: 25: }
 [e :UE 284 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"57
-[; ;src/main.c: 57: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
-"64
-[; ;src/main.c: 64:     DisplayLCD_Init();
-[e ( _DisplayLCD_Init ..  ]
-"65
-[; ;src/main.c: 65:     while (1)
-[e :U 289 ]
-"66
-[; ;src/main.c: 66:     {
-{
-"67
-[; ;src/main.c: 67:     }
-}
-[e :U 288 ]
-[e $U 289  ]
-[e :U 290 ]
-"68
-[; ;src/main.c: 68:     return;
-[e $UE 287  ]
-"69
-[; ;src/main.c: 69: }
-[e :UE 287 ]
 }

@@ -1,24 +1,19 @@
 /*============================================================================*/
-#ifndef DHT11_H
-#define	DHT11_H
+#ifndef PERIPHERAL_CONTROLLER_H
+#define	PERIPHERAL_CONTROLLER_H
 /*============================================================================*/
+
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h>
-/*============================================================================*/
-#define DHT11_OK                 0
-#define DHT11_ERROR_TIMEOUT      1
-#define DHT11_ERROR_CHECKSUM     2
+
 /*============================================================================*/
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
 /*============================================================================*/
-    uint8_t DHT11_RequestData(void);
-    uint8_t DHT11_ReadData( void );
-    uint8_t DHT11_ReadByte( void );
+    void Peripheral_Controller(void* args);
 /*============================================================================*/
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */
-#endif	/* DHT11_H */
-/*============================================================================*/
+#endif	/* PERIPHERAL_CONTROLLER_H */
+

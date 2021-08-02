@@ -129,7 +129,7 @@ void Serial_1_Config(serial_config_t* serialConfig) {
     
 }
 /*============================================================================*/
-void Serial_Transmit(char data)
+void Serial_Transmit(uint8_t  data)
 {
     TXREG = data;
     while(!TRMT);

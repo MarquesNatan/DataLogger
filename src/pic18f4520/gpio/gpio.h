@@ -41,6 +41,14 @@ extern "C" {
 #define DIGITAL_PIN_TOGGLE(port, mask)                                         \
                    PASTE2(LAT, port) = (PASTE2(PORT, port) ^ mask);
 /*============================================================================*/
+#define DIGITAL_PORT_WRITE(port, value)                                        \
+                PASTE2(LAT, port) = value;
+/*============================================================================*/
+#define DIGITAL_PORT_READ(port)                                                \
+                PASTE2(PORT, port)
+/*============================================================================*/
+#define PORT_DIGITAL_CONFIGURE(port, value)                                    \
+                PASTE2(TRIS, port) = value;
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */

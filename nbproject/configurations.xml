@@ -30,6 +30,10 @@
           <itemPath>src/app/display_lcd/display_lcd.c</itemPath>
           <itemPath>src/app/display_lcd/display_lcd.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="main-app" displayName="main-app" projectFiles="true">
+          <itemPath>src/app/main-app/main-app.c</itemPath>
+          <itemPath>src/app/main-app/main-app.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="packet_factory"
                        displayName="packet_factory"
                        projectFiles="true">
@@ -43,8 +47,18 @@
                        projectFiles="true">
           <itemPath>src/board/board_definitions/board_definitions.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="peripheral-controller"
+                       displayName="peripheral-controller"
+                       projectFiles="true">
+          <itemPath>src/board/peripheral-controller/peripheral_controller.c</itemPath>
+          <itemPath>src/board/peripheral-controller/peripheral_controller.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="pinout" displayName="pinout" projectFiles="true">
           <itemPath>src/board/pinout/pinout.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="shift_register"
+                       displayName="shift_register"
+                       projectFiles="true">
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="pic18f4520" displayName="pic18f4520" projectFiles="true">

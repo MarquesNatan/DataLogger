@@ -4612,9 +4612,9 @@ typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
 # 6 "src/app/dht11/dht11.h" 2
 # 16 "src/app/dht11/dht11.h"
-    int8_t DHT11_RequestData(void);
-    int8_t DHT11_ReadData( void );
-    int8_t DHT11_ReadByte( void );
+    uint8_t DHT11_RequestData(void);
+    uint8_t DHT11_ReadData( void );
+    uint8_t DHT11_ReadByte( void );
 # 24 "src/app/dht11/dht11.c" 2
 
 # 1 "src/app/dht11/../../board/board_definitions/board_definitions.h" 1
@@ -4684,39 +4684,77 @@ typedef struct {
     void Timer0_WaitMS( uint16_t timeWait );
 # 28 "src/app/dht11/dht11.c" 2
 
+# 1 "src/app/dht11/../../pic18f4520/serial/serial.h" 1
+# 11 "src/app/dht11/../../pic18f4520/serial/serial.h"
+typedef enum {
+    SERIAL_ASSYNC_MODE = 0x00,
+    SERIAL_SYNC_MODE = 0x01
+}SERIAL_SYNC_COM;
 
-static volatile uint8_t temperature [2];
-static volatile uint8_t humidity [2];
+typedef enum {
+    SERIAL_DATA_LENGTH_8 = 0x00,
+    SERIAL_DATA_LENGTH_9 = 0x01
+}SERIAL_DATA_LENGTH;
 
-int8_t DHT11_RequestData( void )
-{
-    uint16_t timeout = 0xFFFF;
+typedef enum {
+    SERIAL_MASTER_MODE = 0x00,
+    SERIAL_SLAVE_MODE = 0x01
+}SERIAL_OP_MODE;
+
+typedef enum {
+    SERIAL_BAUD_9600 = 0x00,
+    SERIAL_BAUD_11250 = 0x01,
+}SERIAL_DESIRED_BAUD;
+
+typedef struct {
+    SERIAL_SYNC_COM serial_sync_com;
+    SERIAL_DATA_LENGTH serial_data_length;
+    SERIAL_OP_MODE serial_op_mode;
+    int32_t serial_desired_baud;
+}serial_config_t;
+
+
+
+
+
+    void Serial_Config( long int desired_baud );
+    void Serial_1_Config(serial_config_t* serialConfig);
+
+    void Serial_Transmit( uint8_t data );
+    uint8_t Serial_Receive(void);
+# 29 "src/app/dht11/dht11.c" 2
+
+
+volatile uint8_t temperature [2];
+volatile uint8_t humidity [2];
+
+
+uint8_t DHT11_RequestData(void) {
+    uint16_t timeOut = 0xFFFF;
 
     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
     if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
 
-    Timer0_WaitMS(20);
+    _delay((unsigned long)((20)*(10000000UL/4000.0)));
 
     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-
-    _delay((unsigned long)((30)*(10000000UL/4000000.0)));
-
     if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+    _delay((unsigned long)((60)*(10000000UL/4000000.0)));
 
-
-
-    while(!((PORTD >> 0)& 0b00000001))
+    while( !((PORTD >> 0)& 0b00000001))
     {
-        if(!--timeout)
+        if(!--timeOut )
         {
             return 1;
         }
+
     }
 
+    timeOut = 0xFFFF;
 
     while(((PORTD >> 0)& 0b00000001))
     {
-        if(!--timeout)
+        if(!--timeOut)
         {
             return 1;
         }
@@ -4726,15 +4764,16 @@ int8_t DHT11_RequestData( void )
     return 0;
 }
 
-int8_t DHT11_ReadData( void )
-{
+
+uint8_t DHT11_ReadData(void) {
     uint8_t resquestResult = 0x00;
     uint8_t checkSum = 0x00;
 
-    resquestResult = DHT11_ReadByte();
 
-    if(!resquestResult)
-    {
+    resquestResult = DHT11_RequestData();
+
+
+    if (!resquestResult) {
         humidity[0] = DHT11_ReadByte();
         humidity[1] = DHT11_ReadByte();
 
@@ -4743,47 +4782,38 @@ int8_t DHT11_ReadData( void )
 
         checkSum = DHT11_ReadByte();
 
-        if(checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1]))
-        {
+
+        if (checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1])) {
             return 2;
         }
-    }
-    else
-    {
+    } else {
         return resquestResult;
     }
 
-
-
-
+    return 0;
 }
 
-int8_t DHT11_ReadByte( void )
-{
-    uint16_t timeout;
+
+uint8_t DHT11_ReadByte(void) {
+    uint16_t timeout = 0xFFFF;
     uint8_t i;
     uint8_t byte;
 
-    for(i = 0x80; i; i = (i >> 1))
-    {
+    for (i = 0b10000000; i; i = (i >> 1)) {
         timeout = 0xFFFF;
-        while(!((PORTD >> 0)& 0b00000001))
-        {
-            if(!--timeout)
-            {
+        while (!((PORTD >> 0)& 0b00000001)) {
+            if (!--timeout) {
                 return 1;
             }
         }
 
         _delay((unsigned long)((40)*(10000000UL/4000000.0)));
 
-        if(((PORTD >> 0)& 0b00000001))
-        {
+        if (((PORTD >> 0)& 0b00000001)) {
             byte = byte | i;
             timeout = 0xFFFF;
-            while(!((PORTD >> 0)& 0b00000001))
-            {
-                if(!--timeout)
+            while (!((PORTD >> 0)& 0b00000001)) {
+                if (!--timeout)
                     return 1;
             }
 

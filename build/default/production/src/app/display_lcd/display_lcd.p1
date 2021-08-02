@@ -1,13 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"271 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"1313
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1313: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
-[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
-"632
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
 [v F2518 `(v ~T0 @X0 1 tf1`ul ]
 "203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
 [v __delay `JF2518 ~T0 @X0 0 e ]
@@ -15,9 +6,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1699 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"2143
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2143: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"38 src/app/display_lcd/display_lcd.h
+[; ;src/app/display_lcd/display_lcd.h: 38:     void sendNibble(uint8_t nibble);
+[v _sendNibble `(v ~T0 @X0 0 ef1`uc ]
+"35
+[; ;src/app/display_lcd/display_lcd.h: 35:     void Display_SendByte(uint8_t byte, uint8_t comm);
+[v _Display_SendByte `(v ~T0 @X0 0 ef2`uc`uc ]
+"37
+[; ;src/app/display_lcd/display_lcd.h: 37:     void Display_WriteString(char* string, uint8_t length);
+[v _Display_WriteString `(v ~T0 @X0 0 ef2`*uc`uc ]
+"1089 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"271
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -432,253 +435,339 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"8 src/app/display_lcd/display_lcd.c
-[; ;src/app/display_lcd/display_lcd.c: 8: void displayLcd_CMD(uint8_t cmd)
-[v _displayLcd_CMD `(v ~T0 @X0 1 ef1`uc ]
-"9
-[; ;src/app/display_lcd/display_lcd.c: 9: {
-{
-[e :U _displayLcd_CMD ]
-"8
-[; ;src/app/display_lcd/display_lcd.c: 8: void displayLcd_CMD(uint8_t cmd)
-[v _cmd `uc ~T0 @X0 1 r1 ]
-"9
-[; ;src/app/display_lcd/display_lcd.c: 9: {
-[f ]
-"10
-[; ;src/app/display_lcd/display_lcd.c: 10:     uint8_t auxCmd;
-[v _auxCmd `uc ~T0 @X0 1 a ]
-"11
-[; ;src/app/display_lcd/display_lcd.c: 11:     auxCmd = (cmd >> 4);
-[e = _auxCmd -> >> -> _cmd `i -> 4 `i `uc ]
-"12
-[; ;src/app/display_lcd/display_lcd.c: 12:     PORTB = auxCmd;
-[e = _PORTB _auxCmd ]
-"13
-[; ;src/app/display_lcd/display_lcd.c: 13:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 282  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 283  ]
-[e :U 282 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 283 ]
-"15
-[; ;src/app/display_lcd/display_lcd.c: 15:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 284  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 285  ]
-[e :U 284 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 285 ]
-"16
-[; ;src/app/display_lcd/display_lcd.c: 16:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"17
-[; ;src/app/display_lcd/display_lcd.c: 17:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 286  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 287  ]
-[e :U 286 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 287 ]
-"19
-[; ;src/app/display_lcd/display_lcd.c: 19:     auxCmd = (cmd & 0x0F);
-[e = _auxCmd -> & -> _cmd `i -> 15 `i `uc ]
-"20
-[; ;src/app/display_lcd/display_lcd.c: 20:     PORTB = auxCmd;
-[e = _PORTB _auxCmd ]
-"21
-[; ;src/app/display_lcd/display_lcd.c: 21:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 288  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 289  ]
-[e :U 288 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 289 ]
-"23
-[; ;src/app/display_lcd/display_lcd.c: 23:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 290  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 291  ]
-[e :U 290 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 291 ]
-"24
-[; ;src/app/display_lcd/display_lcd.c: 24:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"25
-[; ;src/app/display_lcd/display_lcd.c: 25:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 292  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 293  ]
-[e :U 292 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 293 ]
-"26
-[; ;src/app/display_lcd/display_lcd.c: 26: }
-[e :UE 281 ]
-}
-"28
-[; ;src/app/display_lcd/display_lcd.c: 28: void displayLCD_Nibble(uint8_t nibble)
-[v _displayLCD_Nibble `(v ~T0 @X0 1 ef1`uc ]
-"29
-[; ;src/app/display_lcd/display_lcd.c: 29: {
-{
-[e :U _displayLCD_Nibble ]
-"28
-[; ;src/app/display_lcd/display_lcd.c: 28: void displayLCD_Nibble(uint8_t nibble)
-[v _nibble `uc ~T0 @X0 1 r1 ]
-"29
-[; ;src/app/display_lcd/display_lcd.c: 29: {
-[f ]
-"30
-[; ;src/app/display_lcd/display_lcd.c: 30:     PORTB = nibble;
-[e = _PORTB _nibble ]
-"31
-[; ;src/app/display_lcd/display_lcd.c: 31:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 295  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 296  ]
-[e :U 295 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 296 ]
-"33
-[; ;src/app/display_lcd/display_lcd.c: 33:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 297  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 298  ]
-[e :U 297 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 298 ]
-"34
-[; ;src/app/display_lcd/display_lcd.c: 34:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"35
-[; ;src/app/display_lcd/display_lcd.c: 35:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 299  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 300  ]
-[e :U 299 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 300 ]
-"36
-[; ;src/app/display_lcd/display_lcd.c: 36: }
-[e :UE 294 ]
-}
-"38
-[; ;src/app/display_lcd/display_lcd.c: 38: void DisplayLCD_Init( void )
+"10 src/app/display_lcd/display_lcd.c
+[; ;src/app/display_lcd/display_lcd.c: 10: void DisplayLCD_Init( void )
 [v _DisplayLCD_Init `(v ~T0 @X0 1 ef ]
-"39
-[; ;src/app/display_lcd/display_lcd.c: 39: {
+"11
+[; ;src/app/display_lcd/display_lcd.c: 11: {
 {
 [e :U _DisplayLCD_Init ]
 [f ]
-"40
-[; ;src/app/display_lcd/display_lcd.c: 40:     TRISB = 0x00;
+"12
+[; ;src/app/display_lcd/display_lcd.c: 12:     _delay((unsigned long)((500)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"13
+[; ;src/app/display_lcd/display_lcd.c: 13:     TRISB = 0x00;;
 [e = _TRISB -> -> 0 `i `uc ]
+"16
+[; ;src/app/display_lcd/display_lcd.c: 16:     sendNibble(0x20);
+[e ( _sendNibble (1 -> -> 32 `i `uc ]
+"17
+[; ;src/app/display_lcd/display_lcd.c: 17:     sendNibble(0x20);
+[e ( _sendNibble (1 -> -> 32 `i `uc ]
+"18
+[; ;src/app/display_lcd/display_lcd.c: 18:     sendNibble(0x30);
+[e ( _sendNibble (1 -> -> 48 `i `uc ]
+"25
+[; ;src/app/display_lcd/display_lcd.c: 25:     Display_SendByte((0b00000100 | 0b00000010 | 0b00000000), 0);
+[e ( _Display_SendByte (2 , -> | | -> 4 `i -> 2 `i -> 0 `i `uc -> -> 0 `i `uc ]
+"33
+[; ;src/app/display_lcd/display_lcd.c: 33:     Display_SendByte((0b00001000 | 0b00000100 | 0b00000010 | 0b00000001 ), 0);
+[e ( _Display_SendByte (2 , -> | | | -> 8 `i -> 4 `i -> 2 `i -> 1 `i `uc -> -> 0 `i `uc ]
+"35
+[; ;src/app/display_lcd/display_lcd.c: 35:     Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"37
+[; ;src/app/display_lcd/display_lcd.c: 37:    _delay((unsigned long)((2)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"39
+[; ;src/app/display_lcd/display_lcd.c: 39:    Display_WriteString("TESTE ABC", sizeof("TESTE ABC"));
+[e ( _Display_WriteString (2 , :s 1C -> -> 10 `ui `uc ]
 "41
-[; ;src/app/display_lcd/display_lcd.c: 41:     TRISD = 0x00;
-[e = _TRISD -> -> 0 `i `uc ]
-"42
-[; ;src/app/display_lcd/display_lcd.c: 42:     PORTB = 0x00;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 41: }
+[e :UE 281 ]
+}
 "43
-[; ;src/app/display_lcd/display_lcd.c: 43:     PORTD = 0x00;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 43: void sendNibble(uint8_t nibble)
+[v _sendNibble `(v ~T0 @X0 1 ef1`uc ]
 "44
-[; ;src/app/display_lcd/display_lcd.c: 44:     _delay((unsigned long)((40)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
-"48
-[; ;src/app/display_lcd/display_lcd.c: 48:     displayLCD_Nibble(0x02);
-[e ( _displayLCD_Nibble (1 -> -> 2 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 44: {
+{
+[e :U _sendNibble ]
+"43
+[; ;src/app/display_lcd/display_lcd.c: 43: void sendNibble(uint8_t nibble)
+[v _nibble `uc ~T0 @X0 1 r1 ]
+"44
+[; ;src/app/display_lcd/display_lcd.c: 44: {
+[f ]
+"45
+[; ;src/app/display_lcd/display_lcd.c: 45:     uint8_t auxNibble = 0x00;
+[v _auxNibble `uc ~T0 @X0 1 a ]
+[e = _auxNibble -> -> 0 `i `uc ]
+"47
+[; ;src/app/display_lcd/display_lcd.c: 47:     if(0x00 == 0x01) LATB = (PORTB | (1 << 3)); else LATB = (PORTB & ~((1 << 3)));;
+[e $ ! == -> 0 `i -> 1 `i 283  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 3 `i `uc ]
+[e $U 284  ]
+[e :U 283 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 3 `i `uc ]
+[e :U 284 ]
 "49
-[; ;src/app/display_lcd/display_lcd.c: 49:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/display_lcd/display_lcd.c: 49:     LATB = ((PORTB & 0x0F) | nibble);;
+[e = _LATB -> | & -> _PORTB `i -> 15 `i -> _nibble `i `uc ]
 "50
-[; ;src/app/display_lcd/display_lcd.c: 50:     displayLCD_Nibble(0x02);
-[e ( _displayLCD_Nibble (1 -> -> 2 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 50:     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 1 `i -> 1 `i 285  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 286  ]
+[e :U 285 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 286 ]
 "51
-[; ;src/app/display_lcd/display_lcd.c: 51:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/display_lcd/display_lcd.c: 51:     _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
 "52
-[; ;src/app/display_lcd/display_lcd.c: 52:     displayLCD_Nibble(0x02);
-[e ( _displayLCD_Nibble (1 -> -> 2 `i `uc ]
-"53
-[; ;src/app/display_lcd/display_lcd.c: 53:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/display_lcd/display_lcd.c: 52:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 287  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 288  ]
+[e :U 287 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 288 ]
 "54
-[; ;src/app/display_lcd/display_lcd.c: 54:     displayLCD_Nibble(0x00);
-[e ( _displayLCD_Nibble (1 -> -> 0 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 54:     _delay((unsigned long)((1)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
 "55
-[; ;src/app/display_lcd/display_lcd.c: 55:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
-"56
-[; ;src/app/display_lcd/display_lcd.c: 56:     displayLCD_Nibble(0x0E);
-[e ( _displayLCD_Nibble (1 -> -> 14 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 55: }
+[e :UE 282 ]
+}
 "57
-[; ;src/app/display_lcd/display_lcd.c: 57:     _delay((unsigned long)((1)*(10000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
+[; ;src/app/display_lcd/display_lcd.c: 57: void Display_SendByte(uint8_t byte, uint8_t comm)
+[v _Display_SendByte `(v ~T0 @X0 1 ef2`uc`uc ]
+"58
+[; ;src/app/display_lcd/display_lcd.c: 58: {
+{
+[e :U _Display_SendByte ]
+"57
+[; ;src/app/display_lcd/display_lcd.c: 57: void Display_SendByte(uint8_t byte, uint8_t comm)
+[v _byte `uc ~T0 @X0 1 r1 ]
+[v _comm `uc ~T0 @X0 1 r2 ]
+"58
+[; ;src/app/display_lcd/display_lcd.c: 58: {
+[f ]
 "59
-[; ;src/app/display_lcd/display_lcd.c: 59:     PORTB = 0x04;
-[e = _PORTB -> -> 4 `i `uc ]
-"60
-[; ;src/app/display_lcd/display_lcd.c: 60:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 302  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
+[; ;src/app/display_lcd/display_lcd.c: 59:     uint8_t auxByte = 0x00;
+[v _auxByte `uc ~T0 @X0 1 a ]
+[e = _auxByte -> -> 0 `i `uc ]
+"61
+[; ;src/app/display_lcd/display_lcd.c: 61:     if(comm == 0x01) LATB = (PORTB | (1 << 3)); else LATB = (PORTB & ~((1 << 3)));;
+[e $ ! == -> _comm `i -> 1 `i 290  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 3 `i `uc ]
+[e $U 291  ]
+[e :U 290 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 3 `i `uc ]
+[e :U 291 ]
+"63
+[; ;src/app/display_lcd/display_lcd.c: 63:     auxByte = (byte & 0xF0);
+[e = _auxByte -> & -> _byte `i -> 240 `i `uc ]
+"65
+[; ;src/app/display_lcd/display_lcd.c: 65:     LATB = ((PORTB & 0x0F) | auxByte);;
+[e = _LATB -> | & -> _PORTB `i -> 15 `i -> _auxByte `i `uc ]
+"67
+[; ;src/app/display_lcd/display_lcd.c: 67:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 292  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 293  ]
+[e :U 292 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 293 ]
+"68
+[; ;src/app/display_lcd/display_lcd.c: 68:     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 1 `i -> 1 `i 294  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 295  ]
+[e :U 294 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 295 ]
+"69
+[; ;src/app/display_lcd/display_lcd.c: 69:     _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"70
+[; ;src/app/display_lcd/display_lcd.c: 70:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 296  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 297  ]
+[e :U 296 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 297 ]
+"72
+[; ;src/app/display_lcd/display_lcd.c: 72:     auxByte = (byte << 0x04);
+[e = _auxByte -> << -> _byte `i -> 4 `i `uc ]
+"74
+[; ;src/app/display_lcd/display_lcd.c: 74:     LATB = auxByte;;
+[e = _LATB _auxByte ]
+"76
+[; ;src/app/display_lcd/display_lcd.c: 76:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 298  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 299  ]
+[e :U 298 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 299 ]
+"77
+[; ;src/app/display_lcd/display_lcd.c: 77:     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 1 `i -> 1 `i 300  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 301  ]
+[e :U 300 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 301 ]
+"78
+[; ;src/app/display_lcd/display_lcd.c: 78:     _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"79
+[; ;src/app/display_lcd/display_lcd.c: 79:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 302  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 [e $U 303  ]
 [e :U 302 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
 [e :U 303 ]
-"62
-[; ;src/app/display_lcd/display_lcd.c: 62:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 304  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 305  ]
-[e :U 304 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 305 ]
-"63
-[; ;src/app/display_lcd/display_lcd.c: 63:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"64
-[; ;src/app/display_lcd/display_lcd.c: 64:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 306  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 307  ]
-[e :U 306 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 307 ]
-"66
-[; ;src/app/display_lcd/display_lcd.c: 66:     PORTB = 0x08;
-[e = _PORTB -> -> 8 `i `uc ]
-"67
-[; ;src/app/display_lcd/display_lcd.c: 67:     if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 308  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 309  ]
-[e :U 308 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
-[e :U 309 ]
-"69
-[; ;src/app/display_lcd/display_lcd.c: 69:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 310  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 311  ]
-[e :U 310 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 311 ]
-"70
-[; ;src/app/display_lcd/display_lcd.c: 70:     _delay((unsigned long)((100)*(10000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `l `d .4000000.0 `ul ]
-"71
-[; ;src/app/display_lcd/display_lcd.c: 71:     if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-[e $ ! == -> 1 `i -> 1 `i 312  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 0 `i `uc ]
-[e $U 313  ]
-[e :U 312 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 0 `i `uc ]
-[e :U 313 ]
-"75
-[; ;src/app/display_lcd/display_lcd.c: 75: }
-[e :UE 301 ]
+"81
+[; ;src/app/display_lcd/display_lcd.c: 81:     _delay((unsigned long)((1)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"82
+[; ;src/app/display_lcd/display_lcd.c: 82: }
+[e :UE 289 ]
 }
+"84
+[; ;src/app/display_lcd/display_lcd.c: 84: void Display_WriteByte(uint8_t byte)
+[v _Display_WriteByte `(v ~T0 @X0 1 ef1`uc ]
+"85
+[; ;src/app/display_lcd/display_lcd.c: 85: {
+{
+[e :U _Display_WriteByte ]
+"84
+[; ;src/app/display_lcd/display_lcd.c: 84: void Display_WriteByte(uint8_t byte)
+[v _byte `uc ~T0 @X0 1 r1 ]
+"85
+[; ;src/app/display_lcd/display_lcd.c: 85: {
+[f ]
+"86
+[; ;src/app/display_lcd/display_lcd.c: 86:     uint8_t auxByte = 0x00;
+[v _auxByte `uc ~T0 @X0 1 a ]
+[e = _auxByte -> -> 0 `i `uc ]
+"87
+[; ;src/app/display_lcd/display_lcd.c: 87:     if(0x01 == 0x01) LATB = (PORTB | (1 << 3)); else LATB = (PORTB & ~((1 << 3)));;
+[e $ ! == -> 1 `i -> 1 `i 305  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 3 `i `uc ]
+[e $U 306  ]
+[e :U 305 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 3 `i `uc ]
+[e :U 306 ]
+"89
+[; ;src/app/display_lcd/display_lcd.c: 89:     auxByte = (byte & 0xF0);
+[e = _auxByte -> & -> _byte `i -> 240 `i `uc ]
+"90
+[; ;src/app/display_lcd/display_lcd.c: 90:     LATB = ((PORTB & 0x0F) | auxByte);;
+[e = _LATB -> | & -> _PORTB `i -> 15 `i -> _auxByte `i `uc ]
+"92
+[; ;src/app/display_lcd/display_lcd.c: 92:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 307  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 308  ]
+[e :U 307 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 308 ]
+"93
+[; ;src/app/display_lcd/display_lcd.c: 93:     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 1 `i -> 1 `i 309  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 310  ]
+[e :U 309 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 310 ]
+"94
+[; ;src/app/display_lcd/display_lcd.c: 94:     _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"95
+[; ;src/app/display_lcd/display_lcd.c: 95:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 311  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 312  ]
+[e :U 311 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 312 ]
+"98
+[; ;src/app/display_lcd/display_lcd.c: 98:     auxByte = (byte << 0x04);
+[e = _auxByte -> << -> _byte `i -> 4 `i `uc ]
+"99
+[; ;src/app/display_lcd/display_lcd.c: 99:     LATB = ((PORTB & 0x0F) | auxByte);;
+[e = _LATB -> | & -> _PORTB `i -> 15 `i -> _auxByte `i `uc ]
+"101
+[; ;src/app/display_lcd/display_lcd.c: 101:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 313  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 314  ]
+[e :U 313 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 314 ]
+"102
+[; ;src/app/display_lcd/display_lcd.c: 102:     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 1 `i -> 1 `i 315  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 316  ]
+[e :U 315 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 316 ]
+"103
+[; ;src/app/display_lcd/display_lcd.c: 103:     _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
+"104
+[; ;src/app/display_lcd/display_lcd.c: 104:     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
+[e $ ! == -> 0 `i -> 1 `i 317  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
+[e $U 318  ]
+[e :U 317 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 2 `i `uc ]
+[e :U 318 ]
+"106
+[; ;src/app/display_lcd/display_lcd.c: 106:     _delay((unsigned long)((2)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"107
+[; ;src/app/display_lcd/display_lcd.c: 107: }
+[e :UE 304 ]
+}
+"109
+[; ;src/app/display_lcd/display_lcd.c: 109: void Display_WriteString(char* string, uint8_t length)
+[v _Display_WriteString `(v ~T0 @X0 1 ef2`*uc`uc ]
+"110
+[; ;src/app/display_lcd/display_lcd.c: 110: {
+{
+[e :U _Display_WriteString ]
+"109
+[; ;src/app/display_lcd/display_lcd.c: 109: void Display_WriteString(char* string, uint8_t length)
+[v _string `*uc ~T0 @X0 1 r1 ]
+[v _length `uc ~T0 @X0 1 r2 ]
+"110
+[; ;src/app/display_lcd/display_lcd.c: 110: {
+[f ]
+"111
+[; ;src/app/display_lcd/display_lcd.c: 111:     uint8_t auxLength = 0x00;
+[v _auxLength `uc ~T0 @X0 1 a ]
+[e = _auxLength -> -> 0 `i `uc ]
+"112
+[; ;src/app/display_lcd/display_lcd.c: 112:     for(auxLength = 0; auxLength < length - 1; auxLength++)
+{
+[e = _auxLength -> -> 0 `i `uc ]
+[e $U 323  ]
+[e :U 320 ]
+"113
+[; ;src/app/display_lcd/display_lcd.c: 113:     {
+{
+"114
+[; ;src/app/display_lcd/display_lcd.c: 114:         Display_WriteByte((uint8_t)string[auxLength]);
+[e ( _Display_WriteByte (1 -> *U + _string * -> _auxLength `ux -> -> # *U _string `ui `ux `uc ]
+"115
+[; ;src/app/display_lcd/display_lcd.c: 115:     }
+}
+[e ++ _auxLength -> -> 1 `i `uc ]
+[e :U 323 ]
+[e $ < -> _auxLength `i - -> _length `i -> 1 `i 320  ]
+[e :U 321 ]
+}
+"116
+[; ;src/app/display_lcd/display_lcd.c: 116: }
+[e :UE 319 ]
+}
+[a 1C 84 69 83 84 69 32 65 66 67 0 ]

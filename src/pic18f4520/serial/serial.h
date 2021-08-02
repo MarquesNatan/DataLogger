@@ -4,8 +4,8 @@
 /*============================================================================*/
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
+#include "../../board/board_definitions/board_definitions.h"
 /*============================================================================*/
-#define _XTAL_FREQ 10000000
 #define SPEED_SERIAL    9600
 /*============================================================================*/
 typedef enum {
@@ -42,7 +42,7 @@ extern "C" {
     void Serial_Config( long int desired_baud /* serial_config_t* serialConfig */);
     void Serial_1_Config(serial_config_t* serialConfig);
 /*============================================================================*/
-    void Serial_Transmit( char data );
+    void Serial_Transmit( uint8_t  data );
     uint8_t Serial_Receive(void);
 #ifdef	__cplusplus
 }

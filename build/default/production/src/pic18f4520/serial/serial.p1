@@ -558,23 +558,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/serial/serial.c: 39:     uint8_t error_min;
 [v _error_min `uc ~T0 @X0 1 a ]
 "42
-[; ;src/pic18f4520/serial/serial.c: 42:     brg8LOW = (10000000/(serialConfig->serial_desired_baud * 64));
-[e = _brg8LOW -> / -> 10000000 `l * . *U _serialConfig 3 -> -> 64 `i `l `uc ]
+[; ;src/pic18f4520/serial/serial.c: 42:     brg8LOW = (10000000UL/(serialConfig->serial_desired_baud * 64));
+[e = _brg8LOW -> / -> 10000000 `ul -> * . *U _serialConfig 3 -> -> 64 `i `l `ul `uc ]
 "43
-[; ;src/pic18f4520/serial/serial.c: 43:     brg8HIGH = (10000000/(serialConfig->serial_desired_baud * 16));
-[e = _brg8HIGH -> / -> 10000000 `l * . *U _serialConfig 3 -> -> 16 `i `l `uc ]
+[; ;src/pic18f4520/serial/serial.c: 43:     brg8HIGH = (10000000UL/(serialConfig->serial_desired_baud * 16));
+[e = _brg8HIGH -> / -> 10000000 `ul -> * . *U _serialConfig 3 -> -> 16 `i `l `ul `uc ]
 "44
-[; ;src/pic18f4520/serial/serial.c: 44:     brg16HIGH = (10000000/(serialConfig->serial_desired_baud * 4));
-[e = _brg16HIGH -> / -> 10000000 `l * . *U _serialConfig 3 -> -> 4 `i `l `uc ]
+[; ;src/pic18f4520/serial/serial.c: 44:     brg16HIGH = (10000000UL/(serialConfig->serial_desired_baud * 4));
+[e = _brg16HIGH -> / -> 10000000 `ul -> * . *U _serialConfig 3 -> -> 4 `i `l `ul `uc ]
 "47
-[; ;src/pic18f4520/serial/serial.c: 47:     error_8LOW = (10000000/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
-[e = _error_8LOW -> - / -> 10000000 `l -> * -> _brg8LOW `i -> 64 `i `l . *U _serialConfig 3 `uc ]
+[; ;src/pic18f4520/serial/serial.c: 47:     error_8LOW = (10000000UL/(brg8LOW * 64)) - serialConfig->serial_desired_baud;
+[e = _error_8LOW -> - / -> 10000000 `ul -> -> * -> _brg8LOW `i -> 64 `i `l `ul -> . *U _serialConfig 3 `ul `uc ]
 "48
-[; ;src/pic18f4520/serial/serial.c: 48:     error_8HIGH = (10000000/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
-[e = _error_8HIGH -> - / -> 10000000 `l -> * -> _brg8HIGH `i -> 16 `i `l . *U _serialConfig 3 `uc ]
+[; ;src/pic18f4520/serial/serial.c: 48:     error_8HIGH = (10000000UL/(brg8HIGH * 16)) - serialConfig->serial_desired_baud;
+[e = _error_8HIGH -> - / -> 10000000 `ul -> -> * -> _brg8HIGH `i -> 16 `i `l `ul -> . *U _serialConfig 3 `ul `uc ]
 "49
-[; ;src/pic18f4520/serial/serial.c: 49:     error_16HIGH = (10000000/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
-[e = _error_16HIGH -> - / -> 10000000 `l -> * -> _brg16HIGH `i -> 4 `i `l . *U _serialConfig 3 `uc ]
+[; ;src/pic18f4520/serial/serial.c: 49:     error_16HIGH = (10000000UL/(brg16HIGH * 4)) - serialConfig->serial_desired_baud;
+[e = _error_16HIGH -> - / -> 10000000 `ul -> -> * -> _brg16HIGH `i -> 4 `i `l `ul -> . *U _serialConfig 3 `ul `uc ]
 "52
 [; ;src/pic18f4520/serial/serial.c: 52:     error_min = error_8LOW;
 [e = _error_min _error_8LOW ]
@@ -678,21 +678,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 282 ]
 }
 "132
-[; ;src/pic18f4520/serial/serial.c: 132: void Serial_Transmit(char data)
+[; ;src/pic18f4520/serial/serial.c: 132: void Serial_Transmit(uint8_t data)
 [v _Serial_Transmit `(v ~T0 @X0 1 ef1`uc ]
 "133
 [; ;src/pic18f4520/serial/serial.c: 133: {
 {
 [e :U _Serial_Transmit ]
 "132
-[; ;src/pic18f4520/serial/serial.c: 132: void Serial_Transmit(char data)
+[; ;src/pic18f4520/serial/serial.c: 132: void Serial_Transmit(uint8_t data)
 [v _data `uc ~T0 @X0 1 r1 ]
 "133
 [; ;src/pic18f4520/serial/serial.c: 133: {
 [f ]
 "134
 [; ;src/pic18f4520/serial/serial.c: 134:     TXREG = data;
-[e = _TXREG -> _data `uc ]
+[e = _TXREG _data ]
 "135
 [; ;src/pic18f4520/serial/serial.c: 135:     while(!TRMT);
 [e $U 288  ]
