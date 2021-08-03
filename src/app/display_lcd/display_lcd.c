@@ -5,38 +5,41 @@
 #include "../../board/pinout/pinout.h"
 #include <stdint.h>
 
-#define STRING_TEST         "TESTE ABC"
+#define STRING_TEST         "**DISPLAY TEST**"
 /*============================================================================*/
 void DisplayLCD_Init( void )
 {
-    __delay_ms(500);
+    // Wait for more than 15 ms
+    __delay_ms(20);
+    
+    // Configure display PORTx
     PORT_DIGITAL_CONFIGURE(DISPLAY_LCD_D4_PORT, 0x00);
     
-    // Function: Function Set ( send 2, 2 and 3 to display)
+    // Send High Byte
     sendNibble(0x20);
     sendNibble(0x20);
     sendNibble(0x30);
     
-    // Functios: Entry Set Mode 
-    // RS   RW  D7  D6  D5  D4  D3  D2  D1  D0      0b00000110
-    // 0    0   0   0   0   0   0   1   I/D S       -> I/D = 1 Increment / 0 = Decrement
-    //                                              -> S = 1 Display Shift / 0 Display don't shift
+    // Function set: 4 Bits mode | 2 Lines display | 5x10 dots : COMMAND
+    Display_SendByte((DISPLAY_FUNCTION_SET | DISPLAY_4_BITS_MODE | DISPLAY_2_LINE_MODE | DISPLAY_5_10_MATRIX), DISPLAY_COMMAND);
     
+    // Entry set Mode: Increment | Disable shift : COMMAND
     Display_SendByte((DISPLAY_ENTRY_SET_MODE | DISPLAY_INCREMENT | DISPLAY_SHIFT_DIS), DISPLAY_COMMAND);
     
-    // Functios: Display On Off Control 
-    // RS   RW  D7  D6  D5  D4  D3  D2  D1  D0      0b00000110
-    // 0    0   0   0   0   0   1   D   C   S       D -> Display On Off (0 off)
-    //                                              C -> Cursor ON OFF (1 ON)
-    //                                              S -> Cursor Blink
     
+    // Display ON OFF: Display ON | Cursor ON | Cursor BLINK : COMMAND
     Display_SendByte((DISPLAY_ON_OFF | DISPLAY_ON | DISPLAY_CURSOR_ON | DISPLAY_CURSOR_BLK_EN ), DISPLAY_COMMAND);
     
-    Display_SendByte(0b00000001, DISPLAY_COMMAND);
-    
-   __delay_ms(2);
+    // Display Clear: 0b00000001 1.52 ms
+    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+   __delay_ms(2); 
    
-   Display_WriteString(STRING_TEST, sizeof(STRING_TEST));
+   //  Set line 2 : 37 us
+   Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
+   __delay_us(50);
+   
+   // Write String : "DISPLAY TEST"
+   Display_WriteString(STRING_TEST, sizeof(STRING_TEST), 0x40);
     
 }
 /*============================================================================*/
@@ -106,9 +109,11 @@ void Display_WriteByte(uint8_t byte)
     __delay_ms(2);
 }
 /*============================================================================*/
-void Display_WriteString(char* string, uint8_t length)
+void Display_WriteString(char* string, uint8_t length, uint8_t address)
 {
     uint8_t auxLength = 0x00; 
+    
+    
     for(auxLength = 0; auxLength < length - 1; auxLength++)
     {
         Display_WriteByte((uint8_t)string[auxLength]);

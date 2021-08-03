@@ -17,15 +17,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
 "23 src/main.c
 [; ;src/main.c: 23: serial_config_t serialConfig = {
-[c E2617 0 1 .. ]
-[n E2617 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
-[c E2621 0 1 .. ]
-[n E2621 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
-[c E2625 0 1 .. ]
-[n E2625 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
+[c E2618 0 1 .. ]
+[n E2618 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
+[c E2622 0 1 .. ]
+[n E2622 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
+[c E2626 0 1 .. ]
+[n E2626 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
 "31 src/pic18f4520/serial/serial.h
 [; ;src/pic18f4520/serial/serial.h: 31: typedef struct {
-[s S282 `E2617 1 `E2621 1 `E2625 1 `l 1 ]
+[s S282 `E2618 1 `E2622 1 `E2626 1 `l 1 ]
 [n S282 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
 [t ~ __interrupt . k ]
 [t T41 __interrupt ]
@@ -79,8 +79,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/serial/serial.h: 45:     void Serial_Transmit( uint8_t data );
 [v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
 [p mainexit ]
-"34 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 34:     void DisplayLCD_Init( void );
+"49 src/app/display_lcd/display_lcd.h
+[; ;src/app/display_lcd/display_lcd.h: 49:     void DisplayLCD_Init( void );
 [v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
@@ -588,9 +588,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _serialConfig
 :U ..
 :U ..
-. `E2617 0
-. `E2621 0
-. `E2625 0
+. `E2618 0
+. `E2622 0
+. `E2626 0
 -> -> 9600 `i `l
 ..
 ..

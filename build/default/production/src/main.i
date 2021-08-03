@@ -4740,11 +4740,11 @@ typedef struct {
 # 6 "src/main.c" 2
 
 # 1 "src/app/display_lcd/display_lcd.h" 1
-# 34 "src/app/display_lcd/display_lcd.h"
+# 49 "src/app/display_lcd/display_lcd.h"
     void DisplayLCD_Init( void );
     void Display_SendByte(uint8_t byte, uint8_t comm);
     void Display_WriteByte(uint8_t byte);
-    void Display_WriteString(char* string, uint8_t length);
+    void Display_WriteString(char* string, uint8_t length, uint8_t address);
     void sendNibble(uint8_t nibble);
 # 7 "src/main.c" 2
 

@@ -31,15 +31,15 @@ TIMER_PRESCALER_128 6
 TIMER_PRESCALER_256 7
 ]
 "23
-[e E2617 . `uc
+[e E2618 . `uc
 SERIAL_ASSYNC_MODE 0
 SERIAL_SYNC_MODE 1
 ]
-[e E2621 . `uc
+[e E2622 . `uc
 SERIAL_DATA_LENGTH_8 0
 SERIAL_DATA_LENGTH_9 1
 ]
-[e E2625 . `uc
+[e E2626 . `uc
 SERIAL_MASTER_MODE 0
 SERIAL_SLAVE_MODE 1
 ]
@@ -115,13 +115,13 @@ TIMER_PRESCALER_256 7
 [v _DHT11_ReadByte DHT11_ReadByte `(uc  1 e 1 0 ]
 "10 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/display_lcd/display_lcd.c
 [v _DisplayLCD_Init DisplayLCD_Init `(v  1 e 1 0 ]
-"43
+"45
 [v _sendNibble sendNibble `(v  1 e 1 0 ]
-"57
+"59
 [v _Display_SendByte Display_SendByte `(v  1 e 1 0 ]
-"84
+"86
 [v _Display_WriteByte Display_WriteByte `(v  1 e 1 0 ]
-"109
+"111
 [v _Display_WriteString Display_WriteString `(v  1 e 1 0 ]
 "6 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/board/peripheral-controller/peripheral_controller.c
 [v _Peripheral_Controller Peripheral_Controller `(v  1 e 1 0 ]
@@ -147,7 +147,7 @@ TIMER_PRESCALER_256 7
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 "2143
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S545 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S547 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -157,12 +157,12 @@ TIMER_PRESCALER_256 7
 `uc 1 PSPIE 1 0 :1:7 
 ]
 "2616
-[s S554 . 1 `uc 1 . 1 0 :4:0 
+[s S556 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IE 1 0 :1:4 
 `uc 1 RC1IE 1 0 :1:5 
 ]
-[u S558 . 1 `S545 1 . 1 0 `S554 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES558  1 e 1 @3997 ]
+[u S560 . 1 `S547 1 . 1 0 `S556 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES560  1 e 1 @3997 ]
 [s S121 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -179,7 +179,7 @@ TIMER_PRESCALER_256 7
 ]
 [u S134 . 1 `S121 1 . 1 0 `S130 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES134  1 e 1 @3998 ]
-[s S491 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S493 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -189,23 +189,23 @@ TIMER_PRESCALER_256 7
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3151
-[s S500 . 1 `uc 1 . 1 0 :3:0 
+[s S502 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S503 . 1 `uc 1 . 1 0 :5:0 
+[s S505 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S506 . 1 `uc 1 . 1 0 :6:0 
+[s S508 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S509 . 1 `uc 1 . 1 0 :6:0 
+[s S511 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S512 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S514 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S514 . 1 `S491 1 . 1 0 `S500 1 . 1 0 `S503 1 . 1 0 `S506 1 . 1 0 `S509 1 . 1 0 `S512 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES514  1 e 1 @4011 ]
-[s S438 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S516 . 1 `S493 1 . 1 0 `S502 1 . 1 0 `S505 1 . 1 0 `S508 1 . 1 0 `S511 1 . 1 0 `S514 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES516  1 e 1 @4011 ]
+[s S440 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -215,7 +215,7 @@ TIMER_PRESCALER_256 7
 `uc 1 CSRC 1 0 :1:7 
 ]
 "3359
-[s S447 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S449 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -224,20 +224,20 @@ TIMER_PRESCALER_256 7
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S456 . 1 `uc 1 . 1 0 :6:0 
+[s S458 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S459 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S461 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S461 . 1 `S438 1 . 1 0 `S447 1 . 1 0 `S456 1 . 1 0 `S459 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES461  1 e 1 @4012 ]
+[u S463 . 1 `S440 1 . 1 0 `S449 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES463  1 e 1 @4012 ]
 "3576
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "3588
 [v _RCREG RCREG `VEuc  1 e 1 @4014 ]
 "3600
 [v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
-[s S392 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S394 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -247,35 +247,35 @@ TIMER_PRESCALER_256 7
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "4257
-[s S401 . 1 `uc 1 . 1 0 :4:0 
+[s S403 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SCKP 1 0 :1:4 
 `uc 1 . 1 0 :1:5 
 `uc 1 RCMT 1 0 :1:6 
 ]
-[s S406 . 1 `uc 1 . 1 0 :5:0 
+[s S408 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RXCKP 1 0 :1:5 
 ]
-[s S409 . 1 `uc 1 . 1 0 :1:0 
+[s S411 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 W4E 1 0 :1:1 
 ]
-[u S412 . 1 `S392 1 . 1 0 `S401 1 . 1 0 `S406 1 . 1 0 `S409 1 . 1 0 ]
-[v _BAUDCONbits BAUDCONbits `VES412  1 e 1 @4024 ]
-[s S275 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[u S414 . 1 `S394 1 . 1 0 `S403 1 . 1 0 `S408 1 . 1 0 `S411 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES414  1 e 1 @4024 ]
+[s S277 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "5697
-[s S277 . 1 `uc 1 . 1 0 :1:0 
+[s S279 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S280 . 1 `uc 1 . 1 0 :2:0 
+[s S282 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S283 . 1 `uc 1 . 1 0 :3:0 
+[s S285 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S286 . 1 `uc 1 . 1 0 :4:0 
+[s S288 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S289 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S291 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -284,15 +284,15 @@ TIMER_PRESCALER_256 7
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S298 . 1 `uc 1 BOR 1 0 :1:0 
+[s S300 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S304 . 1 `S275 1 . 1 0 `S277 1 . 1 0 `S280 1 . 1 0 `S283 1 . 1 0 `S286 1 . 1 0 `S289 1 . 1 0 `S298 1 . 1 0 ]
-[v _RCONbits RCONbits `VES304  1 e 1 @4048 ]
-[s S656 . 1 `uc 1 T0PS 1 0 :3:0 
+[u S306 . 1 `S277 1 . 1 0 `S279 1 . 1 0 `S282 1 . 1 0 `S285 1 . 1 0 `S288 1 . 1 0 `S291 1 . 1 0 `S300 1 . 1 0 ]
+[v _RCONbits RCONbits `VES306  1 e 1 @4048 ]
+[s S658 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -300,22 +300,22 @@ TIMER_PRESCALER_256 7
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "6191
-[s S663 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S665 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 `uc 1 . 1 0 :2:4 
 `uc 1 T016BIT 1 0 :1:6 
 ]
-[u S670 . 1 `S656 1 . 1 0 `S663 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES670  1 e 1 @4053 ]
+[u S672 . 1 `S658 1 . 1 0 `S665 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES672  1 e 1 @4053 ]
 "6251
 [v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
-[s S715 . 1 `uc 1 . 1 0 :7:0 
+[s S717 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "6647
-[s S718 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S720 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -324,11 +324,11 @@ TIMER_PRESCALER_256 7
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S727 . 1 `uc 1 . 1 0 :7:0 
+[s S729 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S730 . 1 `S715 1 . 1 0 `S718 1 . 1 0 `S727 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES730  1 e 1 @4081 ]
+[u S732 . 1 `S717 1 . 1 0 `S720 1 . 1 0 `S729 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES732  1 e 1 @4081 ]
 [s S65 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -374,48 +374,49 @@ TIMER_PRESCALER_256 7
 "10 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/display_lcd/display_lcd.c
 [v _DisplayLCD_Init DisplayLCD_Init `(v  1 e 1 0 ]
 {
-"41
-} 0
 "43
+} 0
+"45
 [v _sendNibble sendNibble `(v  1 e 1 0 ]
 {
 [v sendNibble@nibble nibble `uc  1 a 1 wreg ]
 [v sendNibble@nibble nibble `uc  1 a 1 wreg ]
 [v sendNibble@nibble nibble `uc  1 a 1 3 ]
-"55
+"57
 } 0
-"109
+"111
 [v _Display_WriteString Display_WriteString `(v  1 e 1 0 ]
 {
+"113
+[v Display_WriteString@auxLength auxLength `uc  1 a 1 16 ]
 "111
-[v Display_WriteString@auxLength auxLength `uc  1 a 1 15 ]
-"109
 [v Display_WriteString@string string `*.25uc  1 p 2 5 ]
 [v Display_WriteString@length length `uc  1 p 1 7 ]
-"116
+[v Display_WriteString@address address `uc  1 p 1 8 ]
+"120
 } 0
-"84
+"86
 [v _Display_WriteByte Display_WriteByte `(v  1 e 1 0 ]
 {
 [v Display_WriteByte@byte byte `uc  1 a 1 wreg ]
-"86
+"88
 [v Display_WriteByte@auxByte auxByte `uc  1 a 1 4 ]
-"84
+"86
 [v Display_WriteByte@byte byte `uc  1 a 1 wreg ]
 [v Display_WriteByte@byte byte `uc  1 a 1 3 ]
-"107
+"109
 } 0
-"57
+"59
 [v _Display_SendByte Display_SendByte `(v  1 e 1 0 ]
 {
 [v Display_SendByte@byte byte `uc  1 a 1 wreg ]
-"59
+"61
 [v Display_SendByte@auxByte auxByte `uc  1 a 1 5 ]
-"57
+"59
 [v Display_SendByte@byte byte `uc  1 a 1 wreg ]
 [v Display_SendByte@comm comm `uc  1 p 1 2 ]
 [v Display_SendByte@byte byte `uc  1 a 1 4 ]
-"82
+"84
 } 0
 "41 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
 [v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
