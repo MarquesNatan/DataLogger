@@ -4543,7 +4543,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 #pragma config CCP2MX = PORTC
 #pragma config PBADEN = OFF
 #pragma config LPT1OSC = OFF
-#pragma config MCLRE = OFF
+#pragma config MCLRE = ON
 
 
 #pragma config STVREN = ON
@@ -4740,7 +4740,7 @@ typedef struct {
 # 6 "src/main.c" 2
 
 # 1 "src/app/display_lcd/display_lcd.h" 1
-# 49 "src/app/display_lcd/display_lcd.h"
+# 51 "src/app/display_lcd/display_lcd.h"
     void DisplayLCD_Init( void );
     void Display_SendByte(uint8_t byte, uint8_t comm);
     void Display_WriteByte(uint8_t byte);
@@ -4797,7 +4797,10 @@ typedef struct {
     void Serial_1_Config(serial_config_t* serialConfig);
 
     void Serial_Transmit( uint8_t data );
+    void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length);
+
     uint8_t Serial_Receive(void);
+    uint8_t Serial_ReceiveBuffer(void);
 # 9 "src/main.c" 2
 
 # 1 "src/app/dht11/dht11.h" 1
@@ -4813,6 +4816,33 @@ typedef struct {
 
 # 1 "src/board/pinout/pinout.h" 1
 # 13 "src/main.c" 2
+
+
+# 1 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 1
+# 14 "src/app/bluetooth-hc-06/bluetooth_hc_06.h"
+char BLUETOOTH_NAME_COMM[] = "AT+NAME";
+char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
+char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
+
+typedef enum {
+    BAUD_1200 = 0x01,
+    BAUD_2400 = 0x02,
+    BAUD_4800 = 0x03,
+    BAUD_9600 = 0x04,
+    BAUD_19200 = 0x05,
+    BAUD_38400 = 0x06,
+    BAUD_57600 = 0x07,
+    BAUD_115200 = 0x08,
+}BLUETOOTH_BAUD_AVALIABLE;
+
+
+
+
+
+    void Bluetooth_HC_06_Configure(void);
+    void Bluetooth_HC_06_Write( void );
+    uint8_t Bluetooth_HC_06_Read( void );
+# 15 "src/main.c" 2
 
 
 timer_config_t timerConfig = {
@@ -4836,10 +4866,10 @@ extern uint8_t humidity[2];
 uint8_t count = 0x00;
 
 
+
 void tickHook_func(uint32_t *timer_value) {
     (*timer_value)++;
 }
-
 
 void __attribute__((picinterrupt(("")))) TC0INT(void) {
     if (INTCONbits.TMR0IF == 0x01) {
@@ -4862,11 +4892,19 @@ void main(void) {
 
 
 
-
+    Serial_1_Config(&serialConfig);
 
     DisplayLCD_Init();
+    int i = 0;
     while (1)
     {
+        Serial_TransmitBuffer("AT\r", sizeof("AT\r"));
+
+        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
     }
     return;
 }

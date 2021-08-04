@@ -20,7 +20,7 @@
 #pragma config CCP2MX  = PORTC
 #pragma config PBADEN  = OFF
 #pragma config LPT1OSC = OFF
-#pragma config MCLRE   = OFF
+#pragma config MCLRE   = ON
 /*============================================================================*/
 // CONFIG4L
 #pragma config STVREN = ON

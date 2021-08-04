@@ -12,6 +12,8 @@
 #include "pic18f4520/gpio/gpio.h"
 #include "board/pinout/pinout.h"
 /*============================================================================*/
+#include "app/bluetooth-hc-06/bluetooth_hc_06.h"
+/*============================================================================*/
 timer_config_t timerConfig = {
     .timer_length = TIMER_LENGTH_16,
     .timer_clk_src = TIMER_CLKO_SRC,
@@ -32,11 +34,11 @@ extern uint8_t temperature[2];
 extern uint8_t humidity[2];
 uint8_t count = 0x00;
 
+#define BLUETOOTH_SERIAL    "AT\r"
 /*============================================================================*/
 void tickHook_func(global_timer_t *timer_value) {
     (*timer_value)++;
 }
-
 /*============================================================================*/
 void __interrupt() TC0INT(void) {
     if (INTCONbits.TMR0IF == 0x01) {
@@ -49,21 +51,26 @@ void __interrupt() TC0INT(void) {
         count = RCREG;
         Serial_Transmit(count);
 
-        PIR1bits.RCIF = 0x00;
+        PIR1bits.RCIF = 0x00;   
     }
 }
 
 /*============================================================================*/
 void main(void) {
     
-    // Interrupt_GlobalEnable();
+  //   Interrupt_GlobalEnable();
     // Timer0_Config(&timerConfig);
     // Timer0_SetTickHook(tickHook_func);
-    // Serial_1_Config(&serialConfig);
+    Serial_1_Config(&serialConfig);
 
     DisplayLCD_Init();
+    int i = 0;
     while (1) 
     {
+        Serial_TransmitBuffer(BLUETOOTH_SERIAL, sizeof(BLUETOOTH_SERIAL));
+        
+        __delay_ms(1000);
+        __delay_ms(1000);
     }
     return;
 }

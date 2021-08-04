@@ -2,6 +2,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 src/app/main-app/../../board/peripheral-controller/peripheral_controller.h
 [; ;src/app/main-app/../../board/peripheral-controller/peripheral_controller.h: 13:     void Peripheral_Controller(void* args);
 [v _Peripheral_Controller `(v ~T0 @X0 0 ef1`*v ]
+"51 src/app/main-app/../../app/display_lcd/display_lcd.h
+[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
+[v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
+"54
+[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
+[v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -416,40 +422,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"8 src/app/main-app/main-app.c
-[; ;src/app/main-app/main-app.c: 8: void main_application( void* args)
+"10 src/app/main-app/main-app.c
+[; ;src/app/main-app/main-app.c: 10: void main_application( void* args)
 [v _main_application `(v ~T0 @X0 1 ef1`*v ]
-"9
-[; ;src/app/main-app/main-app.c: 9: {
+"11
+[; ;src/app/main-app/main-app.c: 11: {
 {
 [e :U _main_application ]
-"8
-[; ;src/app/main-app/main-app.c: 8: void main_application( void* args)
+"10
+[; ;src/app/main-app/main-app.c: 10: void main_application( void* args)
 [v _args `*v ~T0 @X0 1 r1 ]
-"9
-[; ;src/app/main-app/main-app.c: 9: {
+"11
+[; ;src/app/main-app/main-app.c: 11: {
 [f ]
-"12
-[; ;src/app/main-app/main-app.c: 12: }
+"13
+[; ;src/app/main-app/main-app.c: 13:     while(1)
+[e :U 285 ]
+"14
+[; ;src/app/main-app/main-app.c: 14:     {
+{
+"16
+[; ;src/app/main-app/main-app.c: 16:     }
+}
+[e :U 284 ]
+[e $U 285  ]
+[e :U 286 ]
+"19
+[; ;src/app/main-app/main-app.c: 19: }
 [e :UE 283 ]
 }
-"14
-[; ;src/app/main-app/main-app.c: 14: void StartSystem( void* args )
+"21
+[; ;src/app/main-app/main-app.c: 21: void StartSystem( void* args )
 [v _StartSystem `(v ~T0 @X0 1 ef1`*v ]
-"15
-[; ;src/app/main-app/main-app.c: 15: {
+"22
+[; ;src/app/main-app/main-app.c: 22: {
 {
 [e :U _StartSystem ]
-"14
-[; ;src/app/main-app/main-app.c: 14: void StartSystem( void* args )
+"21
+[; ;src/app/main-app/main-app.c: 21: void StartSystem( void* args )
 [v _args `*v ~T0 @X0 1 r1 ]
-"15
-[; ;src/app/main-app/main-app.c: 15: {
+"22
+[; ;src/app/main-app/main-app.c: 22: {
 [f ]
-"18
-[; ;src/app/main-app/main-app.c: 18:     Peripheral_Controller(((void*)0));
-[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
 "25
-[; ;src/app/main-app/main-app.c: 25: }
-[e :UE 284 ]
+[; ;src/app/main-app/main-app.c: 25:     Peripheral_Controller(((void*)0));
+[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
+"29
+[; ;src/app/main-app/main-app.c: 29:     DisplayLCD_Init();
+[e ( _DisplayLCD_Init ..  ]
+"31
+[; ;src/app/main-app/main-app.c: 31:     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
+[e ( _Display_WriteString (3 , , :s 1C -> -> 16 `ui `uc -> -> 0 `i `uc ]
+"37
+[; ;src/app/main-app/main-app.c: 37: }
+[e :UE 287 ]
 }
+[a 1C 83 84 65 82 84 95 66 76 85 69 84 79 79 84 72 0 ]

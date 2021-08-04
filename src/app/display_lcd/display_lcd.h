@@ -42,7 +42,7 @@
 #define DISPLAY_DDRAM_ADD_2_1       0b01000000
 #define DISPLAY_DDRAM_ADD_1_1       0b00000000
 /*============================================================================*/
-#define DISPLAY_CLEAN               0b00000001
+#define DISPLAY_CLEAR               0b00000001
 /*============================================================================*/
 #ifdef	__cplusplus
 extern "C" {

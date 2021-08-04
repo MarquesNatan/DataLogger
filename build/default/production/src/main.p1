@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"15 src/main.c
-[; ;src/main.c: 15: timer_config_t timerConfig = {
+"17 src/main.c
+[; ;src/main.c: 17: timer_config_t timerConfig = {
 [c E2559 0 1 .. ]
 [n E2559 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
 [c E2563 0 1 .. ]
@@ -15,8 +15,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/timer/timer.h: 43: typedef struct {
 [s S281 `E2559 1 `E2563 1 `E2567 1 `E2571 1 `E2575 1 ]
 [n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
-"23 src/main.c
-[; ;src/main.c: 23: serial_config_t serialConfig = {
+"25 src/main.c
+[; ;src/main.c: 25: serial_config_t serialConfig = {
 [c E2618 0 1 .. ]
 [n E2618 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
 [c E2622 0 1 .. ]
@@ -51,8 +51,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59 src/pic18f4520/timer/timer.h
 [; ;src/pic18f4520/timer/timer.h: 59:     void tickHook_Execute(uint32_t* global_timer_value);
 [v _tickHook_Execute `(v ~T0 @X0 0 ef1`*ul ]
-"30 src/main.c
-[; ;src/main.c: 30: extern uint32_t global_timer_value;
+"32 src/main.c
+[; ;src/main.c: 32: extern uint32_t global_timer_value;
 [v _global_timer_value `ul ~T0 @X0 0 e ]
 "6251 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
@@ -79,9 +79,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/serial/serial.h: 45:     void Serial_Transmit( uint8_t data );
 [v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
 [p mainexit ]
-"49 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 49:     void DisplayLCD_Init( void );
+"43
+[; ;src/pic18f4520/serial/serial.h: 43:     void Serial_1_Config(serial_config_t* serialConfig);
+[v _Serial_1_Config `(v ~T0 @X0 0 ef1`*S282 ]
+"51 src/app/display_lcd/display_lcd.h
+[; ;src/app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
 [v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
+"46 src/pic18f4520/serial/serial.h
+[; ;src/pic18f4520/serial/serial.h: 46:     void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length);
+[v _Serial_TransmitBuffer `(v ~T0 @X0 0 ef2`*uc`uc ]
+[v F2518 `(v ~T0 @X0 1 tf1`ul ]
+"203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
+[v __delay `JF2518 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -519,7 +529,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22
 [p x LPT1OSC  =  OFF ]
 "23
-[p x MCLRE      =  OFF ]
+[p x MCLRE      =  ON ]
 "26
 [p x STVREN  =  ON ]
 "27
@@ -568,8 +578,56 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _global_timer_value
 -> -> -> 1 `i `l `ul
 ]
-"15 src/main.c
-[; ;src/main.c: 15: timer_config_t timerConfig = {
+"14 src/app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 14: char BLUETOOTH_NAME_COMM[] = "AT+NAME";
+[v _BLUETOOTH_NAME_COMM `uc ~T0 @X0 -> 8 `i e ]
+[i _BLUETOOTH_NAME_COMM
+:U ..
+-> 65 `c
+-> 84 `c
+-> 43 `c
+-> 78 `c
+-> 65 `c
+-> 77 `c
+-> 69 `c
+-> 0 `c
+..
+]
+"15
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 15: char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
+[v _BLUETOOTH_PIN_COMM `uc ~T0 @X0 -> 11 `i e ]
+[i _BLUETOOTH_PIN_COMM
+:U ..
+-> 65 `c
+-> 84 `c
+-> 43 `c
+-> 80 `c
+-> 73 `c
+-> 78 `c
+-> 88 `c
+-> 89 `c
+-> 90 `c
+-> 87 `c
+-> 0 `c
+..
+]
+"16
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 16: char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
+[v _BLUETOOTH_BAUD_COMM `uc ~T0 @X0 -> 8 `i e ]
+[i _BLUETOOTH_BAUD_COMM
+:U ..
+-> 65 `c
+-> 84 `c
+-> 43 `c
+-> 66 `c
+-> 65 `c
+-> 85 `c
+-> 68 `c
+-> 0 `c
+..
+]
+"17 src/main.c
+[; ;src/main.c: 17: timer_config_t timerConfig = {
 [v _timerConfig `S281 ~T0 @X0 1 e ]
 [i _timerConfig
 :U ..
@@ -582,8 +640,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"23
-[; ;src/main.c: 23: serial_config_t serialConfig = {
+"25
+[; ;src/main.c: 25: serial_config_t serialConfig = {
 [v _serialConfig `S282 ~T0 @X0 1 e ]
 [i _serialConfig
 :U ..
@@ -595,97 +653,123 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"33
-[; ;src/main.c: 33: uint8_t count = 0x00;
+"35
+[; ;src/main.c: 35: uint8_t count = 0x00;
 [v _count `uc ~T0 @X0 1 e ]
 [i _count
 -> -> 0 `i `uc
 ]
-"36
-[; ;src/main.c: 36: void tickHook_func(uint32_t *timer_value) {
+"39
+[; ;src/main.c: 39: void tickHook_func(uint32_t *timer_value) {
 [v _tickHook_func `(v ~T0 @X0 1 ef1`*ul ]
 {
 [e :U _tickHook_func ]
 [v _timer_value `*ul ~T0 @X0 1 r1 ]
 [f ]
-"37
-[; ;src/main.c: 37:     (*timer_value)++;
+"40
+[; ;src/main.c: 40:     (*timer_value)++;
 [e ++ *U _timer_value -> -> -> 1 `i `l `ul ]
-"38
-[; ;src/main.c: 38: }
+"41
+[; ;src/main.c: 41: }
 [e :UE 283 ]
 }
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"41
-[; ;src/main.c: 41: void __attribute__((picinterrupt(("")))) TC0INT(void) {
+"43
+[; ;src/main.c: 43: void __attribute__((picinterrupt(("")))) TC0INT(void) {
 [v _TC0INT `(v ~T41 @X0 1 ef ]
 {
 [e :U _TC0INT ]
 [f ]
-"42
-[; ;src/main.c: 42:     if (INTCONbits.TMR0IF == 0x01) {
+"44
+[; ;src/main.c: 44:     if (INTCONbits.TMR0IF == 0x01) {
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 285  ]
 {
-"43
-[; ;src/main.c: 43:         tickHook_Execute(&global_timer_value);
-[e ( _tickHook_Execute (1 &U _global_timer_value ]
-"44
-[; ;src/main.c: 44:         TMR0 = 0xFB1E;
-[e = _TMR0 -> -> 64286 `ui `us ]
 "45
-[; ;src/main.c: 45:         INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
+[; ;src/main.c: 45:         tickHook_Execute(&global_timer_value);
+[e ( _tickHook_Execute (1 &U _global_timer_value ]
 "46
-[; ;src/main.c: 46:     }
+[; ;src/main.c: 46:         TMR0 = 0xFB1E;
+[e = _TMR0 -> -> 64286 `ui `us ]
+"47
+[; ;src/main.c: 47:         INTCONbits.T0IF = 0x00;
+[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
+"48
+[; ;src/main.c: 48:     }
 }
 [e :U 285 ]
-"48
-[; ;src/main.c: 48:     if (PIR1bits.RCIF) {
+"50
+[; ;src/main.c: 50:     if (PIR1bits.RCIF) {
 [e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 286  ]
 {
-"49
-[; ;src/main.c: 49:         count = RCREG;
+"51
+[; ;src/main.c: 51:         count = RCREG;
 [e = _count _RCREG ]
-"50
-[; ;src/main.c: 50:         Serial_Transmit(count);
-[e ( _Serial_Transmit (1 _count ]
 "52
-[; ;src/main.c: 52:         PIR1bits.RCIF = 0x00;
+[; ;src/main.c: 52:         Serial_Transmit(count);
+[e ( _Serial_Transmit (1 _count ]
+"54
+[; ;src/main.c: 54:         PIR1bits.RCIF = 0x00;
 [e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"53
-[; ;src/main.c: 53:     }
+"55
+[; ;src/main.c: 55:     }
 }
 [e :U 286 ]
-"54
-[; ;src/main.c: 54: }
+"56
+[; ;src/main.c: 56: }
 [e :UE 284 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"57
-[; ;src/main.c: 57: void main(void) {
+"59
+[; ;src/main.c: 59: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
 "64
-[; ;src/main.c: 64:     DisplayLCD_Init();
-[e ( _DisplayLCD_Init ..  ]
-"65
-[; ;src/main.c: 65:     while (1)
-[e :U 289 ]
+[; ;src/main.c: 64:     Serial_1_Config(&serialConfig);
+[e ( _Serial_1_Config (1 &U _serialConfig ]
 "66
-[; ;src/main.c: 66:     {
-{
+[; ;src/main.c: 66:     DisplayLCD_Init();
+[e ( _DisplayLCD_Init ..  ]
 "67
-[; ;src/main.c: 67:     }
+[; ;src/main.c: 67:     int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+"68
+[; ;src/main.c: 68:     while (1)
+[e :U 289 ]
+"69
+[; ;src/main.c: 69:     {
+{
+"70
+[; ;src/main.c: 70:         Serial_TransmitBuffer("AT\r", sizeof("AT\r"));
+[e ( _Serial_TransmitBuffer (2 , :s 1C -> -> 4 `ui `uc ]
+"72
+[; ;src/main.c: 72:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"73
+[; ;src/main.c: 73:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"74
+[; ;src/main.c: 74:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"75
+[; ;src/main.c: 75:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"76
+[; ;src/main.c: 76:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"77
+[; ;src/main.c: 77:     }
 }
 [e :U 288 ]
 [e $U 289  ]
 [e :U 290 ]
-"68
-[; ;src/main.c: 68:     return;
+"78
+[; ;src/main.c: 78:     return;
 [e $UE 287  ]
-"69
-[; ;src/main.c: 69: }
+"79
+[; ;src/main.c: 79: }
 [e :UE 287 ]
 }
+[a 1C 65 84 13 0 ]

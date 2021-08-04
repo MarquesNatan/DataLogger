@@ -4611,7 +4611,7 @@ typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
 # 6 "src/app/display_lcd/display_lcd.h" 2
-# 49 "src/app/display_lcd/display_lcd.h"
+# 51 "src/app/display_lcd/display_lcd.h"
     void DisplayLCD_Init( void );
     void Display_SendByte(uint8_t byte, uint8_t comm);
     void Display_WriteByte(uint8_t byte);
@@ -4634,7 +4634,10 @@ typedef uint32_t uint_fast32_t;
 
 void DisplayLCD_Init( void )
 {
+
     _delay((unsigned long)((20)*(10000000UL/4000.0)));
+
+
     TRISB = 0x00;;
 
 
@@ -4642,28 +4645,26 @@ void DisplayLCD_Init( void )
     sendNibble(0x20);
     sendNibble(0x30);
 
+
     Display_SendByte((0b00100000 | 0b00000000 | 0b00001000 | 0b00000100), 0);
-
-
-
 
 
     Display_SendByte((0b00000100 | 0b00000010 | 0b00000000), 0);
 
 
 
-
-
-
-
     Display_SendByte((0b00001000 | 0b00000100 | 0b00000010 | 0b00000001 ), 0);
 
-    Display_SendByte(0b00000001, 0);
 
+    Display_SendByte(0b00000001, 0);
    _delay((unsigned long)((2)*(10000000UL/4000.0)));
-   Display_SendByte(0b11000000, 0);
-   _delay((unsigned long)((20)*(10000000UL/4000.0)));
-   Display_WriteString("**DISPLAY TEST**", sizeof("**DISPLAY TEST**"), 0x40);
+
+
+   Display_SendByte((0b10000000 | 0b01000000), 0);
+   _delay((unsigned long)((50)*(10000000UL/4000000.0)));
+
+
+   Display_WriteString("NATAN MARQUES", sizeof("NATAN MARQUES"), 0x40);
 
 }
 

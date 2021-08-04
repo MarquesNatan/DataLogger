@@ -2,7 +2,6 @@
 #include "serial.h"
 /*============================================================================*/
 #include <stdint.h>
-
 /*============================================================================*/
 void Serial_1_Config(serial_config_t* serialConfig) {
     /*
@@ -133,6 +132,18 @@ void Serial_Transmit(uint8_t  data)
 {
     TXREG = data;
     while(!TRMT);
+}
+/*============================================================================*/
+void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length)
+{
+    uint8_t auxLength = 0x00; 
+    while(auxLength < length)
+    {
+        TXREG = buffer[auxLength];
+        while(!TRMT);
+        
+        auxLength++;
+    }
 }
 /*============================================================================*/
 uint8_t Serial_Receive(void)

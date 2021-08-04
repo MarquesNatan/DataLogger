@@ -34,6 +34,10 @@
           <itemPath>src/app/main-app/main-app.c</itemPath>
           <itemPath>src/app/main-app/main-app.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="mock" displayName="mock" projectFiles="true">
+          <itemPath>src/app/mock/mock.c</itemPath>
+          <itemPath>src/app/mock/mock.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="packet_factory"
                        displayName="packet_factory"
                        projectFiles="true">

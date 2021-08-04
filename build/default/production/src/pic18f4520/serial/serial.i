@@ -4653,15 +4653,17 @@ typedef struct {
     void Serial_1_Config(serial_config_t* serialConfig);
 
     void Serial_Transmit( uint8_t data );
+    void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length);
+
     uint8_t Serial_Receive(void);
+    uint8_t Serial_ReceiveBuffer(void);
 # 2 "src/pic18f4520/serial/serial.c" 2
 
 
 
 
-
 void Serial_1_Config(serial_config_t* serialConfig) {
-# 30 "src/pic18f4520/serial/serial.c"
+# 29 "src/pic18f4520/serial/serial.c"
     uint8_t brg8LOW;
     uint8_t brg8HIGH;
     uint8_t brg16HIGH;
@@ -4720,7 +4722,7 @@ void Serial_1_Config(serial_config_t* serialConfig) {
 
 
     RCSTAbits.SPEN = 0x01;
-# 101 "src/pic18f4520/serial/serial.c"
+# 100 "src/pic18f4520/serial/serial.c"
     if(serialConfig->serial_data_length == SERIAL_DATA_LENGTH_9)
     {
         TXSTAbits.TX9 = 0x01;
@@ -4730,7 +4732,7 @@ void Serial_1_Config(serial_config_t* serialConfig) {
         TXSTAbits.TX9 = 0x00;
         RCSTAbits.RC9 = 0x00;
     }
-# 124 "src/pic18f4520/serial/serial.c"
+# 123 "src/pic18f4520/serial/serial.c"
     TXSTAbits.TXEN = 0x01;
     RCSTAbits.CREN = 0x01;
 
@@ -4743,6 +4745,18 @@ void Serial_Transmit(uint8_t data)
 {
     TXREG = data;
     while(!TRMT);
+}
+
+void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length)
+{
+    uint8_t auxLength = 0x00;
+    while(auxLength < length)
+    {
+        TXREG = buffer[auxLength];
+        while(!TRMT);
+
+        auxLength++;
+    }
 }
 
 uint8_t Serial_Receive(void)

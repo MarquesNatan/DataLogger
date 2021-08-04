@@ -5,7 +5,7 @@
 #include "../../board/pinout/pinout.h"
 #include <stdint.h>
 
-#define STRING_TEST         "**DISPLAY TEST**"
+#define STRING_TEST         "NATAN MARQUES"
 /*============================================================================*/
 void DisplayLCD_Init( void )
 {

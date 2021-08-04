@@ -43,7 +43,11 @@ extern "C" {
     void Serial_1_Config(serial_config_t* serialConfig);
 /*============================================================================*/
     void Serial_Transmit( uint8_t  data );
+    void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length);
+/*============================================================================*/
     uint8_t Serial_Receive(void);
+    uint8_t Serial_ReceiveBuffer(void);
+/*============================================================================*/
 #ifdef	__cplusplus
 }
 #endif /* __cplusplus */
