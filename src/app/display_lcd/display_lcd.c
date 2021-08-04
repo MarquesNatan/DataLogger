@@ -5,7 +5,7 @@
 #include "../../board/pinout/pinout.h"
 #include <stdint.h>
 
-#define STRING_TEST         "NATAN MARQUES"
+#define STRING_TEST         "DISPLAY TESTE"
 /*============================================================================*/
 void DisplayLCD_Init( void )
 {
@@ -35,11 +35,8 @@ void DisplayLCD_Init( void )
    __delay_ms(2); 
    
    //  Set line 2 : 37 us
-   Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
-   __delay_us(50);
-   
-   // Write String : "DISPLAY TEST"
-   Display_WriteString(STRING_TEST, sizeof(STRING_TEST), 0x40);
+   // Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
+   // __delay_us(50);
     
 }
 /*============================================================================*/

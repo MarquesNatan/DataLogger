@@ -8,6 +8,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "54
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
 [v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
+"33 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 33:     void Bluetooth_HC_06_Configure(void);
+[v _Bluetooth_HC_06_Configure `(v ~T0 @X0 0 ef ]
+"63 src/app/main-app/../../pic18f4520/timer/timer.h
+[; ;src/app/main-app/../../pic18f4520/timer/timer.h: 63:     void Timer0_WaitMS( uint16_t timeWait );
+[v _Timer0_WaitMS `(v ~T0 @X0 0 ef1`us ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -422,59 +428,123 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 src/app/main-app/main-app.c
-[; ;src/app/main-app/main-app.c: 10: void main_application( void* args)
+"10 src/app/main-app/../../pic18f4520/timer/timer.h
+[; ;src/app/main-app/../../pic18f4520/timer/timer.h: 10: uint32_t global_timer_value = 0x01;
+[v _global_timer_value `ul ~T0 @X0 1 e ]
+[i _global_timer_value
+-> -> -> 1 `i `l `ul
+]
+"14 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 14: char BLUETOOTH_NAME_COMM[] = "AT+NAME";
+[v _BLUETOOTH_NAME_COMM `uc ~T0 @X0 -> 8 `i e ]
+[i _BLUETOOTH_NAME_COMM
+:U ..
+-> 65 `c
+-> 84 `c
+-> 43 `c
+-> 78 `c
+-> 65 `c
+-> 77 `c
+-> 69 `c
+-> 0 `c
+..
+]
+"15
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 15: char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
+[v _BLUETOOTH_PIN_COMM `uc ~T0 @X0 -> 11 `i e ]
+[i _BLUETOOTH_PIN_COMM
+:U ..
+-> 65 `c
+-> 84 `c
+-> 43 `c
+-> 80 `c
+-> 73 `c
+-> 78 `c
+-> 88 `c
+-> 89 `c
+-> 90 `c
+-> 87 `c
+-> 0 `c
+..
+]
+"16
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 16: char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
+[v _BLUETOOTH_BAUD_COMM `uc ~T0 @X0 -> 8 `i e ]
+[i _BLUETOOTH_BAUD_COMM
+:U ..
+-> 65 `c
+-> 84 `c
+-> 43 `c
+-> 66 `c
+-> 65 `c
+-> 85 `c
+-> 68 `c
+-> 0 `c
+..
+]
+"14 src/app/main-app/main-app.c
+[; ;src/app/main-app/main-app.c: 14: void main_application( void* args)
 [v _main_application `(v ~T0 @X0 1 ef1`*v ]
-"11
-[; ;src/app/main-app/main-app.c: 11: {
+"15
+[; ;src/app/main-app/main-app.c: 15: {
 {
 [e :U _main_application ]
-"10
-[; ;src/app/main-app/main-app.c: 10: void main_application( void* args)
-[v _args `*v ~T0 @X0 1 r1 ]
-"11
-[; ;src/app/main-app/main-app.c: 11: {
-[f ]
-"13
-[; ;src/app/main-app/main-app.c: 13:     while(1)
-[e :U 285 ]
 "14
-[; ;src/app/main-app/main-app.c: 14:     {
-{
-"16
-[; ;src/app/main-app/main-app.c: 16:     }
-}
-[e :U 284 ]
-[e $U 285  ]
+[; ;src/app/main-app/main-app.c: 14: void main_application( void* args)
+[v _args `*v ~T0 @X0 1 r1 ]
+"15
+[; ;src/app/main-app/main-app.c: 15: {
+[f ]
+"17
+[; ;src/app/main-app/main-app.c: 17:     while(1)
 [e :U 286 ]
-"19
-[; ;src/app/main-app/main-app.c: 19: }
-[e :UE 283 ]
+"18
+[; ;src/app/main-app/main-app.c: 18:     {
+{
+"20
+[; ;src/app/main-app/main-app.c: 20:     }
 }
-"21
-[; ;src/app/main-app/main-app.c: 21: void StartSystem( void* args )
+[e :U 285 ]
+[e $U 286  ]
+[e :U 287 ]
+"23
+[; ;src/app/main-app/main-app.c: 23: }
+[e :UE 284 ]
+}
+"25
+[; ;src/app/main-app/main-app.c: 25: void StartSystem( void* args )
 [v _StartSystem `(v ~T0 @X0 1 ef1`*v ]
-"22
-[; ;src/app/main-app/main-app.c: 22: {
+"26
+[; ;src/app/main-app/main-app.c: 26: {
 {
 [e :U _StartSystem ]
-"21
-[; ;src/app/main-app/main-app.c: 21: void StartSystem( void* args )
-[v _args `*v ~T0 @X0 1 r1 ]
-"22
-[; ;src/app/main-app/main-app.c: 22: {
-[f ]
 "25
-[; ;src/app/main-app/main-app.c: 25:     Peripheral_Controller(((void*)0));
-[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
+[; ;src/app/main-app/main-app.c: 25: void StartSystem( void* args )
+[v _args `*v ~T0 @X0 1 r1 ]
+"26
+[; ;src/app/main-app/main-app.c: 26: {
+[f ]
 "29
-[; ;src/app/main-app/main-app.c: 29:     DisplayLCD_Init();
+[; ;src/app/main-app/main-app.c: 29:     Peripheral_Controller(((void*)0));
+[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
+"33
+[; ;src/app/main-app/main-app.c: 33:     DisplayLCD_Init();
 [e ( _DisplayLCD_Init ..  ]
-"31
-[; ;src/app/main-app/main-app.c: 31:     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
+"36
+[; ;src/app/main-app/main-app.c: 36:     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
 [e ( _Display_WriteString (3 , , :s 1C -> -> 16 `ui `uc -> -> 0 `i `uc ]
-"37
-[; ;src/app/main-app/main-app.c: 37: }
-[e :UE 287 ]
+"38
+[; ;src/app/main-app/main-app.c: 38:     Bluetooth_HC_06_Configure();
+[e ( _Bluetooth_HC_06_Configure ..  ]
+"39
+[; ;src/app/main-app/main-app.c: 39:     Timer0_WaitMS(3000);
+[e ( _Timer0_WaitMS (1 -> -> 3000 `i `us ]
+"40
+[; ;src/app/main-app/main-app.c: 40:     Display_WriteString("ACABOU ESSA POHA", sizeof("ACABOU ESSA POHA"), 0);
+[e ( _Display_WriteString (3 , , :s 2C -> -> 17 `ui `uc -> -> 0 `i `uc ]
+"43
+[; ;src/app/main-app/main-app.c: 43: }
+[e :UE 288 ]
 }
 [a 1C 83 84 65 82 84 95 66 76 85 69 84 79 79 84 72 0 ]
+[a 2C 65 67 65 66 79 85 32 69 83 83 65 32 80 79 72 65 0 ]

@@ -4660,11 +4660,8 @@ void DisplayLCD_Init( void )
    _delay((unsigned long)((2)*(10000000UL/4000.0)));
 
 
-   Display_SendByte((0b10000000 | 0b01000000), 0);
-   _delay((unsigned long)((50)*(10000000UL/4000000.0)));
 
 
-   Display_WriteString("NATAN MARQUES", sizeof("NATAN MARQUES"), 0x40);
 
 }
 

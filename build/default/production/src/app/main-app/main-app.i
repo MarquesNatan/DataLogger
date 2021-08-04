@@ -4677,13 +4677,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 1 "src/app/main-app/../../board/board_definitions/board_definitions.h" 1
 # 4 "src/app/main-app/main-app.c" 2
 
-
-# 1 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h" 1
-# 13 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h"
-    void Peripheral_Controller(void* args);
-# 6 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
+# 1 "src/app/main-app/../../pic18f4520/timer/timer.h" 1
 
 
 
@@ -4774,21 +4768,116 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-# 6 "src/app/main-app/../../app/display_lcd/display_lcd.h" 2
+# 6 "src/app/main-app/../../pic18f4520/timer/timer.h" 2
+
+
+
+
+uint32_t global_timer_value = 0x01;
+
+typedef enum {
+    TIMER_LENGTH_16 = 0x00,
+    TIMER_LENGTH_8 = 0x01
+}TIMER_LENGTH;
+
+typedef enum {
+    TIMER_CLKO_SRC = 0x00,
+    TIMER_T0CLK_SCR = 0x01
+}TIMER_CLK_SRC;
+
+typedef enum {
+    TIMER_TRANSITION_LOW_HIGH = 0x00,
+    TIMER_TRANSITION_HIGH_LOW = 0x01
+}TIMER_TRANSITION;
+
+typedef enum {
+    TIMER_PRESCALER_IS_ASSIGNED = 0x00,
+    TIMER_PRESCALER_NOT_ASSIGNED = 0x01
+}TIMER_PRESCALER_ASSIGN;
+
+typedef enum {
+    TIMER_PRESCALER_2 = 0b000,
+    TIMER_PRESCALER_4 = 0b001,
+    TIMER_PRESCALER_8 = 0b010,
+    TIMER_PRESCALER_16 = 0b011,
+    TIMER_PRESCALER_32 = 0b100,
+    TIMER_PRESCALER_64 = 0b101,
+    TIMER_PRESCALER_128 = 0b110,
+    TIMER_PRESCALER_256 = 0b111
+}TIMER_PRESCALER_VALUE;
+
+typedef struct {
+    TIMER_LENGTH timer_length;
+    TIMER_CLK_SRC timer_clk_src;
+    TIMER_TRANSITION timer_transition;
+    TIMER_PRESCALER_ASSIGN timer_prescaler_assign;
+    TIMER_PRESCALER_VALUE timer_prescaler_value;
+}timer_config_t;
+
+
+
+
+
+    void Timer0_Config( timer_config_t* timerConfig );
+
+    void Timer0_SetTickHook(void (*tickFunc)(uint32_t*));
+
+    void tickHook_Execute(uint32_t* global_timer_value);
+
+    uint32_t Timer0_GetGlobalTime( void );
+
+    void Timer0_WaitMS( uint16_t timeWait );
+# 5 "src/app/main-app/main-app.c" 2
+
+
+# 1 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h" 1
+# 13 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h"
+    void Peripheral_Controller(void* args);
+# 7 "src/app/main-app/main-app.c" 2
+
+# 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
 # 51 "src/app/main-app/../../app/display_lcd/display_lcd.h"
     void DisplayLCD_Init( void );
     void Display_SendByte(uint8_t byte, uint8_t comm);
     void Display_WriteByte(uint8_t byte);
     void Display_WriteString(char* string, uint8_t length, uint8_t address);
     void sendNibble(uint8_t nibble);
-# 7 "src/app/main-app/main-app.c" 2
+# 8 "src/app/main-app/main-app.c" 2
+
+# 1 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h" 1
+# 14 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h"
+char BLUETOOTH_NAME_COMM[] = "AT+NAME";
+char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
+char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
+
+typedef enum {
+    BAUD_1200 = 0x01,
+    BAUD_2400 = 0x02,
+    BAUD_4800 = 0x03,
+    BAUD_9600 = 0x04,
+    BAUD_19200 = 0x05,
+    BAUD_38400 = 0x06,
+    BAUD_57600 = 0x07,
+    BAUD_115200 = 0x08,
+}BLUETOOTH_BAUD_AVALIABLE;
+
+
+
+
+
+    void Bluetooth_HC_06_Configure(void);
+    void Bluetooth_HC_06_Write( void );
+    uint8_t Bluetooth_HC_06_Read( void );
+# 9 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/dht11/dht11.h" 1
 # 16 "src/app/main-app/../../app/dht11/dht11.h"
     uint8_t DHT11_RequestData(void);
     uint8_t DHT11_ReadData( void );
     uint8_t DHT11_ReadByte( void );
-# 8 "src/app/main-app/main-app.c" 2
+# 10 "src/app/main-app/main-app.c" 2
+
+
 
 
 void main_application( void* args)
@@ -4812,10 +4901,12 @@ void StartSystem( void* args )
 
     DisplayLCD_Init();
 
+
     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
 
-
-
+    Bluetooth_HC_06_Configure();
+    Timer0_WaitMS(3000);
+    Display_WriteString("ACABOU ESSA POHA", sizeof("ACABOU ESSA POHA"), 0);
 
 
 }

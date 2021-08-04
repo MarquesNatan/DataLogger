@@ -593,8 +593,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 45:     }
 }
 [e :U 284 ]
-"48
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 48: }
+"52
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 52: }
 [e :UE 283 ]
 }
 [a 8C 56 0 ]

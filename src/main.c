@@ -1,5 +1,6 @@
 /*============================================================================*/
 #include <xc.h>
+#include <stdio.h>
 #include "pic18f4520/fuse/fuse.h"
 /*============================================================================*/
 #include "pic18f4520/timer/timer.h"
@@ -13,6 +14,7 @@
 #include "board/pinout/pinout.h"
 /*============================================================================*/
 #include "app/bluetooth-hc-06/bluetooth_hc_06.h"
+#include "app/main-app/main-app.h"
 /*============================================================================*/
 timer_config_t timerConfig = {
     .timer_length = TIMER_LENGTH_16,
@@ -62,8 +64,9 @@ void main(void) {
     // Timer0_Config(&timerConfig);
     // Timer0_SetTickHook(tickHook_func);
     Serial_1_Config(&serialConfig);
-
-    DisplayLCD_Init();
+    
+    StartSystem(NULL);
+    
     int i = 0;
     while (1) 
     {

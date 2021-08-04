@@ -1,32 +1,32 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"17 src/main.c
-[; ;src/main.c: 17: timer_config_t timerConfig = {
-[c E2559 0 1 .. ]
-[n E2559 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
-[c E2563 0 1 .. ]
-[n E2563 . TIMER_CLKO_SRC TIMER_T0CLK_SCR  ]
-[c E2567 0 1 .. ]
-[n E2567 . TIMER_TRANSITION_LOW_HIGH TIMER_TRANSITION_HIGH_LOW  ]
-[c E2571 0 1 .. ]
-[n E2571 . TIMER_PRESCALER_IS_ASSIGNED TIMER_PRESCALER_NOT_ASSIGNED  ]
-[c E2575 0 1 2 3 4 5 6 7 .. ]
-[n E2575 . TIMER_PRESCALER_2 TIMER_PRESCALER_4 TIMER_PRESCALER_8 TIMER_PRESCALER_16 TIMER_PRESCALER_32 TIMER_PRESCALER_64 TIMER_PRESCALER_128 TIMER_PRESCALER_256  ]
+"19 src/main.c
+[; ;src/main.c: 19: timer_config_t timerConfig = {
+[c E2877 0 1 .. ]
+[n E2877 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
+[c E2881 0 1 .. ]
+[n E2881 . TIMER_CLKO_SRC TIMER_T0CLK_SCR  ]
+[c E2885 0 1 .. ]
+[n E2885 . TIMER_TRANSITION_LOW_HIGH TIMER_TRANSITION_HIGH_LOW  ]
+[c E2889 0 1 .. ]
+[n E2889 . TIMER_PRESCALER_IS_ASSIGNED TIMER_PRESCALER_NOT_ASSIGNED  ]
+[c E2893 0 1 2 3 4 5 6 7 .. ]
+[n E2893 . TIMER_PRESCALER_2 TIMER_PRESCALER_4 TIMER_PRESCALER_8 TIMER_PRESCALER_16 TIMER_PRESCALER_32 TIMER_PRESCALER_64 TIMER_PRESCALER_128 TIMER_PRESCALER_256  ]
 "43 src/pic18f4520/timer/timer.h
 [; ;src/pic18f4520/timer/timer.h: 43: typedef struct {
-[s S281 `E2559 1 `E2563 1 `E2567 1 `E2571 1 `E2575 1 ]
-[n S281 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
-"25 src/main.c
-[; ;src/main.c: 25: serial_config_t serialConfig = {
-[c E2618 0 1 .. ]
-[n E2618 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
-[c E2622 0 1 .. ]
-[n E2622 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
-[c E2626 0 1 .. ]
-[n E2626 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
+[s S283 `E2877 1 `E2881 1 `E2885 1 `E2889 1 `E2893 1 ]
+[n S283 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
+"27 src/main.c
+[; ;src/main.c: 27: serial_config_t serialConfig = {
+[c E2936 0 1 .. ]
+[n E2936 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
+[c E2940 0 1 .. ]
+[n E2940 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
+[c E2944 0 1 .. ]
+[n E2944 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
 "31 src/pic18f4520/serial/serial.h
 [; ;src/pic18f4520/serial/serial.h: 31: typedef struct {
-[s S282 `E2618 1 `E2622 1 `E2626 1 `l 1 ]
-[n S282 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
+[s S284 `E2936 1 `E2940 1 `E2944 1 `l 1 ]
+[n S284 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
 [t ~ __interrupt . k ]
 [t T41 __interrupt ]
 "6698 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
@@ -51,8 +51,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59 src/pic18f4520/timer/timer.h
 [; ;src/pic18f4520/timer/timer.h: 59:     void tickHook_Execute(uint32_t* global_timer_value);
 [v _tickHook_Execute `(v ~T0 @X0 0 ef1`*ul ]
-"32 src/main.c
-[; ;src/main.c: 32: extern uint32_t global_timer_value;
+"34 src/main.c
+[; ;src/main.c: 34: extern uint32_t global_timer_value;
 [v _global_timer_value `ul ~T0 @X0 0 e ]
 "6251 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
@@ -81,10 +81,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "43
 [; ;src/pic18f4520/serial/serial.h: 43:     void Serial_1_Config(serial_config_t* serialConfig);
-[v _Serial_1_Config `(v ~T0 @X0 0 ef1`*S282 ]
-"51 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
-[v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
+[v _Serial_1_Config `(v ~T0 @X0 0 ef1`*S284 ]
+"12 src/app/main-app/main-app.h
+[; ;src/app/main-app/main-app.h: 12:     void StartSystem( void* args );
+[v _StartSystem `(v ~T0 @X0 0 ef1`*v ]
 "46 src/pic18f4520/serial/serial.h
 [; ;src/pic18f4520/serial/serial.h: 46:     void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length);
 [v _Serial_TransmitBuffer `(v ~T0 @X0 0 ef2`*uc`uc ]
@@ -626,133 +626,124 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"17 src/main.c
-[; ;src/main.c: 17: timer_config_t timerConfig = {
-[v _timerConfig `S281 ~T0 @X0 1 e ]
+"19 src/main.c
+[; ;src/main.c: 19: timer_config_t timerConfig = {
+[v _timerConfig `S283 ~T0 @X0 1 e ]
 [i _timerConfig
 :U ..
 :U ..
-. `E2559 0
-. `E2563 0
-. `E2567 0
-. `E2571 0
-. `E2575 0
+. `E2877 0
+. `E2881 0
+. `E2885 0
+. `E2889 0
+. `E2893 0
 ..
 ..
 ]
-"25
-[; ;src/main.c: 25: serial_config_t serialConfig = {
-[v _serialConfig `S282 ~T0 @X0 1 e ]
+"27
+[; ;src/main.c: 27: serial_config_t serialConfig = {
+[v _serialConfig `S284 ~T0 @X0 1 e ]
 [i _serialConfig
 :U ..
 :U ..
-. `E2618 0
-. `E2622 0
-. `E2626 0
+. `E2936 0
+. `E2940 0
+. `E2944 0
 -> -> 9600 `i `l
 ..
 ..
 ]
-"35
-[; ;src/main.c: 35: uint8_t count = 0x00;
+"37
+[; ;src/main.c: 37: uint8_t count = 0x00;
 [v _count `uc ~T0 @X0 1 e ]
 [i _count
 -> -> 0 `i `uc
 ]
-"39
-[; ;src/main.c: 39: void tickHook_func(uint32_t *timer_value) {
+"41
+[; ;src/main.c: 41: void tickHook_func(uint32_t *timer_value) {
 [v _tickHook_func `(v ~T0 @X0 1 ef1`*ul ]
 {
 [e :U _tickHook_func ]
 [v _timer_value `*ul ~T0 @X0 1 r1 ]
 [f ]
-"40
-[; ;src/main.c: 40:     (*timer_value)++;
+"42
+[; ;src/main.c: 42:     (*timer_value)++;
 [e ++ *U _timer_value -> -> -> 1 `i `l `ul ]
-"41
-[; ;src/main.c: 41: }
-[e :UE 283 ]
+"43
+[; ;src/main.c: 43: }
+[e :UE 285 ]
 }
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"43
-[; ;src/main.c: 43: void __attribute__((picinterrupt(("")))) TC0INT(void) {
+"45
+[; ;src/main.c: 45: void __attribute__((picinterrupt(("")))) TC0INT(void) {
 [v _TC0INT `(v ~T41 @X0 1 ef ]
 {
 [e :U _TC0INT ]
 [f ]
-"44
-[; ;src/main.c: 44:     if (INTCONbits.TMR0IF == 0x01) {
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 285  ]
-{
-"45
-[; ;src/main.c: 45:         tickHook_Execute(&global_timer_value);
-[e ( _tickHook_Execute (1 &U _global_timer_value ]
 "46
-[; ;src/main.c: 46:         TMR0 = 0xFB1E;
-[e = _TMR0 -> -> 64286 `ui `us ]
-"47
-[; ;src/main.c: 47:         INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"48
-[; ;src/main.c: 48:     }
-}
-[e :U 285 ]
-"50
-[; ;src/main.c: 50:     if (PIR1bits.RCIF) {
-[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 286  ]
+[; ;src/main.c: 46:     if (INTCONbits.TMR0IF == 0x01) {
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 287  ]
 {
-"51
-[; ;src/main.c: 51:         count = RCREG;
-[e = _count _RCREG ]
-"52
-[; ;src/main.c: 52:         Serial_Transmit(count);
-[e ( _Serial_Transmit (1 _count ]
-"54
-[; ;src/main.c: 54:         PIR1bits.RCIF = 0x00;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"55
-[; ;src/main.c: 55:     }
+"47
+[; ;src/main.c: 47:         tickHook_Execute(&global_timer_value);
+[e ( _tickHook_Execute (1 &U _global_timer_value ]
+"48
+[; ;src/main.c: 48:         TMR0 = 0xFB1E;
+[e = _TMR0 -> -> 64286 `ui `us ]
+"49
+[; ;src/main.c: 49:         INTCONbits.T0IF = 0x00;
+[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
+"50
+[; ;src/main.c: 50:     }
 }
-[e :U 286 ]
+[e :U 287 ]
+"52
+[; ;src/main.c: 52:     if (PIR1bits.RCIF) {
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 288  ]
+{
+"53
+[; ;src/main.c: 53:         count = RCREG;
+[e = _count _RCREG ]
+"54
+[; ;src/main.c: 54:         Serial_Transmit(count);
+[e ( _Serial_Transmit (1 _count ]
 "56
-[; ;src/main.c: 56: }
-[e :UE 284 ]
+[; ;src/main.c: 56:         PIR1bits.RCIF = 0x00;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+"57
+[; ;src/main.c: 57:     }
+}
+[e :U 288 ]
+"58
+[; ;src/main.c: 58: }
+[e :UE 286 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"59
-[; ;src/main.c: 59: void main(void) {
+"61
+[; ;src/main.c: 61: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"64
-[; ;src/main.c: 64:     Serial_1_Config(&serialConfig);
-[e ( _Serial_1_Config (1 &U _serialConfig ]
 "66
-[; ;src/main.c: 66:     DisplayLCD_Init();
-[e ( _DisplayLCD_Init ..  ]
-"67
-[; ;src/main.c: 67:     int i = 0;
+[; ;src/main.c: 66:     Serial_1_Config(&serialConfig);
+[e ( _Serial_1_Config (1 &U _serialConfig ]
+"68
+[; ;src/main.c: 68:     StartSystem(((void*)0));
+[e ( _StartSystem (1 -> -> 0 `i `*v ]
+"70
+[; ;src/main.c: 70:     int i = 0;
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-"68
-[; ;src/main.c: 68:     while (1)
-[e :U 289 ]
-"69
-[; ;src/main.c: 69:     {
-{
-"70
-[; ;src/main.c: 70:         Serial_TransmitBuffer("AT\r", sizeof("AT\r"));
-[e ( _Serial_TransmitBuffer (2 , :s 1C -> -> 4 `ui `uc ]
+"71
+[; ;src/main.c: 71:     while (1)
+[e :U 291 ]
 "72
-[; ;src/main.c: 72:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+[; ;src/main.c: 72:     {
+{
 "73
-[; ;src/main.c: 73:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"74
-[; ;src/main.c: 74:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+[; ;src/main.c: 73:         Serial_TransmitBuffer("AT\r", sizeof("AT\r"));
+[e ( _Serial_TransmitBuffer (2 , :s 1C -> -> 4 `ui `uc ]
 "75
 [; ;src/main.c: 75:         _delay((unsigned long)((1000)*(10000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
@@ -762,14 +753,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "77
 [; ;src/main.c: 77:     }
 }
-[e :U 288 ]
-[e $U 289  ]
 [e :U 290 ]
+[e $U 291  ]
+[e :U 292 ]
 "78
 [; ;src/main.c: 78:     return;
-[e $UE 287  ]
+[e $UE 289  ]
 "79
 [; ;src/main.c: 79: }
-[e :UE 287 ]
+[e :UE 289 ]
 }
 [a 1C 65 84 13 0 ]

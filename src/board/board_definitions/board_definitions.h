@@ -16,7 +16,6 @@
 
 
 #define START_BLUETOOTH     "START_BLUETOOTH"
-#define BOARD_PIN           "0000"
 
 // Data logger Commands
 #define DATA_LOGGER_SEND_BACKUP     "<SBK>"

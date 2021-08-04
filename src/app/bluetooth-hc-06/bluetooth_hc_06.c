@@ -45,6 +45,10 @@ void Bluetooth_HC_06_Configure(void) {
     }
     
     // Configure Module name: default: HC06
+    
+    // Functions to change name:
+    
+    // Functions to change PIN
 }
 
 /*============================================================================*/
