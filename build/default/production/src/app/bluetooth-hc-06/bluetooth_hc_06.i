@@ -84,6 +84,9 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 2 "src/app/bluetooth-hc-06/bluetooth_hc_06.c" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
+# 3 "src/app/bluetooth-hc-06/bluetooth_hc_06.c" 2
+
 
 # 1 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 1
 
@@ -4583,6 +4586,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
 # 5 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
 
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4668,10 +4672,10 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-# 6 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
+# 7 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
 
 # 1 "src/app/bluetooth-hc-06/../../board/board_definitions/board_definitions.h" 1
-# 7 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
+# 8 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
 
 
 
@@ -4701,7 +4705,9 @@ typedef enum {
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_Write( void );
     uint8_t Bluetooth_HC_06_Read( void );
-# 4 "src/app/bluetooth-hc-06/bluetooth_hc_06.c" 2
+    _Bool User_GetState( void );
+    _Bool User_SetState( _Bool state );
+# 5 "src/app/bluetooth-hc-06/bluetooth_hc_06.c" 2
 
 # 1 "src/app/bluetooth-hc-06/../../pic18f4520/serial/serial.h" 1
 # 11 "src/app/bluetooth-hc-06/../../pic18f4520/serial/serial.h"
@@ -4744,9 +4750,9 @@ typedef struct {
 
     uint8_t Serial_Receive(void);
     uint8_t Serial_ReceiveBuffer(void);
-# 5 "src/app/bluetooth-hc-06/bluetooth_hc_06.c" 2
+# 6 "src/app/bluetooth-hc-06/bluetooth_hc_06.c" 2
 
-
+static _Bool UserConnected = 0;
 
 void Bluetooth_HC_06_Configure(void) {
     uint16_t timeOut = 0xFFFF;
@@ -4792,4 +4798,15 @@ void Bluetooth_HC_06_Configure(void) {
 
 
 
+}
+
+
+_Bool User_GetState( void )
+{
+    return UserConnected;
+}
+
+_Bool User_SetState( _Bool state )
+{
+    UserConnected = state;
 }

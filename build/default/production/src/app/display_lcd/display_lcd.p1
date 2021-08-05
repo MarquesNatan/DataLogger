@@ -745,7 +745,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _auxLength `uc ~T0 @X0 1 a ]
 [e = _auxLength -> -> 0 `i `uc ]
 "114
-[; ;src/app/display_lcd/display_lcd.c: 114:     for(auxLength = 0; auxLength < length - 1; auxLength++)
+[; ;src/app/display_lcd/display_lcd.c: 114:     for(auxLength = 0; auxLength < length; auxLength++)
 {
 [e = _auxLength -> -> 0 `i `uc ]
 [e $U 323  ]
@@ -761,7 +761,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e ++ _auxLength -> -> 1 `i `uc ]
 [e :U 323 ]
-[e $ < -> _auxLength `i - -> _length `i -> 1 `i 320  ]
+[e $ < -> _auxLength `i -> _length `i 320  ]
 [e :U 321 ]
 }
 "118

@@ -28,8 +28,8 @@
 #include "../../pic18f4520/timer/timer.h"
 #include "../../pic18f4520/serial/serial.h"
 /*============================================================================*/
-volatile uint8_t temperature [2]; // [TEMP HIGH BYTE][TEMP LOW BYTE]
-volatile uint8_t humidity [2]; // [HUM HIGH BYTE][HUM LOW BYTE]
+static volatile uint8_t temperature [2]; // [TEMP HIGH BYTE][TEMP LOW BYTE]
+static volatile uint8_t humidity [2]; // [HUM HIGH BYTE][HUM LOW BYTE]
 
 /*============================================================================*/
 uint8_t DHT11_RequestData(void) {
@@ -126,3 +126,12 @@ uint8_t DHT11_ReadByte(void) {
     return byte;
 }
 /*============================================================================*/
+uint8_t* DHT11_GetTemp( void )
+{
+    return &temperature;
+}
+/*============================================================================*/
+uint8_t* DHT11_GetHum( void )
+{
+    return &humidity;
+}

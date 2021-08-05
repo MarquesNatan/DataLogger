@@ -3,6 +3,7 @@
 #define	BLUETOOTH_HC_06_H
 /*============================================================================*/
 #include <xc.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include "../../board/board_definitions/board_definitions.h"
 /*============================================================================*/
@@ -33,6 +34,8 @@ extern "C" {
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_Write( void );
     uint8_t Bluetooth_HC_06_Read( void );
+    bool User_GetState( void );
+    bool User_SetState( bool state );
 /*============================================================================*/
 #ifdef	__cplusplus
 }

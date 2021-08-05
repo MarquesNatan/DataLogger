@@ -1,4 +1,4 @@
-# 1 "src/app/display_lcd/display_lcd.c"
+# 1 "src/app/read_voltage/read_voltage.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "src/app/display_lcd/display_lcd.c" 2
+# 1 "src/app/read_voltage/read_voltage.c" 2
 
-# 1 "src/app/display_lcd/display_lcd.h" 1
-
+# 1 "src/app/read_voltage/read_voltage.h" 1
 
 
 
@@ -4523,7 +4522,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 5 "src/app/display_lcd/display_lcd.h" 2
+# 4 "src/app/read_voltage/read_voltage.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
@@ -4610,134 +4609,24 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-# 6 "src/app/display_lcd/display_lcd.h" 2
-# 51 "src/app/display_lcd/display_lcd.h"
-    void DisplayLCD_Init( void );
-    void Display_SendByte(uint8_t byte, uint8_t comm);
-    void Display_WriteByte(uint8_t byte);
-    void Display_WriteString(char* string, uint8_t length, uint8_t address);
-    void sendNibble(uint8_t nibble);
-# 2 "src/app/display_lcd/display_lcd.c" 2
-
-# 1 "src/app/display_lcd/../../board/board_definitions/board_definitions.h" 1
-# 3 "src/app/display_lcd/display_lcd.c" 2
-
-# 1 "src/app/display_lcd/../../pic18f4520/gpio/gpio.h" 1
-# 4 "src/app/display_lcd/display_lcd.c" 2
-
-# 1 "src/app/display_lcd/../../board/pinout/pinout.h" 1
-# 5 "src/app/display_lcd/display_lcd.c" 2
+# 5 "src/app/read_voltage/read_voltage.h" 2
 
 
 
 
 
-void DisplayLCD_Init( void )
+
+    uint8_t Voltage_Read(void);
+# 2 "src/app/read_voltage/read_voltage.c" 2
+
+# 1 "src/app/read_voltage/../../pic18f4520/gpio/gpio.h" 1
+# 3 "src/app/read_voltage/read_voltage.c" 2
+
+# 1 "src/app/read_voltage/../../board/pinout/pinout.h" 1
+# 4 "src/app/read_voltage/read_voltage.c" 2
+
+
+uint8_t Voltage_Read( void )
 {
-
-    _delay((unsigned long)((20)*(10000000UL/4000.0)));
-
-
-    TRISB = 0x00;;
-
-
-    sendNibble(0x20);
-    sendNibble(0x20);
-    sendNibble(0x30);
-
-
-    Display_SendByte((0b00100000 | 0b00000000 | 0b00001000 | 0b00000100), 0);
-
-
-    Display_SendByte((0b00000100 | 0b00000010 | 0b00000000), 0);
-
-
-
-    Display_SendByte((0b00001000 | 0b00000100 | 0b00000010 | 0b00000001 ), 0);
-
-
-    Display_SendByte(0b00000001, 0);
-   _delay((unsigned long)((2)*(10000000UL/4000.0)));
-
-
-
-
-
-}
-
-void sendNibble(uint8_t nibble)
-{
-    uint8_t auxNibble = 0x00;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 3)); else LATB = (PORTB & ~((1 << 3)));;
-
-    LATB = ((PORTB & 0x0F) | nibble);;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-
-    _delay((unsigned long)((1)*(10000000UL/4000.0)));
-}
-
-void Display_SendByte(uint8_t byte, uint8_t comm)
-{
-    uint8_t auxByte = 0x00;
-
-    if(comm == 0x01) LATB = (PORTB | (1 << 3)); else LATB = (PORTB & ~((1 << 3)));;
-
-    auxByte = (byte & 0xF0);
-
-    LATB = ((PORTB & 0x0F) | auxByte);;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-
-    auxByte = (byte << 0x04);
-
-    LATB = auxByte;;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-
-    _delay((unsigned long)((1)*(10000000UL/4000.0)));
-}
-
-void Display_WriteByte(uint8_t byte)
-{
-    uint8_t auxByte = 0x00;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 3)); else LATB = (PORTB & ~((1 << 3)));;
-
-    auxByte = (byte & 0xF0);
-    LATB = ((PORTB & 0x0F) | auxByte);;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-
-
-    auxByte = (byte << 0x04);
-    LATB = ((PORTB & 0x0F) | auxByte);;
-
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
-    if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-
-    _delay((unsigned long)((2)*(10000000UL/4000.0)));
-}
-
-void Display_WriteString(char* string, uint8_t length, uint8_t address)
-{
-    uint8_t auxLength = 0x00;
-
-
-    for(auxLength = 0; auxLength < length; auxLength++)
-    {
-        Display_WriteByte((uint8_t)string[auxLength]);
-    }
+    return ((PORTB >> 0)& 0b00000001);
 }

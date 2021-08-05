@@ -436,11 +436,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> -> 1 `i `l `ul
 ]
 "31 src/app/dht11/dht11.c
-[; ;src/app/dht11/dht11.c: 31: volatile uint8_t temperature [2];
-[v _temperature `Vuc ~T0 @X0 -> 2 `i e ]
+[; ;src/app/dht11/dht11.c: 31: static volatile uint8_t temperature [2];
+[v _temperature `Vuc ~T0 @X0 -> 2 `i s ]
 "32
-[; ;src/app/dht11/dht11.c: 32: volatile uint8_t humidity [2];
-[v _humidity `Vuc ~T0 @X0 -> 2 `i e ]
+[; ;src/app/dht11/dht11.c: 32: static volatile uint8_t humidity [2];
+[v _humidity `Vuc ~T0 @X0 -> 2 `i s ]
 "35
 [; ;src/app/dht11/dht11.c: 35: uint8_t DHT11_RequestData(void) {
 [v _DHT11_RequestData `(uc ~T0 @X0 1 ef ]
@@ -732,4 +732,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 "127
 [; ;src/app/dht11/dht11.c: 127: }
 [e :UE 304 ]
+}
+"129
+[; ;src/app/dht11/dht11.c: 129: uint8_t* DHT11_GetTemp( void )
+[v _DHT11_GetTemp `(*uc ~T0 @X0 1 ef ]
+"130
+[; ;src/app/dht11/dht11.c: 130: {
+{
+[e :U _DHT11_GetTemp ]
+[f ]
+"131
+[; ;src/app/dht11/dht11.c: 131:     return &temperature;
+[e ) -> &U _temperature `*uc ]
+[e $UE 318  ]
+"132
+[; ;src/app/dht11/dht11.c: 132: }
+[e :UE 318 ]
+}
+"134
+[; ;src/app/dht11/dht11.c: 134: uint8_t* DHT11_GetHum( void )
+[v _DHT11_GetHum `(*uc ~T0 @X0 1 ef ]
+"135
+[; ;src/app/dht11/dht11.c: 135: {
+{
+[e :U _DHT11_GetHum ]
+[f ]
+"136
+[; ;src/app/dht11/dht11.c: 136:     return &humidity;
+[e ) -> &U _humidity `*uc ]
+[e $UE 319  ]
+"137
+[; ;src/app/dht11/dht11.c: 137: }
+[e :UE 319 ]
 }

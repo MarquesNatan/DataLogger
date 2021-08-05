@@ -63,6 +63,14 @@
  *                      DISPLAY LCD INTERFACE (74HC595)
  ===============================================================================
  */
+#define VOLTAGE_INPUT_PORT              B
+#define VOLTAGE_INPUT_BIT               0
+#define VOLTAGE_INPUT_MASK              (1 << VOLTAGE_INPUT_BIT)
+
+/*==============================================================================
+ *                      DISPLAY LCD INTERFACE (74HC595)
+ ===============================================================================
+ */
 #define DISPLAY_DS_INTERFACE_PORT       D 
 #define DISPLAY_DS_INTERFACE_BIT        1
 #define DISPLAY_DS_INTERFACE_MASK       ( 1 << DISPLAY_DS_INTERFACE_BIT)

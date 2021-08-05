@@ -32,48 +32,71 @@ serial_config_t serialConfig = {
 };
 /*============================================================================*/
 extern global_timer_t global_timer_value;
-extern uint8_t temperature[2];
-extern uint8_t humidity[2];
 uint8_t count = 0x00;
-
-#define BLUETOOTH_SERIAL    "AT\r"
+uint8_t vector[3] = {0, 0, 0};
+static uint8_t i = 0x00;
 /*============================================================================*/
 void tickHook_func(global_timer_t *timer_value) {
     (*timer_value)++;
 }
 /*============================================================================*/
 void __interrupt() TC0INT(void) {
+    
+    // Interrupção Timer 0
     if (INTCONbits.TMR0IF == 0x01) {
         tickHook_Execute(&global_timer_value);
         TMR0 = 0xFB1E; // TMR0 = 0x9E58; 
         INTCONbits.T0IF = 0x00; // Clean Timer Flag 
     }
 
+    // Interrupção recepção serial
     if (PIR1bits.RCIF) {
         count = RCREG;
-        Serial_Transmit(count);
-
-        PIR1bits.RCIF = 0x00;   
+        vector[i] = count;
+        if(count != 0x3E)
+        {
+            vector[i] = count;
+            i++;
+        }else 
+        {
+            Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+            __delay_ms(5);
+            Display_WriteString(vector, sizeof(vector), 0);
+            if(vector[1] == 0x43)
+            {
+                PIN_DIGITAL_WRITE(PIN_HIGH, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+                User_SetState(true);
+            }else if(vector[1] == 0x44)
+            {
+                PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+                User_SetState(false);
+            }
+            i = 0;
+        }
+        PIR1bits.RCIF = 0x00;
     }
 }
 
 /*============================================================================*/
 void main(void) {
     
-  //   Interrupt_GlobalEnable();
-    // Timer0_Config(&timerConfig);
-    // Timer0_SetTickHook(tickHook_func);
+    Interrupt_GlobalEnable();
+    Timer0_Config(&timerConfig);
+    Timer0_SetTickHook(tickHook_func);
     Serial_1_Config(&serialConfig);
     
-    StartSystem(NULL);
+    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
+    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+    
+    // StartSystem(NULL);
+    DisplayLCD_Init();
     int i = 0;
     while (1) 
     {
-        Serial_TransmitBuffer(BLUETOOTH_SERIAL, sizeof(BLUETOOTH_SERIAL));
         
-        __delay_ms(1000);
-        __delay_ms(1000);
     }
     return;
 }

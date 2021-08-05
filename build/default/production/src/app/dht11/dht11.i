@@ -4615,6 +4615,8 @@ typedef uint32_t uint_fast32_t;
     uint8_t DHT11_RequestData(void);
     uint8_t DHT11_ReadData( void );
     uint8_t DHT11_ReadByte( void );
+    uint8_t* DHT11_GetTemp( void );
+    uint8_t* DHT11_GetHum( void );
 # 24 "src/app/dht11/dht11.c" 2
 
 # 1 "src/app/dht11/../../board/board_definitions/board_definitions.h" 1
@@ -4728,8 +4730,8 @@ typedef struct {
 # 29 "src/app/dht11/dht11.c" 2
 
 
-volatile uint8_t temperature [2];
-volatile uint8_t humidity [2];
+static volatile uint8_t temperature [2];
+static volatile uint8_t humidity [2];
 
 
 uint8_t DHT11_RequestData(void) {
@@ -4824,4 +4826,14 @@ uint8_t DHT11_ReadByte(void) {
     }
 
     return byte;
+}
+
+uint8_t* DHT11_GetTemp( void )
+{
+    return &temperature;
+}
+
+uint8_t* DHT11_GetHum( void )
+{
+    return &humidity;
 }

@@ -111,7 +111,7 @@ void Display_WriteString(char* string, uint8_t length, uint8_t address)
     uint8_t auxLength = 0x00; 
     
     
-    for(auxLength = 0; auxLength < length - 1; auxLength++)
+    for(auxLength = 0; auxLength < length; auxLength++)
     {
         Display_WriteByte((uint8_t)string[auxLength]);
     }

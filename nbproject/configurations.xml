@@ -44,6 +44,12 @@
           <itemPath>src/app/packet_factory/packet_factory.h</itemPath>
           <itemPath>src/app/packet_factory/packet_factory.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="read_voltage"
+                       displayName="read_voltage"
+                       projectFiles="true">
+          <itemPath>src/app/read_voltage/read_voltage.c</itemPath>
+          <itemPath>src/app/read_voltage/read_voltage.h</itemPath>
+        </logicalFolder>
       </logicalFolder>
       <logicalFolder name="board" displayName="board" projectFiles="true">
         <logicalFolder name="board_definitions"

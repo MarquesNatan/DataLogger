@@ -4948,6 +4948,8 @@ typedef struct {
     uint8_t DHT11_RequestData(void);
     uint8_t DHT11_ReadData( void );
     uint8_t DHT11_ReadByte( void );
+    uint8_t* DHT11_GetTemp( void );
+    uint8_t* DHT11_GetHum( void );
 # 11 "src/main.c" 2
 
 
@@ -4959,7 +4961,14 @@ typedef struct {
 
 
 # 1 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 1
-# 14 "src/app/bluetooth-hc-06/bluetooth_hc_06.h"
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
+# 6 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
+# 15 "src/app/bluetooth-hc-06/bluetooth_hc_06.h"
 char BLUETOOTH_NAME_COMM[] = "AT+NAME";
 char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
 char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
@@ -4982,6 +4991,8 @@ typedef enum {
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_Write( void );
     uint8_t Bluetooth_HC_06_Read( void );
+    _Bool User_GetState( void );
+    _Bool User_SetState( _Bool state );
 # 16 "src/main.c" 2
 
 # 1 "src/app/main-app/main-app.h" 1
@@ -5007,27 +5018,47 @@ serial_config_t serialConfig = {
 };
 
 extern uint32_t global_timer_value;
-extern uint8_t temperature[2];
-extern uint8_t humidity[2];
 uint8_t count = 0x00;
-
-
+uint8_t vector[3] = {0, 0, 0};
+static uint8_t i = 0x00;
 
 void tickHook_func(uint32_t *timer_value) {
     (*timer_value)++;
 }
 
 void __attribute__((picinterrupt(("")))) TC0INT(void) {
+
+
     if (INTCONbits.TMR0IF == 0x01) {
         tickHook_Execute(&global_timer_value);
         TMR0 = 0xFB1E;
         INTCONbits.T0IF = 0x00;
     }
 
+
     if (PIR1bits.RCIF) {
         count = RCREG;
-        Serial_Transmit(count);
-
+        vector[i] = count;
+        if(count != 0x3E)
+        {
+            vector[i] = count;
+            i++;
+        }else
+        {
+            Display_SendByte(0b00000001, 0);
+            _delay((unsigned long)((5)*(10000000UL/4000.0)));
+            Display_WriteString(vector, sizeof(vector), 0);
+            if(vector[1] == 0x43)
+            {
+                if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+                User_SetState(1);
+            }else if(vector[1] == 0x44)
+            {
+                if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+                User_SetState(0);
+            }
+            i = 0;
+        }
         PIR1bits.RCIF = 0x00;
     }
 }
@@ -5035,20 +5066,31 @@ void __attribute__((picinterrupt(("")))) TC0INT(void) {
 
 void main(void) {
 
-
-
-
+    Interrupt_GlobalEnable();
+    Timer0_Config(&timerConfig);
+    Timer0_SetTickHook(tickHook_func);
     Serial_1_Config(&serialConfig);
 
-    StartSystem(((void*)0));
+    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
 
+    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+    if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+
+
+    DisplayLCD_Init();
     int i = 0;
     while (1)
     {
-        Serial_TransmitBuffer("AT\r", sizeof("AT\r"));
-
-        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
-        _delay((unsigned long)((1000)*(10000000UL/4000.0)));
+        if(User_GetState() == 0)
+        {
+            if(0x01 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+            if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+        }else if(User_GetState() == 1)
+        {
+            if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+            if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+        }
     }
     return;
 }

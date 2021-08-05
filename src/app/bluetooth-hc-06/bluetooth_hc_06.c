@@ -1,9 +1,10 @@
 /*============================================================================*/
 #include <string.h>
+#include <stdbool.h>
 /*============================================================================*/
 #include "bluetooth_hc_06.h"
 #include "../../pic18f4520/serial/serial.h"
-
+static bool UserConnected = false; 
 /*============================================================================*/
 void Bluetooth_HC_06_Configure(void) {
     uint16_t timeOut = 0xFFFF;
@@ -51,4 +52,14 @@ void Bluetooth_HC_06_Configure(void) {
     // Functions to change PIN
 }
 
+/*============================================================================*/
+bool User_GetState( void )
+{
+    return UserConnected;
+}
+/*============================================================================*/
+bool User_SetState( bool state )
+{
+    UserConnected = state;
+}
 /*============================================================================*/

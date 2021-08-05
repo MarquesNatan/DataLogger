@@ -17,6 +17,12 @@
 
 #define START_BLUETOOTH     "START_BLUETOOTH"
 
+
+// DHT11 STRINGS
+#define DHT11_WORKING       "DHT11 OK"
+#define DHT11_TIMEOUT       "DHT11 TIMEOUT"
+
+
 // Data logger Commands
 #define DATA_LOGGER_SEND_BACKUP     "<SBK>"
 #define DATA_LOGGER_DELETE_BACKUP   "<DBK>"

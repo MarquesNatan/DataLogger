@@ -167,6 +167,96 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 2 "src/app/main-app/main-app.c" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 127 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
+# 3 "src/app/main-app/main-app.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
+# 4 "src/app/main-app/main-app.c" 2
+
 # 1 "src/app/main-app/main-app.h" 1
 
 
@@ -4672,107 +4762,13 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
     void MainApplication( void* args);
     void StartSystem( void* args );
-# 3 "src/app/main-app/main-app.c" 2
+# 5 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../board/board_definitions/board_definitions.h" 1
-# 4 "src/app/main-app/main-app.c" 2
+# 6 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../pic18f4520/timer/timer.h" 1
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
-# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 127 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 142 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 158 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-# 173 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 188 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 209 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 229 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-typedef int24_t int_fast24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-typedef uint24_t uint_fast24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int16_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint16_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-# 6 "src/app/main-app/../../pic18f4520/timer/timer.h" 2
-
-
-
-
+# 10 "src/app/main-app/../../pic18f4520/timer/timer.h"
 uint32_t global_timer_value = 0x01;
 
 typedef enum {
@@ -4827,13 +4823,13 @@ typedef struct {
     uint32_t Timer0_GetGlobalTime( void );
 
     void Timer0_WaitMS( uint16_t timeWait );
-# 5 "src/app/main-app/main-app.c" 2
+# 7 "src/app/main-app/main-app.c" 2
 
 
 # 1 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h" 1
 # 13 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h"
     void Peripheral_Controller(void* args);
-# 7 "src/app/main-app/main-app.c" 2
+# 9 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
 # 51 "src/app/main-app/../../app/display_lcd/display_lcd.h"
@@ -4842,10 +4838,10 @@ typedef struct {
     void Display_WriteByte(uint8_t byte);
     void Display_WriteString(char* string, uint8_t length, uint8_t address);
     void sendNibble(uint8_t nibble);
-# 8 "src/app/main-app/main-app.c" 2
+# 10 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h" 1
-# 14 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h"
+# 15 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h"
 char BLUETOOTH_NAME_COMM[] = "AT+NAME";
 char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
 char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
@@ -4868,23 +4864,61 @@ typedef enum {
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_Write( void );
     uint8_t Bluetooth_HC_06_Read( void );
-# 9 "src/app/main-app/main-app.c" 2
+    _Bool User_GetState( void );
+    _Bool User_SetState( _Bool state );
+# 11 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/dht11/dht11.h" 1
 # 16 "src/app/main-app/../../app/dht11/dht11.h"
     uint8_t DHT11_RequestData(void);
     uint8_t DHT11_ReadData( void );
     uint8_t DHT11_ReadByte( void );
-# 10 "src/app/main-app/main-app.c" 2
+    uint8_t* DHT11_GetTemp( void );
+    uint8_t* DHT11_GetHum( void );
+# 12 "src/app/main-app/main-app.c" 2
+
+# 1 "src/app/main-app/../../app/read_voltage/read_voltage.h" 1
+# 11 "src/app/main-app/../../app/read_voltage/read_voltage.h"
+    uint8_t Voltage_Read(void);
+# 13 "src/app/main-app/main-app.c" 2
 
 
 
+_Bool TimeIsElapsed = 0;
 
 void main_application( void* args)
 {
+    uint8_t voltageStatus = 0x00;
+    uint8_t localDHT11Result = 0x00;
+    uint8_t *localTemp = ((void*)0);
+    uint8_t *localHum = ((void*)0);
 
     while(1)
     {
+
+        if(TimeIsElapsed)
+        {
+
+            localDHT11Result = DHT11_ReadData();
+            if(localDHT11Result != 2 && localDHT11Result != 1)
+            {
+                localTemp = DHT11_GetTemp();
+                localHum = DHT11_GetHum();
+
+
+
+
+            }else
+            {
+
+            }
+
+
+        }
+        else
+        {
+
+        }
 
     }
 
@@ -4893,6 +4927,7 @@ void main_application( void* args)
 
 void StartSystem( void* args )
 {
+    uint8_t dht11_response = 0x00;
 
 
     Peripheral_Controller(((void*)0));
@@ -4905,8 +4940,23 @@ void StartSystem( void* args )
     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
 
     Bluetooth_HC_06_Configure();
-    Timer0_WaitMS(3000);
+    _delay((unsigned long)((3000)*(10000000UL/4000.0)));
+
+
+    Display_SendByte(0b00000001, 0);
+   _delay((unsigned long)((2)*(10000000UL/4000.0)));
     Display_WriteString("ACABOU ESSA POHA", sizeof("ACABOU ESSA POHA"), 0);
+
+
+    if((dht11_response = DHT11_RequestData()) == 0)
+    {
+        Display_WriteString("DHT11 OK", sizeof("DHT11 OK"), 0);
+    }else if((dht11_response = DHT11_RequestData()) == 1)
+    {
+        Display_WriteString("DHT11 TIMEOUT", sizeof("DHT11 TIMEOUT"), 0);
+
+        while(1);
+    }
 
 
 }
