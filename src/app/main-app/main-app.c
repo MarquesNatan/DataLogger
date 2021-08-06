@@ -33,6 +33,8 @@ void main_application( void* args)
     
     static bool localUserState = false;
     
+    static uint8_t localVoltageStatus = 0x00;
+    
     char auxText[] = "USER CONECTADO";
     char auxText2[] = "USER DESCONN";
     
@@ -57,19 +59,24 @@ void main_application( void* args)
                 localUserState = User_GetState();
                 if(localUserState)
                 {
-                    
+                    // Usuário conectado, envia o valor de Temperatura e Humidade
                     Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
                     __delay_ms(5);
                     Display_WriteString(auxText, sizeof(auxText), 0);
                 }
-                else 
+                else    // Usuário não conectado, devemos ver a condição da energia
                 {
-                    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-                    __delay_ms(5);
-                    Display_WriteString(auxText2, sizeof(auxText2), 0);
+                    // Verifica se existe tensão no pino
+                    localVoltageStatus = Voltage_Read();
+                    if(localVoltageStatus)
+                    {
+                        
+                    }
+                    else // Falha na tensão
+                    {
+                        
+                    }
                 }
-                
-                
                 
             }else 
             {

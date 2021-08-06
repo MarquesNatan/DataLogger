@@ -72,6 +72,14 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="pic18f4520" displayName="pic18f4520" projectFiles="true">
+        <logicalFolder name="adc" displayName="adc" projectFiles="true">
+          <itemPath>src/pic18f4520/adc/adc.c</itemPath>
+          <itemPath>src/pic18f4520/adc/adc.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="eeprom" displayName="eeprom" projectFiles="true">
+          <itemPath>src/pic18f4520/eeprom/eeprom.c</itemPath>
+          <itemPath>src/pic18f4520/eeprom/eeprom.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="fuse" displayName="fuse" projectFiles="true">
           <itemPath>src/pic18f4520/fuse/fuse.h</itemPath>
         </logicalFolder>

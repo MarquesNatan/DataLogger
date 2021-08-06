@@ -19,6 +19,9 @@
 #include "app/display_lcd/display_lcd.h"
 #include "app/dht11/dht11.h"
 /*============================================================================*/
+#include "pic18f4520/adc/adc.h"
+#include "pic18f4520/eeprom/eeprom.h"
+/*============================================================================*/
 timer_config_t timerConfig = {
     .timer_length = TIMER_LENGTH_16,
     .timer_clk_src = TIMER_CLKO_SRC,
@@ -32,6 +35,15 @@ serial_config_t serialConfig = {
     .serial_data_length = SERIAL_DATA_LENGTH_8,
     .serial_op_mode = SERIAL_MASTER_MODE,
     .serial_desired_baud = SPEED_SERIAL
+};
+/*============================================================================*/
+adc_config_t adcConfig = {
+    .adc_channel = CHANNEL_AN0,
+    .negative_reference = INTERNAL_NEGATIVE_REFERENCE,
+    .positive_reference = INTERNAL_POSITIVE_REFERENCE,
+    .result_format = RIGHT_JUSTIFIED,
+    .adc_clock = FOSC_8,
+    .acquisition_time = TAD_2  
 };
 /*============================================================================*/
 extern global_timer_t global_timer_value;
@@ -99,11 +111,13 @@ void __interrupt() TC0INT(void) {
 void main(void) {
     
     
+    /*
     Interrupt_GlobalEnable();
     Timer0_Config(&timerConfig);
     Timer0_SetTickHook(tickHook_func);
     
     Serial_1_Config(&serialConfig);
+    */
     
     // StartSystem(NULL);
     __delay_ms(300);
@@ -112,10 +126,27 @@ void main(void) {
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
     
+    uint8_t dataRead[3];
+    
+    dataRead[0] = EEPROM_DataRead(0);
+    dataRead[1] = EEPROM_DataRead(1);
+    dataRead[2] = EEPROM_DataRead(2);
+    
+    
+    if(dataRead[0] != 0b01000001) EEPROM_DataWrite(0b01000001, 0);
+    if(dataRead[1] != 0b01000010) EEPROM_DataWrite(0b01000010, 1);
+    if(dataRead[2] != 0b01000011) EEPROM_DataWrite(0b01000011, 2);
     
     while (1) 
     {
-        main_application(NULL);
+        // main_application(NULL);
+        
+        Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+        __delay_ms(5);
+        Display_WriteString(dataRead, sizeof(dataRead) + 1, 0);
+        
+        __delay_ms(2000);
+        
     }
     return;
 }

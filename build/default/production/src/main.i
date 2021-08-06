@@ -5003,6 +5003,99 @@ typedef enum {
 # 20 "src/main.c" 2
 
 
+# 1 "src/pic18f4520/adc/adc.h" 1
+
+
+
+
+
+
+
+typedef enum {
+    CHANNEL_AN0 = 0b0000,
+    CHANNEL_AN1 = 0b0001,
+    CHANNEL_AN2 = 0b0010,
+    CHANNEL_AN3 = 0b0011,
+    CHANNEL_AN4 = 0b0100,
+    CHANNEL_AN5 = 0b0101,
+    CHANNEL_AN6 = 0b0110,
+    CHANNEL_AN7 = 0b0111,
+    CHANNEL_AN8 = 0b1000,
+    CHANNEL_AN9 = 0b1001,
+    CHANNEL_AN10 = 0b1010,
+    CHANNEL_AN11 = 0b1011,
+    CHANNEL_AN12 = 0b1100
+}ADC_CHANNEL;
+
+typedef enum
+{
+    INTERNAL_NEGATIVE_REFERENCE = 0b00,
+    EXTERNAL_NEGATIVE_REFERENCE = 0b01
+}NEGATIVE_VOLTAGE_REFERENCE;
+
+typedef enum
+{
+    INTERNAL_POSITIVE_REFERENCE = 0b00,
+    EXTERNAL_POSITIVE_REFERENCE = 0b01
+}POSITIVE_VOLTAGE_REFERENCE;
+
+typedef enum
+{
+    LEFT_JUSTIFIED = 0b00,
+    RIGHT_JUSTIFIED = 0b01
+}RESULT_FORMAT;
+
+typedef enum
+{
+    TAD_20 = 0b111,
+    TAD_16 = 0b110,
+    TAD_12 = 0b101,
+    TAD_8 = 0b100,
+    TAD_6 = 0b011,
+    TAD_4 = 0b010,
+    TAD_2 = 0b001,
+    TAD_0 = 0b000
+}ACQUISITION_TIME;
+
+
+typedef enum {
+    FRC = 0b111,
+    FOSC_64 = 0b110,
+    FOSC_16 = 0b101,
+    FOSC_4 = 0b100,
+    FRC_1 = 0b011,
+    FOSC_32 = 0b010,
+    FOSC_8 = 0b001,
+    FOSC_2 = 0b000
+}ADC_CLOCK;
+
+typedef struct
+{
+    uint8_t adc_channel;
+    uint8_t negative_reference;
+    uint8_t positive_reference;
+    uint8_t result_format;
+    uint8_t acquisition_time;
+    uint8_t adc_clock;
+
+}adc_config_t;
+
+
+
+
+
+
+    void ADC_Configure( adc_config_t* adcConfig );
+    uint16_t ADC_StartConversion( void );
+# 22 "src/main.c" 2
+
+# 1 "src/pic18f4520/eeprom/eeprom.h" 1
+# 12 "src/pic18f4520/eeprom/eeprom.h"
+    void EEPROM_DataWrite(unsigned char data, unsigned char addr);
+    unsigned char EEPROM_DataRead( uint8_t addr );
+# 23 "src/main.c" 2
+
+
 timer_config_t timerConfig = {
     .timer_length = TIMER_LENGTH_16,
     .timer_clk_src = TIMER_CLKO_SRC,
@@ -5016,6 +5109,15 @@ serial_config_t serialConfig = {
     .serial_data_length = SERIAL_DATA_LENGTH_8,
     .serial_op_mode = SERIAL_MASTER_MODE,
     .serial_desired_baud = 9600
+};
+
+adc_config_t adcConfig = {
+    .adc_channel = CHANNEL_AN0,
+    .negative_reference = INTERNAL_NEGATIVE_REFERENCE,
+    .positive_reference = INTERNAL_POSITIVE_REFERENCE,
+    .result_format = RIGHT_JUSTIFIED,
+    .adc_clock = FOSC_8,
+    .acquisition_time = TAD_2
 };
 
 extern uint32_t global_timer_value;
@@ -5081,25 +5183,34 @@ void __attribute__((picinterrupt(("")))) TC0INT(void) {
 
 
 void main(void) {
-
-
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
-    Timer0_SetTickHook(tickHook_func);
-
-    Serial_1_Config(&serialConfig);
-
-
+# 123 "src/main.c"
     _delay((unsigned long)((300)*(10000000UL/4000.0)));
     DisplayLCD_Init();
 
     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
 
+    uint8_t dataRead[3];
+
+    dataRead[0] = EEPROM_DataRead(0);
+    dataRead[1] = EEPROM_DataRead(1);
+    dataRead[2] = EEPROM_DataRead(2);
+
+
+    if(dataRead[0] != 0b01000001) EEPROM_DataWrite(0b01000001, 0);
+    if(dataRead[1] != 0b01000010) EEPROM_DataWrite(0b01000010, 1);
+    if(dataRead[2] != 0b01000011) EEPROM_DataWrite(0b01000011, 2);
 
     while (1)
     {
-        main_application(((void*)0));
+
+
+        Display_SendByte(0b00000001, 0);
+        _delay((unsigned long)((5)*(10000000UL/4000.0)));
+        Display_WriteString(dataRead, sizeof(dataRead) + 1, 0);
+
+        _delay((unsigned long)((2000)*(10000000UL/4000.0)));
+
     }
     return;
 }

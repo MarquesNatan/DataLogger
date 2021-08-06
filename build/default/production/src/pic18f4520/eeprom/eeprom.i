@@ -1,4 +1,4 @@
-# 1 "src/app/main-app/main-app.c"
+# 1 "src/pic18f4520/eeprom/eeprom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,316 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "src/app/main-app/main-app.c" 2
+# 1 "src/pic18f4520/eeprom/eeprom.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 1 3
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 2 3
-
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\features.h" 1 3
-# 10 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 2 3
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
-
-
-
-
-
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 122 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned size_t;
-# 137 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long ssize_t;
-# 168 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 204 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
-# 246 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long off_t;
-# 399 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 2 3
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-int ungetc(int, FILE *);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-#pragma printf_check(printf) const
-#pragma printf_check(vprintf) const
-#pragma printf_check(sprintf) const
-#pragma printf_check(snprintf) const
-#pragma printf_check(vsprintf) const
-#pragma printf_check(vsnprintf) const
-
-int printf(const char *restrict, ...);
-int fprintf(FILE *restrict, const char *restrict, ...);
-int sprintf(char *restrict, const char *restrict, ...);
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-int scanf(const char *restrict, ...);
-int fscanf(FILE *restrict, const char *restrict, ...);
-int sscanf(const char *restrict, const char *restrict, ...);
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 2 "src/app/main-app/main-app.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
-# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 127 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 142 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 158 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-# 173 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 188 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 209 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 229 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-typedef int24_t int_fast24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-typedef uint24_t uint_fast24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int16_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint16_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
-# 3 "src/app/main-app/main-app.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
-# 4 "src/app/main-app/main-app.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 1 3
-# 25 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 411 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct __locale_struct * locale_t;
-# 25 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 2 3
-
-
-void *memcpy (void *restrict, const void *restrict, size_t);
-void *memmove (void *, const void *, size_t);
-void *memset (void *, int, size_t);
-int memcmp (const void *, const void *, size_t);
-void *memchr (const void *, int, size_t);
-
-char *strcpy (char *restrict, const char *restrict);
-char *strncpy (char *restrict, const char *restrict, size_t);
-
-char *strcat (char *restrict, const char *restrict);
-char *strncat (char *restrict, const char *restrict, size_t);
-
-int strcmp (const char *, const char *);
-int strncmp (const char *, const char *, size_t);
-
-int strcoll (const char *, const char *);
-size_t strxfrm (char *restrict, const char *restrict, size_t);
-
-char *strchr (const char *, int);
-char *strrchr (const char *, int);
-
-size_t strcspn (const char *, const char *);
-size_t strspn (const char *, const char *);
-char *strpbrk (const char *, const char *);
-char *strstr (const char *, const char *);
-char *strtok (char *restrict, const char *restrict);
-
-size_t strlen (const char *);
-
-char *strerror (int);
-# 65 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 3
-char *strtok_r (char *restrict, const char *restrict, char **restrict);
-int strerror_r (int, char *, size_t);
-char *stpcpy(char *restrict, const char *restrict);
-char *stpncpy(char *restrict, const char *restrict, size_t);
-size_t strnlen (const char *, size_t);
-char *strdup (const char *);
-char *strndup (const char *, size_t);
-char *strsignal(int);
-char *strerror_l (int, locale_t);
-int strcoll_l (const char *, const char *, locale_t);
-size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
-
-
-
-
-void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 5 "src/app/main-app/main-app.c" 2
-
-
-# 1 "src/app/main-app/../../pic18f4520/timer/timer.h" 1
+# 1 "src/pic18f4520/eeprom/eeprom.h" 1
 
 
 
@@ -333,10 +26,29 @@ extern double __fpnormalize(double);
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdlib.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdlib.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\features.h" 1 3
+# 10 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdlib.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef long int wchar_t;
+# 122 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned size_t;
+# 168 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdlib.h" 2 3
 
 
@@ -4811,256 +4523,142 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 5 "src/app/main-app/../../pic18f4520/timer/timer.h" 2
+# 5 "src/pic18f4520/eeprom/eeprom.h" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 127 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int32_t;
 
 
 
 
 
-uint32_t global_timer_value = 0x01;
-
-typedef enum {
-    TIMER_LENGTH_16 = 0x00,
-    TIMER_LENGTH_8 = 0x01
-}TIMER_LENGTH;
-
-typedef enum {
-    TIMER_CLKO_SRC = 0x00,
-    TIMER_T0CLK_SCR = 0x01
-}TIMER_CLK_SRC;
-
-typedef enum {
-    TIMER_TRANSITION_LOW_HIGH = 0x00,
-    TIMER_TRANSITION_HIGH_LOW = 0x01
-}TIMER_TRANSITION;
-
-typedef enum {
-    TIMER_PRESCALER_IS_ASSIGNED = 0x00,
-    TIMER_PRESCALER_NOT_ASSIGNED = 0x01
-}TIMER_PRESCALER_ASSIGN;
-
-typedef enum {
-    TIMER_PRESCALER_2 = 0b000,
-    TIMER_PRESCALER_4 = 0b001,
-    TIMER_PRESCALER_8 = 0b010,
-    TIMER_PRESCALER_16 = 0b011,
-    TIMER_PRESCALER_32 = 0b100,
-    TIMER_PRESCALER_64 = 0b101,
-    TIMER_PRESCALER_128 = 0b110,
-    TIMER_PRESCALER_256 = 0b111
-}TIMER_PRESCALER_VALUE;
-
-typedef struct {
-    TIMER_LENGTH timer_length;
-    TIMER_CLK_SRC timer_clk_src;
-    TIMER_TRANSITION timer_transition;
-    TIMER_PRESCALER_ASSIGN timer_prescaler_assign;
-    TIMER_PRESCALER_VALUE timer_prescaler_value;
-}timer_config_t;
+typedef long long int64_t;
+# 188 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
 
 
 
 
 
-    void Timer0_Config( timer_config_t* timerConfig );
-
-    void Timer0_SetTickHook(void (*tickFunc)(uint32_t*));
-
-    void tickHook_Execute(uint32_t* global_timer_value);
-
-    uint32_t Timer0_GetGlobalTime( void );
-
-    void Timer0_WaitMS( uint16_t timeWait );
-# 7 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../pic18f4520/gpio/gpio.h" 1
-# 8 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../board/pinout/pinout.h" 1
-# 9 "src/app/main-app/main-app.c" 2
+typedef unsigned char uint8_t;
 
 
-# 1 "src/app/main-app/../../board/board_definitions/board_definitions.h" 1
-# 27 "src/app/main-app/../../board/board_definitions/board_definitions.h"
+
+
+typedef unsigned short uint16_t;
+# 209 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
+# 6 "src/pic18f4520/eeprom/eeprom.h" 2
+
+
+
+
+
+
+    void EEPROM_DataWrite(unsigned char data, unsigned char addr);
+    unsigned char EEPROM_DataRead( uint8_t addr );
+# 2 "src/pic18f4520/eeprom/eeprom.c" 2
+
+# 1 "src/pic18f4520/eeprom/../../board/board_definitions/board_definitions.h" 1
+# 27 "src/pic18f4520/eeprom/../../board/board_definitions/board_definitions.h"
 char string_temp[11] = "TEMP: ";
 char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
-# 11 "src/app/main-app/main-app.c" 2
+# 3 "src/pic18f4520/eeprom/eeprom.c" 2
 
 
-# 1 "src/app/main-app/main-app.h" 1
-# 11 "src/app/main-app/main-app.h"
-    void main_application( void* args);
-    void StartSystem( void* args );
-# 13 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../app/dht11/dht11.h" 1
-# 16 "src/app/main-app/../../app/dht11/dht11.h"
-    uint8_t DHT11_RequestData(void);
-    uint8_t DHT11_ReadData( void );
-    uint8_t DHT11_ReadByte( void );
-    uint8_t* DHT11_GetTemp( void );
-    uint8_t* DHT11_GetHum( void );
-# 14 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
-# 51 "src/app/main-app/../../app/display_lcd/display_lcd.h"
-    void DisplayLCD_Init( void );
-    void Display_SendByte(uint8_t byte, uint8_t comm);
-    void Display_WriteByte(uint8_t byte);
-    void Display_WriteString(char* string, uint8_t length, uint8_t address);
-    void sendNibble(uint8_t nibble);
-# 15 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../app/read_voltage/read_voltage.h" 1
-# 11 "src/app/main-app/../../app/read_voltage/read_voltage.h"
-    uint8_t Voltage_Read(void);
-# 16 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h" 1
-# 15 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h"
-char BLUETOOTH_NAME_COMM[] = "AT+NAME";
-char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
-char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
-
-typedef enum {
-    BAUD_1200 = 0x01,
-    BAUD_2400 = 0x02,
-    BAUD_4800 = 0x03,
-    BAUD_9600 = 0x04,
-    BAUD_19200 = 0x05,
-    BAUD_38400 = 0x06,
-    BAUD_57600 = 0x07,
-    BAUD_115200 = 0x08,
-}BLUETOOTH_BAUD_AVALIABLE;
-
-
-
-
-
-    void Bluetooth_HC_06_Configure(void);
-    void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
-    uint8_t Bluetooth_HC_06_Read( void );
-    _Bool User_GetState( void );
-    _Bool User_SetState( _Bool state );
-# 17 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h" 1
-# 13 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h"
-    void Peripheral_Controller(void* args);
-# 18 "src/app/main-app/main-app.c" 2
-
-
-
-uint8_t vetorTempLocal[2] = {35, 0};
-uint8_t vetorHumLocal[2] = {90, 5};
-_Bool TimeIsElapsed = 0;
-
-void main_application( void* args)
+void EEPROM_DataWrite(unsigned char data, unsigned char addr)
 {
-    static uint8_t voltageStatus = 0x00;
 
-    static uint8_t localDHT11Result = 0x00;
+    uint8_t STATUS_INTCON = INTCONbits.GIE;
+    while( EECON1bits.WR);
 
-    static char *localTemp = ((void*)0);
-    static char *localHum = ((void*)0);
+    EEADR = addr;
+    EEDATA = data;
 
-    static _Bool localUserState = 0;
+    EECON1bits.EEPGD = 0x00;
+    EECON1bits.CFGS = 0x00;
+    EECON1bits.WREN = 1;
 
-    static uint8_t localVoltageStatus = 0x00;
+    INTCONbits.GIE = 0;
 
-    char auxText[] = "USER CONECTADO";
-    char auxText2[] = "USER DESCONN";
+    EECON2 = 0x55;
+    EECON2 = 0xAA;
+    EECON1bits.WR = 1;
 
-    while(1)
-    {
-
-        if(TimeIsElapsed)
-        {
-
-
-            if(1)
-            {
-
-
-
-
-
-                localTemp = &vetorTempLocal;
-                localHum = &vetorHumLocal;
-
-
-                localUserState = User_GetState();
-                if(localUserState)
-                {
-
-                    Display_SendByte(0b00000001, 0);
-                    _delay((unsigned long)((5)*(10000000UL/4000.0)));
-                    Display_WriteString(auxText, sizeof(auxText), 0);
-                }
-                else
-                {
-
-                    localVoltageStatus = Voltage_Read();
-                    if(localVoltageStatus)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                }
-
-            }else
-            {
-
-            }
-
-
-            TimeIsElapsed = 0;
-        }
-        else
-        {
-            if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
-        }
-
-    }
-
-
+    INTCONbits.GIE = STATUS_INTCON;
 }
 
-void StartSystem( void* args )
+unsigned char EEPROM_DataRead( uint8_t addr )
 {
-    uint8_t dht11_response = 0x00;
+    while(EECON1bits.WR);
 
+    EEADR = addr;
+    EECON1bits.EEPGD = 0x00;
+    EECON1bits.CFGS = 0x00;
 
-    Peripheral_Controller(((void*)0));
+    EECON1bits.RD = 0x01;
 
-
-
-    DisplayLCD_Init();
-
-
-    Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
-
-    Bluetooth_HC_06_Configure();
-    _delay((unsigned long)((3000)*(10000000UL/4000.0)));
-
-
-    Display_SendByte(0b00000001, 0);
-   _delay((unsigned long)((2)*(10000000UL/4000.0)));
-    Display_WriteString("END INIT", sizeof("END INIT"), 0);
-
-
-    if((dht11_response = DHT11_RequestData()) == 0)
-    {
-        Display_WriteString("DHT11 OK", sizeof("DHT11 OK"), 0);
-    }else if((dht11_response = DHT11_RequestData()) == 1)
-    {
-        Display_WriteString("DHT11 TIMEOUT", sizeof("DHT11 TIMEOUT"), 0);
-
-        while(1);
-    }
-
-
+    return (EEDATA);
 }

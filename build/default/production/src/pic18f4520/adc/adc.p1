@@ -1,133 +1,110 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"25 src/main.c
-[; ;src/main.c: 25: timer_config_t timerConfig = {
-[c E2877 0 1 .. ]
-[n E2877 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
-[c E2881 0 1 .. ]
-[n E2881 . TIMER_CLKO_SRC TIMER_T0CLK_SCR  ]
-[c E2885 0 1 .. ]
-[n E2885 . TIMER_TRANSITION_LOW_HIGH TIMER_TRANSITION_HIGH_LOW  ]
-[c E2889 0 1 .. ]
-[n E2889 . TIMER_PRESCALER_IS_ASSIGNED TIMER_PRESCALER_NOT_ASSIGNED  ]
-[c E2893 0 1 2 3 4 5 6 7 .. ]
-[n E2893 . TIMER_PRESCALER_2 TIMER_PRESCALER_4 TIMER_PRESCALER_8 TIMER_PRESCALER_16 TIMER_PRESCALER_32 TIMER_PRESCALER_64 TIMER_PRESCALER_128 TIMER_PRESCALER_256  ]
-"43 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 43: typedef struct {
-[s S283 `E2877 1 `E2881 1 `E2885 1 `E2889 1 `E2893 1 ]
-[n S283 . timer_length timer_clk_src timer_transition timer_prescaler_assign timer_prescaler_value ]
-"33 src/main.c
-[; ;src/main.c: 33: serial_config_t serialConfig = {
-[c E2926 0 1 .. ]
-[n E2926 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
-[c E2930 0 1 .. ]
-[n E2930 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
-[c E2934 0 1 .. ]
-[n E2934 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
-"31 src/pic18f4520/serial/serial.h
-[; ;src/pic18f4520/serial/serial.h: 31: typedef struct {
-[s S284 `E2926 1 `E2930 1 `E2934 1 `l 1 ]
-[n S284 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
 "67 src/pic18f4520/adc/adc.h
 [; ;src/pic18f4520/adc/adc.h: 67: {
-[s S285 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S285 . adc_channel negative_reference positive_reference result_format acquisition_time adc_clock ]
-"40 src/main.c
-[; ;src/main.c: 40: adc_config_t adcConfig = {
-[c E3001 0 1 2 3 4 5 6 7 8 9 10 11 12 .. ]
-[n E3001 . CHANNEL_AN0 CHANNEL_AN1 CHANNEL_AN2 CHANNEL_AN3 CHANNEL_AN4 CHANNEL_AN5 CHANNEL_AN6 CHANNEL_AN7 CHANNEL_AN8 CHANNEL_AN9 CHANNEL_AN10 CHANNEL_AN11 CHANNEL_AN12  ]
-[c E3016 0 1 .. ]
-[n E3016 . INTERNAL_NEGATIVE_REFERENCE EXTERNAL_NEGATIVE_REFERENCE  ]
-[c E3020 0 1 .. ]
-[n E3020 . INTERNAL_POSITIVE_REFERENCE EXTERNAL_POSITIVE_REFERENCE  ]
-[c E3024 0 1 .. ]
-[n E3024 . LEFT_JUSTIFIED RIGHT_JUSTIFIED  ]
-[c E3028 7 6 5 4 3 2 1 0 .. ]
-[n E3028 . TAD_20 TAD_16 TAD_12 TAD_8 TAD_6 TAD_4 TAD_2 TAD_0  ]
-[c E3038 7 6 5 4 3 2 1 0 .. ]
-[n E3038 . FRC FOSC_64 FOSC_16 FOSC_4 FRC_1 FOSC_32 FOSC_8 FOSC_2  ]
-"1089 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"271
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"57 src/main.c
-[; ;src/main.c: 57: extern _Bool TimeIsElapsed;
-[v _TimeIsElapsed `a ~T0 @X0 0 e ]
-[t ~ __interrupt . k ]
-[t T41 __interrupt ]
-"6698 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6698:     struct {
-[s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S275 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"6708
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6708:     struct {
-[s S276 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S276 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"6718
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6718:     struct {
-[s S277 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S277 . . GIEL GIEH ]
-"6697
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6697: typedef union {
-[u S274 `S275 1 `S276 1 `S277 1 ]
-[n S274 . . . . ]
-"6724
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6724: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
-"59 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 59:     void tickHook_Execute(uint32_t* global_timer_value);
-[v _tickHook_Execute `(v ~T0 @X0 0 ef1`*ul ]
-"49 src/main.c
-[; ;src/main.c: 49: extern uint32_t global_timer_value;
-[v _global_timer_value `ul ~T0 @X0 0 e ]
-"6251 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 6251: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
-[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
-"2677
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2677:     struct {
-[s S96 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S96 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
-"2687
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2687:     struct {
-[s S97 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S97 . . TX1IF RC1IF ]
-"2676
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2676: typedef union {
-[u S95 `S96 1 `S97 1 ]
-[n S95 . . . ]
-"2693
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2693: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
-[v _PIR1bits `VS95 ~T0 @X0 0 e@3998 ]
-"3588
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 3588: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"52 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 52:     void Display_SendByte(uint8_t byte, uint8_t comm);
-[v _Display_SendByte `(v ~T0 @X0 0 ef2`uc`uc ]
-[v F2518 `(v ~T0 @X0 1 tf1`ul ]
-"203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
-[v __delay `JF2518 ~T0 @X0 0 e ]
-[p i __delay ]
-"54 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
-[v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
-"38 src/app/bluetooth-hc-06/bluetooth_hc_06.h
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 38:     _Bool User_SetState( _Bool state );
-[v _User_SetState `(a ~T0 @X0 0 ef1`a ]
-[p mainexit ]
-"51 src/app/display_lcd/display_lcd.h
-[; ;src/app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
-[v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
-"1699 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"13 src/pic18f4520/eeprom/eeprom.h
-[; ;src/pic18f4520/eeprom/eeprom.h: 13:     unsigned char EEPROM_DataRead( uint8_t addr );
-[v _EEPROM_DataRead `(uc ~T0 @X0 0 ef1`uc ]
-"12
-[; ;src/pic18f4520/eeprom/eeprom.h: 12:     void EEPROM_DataWrite(unsigned char data, unsigned char addr);
-[v _EEPROM_DataWrite `(v ~T0 @X0 0 ef2`uc`uc ]
+[s S281 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S281 . adc_channel negative_reference positive_reference result_format acquisition_time adc_clock ]
+"1488 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1488:     struct {
+[s S60 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S60 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1498
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1498:     struct {
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"1487
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1487: typedef union {
+[u S59 `S60 1 `S61 1 ]
+[n S59 . . . ]
+"1509
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1509: extern volatile TRISAbits_t TRISAbits __attribute__((address(0xF92)));
+[v _TRISAbits `VS59 ~T0 @X0 0 e@3986 ]
+"46 src/pic18f4520/adc/adc.c
+[; ;src/pic18f4520/adc/adc.c: 46:     if(adcConfig->negative_reference == EXTERNAL_NEGATIVE_REFERENCE)
+[c E2573 0 1 .. ]
+[n E2573 . INTERNAL_NEGATIVE_REFERENCE EXTERNAL_NEGATIVE_REFERENCE  ]
+"4696 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4696:     struct {
+[s S185 :4 `uc 1 :2 `uc 1 ]
+[n S185 . PCFG VCFG ]
+"4700
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4700:     struct {
+[s S186 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S186 . PCFG0 PCFG1 PCFG2 PCFG3 VCFG0 VCFG1 ]
+"4708
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4708:     struct {
+[s S187 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S187 . . CHSN3 VCFG01 VCFG11 ]
+"4695
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4695: typedef union {
+[u S184 `S185 1 `S186 1 `S187 1 ]
+[n S184 . . . . ]
+"4715
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4715: extern volatile ADCON1bits_t ADCON1bits __attribute__((address(0xFC1)));
+[v _ADCON1bits `VS184 ~T0 @X0 0 e@4033 ]
+"52 src/pic18f4520/adc/adc.c
+[; ;src/pic18f4520/adc/adc.c: 52:     if(adcConfig->positive_reference == EXTERNAL_POSITIVE_REFERENCE)
+[c E2577 0 1 .. ]
+[n E2577 . INTERNAL_POSITIVE_REFERENCE EXTERNAL_POSITIVE_REFERENCE  ]
+"4781 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4781:     struct {
+[s S189 :1 `uc 1 :1 `uc 1 ]
+[n S189 . . GO_NOT_DONE ]
+"4785
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4785:     struct {
+[s S190 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
+[n S190 . ADON GO_nDONE CHS ]
+"4790
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4790:     struct {
+[s S191 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S191 . . GO CHS0 CHS1 CHS2 CHS3 ]
+"4798
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4798:     struct {
+[s S192 :1 `uc 1 :1 `uc 1 ]
+[n S192 . . DONE ]
+"4802
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4802:     struct {
+[s S193 :1 `uc 1 :1 `uc 1 ]
+[n S193 . . NOT_DONE ]
+"4806
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4806:     struct {
+[s S194 :1 `uc 1 :1 `uc 1 ]
+[n S194 . . nDONE ]
+"4810
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4810:     struct {
+[s S195 :1 `uc 1 :1 `uc 1 ]
+[n S195 . . GO_DONE ]
+"4814
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4814:     struct {
+[s S196 :1 `uc 1 :1 `uc 1 ]
+[n S196 . . GODONE ]
+"4780
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4780: typedef union {
+[u S188 `S189 1 `S190 1 `S191 1 `S192 1 `S193 1 `S194 1 `S195 1 `S196 1 ]
+[n S188 . . . . . . . . . ]
+"4819
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4819: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0xFC2)));
+[v _ADCON0bits `VS188 ~T0 @X0 0 e@4034 ]
+"4625
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4625:     struct {
+[s S182 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S182 . ADCS ACQT . ADFM ]
+"4631
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4631:     struct {
+[s S183 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S183 . ADCS0 ADCS1 ADCS2 ACQT0 ACQT1 ACQT2 ]
+"4624
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4624: typedef union {
+[u S181 `S182 1 `S183 1 ]
+[n S181 . . . ]
+"4640
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4640: extern volatile ADCON2bits_t ADCON2bits __attribute__((address(0xFC0)));
+[v _ADCON2bits `VS181 ~T0 @X0 0 e@4032 ]
+"4908
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4908: extern volatile unsigned char ADRESH __attribute__((address(0xFC4)));
+[v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
+"4901
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4901: extern volatile unsigned char ADRESL __attribute__((address(0xFC3)));
+[v _ADRESL `Vuc ~T0 @X0 0 e@4035 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -542,79 +519,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"6 src/pic18f4520/fuse/fuse.h
-[p x OSC      =  HS  ]
-"7
-[p x FCMEN  =  OFF ]
-"8
-[p x IESO    =  OFF ]
-"11
-[p x PWRT    =  OFF ]
-"12
-[p x BOREN  =  SBORDIS ]
-"13
-[p x BORV    =  3 ]
-"16
-[p x WDT      =  OFF ]
-"17
-[p x WDTPS  =  32768 ]
-"20
-[p x CCP2MX    =  PORTC ]
-"21
-[p x PBADEN    =  OFF ]
-"22
-[p x LPT1OSC  =  OFF ]
-"23
-[p x MCLRE      =  OFF ]
-"26
-[p x STVREN  =  ON ]
-"27
-[p x LVP        =  OFF ]
-"28
-[p x XINST    =  OFF ]
-"31
-[p x CP0  =  OFF ]
-"32
-[p x CP1  =  OFF ]
-"33
-[p x CP2  =  OFF ]
-"34
-[p x CP3  =  OFF ]
-"37
-[p x CPB  =  OFF ]
-"38
-[p x CPD  =  OFF ]
-"41
-[p x WRT0  =  OFF ]
-"42
-[p x WRT1  =  OFF ]
-"43
-[p x WRT2  =  OFF ]
-"44
-[p x WRT3  =  OFF ]
-"47
-[p x WRTC  =  OFF ]
-"48
-[p x WRTB  =  OFF ]
-"49
-[p x WRTD  =  OFF ]
-"52
-[p x EBTR0  =  OFF ]
-"53
-[p x EBTR1  =  OFF ]
-"54
-[p x EBTR2  =  OFF ]
-"55
-[p x EBTR3  =  OFF ]
-"58
-[p x EBTRB  =  OFF ]
-"10 src/pic18f4520/timer/timer.h
-[; ;src/pic18f4520/timer/timer.h: 10: uint32_t global_timer_value = 0x01;
-[v _global_timer_value `ul ~T0 @X0 1 e ]
-[i _global_timer_value
--> -> -> 1 `i `l `ul
-]
-"27 src/app/bluetooth-hc-06/../../board/board_definitions/board_definitions.h
+"27 src/pic18f4520/adc/../../pic18f4520/serial/../../board/board_definitions/board_definitions.h
+[; ;src/pic18f4520/adc/../../pic18f4520/serial/../../board/board_definitions/board_definitions.h: 27: char string_temp[11] = "TEMP: ";
 [v _string_temp `uc ~T0 @X0 -> 11 `i e ]
 [i _string_temp
 :U ..
@@ -628,6 +534,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "28
+[; ;src/pic18f4520/adc/../../pic18f4520/serial/../../board/board_definitions/board_definitions.h: 28: char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 [v _string_hum `uc ~T0 @X0 -> 12 `i e ]
 [i _string_hum
 :U ..
@@ -639,351 +546,99 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"15 src/app/bluetooth-hc-06/bluetooth_hc_06.h
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 15: char BLUETOOTH_NAME_COMM[] = "AT+NAME";
-[v _BLUETOOTH_NAME_COMM `uc ~T0 @X0 -> 8 `i e ]
-[i _BLUETOOTH_NAME_COMM
-:U ..
--> 65 `c
--> 84 `c
--> 43 `c
--> 78 `c
--> 65 `c
--> 77 `c
--> 69 `c
--> 0 `c
-..
-]
-"16
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 16: char BLUETOOTH_PIN_COMM[] = "AT+PINXYZW";
-[v _BLUETOOTH_PIN_COMM `uc ~T0 @X0 -> 11 `i e ]
-[i _BLUETOOTH_PIN_COMM
-:U ..
--> 65 `c
--> 84 `c
--> 43 `c
--> 80 `c
--> 73 `c
--> 78 `c
--> 88 `c
--> 89 `c
--> 90 `c
--> 87 `c
--> 0 `c
-..
-]
-"17
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 17: char BLUETOOTH_BAUD_COMM[8] = "AT+BAUD";
-[v _BLUETOOTH_BAUD_COMM `uc ~T0 @X0 -> 8 `i e ]
-[i _BLUETOOTH_BAUD_COMM
-:U ..
--> 65 `c
--> 84 `c
--> 43 `c
--> 66 `c
--> 65 `c
--> 85 `c
--> 68 `c
--> 0 `c
-..
-]
-"25 src/main.c
-[; ;src/main.c: 25: timer_config_t timerConfig = {
-[v _timerConfig `S283 ~T0 @X0 1 e ]
-[i _timerConfig
-:U ..
-:U ..
-. `E2877 0
-. `E2881 0
-. `E2885 0
-. `E2889 0
-. `E2893 0
-..
-..
-]
-"33
-[; ;src/main.c: 33: serial_config_t serialConfig = {
-[v _serialConfig `S284 ~T0 @X0 1 e ]
-[i _serialConfig
-:U ..
-:U ..
-. `E2926 0
-. `E2930 0
-. `E2934 0
--> -> 9600 `i `l
-..
-..
-]
-"40
-[; ;src/main.c: 40: adc_config_t adcConfig = {
-[v _adcConfig `S285 ~T0 @X0 1 e ]
-[i _adcConfig
-:U ..
-:U ..
--> . `E3001 0 `uc
--> . `E3016 0 `uc
--> . `E3020 0 `uc
--> . `E3024 1 `uc
--> . `E3028 6 `uc
--> . `E3038 6 `uc
-..
-..
-]
-"51
-[; ;src/main.c: 51: uint8_t count = 0x00;
-[v _count `uc ~T0 @X0 1 e ]
-[i _count
--> -> 0 `i `uc
-]
+"38 src/pic18f4520/adc/adc.c
+[; ;src/pic18f4520/adc/adc.c: 38: void ADC_Configure( adc_config_t* adcConfig)
+[v _ADC_Configure `(v ~T0 @X0 1 ef1`*S281 ]
+"39
+[; ;src/pic18f4520/adc/adc.c: 39: {
+{
+[e :U _ADC_Configure ]
+"38
+[; ;src/pic18f4520/adc/adc.c: 38: void ADC_Configure( adc_config_t* adcConfig)
+[v _adcConfig `*S281 ~T0 @X0 1 r1 ]
+"39
+[; ;src/pic18f4520/adc/adc.c: 39: {
+[f ]
+"42
+[; ;src/pic18f4520/adc/adc.c: 42:     TRISAbits.RA0 = 0x01;
+[e = . . _TRISAbits 1 0 -> -> 1 `i `uc ]
+"46
+[; ;src/pic18f4520/adc/adc.c: 46:     if(adcConfig->negative_reference == EXTERNAL_NEGATIVE_REFERENCE)
+[e $ ! == -> . *U _adcConfig 1 `i -> . `E2573 1 `i 284  ]
+"47
+[; ;src/pic18f4520/adc/adc.c: 47:         ADCON1bits.VCFG1 = 0x01;
+[e = . . _ADCON1bits 1 5 -> -> 1 `i `uc ]
+[e $U 285  ]
+"48
+[; ;src/pic18f4520/adc/adc.c: 48:     else
+[e :U 284 ]
+"49
+[; ;src/pic18f4520/adc/adc.c: 49:         ADCON1bits.VCFG1 = 0x00;
+[e = . . _ADCON1bits 1 5 -> -> 0 `i `uc ]
+[e :U 285 ]
 "52
-[; ;src/main.c: 52: volatile uint8_t vector[3] = {0, 0, 0};
-[v _vector `Vuc ~T0 @X0 -> 3 `i e ]
-[i _vector
-:U ..
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-..
-]
+[; ;src/pic18f4520/adc/adc.c: 52:     if(adcConfig->positive_reference == EXTERNAL_POSITIVE_REFERENCE)
+[e $ ! == -> . *U _adcConfig 2 `i -> . `E2577 1 `i 286  ]
 "53
-[; ;src/main.c: 53: static uint8_t i = 0x00;
-[v _i `uc ~T0 @X0 1 s ]
-[i _i
--> -> 0 `i `uc
-]
-"56
-[; ;src/main.c: 56: static uint32_t t = 0;
-[v _t `ul ~T0 @X0 1 s ]
-[i _t
--> -> -> 0 `i `l `ul
-]
-"59
-[; ;src/main.c: 59: void tickHook_func(uint32_t *timer_value) {
-[v _tickHook_func `(v ~T0 @X0 1 ef1`*ul ]
-{
-[e :U _tickHook_func ]
-[v _timer_value `*ul ~T0 @X0 1 r1 ]
-[f ]
-"60
-[; ;src/main.c: 60:     (*timer_value)++;
-[e ++ *U _timer_value -> -> -> 1 `i `l `ul ]
-"61
-[; ;src/main.c: 61:     if((*timer_value - t) >= 10000)
-[e $ ! >= - *U _timer_value _t -> -> -> 10000 `i `l `ul 287  ]
-"62
-[; ;src/main.c: 62:     {
-{
-"63
-[; ;src/main.c: 63:         LATB = (PORTB ^ (1 << 0));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-"64
-[; ;src/main.c: 64:         t = (*timer_value);
-[e = _t *U _timer_value ]
-"65
-[; ;src/main.c: 65:         TimeIsElapsed = 1;
-[e = _TimeIsElapsed -> -> 1 `i `a ]
-"66
-[; ;src/main.c: 66:     }
-}
+[; ;src/pic18f4520/adc/adc.c: 53:         ADCON1bits.VCFG0 = 0x01;
+[e = . . _ADCON1bits 1 4 -> -> 1 `i `uc ]
+[e $U 287  ]
+"54
+[; ;src/pic18f4520/adc/adc.c: 54:     else
+[e :U 286 ]
+"55
+[; ;src/pic18f4520/adc/adc.c: 55:         ADCON1bits.VCFG0 = 0x00;
+[e = . . _ADCON1bits 1 4 -> -> 0 `i `uc ]
 [e :U 287 ]
-"67
-[; ;src/main.c: 67: }
-[e :UE 286 ]
-}
-[v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"69
-[; ;src/main.c: 69: void __attribute__((picinterrupt(("")))) TC0INT(void) {
-[v _TC0INT `(v ~T41 @X0 1 ef ]
-{
-[e :U _TC0INT ]
-[f ]
+"58
+[; ;src/pic18f4520/adc/adc.c: 58:     ADCON1bits.PCFG = 0x00;
+[e = . . _ADCON1bits 0 0 -> -> 0 `i `uc ]
+"61
+[; ;src/pic18f4520/adc/adc.c: 61:     ADCON0bits.CHS = adcConfig->adc_channel;
+[e = . . _ADCON0bits 1 2 . *U _adcConfig 0 ]
+"64
+[; ;src/pic18f4520/adc/adc.c: 64:     ADCON2bits.ACQT = adcConfig->acquisition_time;
+[e = . . _ADCON2bits 0 1 . *U _adcConfig 4 ]
+"68
+[; ;src/pic18f4520/adc/adc.c: 68:     ADCON2bits.ADCS = adcConfig->adc_clock;
+[e = . . _ADCON2bits 0 0 . *U _adcConfig 5 ]
+"71
+[; ;src/pic18f4520/adc/adc.c: 71:     ADCON0bits.ADON = 0x01;
+[e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
 "72
-[; ;src/main.c: 72:     if (INTCONbits.TMR0IF == 0x01) {
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 289  ]
-{
+[; ;src/pic18f4520/adc/adc.c: 72: }
+[e :UE 283 ]
+}
 "74
-[; ;src/main.c: 74:         tickHook_Execute(&global_timer_value);
-[e ( _tickHook_Execute (1 &U _global_timer_value ]
-"76
-[; ;src/main.c: 76:         TMR0 = 0xFB1E;
-[e = _TMR0 -> -> 64286 `ui `us ]
-"77
-[; ;src/main.c: 77:         INTCONbits.T0IF = 0x00;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"78
-[; ;src/main.c: 78:     }
-}
-[e :U 289 ]
-"81
-[; ;src/main.c: 81:     if (PIR1bits.RCIF) {
-[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 290  ]
+[; ;src/pic18f4520/adc/adc.c: 74: uint16_t ADC_StartConversion( void )
+[v _ADC_StartConversion `(us ~T0 @X0 1 ef ]
+"75
+[; ;src/pic18f4520/adc/adc.c: 75: {
 {
-"82
-[; ;src/main.c: 82:         count = RCREG;
-[e = _count _RCREG ]
-"83
-[; ;src/main.c: 83:         vector[i] = count;
-[e = *U + &U _vector * -> _i `ux -> -> # *U &U _vector `ui `ux _count ]
-"85
-[; ;src/main.c: 85:         if(count != 0x3E)
-[e $ ! != -> _count `i -> 62 `i 291  ]
-"86
-[; ;src/main.c: 86:         {
-{
-"87
-[; ;src/main.c: 87:             vector[i] = count;
-[e = *U + &U _vector * -> _i `ux -> -> # *U &U _vector `ui `ux _count ]
-"88
-[; ;src/main.c: 88:             i++;
-[e ++ _i -> -> 1 `i `uc ]
-"89
-[; ;src/main.c: 89:         }else
-}
-[e $U 292  ]
-[e :U 291 ]
-"90
-[; ;src/main.c: 90:         {
-{
-"91
-[; ;src/main.c: 91:             vector[i] = count;
-[e = *U + &U _vector * -> _i `ux -> -> # *U &U _vector `ui `ux _count ]
-"92
-[; ;src/main.c: 92:             Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"93
-[; ;src/main.c: 93:             _delay((unsigned long)((5)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"94
-[; ;src/main.c: 94:             Display_WriteString(vector, sizeof(vector) + 1, 0);
-[e ( _Display_WriteString (3 , , -> &U _vector `*uc -> + -> # _vector `ui -> -> 1 `i `ui `uc -> -> 0 `i `uc ]
-"96
-[; ;src/main.c: 96:             if(vector[1] == 0x43)
-[e $ ! == -> *U + &U _vector * -> -> -> 1 `i `ui `ux -> -> # *U &U _vector `ui `ux `i -> 67 `i 293  ]
-"97
-[; ;src/main.c: 97:             {
-{
-"98
-[; ;src/main.c: 98:                 User_SetState(1);
-[e ( _User_SetState (1 -> -> 1 `i `a ]
-"99
-[; ;src/main.c: 99:             }else if(vector[1] == 0x44)
-}
-[e $U 294  ]
-[e :U 293 ]
-[e $ ! == -> *U + &U _vector * -> -> -> 1 `i `ui `ux -> -> # *U &U _vector `ui `ux `i -> 68 `i 295  ]
-"100
-[; ;src/main.c: 100:             {
-{
-"101
-[; ;src/main.c: 101:                 User_SetState(0);
-[e ( _User_SetState (1 -> -> 0 `i `a ]
-"102
-[; ;src/main.c: 102:             }
-}
-[e :U 295 ]
-[e :U 294 ]
-"104
-[; ;src/main.c: 104:             i = 0;
-[e = _i -> -> 0 `i `uc ]
-"105
-[; ;src/main.c: 105:         }
-}
-[e :U 292 ]
-"106
-[; ;src/main.c: 106:         PIR1bits.RCIF = 0x00;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"107
-[; ;src/main.c: 107:     }
-}
-[e :U 290 ]
-"108
-[; ;src/main.c: 108: }
-[e :UE 288 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"111
-[; ;src/main.c: 111: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[e :U _main ]
+[e :U _ADC_StartConversion ]
 [f ]
-"123
-[; ;src/main.c: 123:     _delay((unsigned long)((300)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"124
-[; ;src/main.c: 124:     DisplayLCD_Init();
-[e ( _DisplayLCD_Init ..  ]
-"126
-[; ;src/main.c: 126:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-[e $ ! == -> 0 `i -> 0 `i 297  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
-[e $U 298  ]
-[e :U 297 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
-[e :U 298 ]
-"127
-[; ;src/main.c: 127:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-[e $ ! == -> 0 `i -> 0 `i 299  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
-[e $U 300  ]
-[e :U 299 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
-[e :U 300 ]
-"129
-[; ;src/main.c: 129:     uint8_t dataRead[3];
-[v _dataRead `uc ~T0 @X0 -> 3 `i a ]
-"131
-[; ;src/main.c: 131:     dataRead[0] = EEPROM_DataRead(0);
-[e = *U + &U _dataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_DataRead (1 -> -> 0 `i `uc ]
-"132
-[; ;src/main.c: 132:     dataRead[1] = EEPROM_DataRead(1);
-[e = *U + &U _dataRead * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_DataRead (1 -> -> 1 `i `uc ]
-"133
-[; ;src/main.c: 133:     dataRead[2] = EEPROM_DataRead(2);
-[e = *U + &U _dataRead * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_DataRead (1 -> -> 2 `i `uc ]
-"136
-[; ;src/main.c: 136:     if(dataRead[0] != 0b01000001) EEPROM_DataWrite(0b01000001, 0);
-[e $ ! != -> *U + &U _dataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataRead `ui `ux `i -> 65 `i 301  ]
-[e ( _EEPROM_DataWrite (2 , -> -> 65 `i `uc -> -> 0 `i `uc ]
-[e :U 301 ]
-"137
-[; ;src/main.c: 137:     if(dataRead[1] != 0b01000010) EEPROM_DataWrite(0b01000010, 1);
-[e $ ! != -> *U + &U _dataRead * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataRead `ui `ux `i -> 66 `i 302  ]
-[e ( _EEPROM_DataWrite (2 , -> -> 66 `i `uc -> -> 1 `i `uc ]
-[e :U 302 ]
-"138
-[; ;src/main.c: 138:     if(dataRead[2] != 0b01000011) EEPROM_DataWrite(0b01000011, 2);
-[e $ ! != -> *U + &U _dataRead * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataRead `ui `ux `i -> 67 `i 303  ]
-[e ( _EEPROM_DataWrite (2 , -> -> 67 `i `uc -> -> 2 `i `uc ]
-[e :U 303 ]
-"140
-[; ;src/main.c: 140:     while (1)
-[e :U 305 ]
-"141
-[; ;src/main.c: 141:     {
-{
-"144
-[; ;src/main.c: 144:         Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"145
-[; ;src/main.c: 145:         _delay((unsigned long)((5)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"146
-[; ;src/main.c: 146:         Display_WriteString(dataRead, sizeof(dataRead) + 1, 0);
-[e ( _Display_WriteString (3 , , -> &U _dataRead `*uc -> + -> # _dataRead `ui -> -> 1 `i `ui `uc -> -> 0 `i `uc ]
-"148
-[; ;src/main.c: 148:         _delay((unsigned long)((2000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"150
-[; ;src/main.c: 150:     }
-}
-[e :U 304 ]
-[e $U 305  ]
-[e :U 306 ]
-"151
-[; ;src/main.c: 151:     return;
-[e $UE 296  ]
-"152
-[; ;src/main.c: 152: }
-[e :UE 296 ]
+"76
+[; ;src/pic18f4520/adc/adc.c: 76:     uint16_t auxADCResult = 0x00;
+[v _auxADCResult `us ~T0 @X0 1 a ]
+[e = _auxADCResult -> -> 0 `i `us ]
+"78
+[; ;src/pic18f4520/adc/adc.c: 78:     ADCON0bits.GO_DONE = 0x01;
+[e = . . _ADCON0bits 6 1 -> -> 1 `i `uc ]
+"79
+[; ;src/pic18f4520/adc/adc.c: 79:     while(ADCON0bits.GO_DONE);
+[e $U 289  ]
+[e :U 290 ]
+[e :U 289 ]
+[e $ != -> . . _ADCON0bits 6 1 `i -> 0 `i 290  ]
+[e :U 291 ]
+"82
+[; ;src/pic18f4520/adc/adc.c: 82:     auxADCResult = (ADRESH << 0x04) | ADRESL;
+[e = _auxADCResult -> | << -> _ADRESH `i -> 4 `i -> _ADRESL `i `us ]
+"84
+[; ;src/pic18f4520/adc/adc.c: 84:     return auxADCResult;
+[e ) _auxADCResult ]
+[e $UE 288  ]
+"85
+[; ;src/pic18f4520/adc/adc.c: 85: }
+[e :UE 288 ]
 }
