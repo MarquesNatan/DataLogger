@@ -4620,6 +4620,9 @@ typedef uint32_t uint_fast32_t;
 # 2 "src/app/display_lcd/display_lcd.c" 2
 
 # 1 "src/app/display_lcd/../../board/board_definitions/board_definitions.h" 1
+# 27 "src/app/display_lcd/../../board/board_definitions/board_definitions.h"
+char string_temp[11] = "TEMP: ";
+char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 # 3 "src/app/display_lcd/display_lcd.c" 2
 
 # 1 "src/app/display_lcd/../../pic18f4520/gpio/gpio.h" 1
@@ -4736,7 +4739,7 @@ void Display_WriteString(char* string, uint8_t length, uint8_t address)
     uint8_t auxLength = 0x00;
 
 
-    for(auxLength = 0; auxLength < length; auxLength++)
+    for(auxLength = 0; auxLength < length - 1; auxLength++)
     {
         Display_WriteByte((uint8_t)string[auxLength]);
     }

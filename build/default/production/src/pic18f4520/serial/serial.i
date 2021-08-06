@@ -4613,6 +4613,9 @@ typedef uint32_t uint_fast32_t;
 # 6 "src/pic18f4520/serial/serial.h" 2
 
 # 1 "src/pic18f4520/serial/../../board/board_definitions/board_definitions.h" 1
+# 27 "src/pic18f4520/serial/../../board/board_definitions/board_definitions.h"
+char string_temp[11] = "TEMP: ";
+char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 # 7 "src/pic18f4520/serial/serial.h" 2
 
 

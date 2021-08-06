@@ -4675,6 +4675,9 @@ typedef uint32_t uint_fast32_t;
 # 7 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
 
 # 1 "src/app/bluetooth-hc-06/../../board/board_definitions/board_definitions.h" 1
+# 27 "src/app/bluetooth-hc-06/../../board/board_definitions/board_definitions.h"
+char string_temp[11] = "TEMP: ";
+char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 # 8 "src/app/bluetooth-hc-06/bluetooth_hc_06.h" 2
 
 
@@ -4703,7 +4706,7 @@ typedef enum {
 
 
     void Bluetooth_HC_06_Configure(void);
-    void Bluetooth_HC_06_Write( void );
+    void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
     uint8_t Bluetooth_HC_06_Read( void );
     _Bool User_GetState( void );
     _Bool User_SetState( _Bool state );
@@ -4757,49 +4760,18 @@ static _Bool UserConnected = 0;
 void Bluetooth_HC_06_Configure(void) {
     uint16_t timeOut = 0xFFFF;
     uint8_t response_bluetooth[10];
-
-
-    if (9600 != 9600) {
-        switch (9600)
-        {
-            case 1200:
-                strcat(BLUETOOTH_BAUD_COMM, "1");
-                break;
-            case 2400:
-                strcat(BLUETOOTH_BAUD_COMM, "2");
-                break;
-            case 4800:
-                strcat(BLUETOOTH_BAUD_COMM, "3");
-                break;
-            case 9600:
-                strcat(BLUETOOTH_BAUD_COMM, "4");
-                break;
-            case 19200:
-                strcat(BLUETOOTH_BAUD_COMM, "5");
-                break;
-            case 38400:
-                strcat(BLUETOOTH_BAUD_COMM, "6");
-                break;
-            case 57600:
-                strcat(BLUETOOTH_BAUD_COMM, "7");
-                break;
-            case 115200:
-                strcat(BLUETOOTH_BAUD_COMM, "8");
-                break;
-            default:
-                strcat(BLUETOOTH_BAUD_COMM, "4");
-                break;
-        }
-        Serial_TransmitBuffer(BLUETOOTH_BAUD_COMM, sizeof (BLUETOOTH_BAUD_COMM));
-    }
-
-
-
-
-
-
+# 54 "src/app/bluetooth-hc-06/bluetooth_hc_06.c"
 }
 
+
+void Bluetooth_HC_06_WriteString( char* string, uint8_t length )
+{
+    uint8_t auxLength = 0x00;
+    for(auxLength = 0; auxLength < length; auxLength++)
+    {
+        Serial_Transmit(string[auxLength]);
+    }
+}
 
 _Bool User_GetState( void )
 {

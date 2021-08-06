@@ -257,7 +257,65 @@ typedef uint32_t uint_fast32_t;
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
 # 4 "src/app/main-app/main-app.c" 2
 
-# 1 "src/app/main-app/main-app.h" 1
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 411 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 2 3
+
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 5 "src/app/main-app/main-app.c" 2
+
+
+# 1 "src/app/main-app/../../pic18f4520/timer/timer.h" 1
 
 
 
@@ -4753,22 +4811,12 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\\pic\\include\\xc.h" 2 3
-# 5 "src/app/main-app/main-app.h" 2
+# 5 "src/app/main-app/../../pic18f4520/timer/timer.h" 2
 
 
 
 
 
-
-    void MainApplication( void* args);
-    void StartSystem( void* args );
-# 5 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../board/board_definitions/board_definitions.h" 1
-# 6 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../pic18f4520/timer/timer.h" 1
-# 10 "src/app/main-app/../../pic18f4520/timer/timer.h"
 uint32_t global_timer_value = 0x01;
 
 typedef enum {
@@ -4825,11 +4873,34 @@ typedef struct {
     void Timer0_WaitMS( uint16_t timeWait );
 # 7 "src/app/main-app/main-app.c" 2
 
+# 1 "src/app/main-app/../../pic18f4520/gpio/gpio.h" 1
+# 8 "src/app/main-app/main-app.c" 2
 
-# 1 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h" 1
-# 13 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h"
-    void Peripheral_Controller(void* args);
+# 1 "src/app/main-app/../../board/pinout/pinout.h" 1
 # 9 "src/app/main-app/main-app.c" 2
+
+
+# 1 "src/app/main-app/../../board/board_definitions/board_definitions.h" 1
+# 27 "src/app/main-app/../../board/board_definitions/board_definitions.h"
+char string_temp[11] = "TEMP: ";
+char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
+# 11 "src/app/main-app/main-app.c" 2
+
+
+# 1 "src/app/main-app/main-app.h" 1
+# 11 "src/app/main-app/main-app.h"
+    void main_application( void* args);
+    void StartSystem( void* args );
+# 13 "src/app/main-app/main-app.c" 2
+
+# 1 "src/app/main-app/../../app/dht11/dht11.h" 1
+# 16 "src/app/main-app/../../app/dht11/dht11.h"
+    uint8_t DHT11_RequestData(void);
+    uint8_t DHT11_ReadData( void );
+    uint8_t DHT11_ReadByte( void );
+    uint8_t* DHT11_GetTemp( void );
+    uint8_t* DHT11_GetHum( void );
+# 14 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
 # 51 "src/app/main-app/../../app/display_lcd/display_lcd.h"
@@ -4838,7 +4909,12 @@ typedef struct {
     void Display_WriteByte(uint8_t byte);
     void Display_WriteString(char* string, uint8_t length, uint8_t address);
     void sendNibble(uint8_t nibble);
-# 10 "src/app/main-app/main-app.c" 2
+# 15 "src/app/main-app/main-app.c" 2
+
+# 1 "src/app/main-app/../../app/read_voltage/read_voltage.h" 1
+# 11 "src/app/main-app/../../app/read_voltage/read_voltage.h"
+    uint8_t Voltage_Read(void);
+# 16 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h" 1
 # 15 "src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h"
@@ -4862,36 +4938,36 @@ typedef enum {
 
 
     void Bluetooth_HC_06_Configure(void);
-    void Bluetooth_HC_06_Write( void );
+    void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
     uint8_t Bluetooth_HC_06_Read( void );
     _Bool User_GetState( void );
     _Bool User_SetState( _Bool state );
-# 11 "src/app/main-app/main-app.c" 2
+# 17 "src/app/main-app/main-app.c" 2
 
-# 1 "src/app/main-app/../../app/dht11/dht11.h" 1
-# 16 "src/app/main-app/../../app/dht11/dht11.h"
-    uint8_t DHT11_RequestData(void);
-    uint8_t DHT11_ReadData( void );
-    uint8_t DHT11_ReadByte( void );
-    uint8_t* DHT11_GetTemp( void );
-    uint8_t* DHT11_GetHum( void );
-# 12 "src/app/main-app/main-app.c" 2
-
-# 1 "src/app/main-app/../../app/read_voltage/read_voltage.h" 1
-# 11 "src/app/main-app/../../app/read_voltage/read_voltage.h"
-    uint8_t Voltage_Read(void);
-# 13 "src/app/main-app/main-app.c" 2
+# 1 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h" 1
+# 13 "src/app/main-app/../../board/peripheral-controller/peripheral_controller.h"
+    void Peripheral_Controller(void* args);
+# 18 "src/app/main-app/main-app.c" 2
 
 
 
+uint8_t vetorTempLocal[2] = {35, 0};
+uint8_t vetorHumLocal[2] = {90, 5};
 _Bool TimeIsElapsed = 0;
 
 void main_application( void* args)
 {
-    uint8_t voltageStatus = 0x00;
-    uint8_t localDHT11Result = 0x00;
-    uint8_t *localTemp = ((void*)0);
-    uint8_t *localHum = ((void*)0);
+    static uint8_t voltageStatus = 0x00;
+
+    static uint8_t localDHT11Result = 0x00;
+
+    static char *localTemp = ((void*)0);
+    static char *localHum = ((void*)0);
+
+    static _Bool localUserState = 0;
+
+    char auxText[] = "USER CONECTADO";
+    char auxText2[] = "USER DESCONN";
 
     while(1)
     {
@@ -4899,12 +4975,32 @@ void main_application( void* args)
         if(TimeIsElapsed)
         {
 
-            localDHT11Result = DHT11_ReadData();
-            if(localDHT11Result != 2 && localDHT11Result != 1)
-            {
-                localTemp = DHT11_GetTemp();
-                localHum = DHT11_GetHum();
 
+            if(1)
+            {
+
+
+
+
+
+                localTemp = &vetorTempLocal;
+                localHum = &vetorHumLocal;
+
+
+                localUserState = User_GetState();
+                if(localUserState)
+                {
+
+                    Display_SendByte(0b00000001, 0);
+                    _delay((unsigned long)((5)*(10000000UL/4000.0)));
+                    Display_WriteString(auxText, sizeof(auxText), 0);
+                }
+                else
+                {
+                    Display_SendByte(0b00000001, 0);
+                    _delay((unsigned long)((5)*(10000000UL/4000.0)));
+                    Display_WriteString(auxText2, sizeof(auxText2), 0);
+                }
 
 
 
@@ -4914,10 +5010,11 @@ void main_application( void* args)
             }
 
 
+            TimeIsElapsed = 0;
         }
         else
         {
-
+            if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
         }
 
     }
@@ -4945,7 +5042,7 @@ void StartSystem( void* args )
 
     Display_SendByte(0b00000001, 0);
    _delay((unsigned long)((2)*(10000000UL/4000.0)));
-    Display_WriteString("ACABOU ESSA POHA", sizeof("ACABOU ESSA POHA"), 0);
+    Display_WriteString("END INIT", sizeof("END INIT"), 0);
 
 
     if((dht11_response = DHT11_RequestData()) == 0)

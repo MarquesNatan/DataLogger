@@ -1,32 +1,32 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"17 src/app/main-app/../../app/dht11/dht11.h
-[; ;src/app/main-app/../../app/dht11/dht11.h: 17:     uint8_t DHT11_ReadData( void );
-[v _DHT11_ReadData `(uc ~T0 @X0 0 ef ]
-"19
-[; ;src/app/main-app/../../app/dht11/dht11.h: 19:     uint8_t* DHT11_GetTemp( void );
-[v _DHT11_GetTemp `(*uc ~T0 @X0 0 ef ]
-"20
-[; ;src/app/main-app/../../app/dht11/dht11.h: 20:     uint8_t* DHT11_GetHum( void );
-[v _DHT11_GetHum `(*uc ~T0 @X0 0 ef ]
+"37 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 37:     _Bool User_GetState( void );
+[v _User_GetState `(a ~T0 @X0 0 ef ]
+"52 src/app/main-app/../../app/display_lcd/display_lcd.h
+[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 52:     void Display_SendByte(uint8_t byte, uint8_t comm);
+[v _Display_SendByte `(v ~T0 @X0 0 ef2`uc`uc ]
+[v F3035 `(v ~T0 @X0 1 tf1`ul ]
+"203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
+[v __delay `JF3035 ~T0 @X0 0 e ]
+[p i __delay ]
+"54 src/app/main-app/../../app/display_lcd/display_lcd.h
+[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
+[v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
+"1089 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"271
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "13 src/app/main-app/../../board/peripheral-controller/peripheral_controller.h
 [; ;src/app/main-app/../../board/peripheral-controller/peripheral_controller.h: 13:     void Peripheral_Controller(void* args);
 [v _Peripheral_Controller `(v ~T0 @X0 0 ef1`*v ]
 "51 src/app/main-app/../../app/display_lcd/display_lcd.h
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
 [v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
-"54
-[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
-[v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
 "34 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
 [; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 34:     void Bluetooth_HC_06_Configure(void);
 [v _Bluetooth_HC_06_Configure `(v ~T0 @X0 0 ef ]
-[v F2868 `(v ~T0 @X0 1 tf1`ul ]
-"203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
-[v __delay `JF2868 ~T0 @X0 0 e ]
-[p i __delay ]
-"52 src/app/main-app/../../app/display_lcd/display_lcd.h
-[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 52:     void Display_SendByte(uint8_t byte, uint8_t comm);
-[v _Display_SendByte `(v ~T0 @X0 0 ef2`uc`uc ]
 "16 src/app/main-app/../../app/dht11/dht11.h
 [; ;src/app/main-app/../../app/dht11/dht11.h: 16:     uint8_t DHT11_RequestData(void);
 [v _DHT11_RequestData `(uc ~T0 @X0 0 ef ]
@@ -450,6 +450,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _global_timer_value
 -> -> -> 1 `i `l `ul
 ]
+"27 src/app/main-app/../../app/bluetooth-hc-06/../../board/board_definitions/board_definitions.h
+[v _string_temp `uc ~T0 @X0 -> 11 `i e ]
+[i _string_temp
+:U ..
+-> 84 `c
+-> 69 `c
+-> 77 `c
+-> 80 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+"28
+[v _string_hum `uc ~T0 @X0 -> 12 `i e ]
+[i _string_hum
+:U ..
+-> 72 `c
+-> 85 `c
+-> 77 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
 "15 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
 [; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 15: char BLUETOOTH_NAME_COMM[] = "AT+NAME";
 [v _BLUETOOTH_NAME_COMM `uc ~T0 @X0 -> 8 `i e ]
@@ -498,182 +523,309 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"16 src/app/main-app/main-app.c
-[; ;src/app/main-app/main-app.c: 16: _Bool TimeIsElapsed = 0;
+"21 src/app/main-app/main-app.c
+[; ;src/app/main-app/main-app.c: 21: uint8_t vetorTempLocal[2] = {35, 0};
+[v _vetorTempLocal `uc ~T0 @X0 -> 2 `i e ]
+[i _vetorTempLocal
+:U ..
+-> -> 35 `i `uc
+-> -> 0 `i `uc
+..
+]
+"22
+[; ;src/app/main-app/main-app.c: 22: uint8_t vetorHumLocal[2] = {90, 5};
+[v _vetorHumLocal `uc ~T0 @X0 -> 2 `i e ]
+[i _vetorHumLocal
+:U ..
+-> -> 90 `i `uc
+-> -> 5 `i `uc
+..
+]
+"23
+[; ;src/app/main-app/main-app.c: 23: _Bool TimeIsElapsed = 0;
 [v _TimeIsElapsed `a ~T0 @X0 1 e ]
 [i _TimeIsElapsed
 -> -> 0 `i `a
 ]
-"18
-[; ;src/app/main-app/main-app.c: 18: void main_application( void* args)
+"25
+[; ;src/app/main-app/main-app.c: 25: void main_application( void* args)
 [v _main_application `(v ~T0 @X0 1 ef1`*v ]
-"19
-[; ;src/app/main-app/main-app.c: 19: {
+"26
+[; ;src/app/main-app/main-app.c: 26: {
 {
 [e :U _main_application ]
-"18
-[; ;src/app/main-app/main-app.c: 18: void main_application( void* args)
-[v _args `*v ~T0 @X0 1 r1 ]
-"19
-[; ;src/app/main-app/main-app.c: 19: {
-[f ]
-"20
-[; ;src/app/main-app/main-app.c: 20:     uint8_t voltageStatus = 0x00;
-[v _voltageStatus `uc ~T0 @X0 1 a ]
-[e = _voltageStatus -> -> 0 `i `uc ]
-"21
-[; ;src/app/main-app/main-app.c: 21:     uint8_t localDHT11Result = 0x00;
-[v _localDHT11Result `uc ~T0 @X0 1 a ]
-[e = _localDHT11Result -> -> 0 `i `uc ]
-"22
-[; ;src/app/main-app/main-app.c: 22:     uint8_t *localTemp = ((void*)0);
-[v _localTemp `*uc ~T0 @X0 1 a ]
-[e = _localTemp -> -> -> 0 `i `*v `*uc ]
-"23
-[; ;src/app/main-app/main-app.c: 23:     uint8_t *localHum = ((void*)0);
-[v _localHum `*uc ~T0 @X0 1 a ]
-[e = _localHum -> -> -> 0 `i `*v `*uc ]
 "25
-[; ;src/app/main-app/main-app.c: 25:     while(1)
-[e :U 286 ]
-"26
-[; ;src/app/main-app/main-app.c: 26:     {
-{
-"28
-[; ;src/app/main-app/main-app.c: 28:         if(TimeIsElapsed)
-[e $ ! != -> _TimeIsElapsed `i -> 0 `i 288  ]
-"29
-[; ;src/app/main-app/main-app.c: 29:         {
-{
-"31
-[; ;src/app/main-app/main-app.c: 31:             localDHT11Result = DHT11_ReadData();
-[e = _localDHT11Result ( _DHT11_ReadData ..  ]
-"32
-[; ;src/app/main-app/main-app.c: 32:             if(localDHT11Result != 2 && localDHT11Result != 1)
-[e $ ! && != -> _localDHT11Result `i -> 2 `i != -> _localDHT11Result `i -> 1 `i 289  ]
-"33
-[; ;src/app/main-app/main-app.c: 33:             {
-{
-"34
-[; ;src/app/main-app/main-app.c: 34:                 localTemp = DHT11_GetTemp();
-[e = _localTemp ( _DHT11_GetTemp ..  ]
-"35
-[; ;src/app/main-app/main-app.c: 35:                 localHum = DHT11_GetHum();
-[e = _localHum ( _DHT11_GetHum ..  ]
-"40
-[; ;src/app/main-app/main-app.c: 40:             }else
-}
-[e $U 290  ]
-[e :U 289 ]
-"41
-[; ;src/app/main-app/main-app.c: 41:             {
-{
-"43
-[; ;src/app/main-app/main-app.c: 43:             }
-}
-[e :U 290 ]
-"46
-[; ;src/app/main-app/main-app.c: 46:         }
-}
-[e $U 291  ]
-"47
-[; ;src/app/main-app/main-app.c: 47:         else
-[e :U 288 ]
-"48
-[; ;src/app/main-app/main-app.c: 48:         {
-{
-"50
-[; ;src/app/main-app/main-app.c: 50:         }
-}
-[e :U 291 ]
-"52
-[; ;src/app/main-app/main-app.c: 52:     }
-}
-[e :U 285 ]
-[e $U 286  ]
-[e :U 287 ]
-"55
-[; ;src/app/main-app/main-app.c: 55: }
-[e :UE 284 ]
-}
-"57
-[; ;src/app/main-app/main-app.c: 57: void StartSystem( void* args )
-[v _StartSystem `(v ~T0 @X0 1 ef1`*v ]
-"58
-[; ;src/app/main-app/main-app.c: 58: {
-{
-[e :U _StartSystem ]
-"57
-[; ;src/app/main-app/main-app.c: 57: void StartSystem( void* args )
+[; ;src/app/main-app/main-app.c: 25: void main_application( void* args)
 [v _args `*v ~T0 @X0 1 r1 ]
-"58
-[; ;src/app/main-app/main-app.c: 58: {
+"26
+[; ;src/app/main-app/main-app.c: 26: {
 [f ]
-"59
-[; ;src/app/main-app/main-app.c: 59:     uint8_t dht11_response = 0x00;
-[v _dht11_response `uc ~T0 @X0 1 a ]
-[e = _dht11_response -> -> 0 `i `uc ]
-"62
-[; ;src/app/main-app/main-app.c: 62:     Peripheral_Controller(((void*)0));
-[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
-"66
-[; ;src/app/main-app/main-app.c: 66:     DisplayLCD_Init();
-[e ( _DisplayLCD_Init ..  ]
-"69
-[; ;src/app/main-app/main-app.c: 69:     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
-[e ( _Display_WriteString (3 , , :s 1C -> -> 16 `ui `uc -> -> 0 `i `uc ]
-"71
-[; ;src/app/main-app/main-app.c: 71:     Bluetooth_HC_06_Configure();
-[e ( _Bluetooth_HC_06_Configure ..  ]
-"72
-[; ;src/app/main-app/main-app.c: 72:     _delay((unsigned long)((3000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"75
-[; ;src/app/main-app/main-app.c: 75:     Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"76
-[; ;src/app/main-app/main-app.c: 76:    _delay((unsigned long)((2)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"77
-[; ;src/app/main-app/main-app.c: 77:     Display_WriteString("ACABOU ESSA POHA", sizeof("ACABOU ESSA POHA"), 0);
-[e ( _Display_WriteString (3 , , :s 2C -> -> 17 `ui `uc -> -> 0 `i `uc ]
-"80
-[; ;src/app/main-app/main-app.c: 80:     if((dht11_response = DHT11_RequestData()) == 0)
-[e $ ! == -> = _dht11_response ( _DHT11_RequestData ..  `i -> 0 `i 293  ]
-"81
-[; ;src/app/main-app/main-app.c: 81:     {
+"27
+[; ;src/app/main-app/main-app.c: 27:     static uint8_t voltageStatus = 0x00;
+[v F3142 `uc ~T0 @X0 1 s voltageStatus ]
+[i F3142
+-> -> 0 `i `uc
+]
+"29
+[; ;src/app/main-app/main-app.c: 29:     static uint8_t localDHT11Result = 0x00;
+[v F3143 `uc ~T0 @X0 1 s localDHT11Result ]
+[i F3143
+-> -> 0 `i `uc
+]
+"31
+[; ;src/app/main-app/main-app.c: 31:     static char *localTemp = ((void*)0);
+[v F3144 `*uc ~T0 @X0 1 s localTemp ]
+[i F3144
+-> -> -> 0 `i `*v `*uc
+]
+"32
+[; ;src/app/main-app/main-app.c: 32:     static char *localHum = ((void*)0);
+[v F3145 `*uc ~T0 @X0 1 s localHum ]
+[i F3145
+-> -> -> 0 `i `*v `*uc
+]
+"34
+[; ;src/app/main-app/main-app.c: 34:     static _Bool localUserState = 0;
+[v F3146 `a ~T0 @X0 1 s localUserState ]
+[i F3146
+-> -> 0 `i `a
+]
+[v F3147 `uc ~T0 @X0 -> 15 `i s ]
+[i F3147
+:U ..
+"36
+[; ;src/app/main-app/main-app.c: 36:     char auxText[] = "USER CONECTADO";
+-> 85 `c
+-> 83 `c
+-> 69 `c
+-> 82 `c
+-> 32 `c
+-> 67 `c
+-> 79 `c
+-> 78 `c
+-> 69 `c
+-> 67 `c
+-> 84 `c
+-> 65 `c
+-> 68 `c
+-> 79 `c
+-> 0 `c
+..
+]
+[v _auxText `uc ~T0 @X0 -> 15 `i a ]
+[e = _auxText F3147 ]
+[v F3149 `uc ~T0 @X0 -> 13 `i s ]
+[i F3149
+:U ..
+"37
+[; ;src/app/main-app/main-app.c: 37:     char auxText2[] = "USER DESCONN";
+-> 85 `c
+-> 83 `c
+-> 69 `c
+-> 82 `c
+-> 32 `c
+-> 68 `c
+-> 69 `c
+-> 83 `c
+-> 67 `c
+-> 79 `c
+-> 78 `c
+-> 78 `c
+-> 0 `c
+..
+]
+[v _auxText2 `uc ~T0 @X0 -> 13 `i a ]
+[e = _auxText2 F3149 ]
+"39
+[; ;src/app/main-app/main-app.c: 39:     while(1)
+[e :U 287 ]
+"40
+[; ;src/app/main-app/main-app.c: 40:     {
 {
-"82
-[; ;src/app/main-app/main-app.c: 82:         Display_WriteString("DHT11 OK", sizeof("DHT11 OK"), 0);
-[e ( _Display_WriteString (3 , , :s 3C -> -> 9 `ui `uc -> -> 0 `i `uc ]
-"83
-[; ;src/app/main-app/main-app.c: 83:     }else if((dht11_response = DHT11_RequestData()) == 1)
+"42
+[; ;src/app/main-app/main-app.c: 42:         if(TimeIsElapsed)
+[e $ ! != -> _TimeIsElapsed `i -> 0 `i 289  ]
+"43
+[; ;src/app/main-app/main-app.c: 43:         {
+{
+"46
+[; ;src/app/main-app/main-app.c: 46:             if(1)
+[e $ ! != -> 1 `i -> 0 `i 290  ]
+"47
+[; ;src/app/main-app/main-app.c: 47:             {
+{
+"53
+[; ;src/app/main-app/main-app.c: 53:                 localTemp = &vetorTempLocal;
+[e = F3144 -> &U _vetorTempLocal `*uc ]
+"54
+[; ;src/app/main-app/main-app.c: 54:                 localHum = &vetorHumLocal;
+[e = F3145 -> &U _vetorHumLocal `*uc ]
+"57
+[; ;src/app/main-app/main-app.c: 57:                 localUserState = User_GetState();
+[e = F3146 ( _User_GetState ..  ]
+"58
+[; ;src/app/main-app/main-app.c: 58:                 if(localUserState)
+[e $ ! != -> F3146 `i -> 0 `i 291  ]
+"59
+[; ;src/app/main-app/main-app.c: 59:                 {
+{
+"61
+[; ;src/app/main-app/main-app.c: 61:                     Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"62
+[; ;src/app/main-app/main-app.c: 62:                     _delay((unsigned long)((5)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"63
+[; ;src/app/main-app/main-app.c: 63:                     Display_WriteString(auxText, sizeof(auxText), 0);
+[e ( _Display_WriteString (3 , , &U _auxText -> -> # _auxText `ui `uc -> -> 0 `i `uc ]
+"64
+[; ;src/app/main-app/main-app.c: 64:                 }
+}
+[e $U 292  ]
+"65
+[; ;src/app/main-app/main-app.c: 65:                 else
+[e :U 291 ]
+"66
+[; ;src/app/main-app/main-app.c: 66:                 {
+{
+"67
+[; ;src/app/main-app/main-app.c: 67:                     Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"68
+[; ;src/app/main-app/main-app.c: 68:                     _delay((unsigned long)((5)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"69
+[; ;src/app/main-app/main-app.c: 69:                     Display_WriteString(auxText2, sizeof(auxText2), 0);
+[e ( _Display_WriteString (3 , , &U _auxText2 -> -> # _auxText2 `ui `uc -> -> 0 `i `uc ]
+"70
+[; ;src/app/main-app/main-app.c: 70:                 }
+}
+[e :U 292 ]
+"74
+[; ;src/app/main-app/main-app.c: 74:             }else
+}
+[e $U 293  ]
+[e :U 290 ]
+"75
+[; ;src/app/main-app/main-app.c: 75:             {
+{
+"77
+[; ;src/app/main-app/main-app.c: 77:             }
+}
+[e :U 293 ]
+"80
+[; ;src/app/main-app/main-app.c: 80:             TimeIsElapsed = 0;
+[e = _TimeIsElapsed -> -> 0 `i `a ]
+"81
+[; ;src/app/main-app/main-app.c: 81:         }
 }
 [e $U 294  ]
-[e :U 293 ]
-[e $ ! == -> = _dht11_response ( _DHT11_RequestData ..  `i -> 1 `i 295  ]
-"84
-[; ;src/app/main-app/main-app.c: 84:     {
+"82
+[; ;src/app/main-app/main-app.c: 82:         else
+[e :U 289 ]
+"83
+[; ;src/app/main-app/main-app.c: 83:         {
 {
-"85
-[; ;src/app/main-app/main-app.c: 85:         Display_WriteString("DHT11 TIMEOUT", sizeof("DHT11 TIMEOUT"), 0);
-[e ( _Display_WriteString (3 , , :s 4C -> -> 14 `ui `uc -> -> 0 `i `uc ]
-"87
-[; ;src/app/main-app/main-app.c: 87:         while(1);
-[e :U 297 ]
-[e :U 296 ]
-[e $U 297  ]
-[e :U 298 ]
-"88
-[; ;src/app/main-app/main-app.c: 88:     }
-}
+"84
+[; ;src/app/main-app/main-app.c: 84:             if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+[e $ ! == -> 1 `i -> 1 `i 295  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
+[e $U 296  ]
 [e :U 295 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e :U 296 ]
+"85
+[; ;src/app/main-app/main-app.c: 85:         }
+}
 [e :U 294 ]
-"91
-[; ;src/app/main-app/main-app.c: 91: }
-[e :UE 292 ]
+"87
+[; ;src/app/main-app/main-app.c: 87:     }
+}
+[e :U 286 ]
+[e $U 287  ]
+[e :U 288 ]
+"90
+[; ;src/app/main-app/main-app.c: 90: }
+[e :UE 285 ]
+}
+"92
+[; ;src/app/main-app/main-app.c: 92: void StartSystem( void* args )
+[v _StartSystem `(v ~T0 @X0 1 ef1`*v ]
+"93
+[; ;src/app/main-app/main-app.c: 93: {
+{
+[e :U _StartSystem ]
+"92
+[; ;src/app/main-app/main-app.c: 92: void StartSystem( void* args )
+[v _args `*v ~T0 @X0 1 r1 ]
+"93
+[; ;src/app/main-app/main-app.c: 93: {
+[f ]
+"94
+[; ;src/app/main-app/main-app.c: 94:     uint8_t dht11_response = 0x00;
+[v _dht11_response `uc ~T0 @X0 1 a ]
+[e = _dht11_response -> -> 0 `i `uc ]
+"97
+[; ;src/app/main-app/main-app.c: 97:     Peripheral_Controller(((void*)0));
+[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
+"101
+[; ;src/app/main-app/main-app.c: 101:     DisplayLCD_Init();
+[e ( _DisplayLCD_Init ..  ]
+"104
+[; ;src/app/main-app/main-app.c: 104:     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
+[e ( _Display_WriteString (3 , , :s 1C -> -> 16 `ui `uc -> -> 0 `i `uc ]
+"106
+[; ;src/app/main-app/main-app.c: 106:     Bluetooth_HC_06_Configure();
+[e ( _Bluetooth_HC_06_Configure ..  ]
+"107
+[; ;src/app/main-app/main-app.c: 107:     _delay((unsigned long)((3000)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"110
+[; ;src/app/main-app/main-app.c: 110:     Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"111
+[; ;src/app/main-app/main-app.c: 111:    _delay((unsigned long)((2)*(10000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+"112
+[; ;src/app/main-app/main-app.c: 112:     Display_WriteString("END INIT", sizeof("END INIT"), 0);
+[e ( _Display_WriteString (3 , , :s 2C -> -> 9 `ui `uc -> -> 0 `i `uc ]
+"115
+[; ;src/app/main-app/main-app.c: 115:     if((dht11_response = DHT11_RequestData()) == 0)
+[e $ ! == -> = _dht11_response ( _DHT11_RequestData ..  `i -> 0 `i 298  ]
+"116
+[; ;src/app/main-app/main-app.c: 116:     {
+{
+"117
+[; ;src/app/main-app/main-app.c: 117:         Display_WriteString("DHT11 OK", sizeof("DHT11 OK"), 0);
+[e ( _Display_WriteString (3 , , :s 3C -> -> 9 `ui `uc -> -> 0 `i `uc ]
+"118
+[; ;src/app/main-app/main-app.c: 118:     }else if((dht11_response = DHT11_RequestData()) == 1)
+}
+[e $U 299  ]
+[e :U 298 ]
+[e $ ! == -> = _dht11_response ( _DHT11_RequestData ..  `i -> 1 `i 300  ]
+"119
+[; ;src/app/main-app/main-app.c: 119:     {
+{
+"120
+[; ;src/app/main-app/main-app.c: 120:         Display_WriteString("DHT11 TIMEOUT", sizeof("DHT11 TIMEOUT"), 0);
+[e ( _Display_WriteString (3 , , :s 4C -> -> 14 `ui `uc -> -> 0 `i `uc ]
+"122
+[; ;src/app/main-app/main-app.c: 122:         while(1);
+[e :U 302 ]
+[e :U 301 ]
+[e $U 302  ]
+[e :U 303 ]
+"123
+[; ;src/app/main-app/main-app.c: 123:     }
+}
+[e :U 300 ]
+[e :U 299 ]
+"126
+[; ;src/app/main-app/main-app.c: 126: }
+[e :UE 297 ]
 }
 [a 4C 68 72 84 49 49 32 84 73 77 69 79 85 84 0 ]
+[a 2C 69 78 68 32 73 78 73 84 0 ]
 [a 3C 68 72 84 49 49 32 79 75 0 ]
 [a 1C 83 84 65 82 84 95 66 76 85 69 84 79 79 84 72 0 ]
-[a 2C 65 67 65 66 79 85 32 69 83 83 65 32 80 79 72 65 0 ]

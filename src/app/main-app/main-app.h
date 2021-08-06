@@ -8,7 +8,7 @@
 extern "C" {
 #endif /* __cplusplus */
 /*============================================================================*/
-    void MainApplication( void* args);
+    void main_application( void* args);
     void StartSystem( void* args );
 /*============================================================================*/
 #ifdef	__cplusplus

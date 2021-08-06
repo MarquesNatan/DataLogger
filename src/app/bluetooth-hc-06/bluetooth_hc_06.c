@@ -11,6 +11,7 @@ void Bluetooth_HC_06_Configure(void) {
     uint8_t response_bluetooth[10];
     
     // Set Bluetooth baud rate
+    /*
     if (BLUETOOTH_BAUD != BLUETOOTH_DEFAULT_BAUD) {
         switch (BLUETOOTH_DEFAULT_BAUD)
         {
@@ -44,7 +45,7 @@ void Bluetooth_HC_06_Configure(void) {
         }
         Serial_TransmitBuffer(BLUETOOTH_BAUD_COMM, sizeof (BLUETOOTH_BAUD_COMM));   
     }
-    
+    */
     // Configure Module name: default: HC06
     
     // Functions to change name:
@@ -52,6 +53,15 @@ void Bluetooth_HC_06_Configure(void) {
     // Functions to change PIN
 }
 
+/*============================================================================*/
+void Bluetooth_HC_06_WriteString( char* string, uint8_t length )
+{
+    uint8_t auxLength = 0x00;
+    for(auxLength = 0; auxLength < length; auxLength++)
+    {
+        Serial_Transmit(string[auxLength]);
+    }
+}
 /*============================================================================*/
 bool User_GetState( void )
 {

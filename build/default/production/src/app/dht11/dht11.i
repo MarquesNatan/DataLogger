@@ -4620,6 +4620,9 @@ typedef uint32_t uint_fast32_t;
 # 24 "src/app/dht11/dht11.c" 2
 
 # 1 "src/app/dht11/../../board/board_definitions/board_definitions.h" 1
+# 27 "src/app/dht11/../../board/board_definitions/board_definitions.h"
+char string_temp[11] = "TEMP: ";
+char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 # 25 "src/app/dht11/dht11.c" 2
 
 # 1 "src/app/dht11/../../pic18f4520/gpio/gpio.h" 1

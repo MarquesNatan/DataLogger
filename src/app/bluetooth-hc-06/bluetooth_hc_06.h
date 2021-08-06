@@ -32,7 +32,7 @@ extern "C" {
 #endif /* __cplusplus */
 /*============================================================================*/
     void Bluetooth_HC_06_Configure(void);
-    void Bluetooth_HC_06_Write( void );
+    void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
     uint8_t Bluetooth_HC_06_Read( void );
     bool User_GetState( void );
     bool User_SetState( bool state );

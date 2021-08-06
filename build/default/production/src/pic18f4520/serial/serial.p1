@@ -1,15 +1,15 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "6 src/pic18f4520/serial/serial.c
 [; ;src/pic18f4520/serial/serial.c: 6: void Serial_1_Config(serial_config_t* serialConfig) {
-[c E2558 0 1 .. ]
-[n E2558 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
-[c E2562 0 1 .. ]
-[n E2562 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
-[c E2566 0 1 .. ]
-[n E2566 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
+[c E2560 0 1 .. ]
+[n E2560 . SERIAL_ASSYNC_MODE SERIAL_SYNC_MODE  ]
+[c E2564 0 1 .. ]
+[n E2564 . SERIAL_DATA_LENGTH_8 SERIAL_DATA_LENGTH_9  ]
+[c E2568 0 1 .. ]
+[n E2568 . SERIAL_MASTER_MODE SERIAL_SLAVE_MODE  ]
 "31 src/pic18f4520/serial/serial.h
 [; ;src/pic18f4520/serial/serial.h: 31: typedef struct {
-[s S281 `E2558 1 `E2562 1 `E2566 1 `l 1 ]
+[s S281 `E2560 1 `E2564 1 `E2568 1 `l 1 ]
 [n S281 . serial_sync_com serial_data_length serial_op_mode serial_desired_baud ]
 "4232 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 4232:     struct {
@@ -529,6 +529,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"27 src/pic18f4520/serial/../../board/board_definitions/board_definitions.h
+[; ;src/pic18f4520/serial/../../board/board_definitions/board_definitions.h: 27: char string_temp[11] = "TEMP: ";
+[v _string_temp `uc ~T0 @X0 -> 11 `i e ]
+[i _string_temp
+:U ..
+-> 84 `c
+-> 69 `c
+-> 77 `c
+-> 80 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+"28
+[; ;src/pic18f4520/serial/../../board/board_definitions/board_definitions.h: 28: char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
+[v _string_hum `uc ~T0 @X0 -> 12 `i e ]
+[i _string_hum
+:U ..
+-> 72 `c
+-> 85 `c
+-> 77 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
 "6 src/pic18f4520/serial/serial.c
 [; ;src/pic18f4520/serial/serial.c: 6: void Serial_1_Config(serial_config_t* serialConfig) {
 [v _Serial_1_Config `(v ~T0 @X0 1 ef1`*S281 ]
@@ -636,7 +663,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
 "100
 [; ;src/pic18f4520/serial/serial.c: 100:     if(serialConfig->serial_data_length == SERIAL_DATA_LENGTH_9)
-[e $ ! == -> . *U _serialConfig 1 `ui -> . `E2562 1 `ui 285  ]
+[e $ ! == -> . *U _serialConfig 1 `ui -> . `E2564 1 `ui 285  ]
 "101
 [; ;src/pic18f4520/serial/serial.c: 101:     {
 {

@@ -429,6 +429,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"27 src/app/dht11/../../pic18f4520/serial/../../board/board_definitions/board_definitions.h
+[v _string_temp `uc ~T0 @X0 -> 11 `i e ]
+[i _string_temp
+:U ..
+-> 84 `c
+-> 69 `c
+-> 77 `c
+-> 80 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+"28
+[v _string_hum `uc ~T0 @X0 -> 12 `i e ]
+[i _string_hum
+:U ..
+-> 72 `c
+-> 85 `c
+-> 77 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
 "10 src/app/dht11/../../pic18f4520/timer/timer.h
 [; ;src/app/dht11/../../pic18f4520/timer/timer.h: 10: uint32_t global_timer_value = 0x01;
 [v _global_timer_value `ul ~T0 @X0 1 e ]

@@ -1,10 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"36 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\string.h
-[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\string.h: 36: char *strcat (char *restrict, const char *restrict);
-[v _strcat `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
-"46 src/app/bluetooth-hc-06/../../pic18f4520/serial/serial.h
-[; ;src/app/bluetooth-hc-06/../../pic18f4520/serial/serial.h: 46:     void Serial_TransmitBuffer(uint8_t* buffer, uint8_t length);
-[v _Serial_TransmitBuffer `(v ~T0 @X0 0 ef2`*uc`uc ]
+"45 src/app/bluetooth-hc-06/../../pic18f4520/serial/serial.h
+[; ;src/app/bluetooth-hc-06/../../pic18f4520/serial/serial.h: 45:     void Serial_Transmit( uint8_t data );
+[v _Serial_Transmit `(v ~T0 @X0 0 ef1`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -419,6 +416,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"27 src/app/bluetooth-hc-06/../../pic18f4520/serial/../../board/board_definitions/board_definitions.h
+[v _string_temp `uc ~T0 @X0 -> 11 `i e ]
+[i _string_temp
+:U ..
+-> 84 `c
+-> 69 `c
+-> 77 `c
+-> 80 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+"28
+[v _string_hum `uc ~T0 @X0 -> 12 `i e ]
+[i _string_hum
+:U ..
+-> 72 `c
+-> 85 `c
+-> 77 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
 "15 src/app/bluetooth-hc-06/bluetooth_hc_06.h
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 15: char BLUETOOTH_NAME_COMM[] = "AT+NAME";
 [v _BLUETOOTH_NAME_COMM `uc ~T0 @X0 -> 8 `i e ]
@@ -486,165 +508,85 @@ Version 4.0 HI-TECH Software Intermediate Code
 "11
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 11:     uint8_t response_bluetooth[10];
 [v _response_bluetooth `uc ~T0 @X0 -> 10 `i a ]
-"14
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 14:     if (9600 != 9600) {
-[e $ ! != -> 9600 `i -> 9600 `i 284  ]
-{
-"15
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 15:         switch (9600)
-[e $U 286  ]
-"16
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 16:         {
-{
-"17
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 17:             case 1200:
-[e :U 287 ]
-"18
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 18:                 strcat(BLUETOOTH_BAUD_COMM, "1");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 1C ]
-"19
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 19:                 break;
-[e $U 285  ]
-"20
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 20:             case 2400:
-[e :U 288 ]
-"21
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 21:                 strcat(BLUETOOTH_BAUD_COMM, "2");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 2C ]
-"22
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 22:                 break;
-[e $U 285  ]
-"23
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 23:             case 4800:
-[e :U 289 ]
-"24
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 24:                 strcat(BLUETOOTH_BAUD_COMM, "3");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 3C ]
-"25
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 25:                 break;
-[e $U 285  ]
-"26
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 26:             case 9600:
-[e :U 290 ]
-"27
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 27:                 strcat(BLUETOOTH_BAUD_COMM, "4");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 4C ]
-"28
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 28:                 break;
-[e $U 285  ]
-"29
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 29:             case 19200:
-[e :U 291 ]
-"30
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 30:                 strcat(BLUETOOTH_BAUD_COMM, "5");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 5C ]
-"31
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 31:                 break;
-[e $U 285  ]
-"32
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 32:             case 38400:
-[e :U 292 ]
-"33
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 33:                 strcat(BLUETOOTH_BAUD_COMM, "6");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 6C ]
-"34
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 34:                 break;
-[e $U 285  ]
-"35
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 35:             case 57600:
-[e :U 293 ]
-"36
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 36:                 strcat(BLUETOOTH_BAUD_COMM, "7");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 7C ]
-"37
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 37:                 break;
-[e $U 285  ]
-"38
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 38:             case 115200:
-[e :U 294 ]
-"39
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 39:                 strcat(BLUETOOTH_BAUD_COMM, "8");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 8C ]
-"40
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 40:                 break;
-[e $U 285  ]
-"41
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 41:             default:
-[e :U 295 ]
-"42
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 42:                 strcat(BLUETOOTH_BAUD_COMM, "4");
-[e ( _strcat (2 , &U _BLUETOOTH_BAUD_COMM :s 9C ]
-"43
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 43:                 break;
-[e $U 285  ]
-"44
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 44:         }
-}
-[e $U 285  ]
-[e :U 286 ]
-[e [\ -> 9600 `i , $ -> 1200 `i 287
- , $ -> 2400 `i 288
- , $ -> 4800 `i 289
- , $ -> 9600 `i 290
- , $ -> 19200 `i 291
- , $ -> -> 38400 `l `i 292
- , $ -> -> 57600 `l `i 293
- , $ -> -> 115200 `l `i 294
- 295 ]
-[e :U 285 ]
-"45
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 45:         Serial_TransmitBuffer(BLUETOOTH_BAUD_COMM, sizeof (BLUETOOTH_BAUD_COMM));
-[e ( _Serial_TransmitBuffer (2 , -> &U _BLUETOOTH_BAUD_COMM `*uc -> -> # _BLUETOOTH_BAUD_COMM `ui `uc ]
-"46
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 46:     }
-}
-[e :U 284 ]
-"53
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 53: }
+"54
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 54: }
 [e :UE 283 ]
 }
-"56
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 56: _Bool User_GetState( void )
-[v _User_GetState `(a ~T0 @X0 1 ef ]
 "57
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 57: {
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 57: void Bluetooth_HC_06_WriteString( char* string, uint8_t length )
+[v _Bluetooth_HC_06_WriteString `(v ~T0 @X0 1 ef2`*uc`uc ]
+"58
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 58: {
+{
+[e :U _Bluetooth_HC_06_WriteString ]
+"57
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 57: void Bluetooth_HC_06_WriteString( char* string, uint8_t length )
+[v _string `*uc ~T0 @X0 1 r1 ]
+[v _length `uc ~T0 @X0 1 r2 ]
+"58
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 58: {
+[f ]
+"59
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 59:     uint8_t auxLength = 0x00;
+[v _auxLength `uc ~T0 @X0 1 a ]
+[e = _auxLength -> -> 0 `i `uc ]
+"60
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 60:     for(auxLength = 0; auxLength < length; auxLength++)
+{
+[e = _auxLength -> -> 0 `i `uc ]
+[e $U 288  ]
+[e :U 285 ]
+"61
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 61:     {
+{
+"62
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 62:         Serial_Transmit(string[auxLength]);
+[e ( _Serial_Transmit (1 -> *U + _string * -> _auxLength `ux -> -> # *U _string `ui `ux `uc ]
+"63
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 63:     }
+}
+[e ++ _auxLength -> -> 1 `i `uc ]
+[e :U 288 ]
+[e $ < -> _auxLength `i -> _length `i 285  ]
+[e :U 286 ]
+}
+"64
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 64: }
+[e :UE 284 ]
+}
+"66
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 66: _Bool User_GetState( void )
+[v _User_GetState `(a ~T0 @X0 1 ef ]
+"67
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 67: {
 {
 [e :U _User_GetState ]
 [f ]
-"58
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 58:     return UserConnected;
+"68
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 68:     return UserConnected;
 [e ) _UserConnected ]
-[e $UE 296  ]
-"59
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 59: }
-[e :UE 296 ]
+[e $UE 289  ]
+"69
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 69: }
+[e :UE 289 ]
 }
-"61
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 61: _Bool User_SetState( _Bool state )
+"71
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 71: _Bool User_SetState( _Bool state )
 [v _User_SetState `(a ~T0 @X0 1 ef1`a ]
-"62
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 62: {
+"72
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 72: {
 {
 [e :U _User_SetState ]
-"61
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 61: _Bool User_SetState( _Bool state )
+"71
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 71: _Bool User_SetState( _Bool state )
 [v _state `a ~T0 @X0 1 r1 ]
-"62
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 62: {
+"72
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 72: {
 [f ]
-"63
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 63:     UserConnected = state;
+"73
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 73:     UserConnected = state;
 [e = _UserConnected _state ]
-"64
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 64: }
-[e :UE 297 ]
+"74
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 74: }
+[e :UE 290 ]
 }
-[a 8C 56 0 ]
-[a 7C 55 0 ]
-[a 6C 54 0 ]
-[a 5C 53 0 ]
-[a 4C 52 0 ]
-[a 9C 52 0 ]
-[a 3C 51 0 ]
-[a 2C 50 0 ]
-[a 1C 49 0 ]

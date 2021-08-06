@@ -2,51 +2,86 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "main-app.h"
-#include "../../board/board_definitions/board_definitions.h"
+#include <string.h>
+/*============================================================================*/
 #include "../../pic18f4520/timer/timer.h"
+#include "../../pic18f4520/gpio/gpio.h"
+#include "../../board/pinout/pinout.h"
 /*============================================================================*/
-#include "../../board/peripheral-controller/peripheral_controller.h"
-#include "../../app/display_lcd/display_lcd.h"
-#include "../../app/bluetooth-hc-06/bluetooth_hc_06.h"
+#include "../../board/board_definitions/board_definitions.h"
+/*============================================================================*/
+#include "main-app.h"
 #include "../../app/dht11/dht11.h"
+#include "../../app/display_lcd/display_lcd.h"
 #include "../../app/read_voltage/read_voltage.h"
+#include "../../app/bluetooth-hc-06/bluetooth_hc_06.h"
+#include "../../board/peripheral-controller/peripheral_controller.h"
 /*============================================================================*/
-#define FIM_INICIALIZACAO   "ACABOU ESSA POHA"
+#define FIM_INICIALIZACAO   "END INIT"
+uint8_t vetorTempLocal[2] = {35, 0};
+uint8_t vetorHumLocal[2]  = {90, 5};
 bool TimeIsElapsed = false;
 /*============================================================================*/
 void main_application( void* args)
 {
-    uint8_t voltageStatus = 0x00;
-    uint8_t localDHT11Result = 0x00;
-    uint8_t *localTemp = NULL;
-    uint8_t *localHum = NULL;
+    static uint8_t voltageStatus = 0x00;
+    
+    static uint8_t localDHT11Result = 0x00;
+    
+    static char *localTemp = NULL;
+    static char *localHum = NULL;
+    
+    static bool localUserState = false;
+    
+    char auxText[] = "USER CONECTADO";
+    char auxText2[] = "USER DESCONN";
     
     while(1)
     {
-        // Hora da leitura?
-        if(TimeIsElapsed) // Sim, já é hora da leitura
+
+        if(TimeIsElapsed)
         {
-            // Faz a leitura de temperatura e umidade
-            localDHT11Result = DHT11_ReadData();
-            if(localDHT11Result != DHT11_ERROR_CHECKSUM && localDHT11Result != DHT11_ERROR_TIMEOUT) //  Leitura Bem Sucedida
+            // localDHT11Result = DHT11_ReadData();
+            // if(localDHT11Result != DHT11_ERROR_CHECKSUM && localDHT11Result != DHT11_ERROR_TIMEOUT) //  Leitura Bem Sucedida
+            if(1) 
             {
+                /*
                 localTemp = DHT11_GetTemp();
                 localHum = DHT11_GetHum();
+                */
                 
-                // Usuário conectado, verifica se tem usuário conectado
+                localTemp = &vetorTempLocal;
+                localHum = &vetorHumLocal;
+                
+                /* Get User Status */
+                localUserState = User_GetState();
+                if(localUserState)
+                {
+                    
+                    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                    __delay_ms(5);
+                    Display_WriteString(auxText, sizeof(auxText), 0);
+                }
+                else 
+                {
+                    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                    __delay_ms(5);
+                    Display_WriteString(auxText2, sizeof(auxText2), 0);
+                }
                 
                 
-            }else                   // Erro de Leitura
+                
+            }else 
             {
                 
             }
             
             
+            TimeIsElapsed = false;
         }
         else              // Não, ainda não é hora da leitura
         {
-            
+            PIN_DIGITAL_WRITE(PIN_HIGH, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
         }
         
     }
