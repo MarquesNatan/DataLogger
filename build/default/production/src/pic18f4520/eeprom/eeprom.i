@@ -8,6 +8,10 @@
 # 2 "<built-in>" 2
 # 1 "src/pic18f4520/eeprom/eeprom.c" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdbool.h" 1 3
+# 2 "src/pic18f4520/eeprom/eeprom.c" 2
+
+
 # 1 "src/pic18f4520/eeprom/eeprom.h" 1
 
 
@@ -4617,15 +4621,27 @@ typedef uint32_t uint_fast32_t;
 
 
 
+
+
+unsigned char addr = 0x00;
+
+
+
+
+
     void EEPROM_DataWrite(unsigned char data, unsigned char addr);
     unsigned char EEPROM_DataRead( uint8_t addr );
-# 2 "src/pic18f4520/eeprom/eeprom.c" 2
+    void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t start, uint8_t length);
+    _Bool EEPROM_BlanckCheck( void );
+    void EEPROM_Erase( void );
+    void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length);
+# 4 "src/pic18f4520/eeprom/eeprom.c" 2
 
 # 1 "src/pic18f4520/eeprom/../../board/board_definitions/board_definitions.h" 1
 # 27 "src/pic18f4520/eeprom/../../board/board_definitions/board_definitions.h"
 char string_temp[11] = "TEMP: ";
 char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
-# 3 "src/pic18f4520/eeprom/eeprom.c" 2
+# 5 "src/pic18f4520/eeprom/eeprom.c" 2
 
 
 void EEPROM_DataWrite(unsigned char data, unsigned char addr)
@@ -4661,4 +4677,49 @@ unsigned char EEPROM_DataRead( uint8_t addr )
     EECON1bits.RD = 0x01;
 
     return (EEDATA);
+}
+
+void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t posStart, uint8_t length)
+{
+    uint8_t dataAddr = 0x00;
+
+    for(dataAddr = 0; dataAddr < length; dataAddr++)
+    {
+        *(dataRead + (dataAddr + posStart)) = (uint8_t) EEPROM_DataRead(dataAddr + posStart);
+    }
+}
+
+_Bool EEPROM_BlanckCheck( void )
+{
+    uint8_t aux;
+    uint8_t i;
+
+    for(i = 0; i <= 0xFF; i++)
+    {
+        aux = EEPROM_DataRead(i);
+        if(aux != 0xFF) return 0;
+    }
+
+    return 1;
+
+}
+
+void EEPROM_Erase( void )
+{
+    uint8_t addr;
+
+    for(addr = 0; addr < 0xFF; addr++)
+    {
+         EEPROM_DataWrite(0xFF, addr);
+    }
+
+}
+
+void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length)
+{
+    uint8_t i;
+    for(i = 0; i <= length; i++)
+    {
+        EEPROM_DataWrite(*(buffer + i), i);
+    }
 }

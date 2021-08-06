@@ -4949,8 +4949,28 @@ typedef enum {
     void Peripheral_Controller(void* args);
 # 18 "src/app/main-app/main-app.c" 2
 
+# 1 "src/app/main-app/../../pic18f4520/eeprom/eeprom.h" 1
+# 14 "src/app/main-app/../../pic18f4520/eeprom/eeprom.h"
+unsigned char addr = 0x00;
 
 
+
+
+
+    void EEPROM_DataWrite(unsigned char data, unsigned char addr);
+    unsigned char EEPROM_DataRead( uint8_t addr );
+    void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t start, uint8_t length);
+    _Bool EEPROM_BlanckCheck( void );
+    void EEPROM_Erase( void );
+    void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length);
+# 19 "src/app/main-app/main-app.c" 2
+
+
+static _Bool currLog = 0;
+
+
+char segundo[sizeof("seg. log")];
+static uint8_t count = 0x00;
 uint8_t vetorTempLocal[2] = {35, 0};
 uint8_t vetorHumLocal[2] = {90, 5};
 _Bool TimeIsElapsed = 0;
@@ -5008,6 +5028,32 @@ void main_application( void* args)
                     else
                     {
 
+                        if(!currLog)
+                        {
+                            if (EEPROM_DataRead(0) == 0xFF) {
+
+                                EEPROM_Erase();
+
+                                EEPROM_DataWrite("A", 0);
+                                currLog = 1;
+
+                                Display_SendByte(0b00000001, 0);
+                                _delay((unsigned long)((5)*(10000000UL/4000.0)));
+                                Display_WriteString("prim. log", sizeof("prim. log"), 0);
+
+                            }
+                        }
+                        else
+                        {
+                            segundo[0] = count+0x30;
+                            strcat(segundo, "seg. log");
+
+                            Display_SendByte((0b10000000 | 0b01000000), 0);
+                            _delay((unsigned long)((50)*(10000000UL/4000000.0)));
+                            Display_WriteString(segundo, sizeof(segundo), 0);
+                            count++;
+                        }
+
                     }
                 }
 
@@ -5021,7 +5067,7 @@ void main_application( void* args)
         }
         else
         {
-            if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+            if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
         }
 
     }
@@ -5049,7 +5095,7 @@ void StartSystem( void* args )
 
     Display_SendByte(0b00000001, 0);
    _delay((unsigned long)((2)*(10000000UL/4000.0)));
-    Display_WriteString("END INIT", sizeof("END INIT"), 0);
+
 
 
     if((dht11_response = DHT11_RequestData()) == 0)

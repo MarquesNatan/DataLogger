@@ -45,13 +45,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E3028 . TAD_20 TAD_16 TAD_12 TAD_8 TAD_6 TAD_4 TAD_2 TAD_0  ]
 [c E3038 7 6 5 4 3 2 1 0 .. ]
 [n E3038 . FRC FOSC_64 FOSC_16 FOSC_4 FRC_1 FOSC_32 FOSC_8 FOSC_2  ]
-"1089 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"271
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"57 src/main.c
+"57
 [; ;src/main.c: 57: extern _Bool TimeIsElapsed;
 [v _TimeIsElapsed `a ~T0 @X0 0 e ]
 [t ~ __interrupt . k ]
@@ -116,18 +110,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.h: 38:     _Bool User_SetState( _Bool state );
 [v _User_SetState `(a ~T0 @X0 0 ef1`a ]
 [p mainexit ]
+"12 src/pic18f4520/interrupt/interrupt.h
+[; ;src/pic18f4520/interrupt/interrupt.h: 12:     void Interrupt_GlobalEnable( void );
+[v _Interrupt_GlobalEnable `(v ~T0 @X0 0 ef ]
+"55 src/pic18f4520/timer/timer.h
+[; ;src/pic18f4520/timer/timer.h: 55:     void Timer0_Config( timer_config_t* timerConfig );
+[v _Timer0_Config `(v ~T0 @X0 0 ef1`*S283 ]
+[v F2913 `(v ~T0 @X0 0 tf1`*ul ]
+"57
+[; ;src/pic18f4520/timer/timer.h: 57:     void Timer0_SetTickHook(void (*tickFunc)(uint32_t*));
+[v _Timer0_SetTickHook `(v ~T0 @X0 0 ef1`*F2913 ]
+"43 src/pic18f4520/serial/serial.h
+[; ;src/pic18f4520/serial/serial.h: 43:     void Serial_1_Config(serial_config_t* serialConfig);
+[v _Serial_1_Config `(v ~T0 @X0 0 ef1`*S284 ]
 "51 src/app/display_lcd/display_lcd.h
 [; ;src/app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
 [v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
-"1699 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+"2143 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 2143: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"1699
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"13 src/pic18f4520/eeprom/eeprom.h
-[; ;src/pic18f4520/eeprom/eeprom.h: 13:     unsigned char EEPROM_DataRead( uint8_t addr );
-[v _EEPROM_DataRead `(uc ~T0 @X0 0 ef1`uc ]
-"12
-[; ;src/pic18f4520/eeprom/eeprom.h: 12:     void EEPROM_DataWrite(unsigned char data, unsigned char addr);
-[v _EEPROM_DataWrite `(v ~T0 @X0 0 ef2`uc`uc ]
+"11 src/app/main-app/main-app.h
+[; ;src/app/main-app/main-app.h: 11:     void main_application( void* args);
+[v _main_application `(v ~T0 @X0 0 ef1`*v ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -687,6 +694,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
+"14 src/pic18f4520/eeprom/eeprom.h
+[; ;src/pic18f4520/eeprom/eeprom.h: 14: unsigned char addr = 0x00;
+[v _addr `uc ~T0 @X0 1 e ]
+[i _addr
+-> -> 0 `i `uc
+]
 "25 src/main.c
 [; ;src/main.c: 25: timer_config_t timerConfig = {
 [v _timerConfig `S283 ~T0 @X0 1 e ]
@@ -774,216 +787,197 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/main.c: 62:     {
 {
 "63
-[; ;src/main.c: 63:         LATB = (PORTB ^ (1 << 0));;
-[e = _LATB -> ^ -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
-"64
-[; ;src/main.c: 64:         t = (*timer_value);
+[; ;src/main.c: 63:         t = (*timer_value);
 [e = _t *U _timer_value ]
-"65
-[; ;src/main.c: 65:         TimeIsElapsed = 1;
+"64
+[; ;src/main.c: 64:         TimeIsElapsed = 1;
 [e = _TimeIsElapsed -> -> 1 `i `a ]
-"66
-[; ;src/main.c: 66:     }
+"65
+[; ;src/main.c: 65:     }
 }
 [e :U 287 ]
-"67
-[; ;src/main.c: 67: }
+"66
+[; ;src/main.c: 66: }
 [e :UE 286 ]
 }
 [v $root$_TC0INT `(v ~T0 @X0 0 e ]
-"69
-[; ;src/main.c: 69: void __attribute__((picinterrupt(("")))) TC0INT(void) {
+"68
+[; ;src/main.c: 68: void __attribute__((picinterrupt(("")))) TC0INT(void) {
 [v _TC0INT `(v ~T41 @X0 1 ef ]
 {
 [e :U _TC0INT ]
 [f ]
-"72
-[; ;src/main.c: 72:     if (INTCONbits.TMR0IF == 0x01) {
+"71
+[; ;src/main.c: 71:     if (INTCONbits.TMR0IF == 0x01) {
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 289  ]
 {
-"74
-[; ;src/main.c: 74:         tickHook_Execute(&global_timer_value);
+"73
+[; ;src/main.c: 73:         tickHook_Execute(&global_timer_value);
 [e ( _tickHook_Execute (1 &U _global_timer_value ]
-"76
-[; ;src/main.c: 76:         TMR0 = 0xFB1E;
+"75
+[; ;src/main.c: 75:         TMR0 = 0xFB1E;
 [e = _TMR0 -> -> 64286 `ui `us ]
-"77
-[; ;src/main.c: 77:         INTCONbits.T0IF = 0x00;
+"76
+[; ;src/main.c: 76:         INTCONbits.T0IF = 0x00;
 [e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"78
-[; ;src/main.c: 78:     }
+"77
+[; ;src/main.c: 77:     }
 }
 [e :U 289 ]
-"81
-[; ;src/main.c: 81:     if (PIR1bits.RCIF) {
+"80
+[; ;src/main.c: 80:     if (PIR1bits.RCIF) {
 [e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 290  ]
 {
-"82
-[; ;src/main.c: 82:         count = RCREG;
+"81
+[; ;src/main.c: 81:         count = RCREG;
 [e = _count _RCREG ]
-"83
-[; ;src/main.c: 83:         vector[i] = count;
+"82
+[; ;src/main.c: 82:         vector[i] = count;
 [e = *U + &U _vector * -> _i `ux -> -> # *U &U _vector `ui `ux _count ]
-"85
-[; ;src/main.c: 85:         if(count != 0x3E)
+"84
+[; ;src/main.c: 84:         if(count != 0x3E)
 [e $ ! != -> _count `i -> 62 `i 291  ]
-"86
-[; ;src/main.c: 86:         {
+"85
+[; ;src/main.c: 85:         {
 {
-"87
-[; ;src/main.c: 87:             vector[i] = count;
+"86
+[; ;src/main.c: 86:             vector[i] = count;
 [e = *U + &U _vector * -> _i `ux -> -> # *U &U _vector `ui `ux _count ]
-"88
-[; ;src/main.c: 88:             i++;
+"87
+[; ;src/main.c: 87:             i++;
 [e ++ _i -> -> 1 `i `uc ]
-"89
-[; ;src/main.c: 89:         }else
+"88
+[; ;src/main.c: 88:         }else
 }
 [e $U 292  ]
 [e :U 291 ]
+"89
+[; ;src/main.c: 89:         {
+{
 "90
-[; ;src/main.c: 90:         {
-{
-"91
-[; ;src/main.c: 91:             vector[i] = count;
+[; ;src/main.c: 90:             vector[i] = count;
 [e = *U + &U _vector * -> _i `ux -> -> # *U &U _vector `ui `ux _count ]
-"92
-[; ;src/main.c: 92:             Display_SendByte(0b00000001, 0);
+"91
+[; ;src/main.c: 91:             Display_SendByte(0b00000001, 0);
 [e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"93
-[; ;src/main.c: 93:             _delay((unsigned long)((5)*(10000000UL/4000.0)));
+"92
+[; ;src/main.c: 92:             _delay((unsigned long)((5)*(10000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"94
-[; ;src/main.c: 94:             Display_WriteString(vector, sizeof(vector) + 1, 0);
+"93
+[; ;src/main.c: 93:             Display_WriteString(vector, sizeof(vector) + 1, 0);
 [e ( _Display_WriteString (3 , , -> &U _vector `*uc -> + -> # _vector `ui -> -> 1 `i `ui `uc -> -> 0 `i `uc ]
-"96
-[; ;src/main.c: 96:             if(vector[1] == 0x43)
+"95
+[; ;src/main.c: 95:             if(vector[1] == 0x43)
 [e $ ! == -> *U + &U _vector * -> -> -> 1 `i `ui `ux -> -> # *U &U _vector `ui `ux `i -> 67 `i 293  ]
-"97
-[; ;src/main.c: 97:             {
+"96
+[; ;src/main.c: 96:             {
 {
-"98
-[; ;src/main.c: 98:                 User_SetState(1);
+"97
+[; ;src/main.c: 97:                 User_SetState(1);
 [e ( _User_SetState (1 -> -> 1 `i `a ]
-"99
-[; ;src/main.c: 99:             }else if(vector[1] == 0x44)
+"98
+[; ;src/main.c: 98:             }else if(vector[1] == 0x44)
 }
 [e $U 294  ]
 [e :U 293 ]
 [e $ ! == -> *U + &U _vector * -> -> -> 1 `i `ui `ux -> -> # *U &U _vector `ui `ux `i -> 68 `i 295  ]
-"100
-[; ;src/main.c: 100:             {
+"99
+[; ;src/main.c: 99:             {
 {
-"101
-[; ;src/main.c: 101:                 User_SetState(0);
+"100
+[; ;src/main.c: 100:                 User_SetState(0);
 [e ( _User_SetState (1 -> -> 0 `i `a ]
-"102
-[; ;src/main.c: 102:             }
+"101
+[; ;src/main.c: 101:             }
 }
 [e :U 295 ]
 [e :U 294 ]
-"104
-[; ;src/main.c: 104:             i = 0;
+"103
+[; ;src/main.c: 103:             i = 0;
 [e = _i -> -> 0 `i `uc ]
-"105
-[; ;src/main.c: 105:         }
+"104
+[; ;src/main.c: 104:         }
 }
 [e :U 292 ]
-"106
-[; ;src/main.c: 106:         PIR1bits.RCIF = 0x00;
+"105
+[; ;src/main.c: 105:         PIR1bits.RCIF = 0x00;
 [e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"107
-[; ;src/main.c: 107:     }
+"106
+[; ;src/main.c: 106:     }
 }
 [e :U 290 ]
-"108
-[; ;src/main.c: 108: }
+"107
+[; ;src/main.c: 107: }
 [e :UE 288 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"111
-[; ;src/main.c: 111: void main(void) {
+"110
+[; ;src/main.c: 110: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"123
-[; ;src/main.c: 123:     _delay((unsigned long)((300)*(10000000UL/4000.0)));
+"114
+[; ;src/main.c: 114:     Interrupt_GlobalEnable();
+[e ( _Interrupt_GlobalEnable ..  ]
+"115
+[; ;src/main.c: 115:     Timer0_Config(&timerConfig);
+[e ( _Timer0_Config (1 &U _timerConfig ]
+"116
+[; ;src/main.c: 116:     Timer0_SetTickHook(tickHook_func);
+[e ( _Timer0_SetTickHook (1 &U _tickHook_func ]
+"118
+[; ;src/main.c: 118:     Serial_1_Config(&serialConfig);
+[e ( _Serial_1_Config (1 &U _serialConfig ]
+"121
+[; ;src/main.c: 121:     _delay((unsigned long)((300)*(10000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 300 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"124
-[; ;src/main.c: 124:     DisplayLCD_Init();
+"122
+[; ;src/main.c: 122:     DisplayLCD_Init();
 [e ( _DisplayLCD_Init ..  ]
-"126
-[; ;src/main.c: 126:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+"124
+[; ;src/main.c: 124:     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
 [e $ ! == -> 0 `i -> 0 `i 297  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
+[e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 0 `i `uc ]
 [e $U 298  ]
 [e :U 297 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
+[e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 0 `i `uc ]
 [e :U 298 ]
-"127
-[; ;src/main.c: 127:     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
+"125
+[; ;src/main.c: 125:     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
 [e $ ! == -> 0 `i -> 0 `i 299  ]
-[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e = _TRISD -> & -> _TRISD `i ~ << -> 1 `i -> 1 `i `uc ]
 [e $U 300  ]
 [e :U 299 ]
-[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 1 `i `uc ]
+[e = _TRISD -> | -> _TRISD `i << -> 1 `i -> 1 `i `uc ]
 [e :U 300 ]
-"129
-[; ;src/main.c: 129:     uint8_t dataRead[3];
-[v _dataRead `uc ~T0 @X0 -> 3 `i a ]
-"131
-[; ;src/main.c: 131:     dataRead[0] = EEPROM_DataRead(0);
-[e = *U + &U _dataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_DataRead (1 -> -> 0 `i `uc ]
-"132
-[; ;src/main.c: 132:     dataRead[1] = EEPROM_DataRead(1);
-[e = *U + &U _dataRead * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_DataRead (1 -> -> 1 `i `uc ]
-"133
-[; ;src/main.c: 133:     dataRead[2] = EEPROM_DataRead(2);
-[e = *U + &U _dataRead * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_DataRead (1 -> -> 2 `i `uc ]
-"136
-[; ;src/main.c: 136:     if(dataRead[0] != 0b01000001) EEPROM_DataWrite(0b01000001, 0);
-[e $ ! != -> *U + &U _dataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _dataRead `ui `ux `i -> 65 `i 301  ]
-[e ( _EEPROM_DataWrite (2 , -> -> 65 `i `uc -> -> 0 `i `uc ]
+"126
+[; ;src/main.c: 126:     if(0x01 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+[e $ ! == -> 1 `i -> 0 `i 301  ]
+[e = _TRISB -> & -> _TRISB `i ~ << -> 1 `i -> 0 `i `uc ]
+[e $U 302  ]
 [e :U 301 ]
-"137
-[; ;src/main.c: 137:     if(dataRead[1] != 0b01000010) EEPROM_DataWrite(0b01000010, 1);
-[e $ ! != -> *U + &U _dataRead * -> -> -> 1 `i `ui `ux -> -> # *U &U _dataRead `ui `ux `i -> 66 `i 302  ]
-[e ( _EEPROM_DataWrite (2 , -> -> 66 `i `uc -> -> 1 `i `uc ]
+[e = _TRISB -> | -> _TRISB `i << -> 1 `i -> 0 `i `uc ]
 [e :U 302 ]
-"138
-[; ;src/main.c: 138:     if(dataRead[2] != 0b01000011) EEPROM_DataWrite(0b01000011, 2);
-[e $ ! != -> *U + &U _dataRead * -> -> -> 2 `i `ui `ux -> -> # *U &U _dataRead `ui `ux `i -> 67 `i 303  ]
-[e ( _EEPROM_DataWrite (2 , -> -> 67 `i `uc -> -> 2 `i `uc ]
-[e :U 303 ]
-"140
-[; ;src/main.c: 140:     while (1)
-[e :U 305 ]
-"141
-[; ;src/main.c: 141:     {
-{
-"144
-[; ;src/main.c: 144:         Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"145
-[; ;src/main.c: 145:         _delay((unsigned long)((5)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"146
-[; ;src/main.c: 146:         Display_WriteString(dataRead, sizeof(dataRead) + 1, 0);
-[e ( _Display_WriteString (3 , , -> &U _dataRead `*uc -> + -> # _dataRead `ui -> -> 1 `i `ui `uc -> -> 0 `i `uc ]
-"148
-[; ;src/main.c: 148:         _delay((unsigned long)((2000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"150
-[; ;src/main.c: 150:     }
-}
+"128
+[; ;src/main.c: 128:     while (1)
 [e :U 304 ]
-[e $U 305  ]
-[e :U 306 ]
-"151
-[; ;src/main.c: 151:     return;
+"129
+[; ;src/main.c: 129:     {
+{
+"130
+[; ;src/main.c: 130:         main_application(((void*)0));
+[e ( _main_application (1 -> -> 0 `i `*v ]
+"132
+[; ;src/main.c: 132:     }
+}
+[e :U 303 ]
+[e $U 304  ]
+[e :U 305 ]
+"133
+[; ;src/main.c: 133:     return;
 [e $UE 296  ]
-"152
-[; ;src/main.c: 152: }
+"134
+[; ;src/main.c: 134: }
 [e :UE 296 ]
 }

@@ -16,8 +16,13 @@
 #include "../../app/read_voltage/read_voltage.h"
 #include "../../app/bluetooth-hc-06/bluetooth_hc_06.h"
 #include "../../board/peripheral-controller/peripheral_controller.h"
+#include "../../pic18f4520/eeprom/eeprom.h"
 /*============================================================================*/
-#define FIM_INICIALIZACAO   "END INIT"
+static bool currLog = false;
+#define PRIMEIRO_LOG    "prim. log"
+#define SEGUNDO_LOG     "seg. log"
+char segundo[sizeof(SEGUNDO_LOG)];
+static uint8_t count = 0x00;
 uint8_t vetorTempLocal[2] = {35, 0};
 uint8_t vetorHumLocal[2]  = {90, 5};
 bool TimeIsElapsed = false;
@@ -74,6 +79,32 @@ void main_application( void* args)
                     }
                     else // Falha na tensão
                     {
+                        // Novo Log?
+                        if(!currLog)
+                        {
+                            if (EEPROM_DataRead(0) == DEFAULT_MEMORY_DATA) {
+                                // Apaga log antigo
+                                EEPROM_Erase();
+                                // Inicia o novo log
+                                EEPROM_DataWrite("A", 0);
+                                currLog = true;
+                                
+                                Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                                __delay_ms(5);
+                                Display_WriteString(PRIMEIRO_LOG, sizeof(PRIMEIRO_LOG), 0);
+                                
+                            }
+                        }
+                        else // Log Já iniciado
+                        {
+                            segundo[0] = count+0x30;
+                            strcat(segundo, SEGUNDO_LOG);
+                            // Escreve a leitura na ultima posição disponivel
+                            Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
+                            __delay_us(50);
+                            Display_WriteString(segundo, sizeof(segundo), 0);
+                            count++;
+                        }
                         
                     }
                 }
@@ -116,7 +147,7 @@ void StartSystem( void* args )
      // Display Clear: 0b00000001 1.52 ms
     Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
    __delay_ms(2); 
-    Display_WriteString(FIM_INICIALIZACAO, sizeof(FIM_INICIALIZACAO), 0);
+    // Display_WriteString(FIM_INICIALIZACAO, sizeof(FIM_INICIALIZACAO), 0);
     
     // Testa o módulo dht11, caso não funcione fica travado (aceita comandos)
     if((dht11_response = DHT11_RequestData()) == DHT11_OK)

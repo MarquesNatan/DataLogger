@@ -456,6 +456,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"14 src/pic18f4520/eeprom/eeprom.h
+[; ;src/pic18f4520/eeprom/eeprom.h: 14: unsigned char addr = 0x00;
+[v _addr `uc ~T0 @X0 1 e ]
+[i _addr
+-> -> 0 `i `uc
+]
 "27 src/pic18f4520/eeprom/../../board/board_definitions/board_definitions.h
 [; ;src/pic18f4520/eeprom/../../board/board_definitions/board_definitions.h: 27: char string_temp[11] = "TEMP: ";
 [v _string_temp `uc ~T0 @X0 -> 11 `i e ]
@@ -483,102 +489,269 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"5 src/pic18f4520/eeprom/eeprom.c
-[; ;src/pic18f4520/eeprom/eeprom.c: 5: void EEPROM_DataWrite(unsigned char data, unsigned char addr)
+"7 src/pic18f4520/eeprom/eeprom.c
+[; ;src/pic18f4520/eeprom/eeprom.c: 7: void EEPROM_DataWrite(unsigned char data, unsigned char addr)
 [v _EEPROM_DataWrite `(v ~T0 @X0 1 ef2`uc`uc ]
-"6
-[; ;src/pic18f4520/eeprom/eeprom.c: 6: {
+"8
+[; ;src/pic18f4520/eeprom/eeprom.c: 8: {
 {
 [e :U _EEPROM_DataWrite ]
-"5
-[; ;src/pic18f4520/eeprom/eeprom.c: 5: void EEPROM_DataWrite(unsigned char data, unsigned char addr)
+"7
+[; ;src/pic18f4520/eeprom/eeprom.c: 7: void EEPROM_DataWrite(unsigned char data, unsigned char addr)
 [v _data `uc ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
-"6
-[; ;src/pic18f4520/eeprom/eeprom.c: 6: {
-[f ]
 "8
-[; ;src/pic18f4520/eeprom/eeprom.c: 8:     uint8_t STATUS_INTCON = INTCONbits.GIE;
+[; ;src/pic18f4520/eeprom/eeprom.c: 8: {
+[f ]
+"10
+[; ;src/pic18f4520/eeprom/eeprom.c: 10:     uint8_t STATUS_INTCON = INTCONbits.GIE;
 [v _STATUS_INTCON `uc ~T0 @X0 1 a ]
 [e = _STATUS_INTCON . . _INTCONbits 1 7 ]
-"9
-[; ;src/pic18f4520/eeprom/eeprom.c: 9:     while( EECON1bits.WR);
+"11
+[; ;src/pic18f4520/eeprom/eeprom.c: 11:     while( EECON1bits.WR);
 [e $U 282  ]
 [e :U 283 ]
 [e :U 282 ]
 [e $ != -> . . _EECON1bits 0 1 `i -> 0 `i 283  ]
 [e :U 284 ]
-"11
-[; ;src/pic18f4520/eeprom/eeprom.c: 11:     EEADR = addr;
+"13
+[; ;src/pic18f4520/eeprom/eeprom.c: 13:     EEADR = addr;
 [e = _EEADR _addr ]
-"12
-[; ;src/pic18f4520/eeprom/eeprom.c: 12:     EEDATA = data;
-[e = _EEDATA _data ]
 "14
-[; ;src/pic18f4520/eeprom/eeprom.c: 14:     EECON1bits.EEPGD = 0x00;
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
-"15
-[; ;src/pic18f4520/eeprom/eeprom.c: 15:     EECON1bits.CFGS = 0x00;
-[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 14:     EEDATA = data;
+[e = _EEDATA _data ]
 "16
-[; ;src/pic18f4520/eeprom/eeprom.c: 16:     EECON1bits.WREN = 1;
-[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 16:     EECON1bits.EEPGD = 0x00;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+"17
+[; ;src/pic18f4520/eeprom/eeprom.c: 17:     EECON1bits.CFGS = 0x00;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
 "18
-[; ;src/pic18f4520/eeprom/eeprom.c: 18:     INTCONbits.GIE = 0;
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 18:     EECON1bits.WREN = 1;
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
 "20
-[; ;src/pic18f4520/eeprom/eeprom.c: 20:     EECON2 = 0x55;
-[e = _EECON2 -> -> 85 `i `uc ]
-"21
-[; ;src/pic18f4520/eeprom/eeprom.c: 21:     EECON2 = 0xAA;
-[e = _EECON2 -> -> 170 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 20:     INTCONbits.GIE = 0;
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 "22
-[; ;src/pic18f4520/eeprom/eeprom.c: 22:     EECON1bits.WR = 1;
-[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 22:     EECON2 = 0x55;
+[e = _EECON2 -> -> 85 `i `uc ]
+"23
+[; ;src/pic18f4520/eeprom/eeprom.c: 23:     EECON2 = 0xAA;
+[e = _EECON2 -> -> 170 `i `uc ]
 "24
-[; ;src/pic18f4520/eeprom/eeprom.c: 24:     INTCONbits.GIE = STATUS_INTCON;
+[; ;src/pic18f4520/eeprom/eeprom.c: 24:     EECON1bits.WR = 1;
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+"26
+[; ;src/pic18f4520/eeprom/eeprom.c: 26:     INTCONbits.GIE = STATUS_INTCON;
 [e = . . _INTCONbits 1 7 _STATUS_INTCON ]
-"25
-[; ;src/pic18f4520/eeprom/eeprom.c: 25: }
+"27
+[; ;src/pic18f4520/eeprom/eeprom.c: 27: }
 [e :UE 281 ]
 }
-"27
-[; ;src/pic18f4520/eeprom/eeprom.c: 27: unsigned char EEPROM_DataRead( uint8_t addr )
+"29
+[; ;src/pic18f4520/eeprom/eeprom.c: 29: unsigned char EEPROM_DataRead( uint8_t addr )
 [v _EEPROM_DataRead `(uc ~T0 @X0 1 ef1`uc ]
-"28
-[; ;src/pic18f4520/eeprom/eeprom.c: 28: {
+"30
+[; ;src/pic18f4520/eeprom/eeprom.c: 30: {
 {
 [e :U _EEPROM_DataRead ]
-"27
-[; ;src/pic18f4520/eeprom/eeprom.c: 27: unsigned char EEPROM_DataRead( uint8_t addr )
-[v _addr `uc ~T0 @X0 1 r1 ]
-"28
-[; ;src/pic18f4520/eeprom/eeprom.c: 28: {
-[f ]
 "29
-[; ;src/pic18f4520/eeprom/eeprom.c: 29:     while(EECON1bits.WR);
+[; ;src/pic18f4520/eeprom/eeprom.c: 29: unsigned char EEPROM_DataRead( uint8_t addr )
+[v _addr `uc ~T0 @X0 1 r1 ]
+"30
+[; ;src/pic18f4520/eeprom/eeprom.c: 30: {
+[f ]
+"31
+[; ;src/pic18f4520/eeprom/eeprom.c: 31:     while(EECON1bits.WR);
 [e $U 286  ]
 [e :U 287 ]
 [e :U 286 ]
 [e $ != -> . . _EECON1bits 0 1 `i -> 0 `i 287  ]
 [e :U 288 ]
-"31
-[; ;src/pic18f4520/eeprom/eeprom.c: 31:     EEADR = addr;
-[e = _EEADR _addr ]
-"32
-[; ;src/pic18f4520/eeprom/eeprom.c: 32:     EECON1bits.EEPGD = 0x00;
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
 "33
-[; ;src/pic18f4520/eeprom/eeprom.c: 33:     EECON1bits.CFGS = 0x00;
-[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 33:     EEADR = addr;
+[e = _EEADR _addr ]
+"34
+[; ;src/pic18f4520/eeprom/eeprom.c: 34:     EECON1bits.EEPGD = 0x00;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
 "35
-[; ;src/pic18f4520/eeprom/eeprom.c: 35:     EECON1bits.RD = 0x01;
-[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 35:     EECON1bits.CFGS = 0x00;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
 "37
-[; ;src/pic18f4520/eeprom/eeprom.c: 37:     return (EEDATA);
+[; ;src/pic18f4520/eeprom/eeprom.c: 37:     EECON1bits.RD = 0x01;
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+"39
+[; ;src/pic18f4520/eeprom/eeprom.c: 39:     return (EEDATA);
 [e ) _EEDATA ]
 [e $UE 285  ]
-"38
-[; ;src/pic18f4520/eeprom/eeprom.c: 38: }
+"40
+[; ;src/pic18f4520/eeprom/eeprom.c: 40: }
 [e :UE 285 ]
+}
+"42
+[; ;src/pic18f4520/eeprom/eeprom.c: 42: void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t posStart, uint8_t length)
+[v _EEPROM_ReadBlock `(v ~T0 @X0 1 ef3`*uc`uc`uc ]
+"43
+[; ;src/pic18f4520/eeprom/eeprom.c: 43: {
+{
+[e :U _EEPROM_ReadBlock ]
+"42
+[; ;src/pic18f4520/eeprom/eeprom.c: 42: void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t posStart, uint8_t length)
+[v _dataRead `*uc ~T0 @X0 1 r1 ]
+[v _posStart `uc ~T0 @X0 1 r2 ]
+[v _length `uc ~T0 @X0 1 r3 ]
+"43
+[; ;src/pic18f4520/eeprom/eeprom.c: 43: {
+[f ]
+"44
+[; ;src/pic18f4520/eeprom/eeprom.c: 44:     uint8_t dataAddr = 0x00;
+[v _dataAddr `uc ~T0 @X0 1 a ]
+[e = _dataAddr -> -> 0 `i `uc ]
+"46
+[; ;src/pic18f4520/eeprom/eeprom.c: 46:     for(dataAddr = 0; dataAddr < length; dataAddr++)
+{
+[e = _dataAddr -> -> 0 `i `uc ]
+[e $U 293  ]
+[e :U 290 ]
+"47
+[; ;src/pic18f4520/eeprom/eeprom.c: 47:     {
+{
+"48
+[; ;src/pic18f4520/eeprom/eeprom.c: 48:         *(dataRead + (dataAddr + posStart)) = (uint8_t) EEPROM_DataRead(dataAddr + posStart);
+[e = *U + _dataRead * -> + -> _dataAddr `i -> _posStart `i `x -> -> # *U _dataRead `i `x ( _EEPROM_DataRead (1 -> + -> _dataAddr `i -> _posStart `i `uc ]
+"49
+[; ;src/pic18f4520/eeprom/eeprom.c: 49:     }
+}
+[e ++ _dataAddr -> -> 1 `i `uc ]
+[e :U 293 ]
+[e $ < -> _dataAddr `i -> _length `i 290  ]
+[e :U 291 ]
+}
+"50
+[; ;src/pic18f4520/eeprom/eeprom.c: 50: }
+[e :UE 289 ]
+}
+"52
+[; ;src/pic18f4520/eeprom/eeprom.c: 52: _Bool EEPROM_BlanckCheck( void )
+[v _EEPROM_BlanckCheck `(a ~T0 @X0 1 ef ]
+"53
+[; ;src/pic18f4520/eeprom/eeprom.c: 53: {
+{
+[e :U _EEPROM_BlanckCheck ]
+[f ]
+"54
+[; ;src/pic18f4520/eeprom/eeprom.c: 54:     uint8_t aux;
+[v _aux `uc ~T0 @X0 1 a ]
+"55
+[; ;src/pic18f4520/eeprom/eeprom.c: 55:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"57
+[; ;src/pic18f4520/eeprom/eeprom.c: 57:     for(i = 0; i <= 0xFF; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ <= -> _i `i -> 255 `i 295  ]
+[e $U 296  ]
+[e :U 295 ]
+"58
+[; ;src/pic18f4520/eeprom/eeprom.c: 58:     {
+{
+"59
+[; ;src/pic18f4520/eeprom/eeprom.c: 59:         aux = EEPROM_DataRead(i);
+[e = _aux ( _EEPROM_DataRead (1 _i ]
+"60
+[; ;src/pic18f4520/eeprom/eeprom.c: 60:         if(aux != 0xFF) return 0;
+[e $ ! != -> _aux `i -> 255 `i 298  ]
+[e ) -> -> 0 `i `a ]
+[e $UE 294  ]
+[e :U 298 ]
+"61
+[; ;src/pic18f4520/eeprom/eeprom.c: 61:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ <= -> _i `i -> 255 `i 295  ]
+[e :U 296 ]
+}
+"63
+[; ;src/pic18f4520/eeprom/eeprom.c: 63:     return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 294  ]
+"65
+[; ;src/pic18f4520/eeprom/eeprom.c: 65: }
+[e :UE 294 ]
+}
+"67
+[; ;src/pic18f4520/eeprom/eeprom.c: 67: void EEPROM_Erase( void )
+[v _EEPROM_Erase `(v ~T0 @X0 1 ef ]
+"68
+[; ;src/pic18f4520/eeprom/eeprom.c: 68: {
+{
+[e :U _EEPROM_Erase ]
+[f ]
+"69
+[; ;src/pic18f4520/eeprom/eeprom.c: 69:     uint8_t addr;
+[v _addr `uc ~T0 @X0 1 a ]
+"71
+[; ;src/pic18f4520/eeprom/eeprom.c: 71:     for(addr = 0; addr < 0xFF; addr++)
+{
+[e = _addr -> -> 0 `i `uc ]
+[e $ < -> _addr `i -> 255 `i 300  ]
+[e $U 301  ]
+[e :U 300 ]
+"72
+[; ;src/pic18f4520/eeprom/eeprom.c: 72:     {
+{
+"73
+[; ;src/pic18f4520/eeprom/eeprom.c: 73:          EEPROM_DataWrite(0xFF, addr);
+[e ( _EEPROM_DataWrite (2 , -> -> 255 `i `uc _addr ]
+"74
+[; ;src/pic18f4520/eeprom/eeprom.c: 74:     }
+}
+[e ++ _addr -> -> 1 `i `uc ]
+[e $ < -> _addr `i -> 255 `i 300  ]
+[e :U 301 ]
+}
+"76
+[; ;src/pic18f4520/eeprom/eeprom.c: 76: }
+[e :UE 299 ]
+}
+"78
+[; ;src/pic18f4520/eeprom/eeprom.c: 78: void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length)
+[v _EEPROM_WriteBuffer `(v ~T0 @X0 1 ef2`*uc`uc ]
+"79
+[; ;src/pic18f4520/eeprom/eeprom.c: 79: {
+{
+[e :U _EEPROM_WriteBuffer ]
+"78
+[; ;src/pic18f4520/eeprom/eeprom.c: 78: void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length)
+[v _buffer `*uc ~T0 @X0 1 r1 ]
+[v _length `uc ~T0 @X0 1 r2 ]
+"79
+[; ;src/pic18f4520/eeprom/eeprom.c: 79: {
+[f ]
+"80
+[; ;src/pic18f4520/eeprom/eeprom.c: 80:     uint8_t i;
+[v _i `uc ~T0 @X0 1 a ]
+"81
+[; ;src/pic18f4520/eeprom/eeprom.c: 81:     for(i = 0; i <= length; i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 307  ]
+[e :U 304 ]
+"82
+[; ;src/pic18f4520/eeprom/eeprom.c: 82:     {
+{
+"83
+[; ;src/pic18f4520/eeprom/eeprom.c: 83:         EEPROM_DataWrite(*(buffer + i), i);
+[e ( _EEPROM_DataWrite (2 , *U + _buffer * -> -> _i `i `x -> -> # *U _buffer `i `x _i ]
+"84
+[; ;src/pic18f4520/eeprom/eeprom.c: 84:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 307 ]
+[e $ <= -> _i `i -> _length `i 304  ]
+[e :U 305 ]
+}
+"85
+[; ;src/pic18f4520/eeprom/eeprom.c: 85: }
+[e :UE 303 ]
 }

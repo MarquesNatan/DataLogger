@@ -5090,9 +5090,19 @@ typedef struct
 # 22 "src/main.c" 2
 
 # 1 "src/pic18f4520/eeprom/eeprom.h" 1
-# 12 "src/pic18f4520/eeprom/eeprom.h"
+# 14 "src/pic18f4520/eeprom/eeprom.h"
+unsigned char addr = 0x00;
+
+
+
+
+
     void EEPROM_DataWrite(unsigned char data, unsigned char addr);
     unsigned char EEPROM_DataRead( uint8_t addr );
+    void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t start, uint8_t length);
+    _Bool EEPROM_BlanckCheck( void );
+    void EEPROM_Erase( void );
+    void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length);
 # 23 "src/main.c" 2
 
 
@@ -5134,7 +5144,6 @@ void tickHook_func(uint32_t *timer_value) {
     (*timer_value)++;
     if((*timer_value - t) >= 10000)
     {
-        LATB = (PORTB ^ (1 << 0));;
         t = (*timer_value);
         TimeIsElapsed = 1;
     }
@@ -5183,33 +5192,26 @@ void __attribute__((picinterrupt(("")))) TC0INT(void) {
 
 
 void main(void) {
-# 123 "src/main.c"
+
+
+
+    Interrupt_GlobalEnable();
+    Timer0_Config(&timerConfig);
+    Timer0_SetTickHook(tickHook_func);
+
+    Serial_1_Config(&serialConfig);
+
+
     _delay((unsigned long)((300)*(10000000UL/4000.0)));
     DisplayLCD_Init();
 
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
-
-    uint8_t dataRead[3];
-
-    dataRead[0] = EEPROM_DataRead(0);
-    dataRead[1] = EEPROM_DataRead(1);
-    dataRead[2] = EEPROM_DataRead(2);
-
-
-    if(dataRead[0] != 0b01000001) EEPROM_DataWrite(0b01000001, 0);
-    if(dataRead[1] != 0b01000010) EEPROM_DataWrite(0b01000010, 1);
-    if(dataRead[2] != 0b01000011) EEPROM_DataWrite(0b01000011, 2);
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
+    if(0x01 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
 
     while (1)
     {
-
-
-        Display_SendByte(0b00000001, 0);
-        _delay((unsigned long)((5)*(10000000UL/4000.0)));
-        Display_WriteString(dataRead, sizeof(dataRead) + 1, 0);
-
-        _delay((unsigned long)((2000)*(10000000UL/4000.0)));
+        main_application(((void*)0));
 
     }
     return;

@@ -4545,8 +4545,8 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 void Peripheral_Controller(void* args)
 {
 
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
-    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
 # 20 "src/board/peripheral-controller/peripheral_controller.c"
     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 4))); else TRISB = (TRISB | (1 << 4));;
     if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 5))); else TRISB = (TRISB | (1 << 5));;

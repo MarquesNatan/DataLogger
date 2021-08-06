@@ -59,8 +59,7 @@ extern bool TimeIsElapsed;
 void tickHook_func(global_timer_t *timer_value) {
     (*timer_value)++;
     if((*timer_value - t) >= TIME_TO_SEND_MS)
-    {
-        DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+    {   
         t = (*timer_value);
         TimeIsElapsed = true;
     }
@@ -111,13 +110,12 @@ void __interrupt() TC0INT(void) {
 void main(void) {
     
     
-    /*
+    /**/
     Interrupt_GlobalEnable();
     Timer0_Config(&timerConfig);
     Timer0_SetTickHook(tickHook_func);
     
     Serial_1_Config(&serialConfig);
-    */
     
     // StartSystem(NULL);
     __delay_ms(300);
@@ -125,27 +123,11 @@ void main(void) {
     
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-    
-    uint8_t dataRead[3];
-    
-    dataRead[0] = EEPROM_DataRead(0);
-    dataRead[1] = EEPROM_DataRead(1);
-    dataRead[2] = EEPROM_DataRead(2);
-    
-    
-    if(dataRead[0] != 0b01000001) EEPROM_DataWrite(0b01000001, 0);
-    if(dataRead[1] != 0b01000010) EEPROM_DataWrite(0b01000010, 1);
-    if(dataRead[2] != 0b01000011) EEPROM_DataWrite(0b01000011, 2);
+    PIN_CONFIGURE_DIGITAL(PIN_INPUT, VOLTAGE_INPUT_PORT, VOLTAGE_INPUT_MASK);
     
     while (1) 
     {
-        // main_application(NULL);
-        
-        Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-        __delay_ms(5);
-        Display_WriteString(dataRead, sizeof(dataRead) + 1, 0);
-        
-        __delay_ms(2000);
+        main_application(NULL);
         
     }
     return;
