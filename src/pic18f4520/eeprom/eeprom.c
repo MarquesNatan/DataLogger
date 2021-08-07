@@ -4,7 +4,7 @@
 #include "eeprom.h"
 #include "../../board/board_definitions/board_definitions.h"
 /*============================================================================*/
-void EEPROM_DataWrite(unsigned char data, unsigned char addr)
+uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr)
 {
     
     uint8_t STATUS_INTCON = INTCONbits.GIE;
@@ -24,6 +24,9 @@ void EEPROM_DataWrite(unsigned char data, unsigned char addr)
     EECON1bits.WR    = 1;
     
     INTCONbits.GIE = STATUS_INTCON;
+    
+    
+    return ++address;
 }
 /*============================================================================*/
 unsigned char EEPROM_DataRead( uint8_t addr )
@@ -73,6 +76,7 @@ void EEPROM_Erase( void )
          EEPROM_DataWrite(0xFF,  addr);
     }
     
+    address = ADDR_BASE;
 }
 /*============================================================================*/
 void EEPROM_WriteBuffer(unsigned char* buffer, uint8_t length)

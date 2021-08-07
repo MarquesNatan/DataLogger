@@ -20,6 +20,11 @@
  *                        F: Signal for next bit        Duration: 50      us
  *                        G: Signal of 1                Duration: 70      us
  * 
+ * Data presentation: 
+ *  TEMP:   XX.X -> temp[2] = {XX, X}
+ *  HUM:    YY.Y
+ * 1° step: 
+ *      vetAux[3] -> strcat(vetAux, temp)
  =============================================================================*/
 #include "dht11.h"
 #include "../../board/board_definitions/board_definitions.h"
@@ -128,10 +133,11 @@ uint8_t DHT11_ReadByte(void) {
 /*============================================================================*/
 uint8_t* DHT11_GetTemp( void )
 {
-    return &temperature;
+    return temperature;
 }
 /*============================================================================*/
 uint8_t* DHT11_GetHum( void )
 {
-    return &humidity;
+    return humidity;
 }
+/*============================================================================*/

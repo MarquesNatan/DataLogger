@@ -11,13 +11,13 @@
 
 #define DEFAULT_MEMORY_DATA 0xFF
 
-unsigned char addr    =     ADDR_BASE;
+unsigned char address    =     ADDR_BASE;
 /*============================================================================*/
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
 /*============================================================================*/
-    void EEPROM_DataWrite(unsigned char data, unsigned char addr);
+    uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr);
     unsigned char  EEPROM_DataRead( uint8_t addr );
     void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t start, uint8_t length);
     bool EEPROM_BlanckCheck( void );

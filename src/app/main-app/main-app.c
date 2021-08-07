@@ -21,11 +21,17 @@
 static bool currLog = false;
 #define PRIMEIRO_LOG    "prim. log"
 #define SEGUNDO_LOG     "seg. log"
+#define TEM_ENERGIA     "TEM ENERGIA"
 char segundo[sizeof(SEGUNDO_LOG)];
 static uint8_t count = 0x00;
-uint8_t vetorTempLocal[2] = {35, 0};
-uint8_t vetorHumLocal[2]  = {90, 5};
+char vetorTempLocal[4] = {35, 0, 0xf8, 0x43};
+char vetorHumLocal[3]  = {90, 5, 0x25};
 bool TimeIsElapsed = false;
+
+
+
+char vetorTemp [6] = "TEMP: ";
+char vetorHum [7] = "HUM : ";
 /*============================================================================*/
 void main_application( void* args)
 {
@@ -36,9 +42,15 @@ void main_application( void* args)
     static char *localTemp = NULL;
     static char *localHum = NULL;
     
+    static char auxTemp[3] = "0.0";
+    static char auxHum[3]  = "0.0";
+    
     static bool localUserState = false;
     
     static uint8_t localVoltageStatus = 0x00;
+    
+    static uint8_t auxTemHum = 0x00;
+    static uint8_t lastAddr = 0x00;
     
     char auxText[] = "USER CONECTADO";
     char auxText2[] = "USER DESCONN";
@@ -75,10 +87,21 @@ void main_application( void* args)
                     localVoltageStatus = Voltage_Read();
                     if(localVoltageStatus)
                     {
-                        
+                        Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                        __delay_ms(5);
+                        Display_WriteString(TEM_ENERGIA, sizeof(TEM_ENERGIA), 0);
                     }
                     else // Falha na tensão
                     {
+                        // Prepara para concatenar
+                        auxTemp[0] = *localTemp;
+                        auxTemp[2] = *(++localTemp);
+                        
+                        auxHum[0]  = *localHum;
+                        auxHum[2]  = *(++localHum);
+                        
+                        Display_Update(auxTemp, auxHum);
+                        
                         // Novo Log?
                         if(!currLog)
                         {
@@ -88,24 +111,20 @@ void main_application( void* args)
                                 // Inicia o novo log
                                 EEPROM_DataWrite("A", 0);
                                 currLog = true;
-                                
-                                Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-                                __delay_ms(5);
-                                Display_WriteString(PRIMEIRO_LOG, sizeof(PRIMEIRO_LOG), 0);
-                                
                             }
                         }
                         else // Log Já iniciado
                         {
-                            segundo[0] = count+0x30;
-                            strcat(segundo, SEGUNDO_LOG);
-                            // Escreve a leitura na ultima posição disponivel
-                            Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
-                            __delay_us(50);
-                            Display_WriteString(segundo, sizeof(segundo), 0);
-                            count++;
+                            if(address <= 0xFD)
+                            {
+                                // Escreve a temperatura registrada
+                                EEPROM_DataWrite(auxTemp[0], address);
+
+                                // Escreve a Humidade registrada
+                                EEPROM_DataWrite(auxHum[0], address);   
+                            }
+                            
                         }
-                        
                     }
                 }
                 
@@ -114,52 +133,43 @@ void main_application( void* args)
                 
             }
             
-            
             TimeIsElapsed = false;
         }
         else              // Não, ainda não é hora da leitura
         {
             PIN_DIGITAL_WRITE(PIN_HIGH, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
         }
-        
     }
-    
-    
 }
 /*============================================================================*/
 void StartSystem( void* args )
 {
-    uint8_t dht11_response = 0x00;
     
-    // START PERIPHERAL
-    Peripheral_Controller(NULL);
-    
-    
-    // START DISPLAY    - TEST DISPLAY
-    DisplayLCD_Init();
-    
-    
-    Display_WriteString(START_BLUETOOTH, sizeof(START_BLUETOOTH), 0);
-    // START BLUETOOTH  - TEST BLUETOOTH
-    Bluetooth_HC_06_Configure();
-    __delay_ms(3000);
-    
-     // Display Clear: 0b00000001 1.52 ms
+}
+/*============================================================================*/
+void Display_Update(char* temp, char* hum) {
     Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-   __delay_ms(2); 
-    // Display_WriteString(FIM_INICIALIZACAO, sizeof(FIM_INICIALIZACAO), 0);
+    __delay_ms(5);
+
+    Display_WriteString(vetorTemp, sizeof (vetorTemp), 0); // Temp: 
+
+    Display_WriteByte((temp[0] / 10) + 0x30);
+    Display_WriteByte((temp[0] % 10) + 0x30); // TEMP: XX
+
+    Display_WriteByte(0xDF); //  TEMP: XX.X°
+    Display_WriteByte(0x43); //  TEMP: XX.X°C
+
+    // Escreve segunda linha 1° coluna
+    Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
+    __delay_us(500);
+
+
+    Display_WriteString(vetorHum, sizeof (vetorHum), 0); // HUM: 
+
+    Display_WriteByte((hum[0] / 10) + 0x30);
+    Display_WriteByte((hum[0] % 10) + 0x30); // HUM: XX
     
-    // Testa o módulo dht11, caso não funcione fica travado (aceita comandos)
-    if((dht11_response = DHT11_RequestData()) == DHT11_OK)
-    {
-        Display_WriteString(DHT11_WORKING, sizeof(DHT11_WORKING), 0);
-    }else if((dht11_response = DHT11_RequestData()) == DHT11_ERROR_TIMEOUT)
-    {
-        Display_WriteString(DHT11_TIMEOUT, sizeof(DHT11_TIMEOUT), 0);
-        // Não executa mais nada se o dht11 não estiver funcionando
-        while(1);
-    }
-    // Verifica se a memória ram está cheia
-    // START RAM        - TEST RAM
+    Display_WriteByte(0x25); // HUM: XX.X%
+    
 }
 /*============================================================================*/

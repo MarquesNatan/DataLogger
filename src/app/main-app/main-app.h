@@ -10,6 +10,7 @@ extern "C" {
 /*============================================================================*/
     void main_application( void* args);
     void StartSystem( void* args );
+    void Display_Update(char* temp, char* hum);
 /*============================================================================*/
 #ifdef	__cplusplus
 }
