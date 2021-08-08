@@ -3,7 +3,7 @@
 #define	XC_HEADER_TEMPLATE_H
 /*============================================================================*/
 // Oscillator Freq
-#define _XTAL_FREQ          10000000UL
+#define _XTAL_FREQ          12000000UL
 
 // Peripheral Definitions
 #define SERIAL_INTERFACE    UART
@@ -37,7 +37,7 @@ char string_hum[sizeof(STRING_TEMP) + sizeof(DEFAULT_DATA_VALUE)] = STRING_HUM;
 #define DATA_LOGGER_DELETE_BACKUP   "<DBK>"
 
 // Time to send data, in ms
-#define TIME_TO_SEND_MS    300
+#define TIME_TO_SEND_MS    5000
 /*============================================================================*/
 #endif	/* BOARD_DEFINITIONS_H */
 /*============================================================================*/

@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"271 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"632 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -425,8 +425,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Voltage_Read ]
 [f ]
 "8
-[; ;src/app/read_voltage/read_voltage.c: 8:     return ((PORTB >> 0)& 0b00000001);
-[e ) -> & >> -> _PORTB `i -> 0 `i -> 1 `i `uc ]
+[; ;src/app/read_voltage/read_voltage.c: 8:     return ((PORTD >> 0)& 0b00000001);
+[e ) -> & >> -> _PORTD `i -> 0 `i -> 1 `i `uc ]
 [e $UE 281  ]
 "9
 [; ;src/app/read_voltage/read_voltage.c: 9: }

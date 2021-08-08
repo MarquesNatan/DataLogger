@@ -4628,5 +4628,5 @@ typedef uint32_t uint_fast32_t;
 
 uint8_t Voltage_Read( void )
 {
-    return ((PORTB >> 0)& 0b00000001);
+    return ((PORTD >> 0)& 0b00000001);
 }

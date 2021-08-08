@@ -554,39 +554,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 64: }
 [e :UE 284 ]
 }
+"65
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 65: void Bluetooth_HC_06_WriteByte(char byte)
+[v _Bluetooth_HC_06_WriteByte `(v ~T0 @X0 1 ef1`uc ]
 "66
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 66: _Bool User_GetState( void )
-[v _User_GetState `(a ~T0 @X0 1 ef ]
-"67
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 67: {
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 66: {
 {
-[e :U _User_GetState ]
+[e :U _Bluetooth_HC_06_WriteByte ]
+"65
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 65: void Bluetooth_HC_06_WriteByte(char byte)
+[v _byte `uc ~T0 @X0 1 r1 ]
+"66
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 66: {
 [f ]
+"67
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 67:     Serial_Transmit(byte);
+[e ( _Serial_Transmit (1 -> _byte `uc ]
 "68
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 68:     return UserConnected;
-[e ) _UserConnected ]
-[e $UE 289  ]
-"69
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 69: }
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 68: }
 [e :UE 289 ]
 }
 "71
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 71: _Bool User_SetState( _Bool state )
-[v _User_SetState `(a ~T0 @X0 1 ef1`a ]
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 71: _Bool User_GetState( void )
+[v _User_GetState `(a ~T0 @X0 1 ef ]
 "72
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 72: {
 {
-[e :U _User_SetState ]
-"71
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 71: _Bool User_SetState( _Bool state )
-[v _state `a ~T0 @X0 1 r1 ]
-"72
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 72: {
+[e :U _User_GetState ]
 [f ]
 "73
-[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 73:     UserConnected = state;
-[e = _UserConnected _state ]
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 73:     return UserConnected;
+[e ) _UserConnected ]
+[e $UE 290  ]
 "74
 [; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 74: }
 [e :UE 290 ]
+}
+"76
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 76: _Bool User_SetState( _Bool state )
+[v _User_SetState `(a ~T0 @X0 1 ef1`a ]
+"77
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 77: {
+{
+[e :U _User_SetState ]
+"76
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 76: _Bool User_SetState( _Bool state )
+[v _state `a ~T0 @X0 1 r1 ]
+"77
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 77: {
+[f ]
+"78
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 78:     UserConnected = state;
+[e = _UserConnected _state ]
+"79
+[; ;src/app/bluetooth-hc-06/bluetooth_hc_06.c: 79: }
+[e :UE 291 ]
 }

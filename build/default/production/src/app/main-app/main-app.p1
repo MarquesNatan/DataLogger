@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"37 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
-[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 37:     _Bool User_GetState( void );
+"38 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 38:     _Bool User_GetState( void );
 [v _User_GetState `(a ~T0 @X0 0 ef ]
 "52 src/app/main-app/../../app/display_lcd/display_lcd.h
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 52:     void Display_SendByte(uint8_t byte, uint8_t comm);
@@ -12,39 +12,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 "54 src/app/main-app/../../app/display_lcd/display_lcd.h
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
 [v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
+"35 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 35:     void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
+[v _Bluetooth_HC_06_WriteString `(v ~T0 @X0 0 ef2`*uc`uc ]
+"21 src/app/main-app/../../pic18f4520/eeprom/eeprom.h
+[; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 21:     unsigned char EEPROM_DataRead( uint8_t addr );
+[v _EEPROM_DataRead `(uc ~T0 @X0 0 ef1`uc ]
+"36 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 36:     void Bluetooth_HC_06_WriteByte(char byte);
+[v _Bluetooth_HC_06_WriteByte `(v ~T0 @X0 0 ef1`uc ]
 "11 src/app/main-app/../../app/read_voltage/read_voltage.h
 [; ;src/app/main-app/../../app/read_voltage/read_voltage.h: 11:     uint8_t Voltage_Read(void);
 [v _Voltage_Read `(uc ~T0 @X0 0 ef ]
 "13 src/app/main-app/main-app.h
 [; ;src/app/main-app/main-app.h: 13:     void Display_Update(char* temp, char* hum);
 [v _Display_Update `(v ~T0 @X0 0 ef2`*uc`*uc ]
-"21 src/app/main-app/../../pic18f4520/eeprom/eeprom.h
-[; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 21:     unsigned char EEPROM_DataRead( uint8_t addr );
-[v _EEPROM_DataRead `(uc ~T0 @X0 0 ef1`uc ]
-"24
+"24 src/app/main-app/../../pic18f4520/eeprom/eeprom.h
 [; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 24:     void EEPROM_Erase( void );
 [v _EEPROM_Erase `(v ~T0 @X0 0 ef ]
 "20
 [; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 20:     uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr);
 [v _EEPROM_DataWrite `(uc ~T0 @X0 0 ef2`uc`uc ]
-"1313 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1313: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
-[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
-"632
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"13 src/app/main-app/../../board/peripheral-controller/peripheral_controller.h
-[; ;src/app/main-app/../../board/peripheral-controller/peripheral_controller.h: 13:     void Peripheral_Controller(void* args);
-[v _Peripheral_Controller `(v ~T0 @X0 0 ef1`*v ]
-"51 src/app/main-app/../../app/display_lcd/display_lcd.h
-[; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 51:     void DisplayLCD_Init( void );
-[v _DisplayLCD_Init `(v ~T0 @X0 0 ef ]
-"34 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
-[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 34:     void Bluetooth_HC_06_Configure(void);
-[v _Bluetooth_HC_06_Configure `(v ~T0 @X0 0 ef ]
-"16 src/app/main-app/../../app/dht11/dht11.h
-[; ;src/app/main-app/../../app/dht11/dht11.h: 16:     uint8_t DHT11_RequestData(void);
-[v _DHT11_RequestData `(uc ~T0 @X0 0 ef ]
+"1089 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"271
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 271: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "53 src/app/main-app/../../app/display_lcd/display_lcd.h
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 53:     void Display_WriteByte(uint8_t byte);
 [v _Display_WriteByte `(v ~T0 @X0 0 ef1`uc ]
@@ -631,32 +625,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "38
 [; ;src/app/main-app/main-app.c: 38:     static uint8_t voltageStatus = 0x00;
-[v F3165 `uc ~T0 @X0 1 s voltageStatus ]
-[i F3165
+[v F3170 `uc ~T0 @X0 1 s voltageStatus ]
+[i F3170
 -> -> 0 `i `uc
 ]
 "40
 [; ;src/app/main-app/main-app.c: 40:     static uint8_t localDHT11Result = 0x00;
-[v F3166 `uc ~T0 @X0 1 s localDHT11Result ]
-[i F3166
+[v F3171 `uc ~T0 @X0 1 s localDHT11Result ]
+[i F3171
 -> -> 0 `i `uc
 ]
 "42
 [; ;src/app/main-app/main-app.c: 42:     static char *localTemp = ((void*)0);
-[v F3167 `*uc ~T0 @X0 1 s localTemp ]
-[i F3167
+[v F3172 `*uc ~T0 @X0 1 s localTemp ]
+[i F3172
 -> -> -> 0 `i `*v `*uc
 ]
 "43
 [; ;src/app/main-app/main-app.c: 43:     static char *localHum = ((void*)0);
-[v F3168 `*uc ~T0 @X0 1 s localHum ]
-[i F3168
+[v F3173 `*uc ~T0 @X0 1 s localHum ]
+[i F3173
 -> -> -> 0 `i `*v `*uc
 ]
 "45
 [; ;src/app/main-app/main-app.c: 45:     static char auxTemp[3] = "0.0";
-[v F3169 `uc ~T0 @X0 -> 3 `i s auxTemp ]
-[i F3169
+[v F3174 `uc ~T0 @X0 -> 3 `i s auxTemp ]
+[i F3174
 :U ..
 -> 48 `c
 -> 46 `c
@@ -665,8 +659,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "46
 [; ;src/app/main-app/main-app.c: 46:     static char auxHum[3] = "0.0";
-[v F3170 `uc ~T0 @X0 -> 3 `i s auxHum ]
-[i F3170
+[v F3175 `uc ~T0 @X0 -> 3 `i s auxHum ]
+[i F3175
 :U ..
 -> 48 `c
 -> 46 `c
@@ -675,33 +669,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "48
 [; ;src/app/main-app/main-app.c: 48:     static _Bool localUserState = 0;
-[v F3171 `a ~T0 @X0 1 s localUserState ]
-[i F3171
+[v F3176 `a ~T0 @X0 1 s localUserState ]
+[i F3176
 -> -> 0 `i `a
 ]
 "50
 [; ;src/app/main-app/main-app.c: 50:     static uint8_t localVoltageStatus = 0x00;
-[v F3172 `uc ~T0 @X0 1 s localVoltageStatus ]
-[i F3172
+[v F3177 `uc ~T0 @X0 1 s localVoltageStatus ]
+[i F3177
 -> -> 0 `i `uc
 ]
 "52
-[; ;src/app/main-app/main-app.c: 52:     static uint8_t auxTemHum = 0x00;
-[v F3173 `uc ~T0 @X0 1 s auxTemHum ]
-[i F3173
+[; ;src/app/main-app/main-app.c: 52:     static uint8_t addr = 0x00;
+[v F3178 `uc ~T0 @X0 1 s addr ]
+[i F3178
 -> -> 0 `i `uc
 ]
-"53
-[; ;src/app/main-app/main-app.c: 53:     static uint8_t lastAddr = 0x00;
-[v F3174 `uc ~T0 @X0 1 s lastAddr ]
-[i F3174
--> -> 0 `i `uc
-]
-[v F3175 `uc ~T0 @X0 -> 15 `i s ]
-[i F3175
+[v F3179 `uc ~T0 @X0 -> 15 `i s ]
+[i F3179
 :U ..
-"55
-[; ;src/app/main-app/main-app.c: 55:     char auxText[] = "USER CONECTADO";
+"54
+[; ;src/app/main-app/main-app.c: 54:     char auxText[] = "USER CONECTADO";
 -> 85 `c
 -> 83 `c
 -> 69 `c
@@ -720,12 +708,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _auxText `uc ~T0 @X0 -> 15 `i a ]
-[e = _auxText F3175 ]
-[v F3177 `uc ~T0 @X0 -> 13 `i s ]
-[i F3177
+[e = _auxText F3179 ]
+[v F3181 `uc ~T0 @X0 -> 13 `i s ]
+[i F3181
 :U ..
-"56
-[; ;src/app/main-app/main-app.c: 56:     char auxText2[] = "USER DESCONN";
+"55
+[; ;src/app/main-app/main-app.c: 55:     char auxText2[] = "USER DESCONN";
 -> 85 `c
 -> 83 `c
 -> 69 `c
@@ -742,327 +730,419 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _auxText2 `uc ~T0 @X0 -> 13 `i a ]
-[e = _auxText2 F3177 ]
-"58
-[; ;src/app/main-app/main-app.c: 58:     while(1)
-[e :U 287 ]
+[e = _auxText2 F3181 ]
+"57
+[; ;src/app/main-app/main-app.c: 57:     uint8_t aux;
+[v _aux `uc ~T0 @X0 1 a ]
 "59
-[; ;src/app/main-app/main-app.c: 59:     {
+[; ;src/app/main-app/main-app.c: 59:     while(1)
+[e :U 287 ]
+"60
+[; ;src/app/main-app/main-app.c: 60:     {
 {
-"61
-[; ;src/app/main-app/main-app.c: 61:         if(TimeIsElapsed)
-[e $ ! != -> _TimeIsElapsed `i -> 0 `i 289  ]
 "62
-[; ;src/app/main-app/main-app.c: 62:         {
+[; ;src/app/main-app/main-app.c: 62:         if(TimeIsElapsed)
+[e $ ! != -> _TimeIsElapsed `i -> 0 `i 289  ]
+"63
+[; ;src/app/main-app/main-app.c: 63:         {
 {
-"65
-[; ;src/app/main-app/main-app.c: 65:             if(1)
-[e $ ! != -> 1 `i -> 0 `i 290  ]
 "66
-[; ;src/app/main-app/main-app.c: 66:             {
+[; ;src/app/main-app/main-app.c: 66:             if(1)
+[e $ ! != -> 1 `i -> 0 `i 290  ]
+"67
+[; ;src/app/main-app/main-app.c: 67:             {
 {
-"72
-[; ;src/app/main-app/main-app.c: 72:                 localTemp = &vetorTempLocal;
-[e = F3167 -> &U _vetorTempLocal `*uc ]
 "73
-[; ;src/app/main-app/main-app.c: 73:                 localHum = &vetorHumLocal;
-[e = F3168 -> &U _vetorHumLocal `*uc ]
-"76
-[; ;src/app/main-app/main-app.c: 76:                 localUserState = User_GetState();
-[e = F3171 ( _User_GetState ..  ]
+[; ;src/app/main-app/main-app.c: 73:                 localTemp = &vetorTempLocal;
+[e = F3172 -> &U _vetorTempLocal `*uc ]
+"74
+[; ;src/app/main-app/main-app.c: 74:                 localHum = &vetorHumLocal;
+[e = F3173 -> &U _vetorHumLocal `*uc ]
 "77
-[; ;src/app/main-app/main-app.c: 77:                 if(localUserState)
-[e $ ! != -> F3171 `i -> 0 `i 291  ]
-"78
-[; ;src/app/main-app/main-app.c: 78:                 {
-{
+[; ;src/app/main-app/main-app.c: 77:                 localUserState = User_GetState();
+[e = F3176 ( _User_GetState ..  ]
+"79
+[; ;src/app/main-app/main-app.c: 79:                 if(localUserState)
+[e $ ! != -> F3176 `i -> 0 `i 291  ]
 "80
-[; ;src/app/main-app/main-app.c: 80:                     Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"81
-[; ;src/app/main-app/main-app.c: 81:                     _delay((unsigned long)((5)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
+[; ;src/app/main-app/main-app.c: 80:                 {
+{
 "82
-[; ;src/app/main-app/main-app.c: 82:                     Display_WriteString(auxText, sizeof(auxText), 0);
-[e ( _Display_WriteString (3 , , &U _auxText -> -> # _auxText `ui `uc -> -> 0 `i `uc ]
-"83
-[; ;src/app/main-app/main-app.c: 83:                 }
-}
-[e $U 292  ]
-"84
-[; ;src/app/main-app/main-app.c: 84:                 else
-[e :U 291 ]
-"85
-[; ;src/app/main-app/main-app.c: 85:                 {
-{
-"87
-[; ;src/app/main-app/main-app.c: 87:                     localVoltageStatus = Voltage_Read();
-[e = F3172 ( _Voltage_Read ..  ]
-"88
-[; ;src/app/main-app/main-app.c: 88:                     if(localVoltageStatus)
-[e $ ! != -> F3172 `i -> 0 `i 293  ]
-"89
-[; ;src/app/main-app/main-app.c: 89:                     {
-{
-"90
-[; ;src/app/main-app/main-app.c: 90:                         Display_SendByte(0b00000001, 0);
+[; ;src/app/main-app/main-app.c: 82:                     Display_SendByte(0b00000001, 0);
 [e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"91
-[; ;src/app/main-app/main-app.c: 91:                         _delay((unsigned long)((5)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"92
-[; ;src/app/main-app/main-app.c: 92:                         Display_WriteString("TEM ENERGIA", sizeof("TEM ENERGIA"), 0);
-[e ( _Display_WriteString (3 , , :s 1C -> -> 12 `ui `uc -> -> 0 `i `uc ]
-"93
-[; ;src/app/main-app/main-app.c: 93:                     }
-}
+"83
+[; ;src/app/main-app/main-app.c: 83:                     _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"84
+[; ;src/app/main-app/main-app.c: 84:                     Display_WriteString(auxText, sizeof(auxText), 0);
+[e ( _Display_WriteString (3 , , &U _auxText -> -> # _auxText `ui `uc -> -> 0 `i `uc ]
+"87
+[; ;src/app/main-app/main-app.c: 87:                     if(currLog)
+[e $ ! != -> _currLog `i -> 0 `i 292  ]
+"88
+[; ;src/app/main-app/main-app.c: 88:                     {
+{
+"89
+[; ;src/app/main-app/main-app.c: 89:                         Bluetooth_HC_06_WriteString("***ULTIMO LOG***\n", 17);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 1C -> -> 17 `i `uc ]
+"90
+[; ;src/app/main-app/main-app.c: 90:                         for(addr = 0; addr <= 0x04 ; addr++)
+{
+[e = F3178 -> -> 0 `i `uc ]
+[e $ <= -> F3178 `i -> 4 `i 293  ]
 [e $U 294  ]
-"94
-[; ;src/app/main-app/main-app.c: 94:                     else
 [e :U 293 ]
+"91
+[; ;src/app/main-app/main-app.c: 91:                         {
+{
+"92
+[; ;src/app/main-app/main-app.c: 92:                             aux = addr;
+[e = _aux F3178 ]
+"93
+[; ;src/app/main-app/main-app.c: 93:                             aux++;
+[e ++ _aux -> -> 1 `i `uc ]
 "95
-[; ;src/app/main-app/main-app.c: 95:                     {
-{
-"97
-[; ;src/app/main-app/main-app.c: 97:                         auxTemp[0] = *localTemp;
-[e = *U + &U F3169 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3169 `ui `ux *U F3167 ]
+[; ;src/app/main-app/main-app.c: 95:                             auxTemp[0] = EEPROM_DataRead(addr);
+[e = *U + &U F3174 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3174 `ui `ux -> ( _EEPROM_DataRead (1 F3178 `uc ]
+"96
+[; ;src/app/main-app/main-app.c: 96:                             auxHum[0] = EEPROM_DataRead(aux);
+[e = *U + &U F3175 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3175 `ui `ux -> ( _EEPROM_DataRead (1 _aux `uc ]
 "98
-[; ;src/app/main-app/main-app.c: 98:                         auxTemp[2] = *(++localTemp);
-[e = *U + &U F3169 * -> -> -> 2 `i `ui `ux -> -> # *U &U F3169 `ui `ux *U =+ F3167 * -> -> 1 `i `x -> -> # *U F3167 `i `x ]
+[; ;src/app/main-app/main-app.c: 98:                             Bluetooth_HC_06_WriteString(vetorTemp, sizeof(vetorTemp));
+[e ( _Bluetooth_HC_06_WriteString (2 , &U _vetorTemp -> -> # _vetorTemp `ui `uc ]
+"99
+[; ;src/app/main-app/main-app.c: 99:                             Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> + / -> *U + F3172 * -> -> 0 `i `x -> -> # *U F3172 `i `x `i -> 10 `i -> 48 `i `uc ]
 "100
-[; ;src/app/main-app/main-app.c: 100:                         auxHum[0] = *localHum;
-[e = *U + &U F3170 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3170 `ui `ux *U F3168 ]
+[; ;src/app/main-app/main-app.c: 100:                             Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> + % -> *U + F3172 * -> -> 0 `i `x -> -> # *U F3172 `i `x `i -> 10 `i -> 48 `i `uc ]
 "101
-[; ;src/app/main-app/main-app.c: 101:                         auxHum[2] = *(++localHum);
-[e = *U + &U F3170 * -> -> -> 2 `i `ui `ux -> -> # *U &U F3170 `ui `ux *U =+ F3168 * -> -> 1 `i `x -> -> # *U F3168 `i `x ]
+[; ;src/app/main-app/main-app.c: 101:                             Bluetooth_HC_06_WriteString("  ", 2);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 2C -> -> 2 `i `uc ]
 "103
-[; ;src/app/main-app/main-app.c: 103:                         Display_Update(auxTemp, auxHum);
-[e ( _Display_Update (2 , &U F3169 &U F3170 ]
+[; ;src/app/main-app/main-app.c: 103:                             Bluetooth_HC_06_WriteString(vetorHum, sizeof(vetorHum));
+[e ( _Bluetooth_HC_06_WriteString (2 , &U _vetorHum -> -> # _vetorHum `ui `uc ]
+"105
+[; ;src/app/main-app/main-app.c: 105:                             Bluetooth_HC_06_WriteByte((localHum[0] / 10) + 0x30);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> + / -> *U + F3173 * -> -> 0 `i `x -> -> # *U F3173 `i `x `i -> 10 `i -> 48 `i `uc ]
 "106
-[; ;src/app/main-app/main-app.c: 106:                         if(!currLog)
-[e $ ! ! != -> _currLog `i -> 0 `i 295  ]
-"107
-[; ;src/app/main-app/main-app.c: 107:                         {
-{
-"108
-[; ;src/app/main-app/main-app.c: 108:                             if (EEPROM_DataRead(0) == 0xFF) {
-[e $ ! == -> ( _EEPROM_DataRead (1 -> -> 0 `i `uc `i -> 255 `i 296  ]
-{
+[; ;src/app/main-app/main-app.c: 106:                             Bluetooth_HC_06_WriteByte((localHum[0] % 10) + 0x30);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> + % -> *U + F3173 * -> -> 0 `i `x -> -> # *U F3173 `i `x `i -> 10 `i -> 48 `i `uc ]
+"109
+[; ;src/app/main-app/main-app.c: 109:                             Bluetooth_HC_06_WriteString("\n", 1);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 3C -> -> 1 `i `uc ]
 "110
-[; ;src/app/main-app/main-app.c: 110:                                 EEPROM_Erase();
-[e ( _EEPROM_Erase ..  ]
+[; ;src/app/main-app/main-app.c: 110:                         }
+}
+[e ++ F3178 -> -> 1 `i `uc ]
+[e $ <= -> F3178 `i -> 4 `i 293  ]
+[e :U 294 ]
+}
+"111
+[; ;src/app/main-app/main-app.c: 111:                         Bluetooth_HC_06_WriteString("*** FIM LOG ***\n", 16);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 4C -> -> 16 `i `uc ]
 "112
-[; ;src/app/main-app/main-app.c: 112:                                 EEPROM_DataWrite("A", 0);
-[e ( _EEPROM_DataWrite (2 , -> :s 2C `uc -> -> 0 `i `uc ]
+[; ;src/app/main-app/main-app.c: 112:                         currLog = 0;
+[e = _currLog -> -> 0 `i `a ]
 "113
-[; ;src/app/main-app/main-app.c: 113:                                 currLog = 1;
-[e = _currLog -> -> 1 `i `a ]
+[; ;src/app/main-app/main-app.c: 113:                     }
+}
+[e $U 296  ]
 "114
-[; ;src/app/main-app/main-app.c: 114:                             }
+[; ;src/app/main-app/main-app.c: 114:                     else
+[e :U 292 ]
+"115
+[; ;src/app/main-app/main-app.c: 115:                     {
+{
+"116
+[; ;src/app/main-app/main-app.c: 116:                         Bluetooth_HC_06_WriteString("*** LEITURA ATUAL ***\n", 22);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 5C -> -> 22 `i `uc ]
+"118
+[; ;src/app/main-app/main-app.c: 118:                         Bluetooth_HC_06_WriteString(vetorTemp, sizeof (vetorTemp));
+[e ( _Bluetooth_HC_06_WriteString (2 , &U _vetorTemp -> -> # _vetorTemp `ui `uc ]
+"119
+[; ;src/app/main-app/main-app.c: 119:                         Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> + / -> *U + F3172 * -> -> 0 `i `x -> -> # *U F3172 `i `x `i -> 10 `i -> 48 `i `uc ]
+"120
+[; ;src/app/main-app/main-app.c: 120:                         Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> + % -> *U + F3172 * -> -> 0 `i `x -> -> # *U F3172 `i `x `i -> 10 `i -> 48 `i `uc ]
+"121
+[; ;src/app/main-app/main-app.c: 121:                         Bluetooth_HC_06_WriteString("  ", 2);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 6C -> -> 2 `i `uc ]
+"123
+[; ;src/app/main-app/main-app.c: 123:                         Bluetooth_HC_06_WriteString(vetorHum, sizeof (vetorHum));
+[e ( _Bluetooth_HC_06_WriteString (2 , &U _vetorHum -> -> # _vetorHum `ui `uc ]
+"125
+[; ;src/app/main-app/main-app.c: 125:                         Bluetooth_HC_06_WriteByte((localHum[0] / 10));
+[e ( _Bluetooth_HC_06_WriteByte (1 -> / -> *U + F3173 * -> -> 0 `i `x -> -> # *U F3173 `i `x `i -> 10 `i `uc ]
+"126
+[; ;src/app/main-app/main-app.c: 126:                         Bluetooth_HC_06_WriteByte((localHum[0] % 10));
+[e ( _Bluetooth_HC_06_WriteByte (1 -> % -> *U + F3173 * -> -> 0 `i `x -> -> # *U F3173 `i `x `i -> 10 `i `uc ]
+"127
+[; ;src/app/main-app/main-app.c: 127:                         Bluetooth_HC_06_WriteString("\n", 1);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 7C -> -> 1 `i `uc ]
+"128
+[; ;src/app/main-app/main-app.c: 128:                         }
 }
 [e :U 296 ]
-"115
-[; ;src/app/main-app/main-app.c: 115:                         }
+"129
+[; ;src/app/main-app/main-app.c: 129:                 }
 }
 [e $U 297  ]
-"116
-[; ;src/app/main-app/main-app.c: 116:                         else
-[e :U 295 ]
-"117
-[; ;src/app/main-app/main-app.c: 117:                         {
-{
-"119
-[; ;src/app/main-app/main-app.c: 119:                             EEPROM_DataWrite(auxTemp[0], address);
-[e ( _EEPROM_DataWrite (2 , -> *U + &U F3169 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3169 `ui `ux `uc _address ]
-"122
-[; ;src/app/main-app/main-app.c: 122:                             EEPROM_DataWrite(auxHum[0], address);
-[e ( _EEPROM_DataWrite (2 , -> *U + &U F3170 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3170 `ui `ux `uc _address ]
-"124
-[; ;src/app/main-app/main-app.c: 124:                         }
-}
-[e :U 297 ]
-"125
-[; ;src/app/main-app/main-app.c: 125:                     }
-}
-[e :U 294 ]
-"126
-[; ;src/app/main-app/main-app.c: 126:                 }
-}
-[e :U 292 ]
-"128
-[; ;src/app/main-app/main-app.c: 128:             }else
-}
-[e $U 298  ]
-[e :U 290 ]
-"129
-[; ;src/app/main-app/main-app.c: 129:             {
-{
+"130
+[; ;src/app/main-app/main-app.c: 130:                 else
+[e :U 291 ]
 "131
-[; ;src/app/main-app/main-app.c: 131:             }
-}
-[e :U 298 ]
+[; ;src/app/main-app/main-app.c: 131:                 {
+{
 "133
-[; ;src/app/main-app/main-app.c: 133:             TimeIsElapsed = 0;
-[e = _TimeIsElapsed -> -> 0 `i `a ]
+[; ;src/app/main-app/main-app.c: 133:                     localVoltageStatus = Voltage_Read();
+[e = F3177 ( _Voltage_Read ..  ]
 "134
-[; ;src/app/main-app/main-app.c: 134:         }
+[; ;src/app/main-app/main-app.c: 134:                     if(localVoltageStatus)
+[e $ ! != -> F3177 `i -> 0 `i 298  ]
+"135
+[; ;src/app/main-app/main-app.c: 135:                     {
+{
+"136
+[; ;src/app/main-app/main-app.c: 136:                         Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"137
+[; ;src/app/main-app/main-app.c: 137:                         _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"138
+[; ;src/app/main-app/main-app.c: 138:                         Display_WriteString("TEM ENERGIA", sizeof("TEM ENERGIA"), 0);
+[e ( _Display_WriteString (3 , , :s 8C -> -> 12 `ui `uc -> -> 0 `i `uc ]
+"139
+[; ;src/app/main-app/main-app.c: 139:                     }
 }
 [e $U 299  ]
-"135
-[; ;src/app/main-app/main-app.c: 135:         else
-[e :U 289 ]
-"136
-[; ;src/app/main-app/main-app.c: 136:         {
+"140
+[; ;src/app/main-app/main-app.c: 140:                     else
+[e :U 298 ]
+"141
+[; ;src/app/main-app/main-app.c: 141:                     {
 {
-"137
-[; ;src/app/main-app/main-app.c: 137:             if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-[e $ ! == -> 1 `i -> 1 `i 300  ]
-[e = _LATD -> | -> _PORTD `i << -> 1 `i -> 1 `i `uc ]
-[e $U 301  ]
-[e :U 300 ]
-[e = _LATD -> & -> _PORTD `i ~ << -> 1 `i -> 1 `i `uc ]
+"142
+[; ;src/app/main-app/main-app.c: 142:                         auxTemp[0] = *localTemp;
+[e = *U + &U F3174 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3174 `ui `ux *U F3172 ]
+"143
+[; ;src/app/main-app/main-app.c: 143:                         auxTemp[2] = *(++localTemp);
+[e = *U + &U F3174 * -> -> -> 2 `i `ui `ux -> -> # *U &U F3174 `ui `ux *U =+ F3172 * -> -> 1 `i `x -> -> # *U F3172 `i `x ]
+"145
+[; ;src/app/main-app/main-app.c: 145:                         auxHum[0] = *localHum;
+[e = *U + &U F3175 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3175 `ui `ux *U F3173 ]
+"146
+[; ;src/app/main-app/main-app.c: 146:                         auxHum[2] = *(++localHum);
+[e = *U + &U F3175 * -> -> -> 2 `i `ui `ux -> -> # *U &U F3175 `ui `ux *U =+ F3173 * -> -> 1 `i `x -> -> # *U F3173 `i `x ]
+"148
+[; ;src/app/main-app/main-app.c: 148:                         Display_Update(auxTemp, auxHum);
+[e ( _Display_Update (2 , &U F3174 &U F3175 ]
+"151
+[; ;src/app/main-app/main-app.c: 151:                         if(!currLog)
+[e $ ! ! != -> _currLog `i -> 0 `i 300  ]
+"152
+[; ;src/app/main-app/main-app.c: 152:                         {
+{
+"153
+[; ;src/app/main-app/main-app.c: 153:                             if (EEPROM_DataRead(0) == 0xFF) {
+[e $ ! == -> ( _EEPROM_DataRead (1 -> -> 0 `i `uc `i -> 255 `i 301  ]
+{
+"155
+[; ;src/app/main-app/main-app.c: 155:                                 EEPROM_Erase();
+[e ( _EEPROM_Erase ..  ]
+"157
+[; ;src/app/main-app/main-app.c: 157:                                 EEPROM_DataWrite("A", 0);
+[e ( _EEPROM_DataWrite (2 , -> :s 9C `uc -> -> 0 `i `uc ]
+"158
+[; ;src/app/main-app/main-app.c: 158:                                 currLog = 1;
+[e = _currLog -> -> 1 `i `a ]
+"159
+[; ;src/app/main-app/main-app.c: 159:                             }
+}
 [e :U 301 ]
-"138
-[; ;src/app/main-app/main-app.c: 138:         }
+"160
+[; ;src/app/main-app/main-app.c: 160:                             Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"161
+[; ;src/app/main-app/main-app.c: 161:                             _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"162
+[; ;src/app/main-app/main-app.c: 162:                             Display_WriteString("SEM LOG", 8, 0);
+[e ( _Display_WriteString (3 , , :s 10C -> -> 8 `i `uc -> -> 0 `i `uc ]
+"163
+[; ;src/app/main-app/main-app.c: 163:                         }
+}
+[e $U 302  ]
+"164
+[; ;src/app/main-app/main-app.c: 164:                         else
+[e :U 300 ]
+"165
+[; ;src/app/main-app/main-app.c: 165:                         {
+{
+"167
+[; ;src/app/main-app/main-app.c: 167:                             if(address <= 0x04)
+[e $ ! <= -> _address `i -> 4 `i 303  ]
+"168
+[; ;src/app/main-app/main-app.c: 168:                             {
+{
+"170
+[; ;src/app/main-app/main-app.c: 170:                                 EEPROM_DataWrite(auxTemp[0], address);
+[e ( _EEPROM_DataWrite (2 , -> *U + &U F3174 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3174 `ui `ux `uc _address ]
+"173
+[; ;src/app/main-app/main-app.c: 173:                                 EEPROM_DataWrite(auxHum[0], address);
+[e ( _EEPROM_DataWrite (2 , -> *U + &U F3175 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3175 `ui `ux `uc _address ]
+"175
+[; ;src/app/main-app/main-app.c: 175:                                 Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"176
+[; ;src/app/main-app/main-app.c: 176:                                 _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"177
+[; ;src/app/main-app/main-app.c: 177:                                 Display_WriteString("JA LOG", 7, 0);
+[e ( _Display_WriteString (3 , , :s 11C -> -> 7 `i `uc -> -> 0 `i `uc ]
+"179
+[; ;src/app/main-app/main-app.c: 179:                             }
+}
+[e $U 304  ]
+"180
+[; ;src/app/main-app/main-app.c: 180:                             else
+[e :U 303 ]
+"181
+[; ;src/app/main-app/main-app.c: 181:                             {
+{
+"184
+[; ;src/app/main-app/main-app.c: 184:                                 Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"185
+[; ;src/app/main-app/main-app.c: 185:                                 _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"186
+[; ;src/app/main-app/main-app.c: 186:                                 Display_WriteString("MEM. FULL", 7, 0);
+[e ( _Display_WriteString (3 , , :s 12C -> -> 7 `i `uc -> -> 0 `i `uc ]
+"187
+[; ;src/app/main-app/main-app.c: 187:                             }
+}
+[e :U 304 ]
+"189
+[; ;src/app/main-app/main-app.c: 189:                         }
+}
+[e :U 302 ]
+"190
+[; ;src/app/main-app/main-app.c: 190:                     }
 }
 [e :U 299 ]
-"139
-[; ;src/app/main-app/main-app.c: 139:     }
+"191
+[; ;src/app/main-app/main-app.c: 191:                 }
+}
+[e :U 297 ]
+"193
+[; ;src/app/main-app/main-app.c: 193:             }else
+}
+[e $U 305  ]
+[e :U 290 ]
+"194
+[; ;src/app/main-app/main-app.c: 194:             {
+{
+"196
+[; ;src/app/main-app/main-app.c: 196:             }
+}
+[e :U 305 ]
+"198
+[; ;src/app/main-app/main-app.c: 198:             TimeIsElapsed = 0;
+[e = _TimeIsElapsed -> -> 0 `i `a ]
+"199
+[; ;src/app/main-app/main-app.c: 199:         }
+}
+[e $U 306  ]
+"200
+[; ;src/app/main-app/main-app.c: 200:         else
+[e :U 289 ]
+"201
+[; ;src/app/main-app/main-app.c: 201:         {
+{
+"202
+[; ;src/app/main-app/main-app.c: 202:             if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+[e $ ! == -> 1 `i -> 1 `i 307  ]
+[e = _LATB -> | -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
+[e $U 308  ]
+[e :U 307 ]
+[e = _LATB -> & -> _PORTB `i ~ << -> 1 `i -> 1 `i `uc ]
+[e :U 308 ]
+"203
+[; ;src/app/main-app/main-app.c: 203:         }
+}
+[e :U 306 ]
+"204
+[; ;src/app/main-app/main-app.c: 204:     }
 }
 [e :U 286 ]
 [e $U 287  ]
 [e :U 288 ]
-"140
-[; ;src/app/main-app/main-app.c: 140: }
+"205
+[; ;src/app/main-app/main-app.c: 205: }
 [e :UE 285 ]
 }
-"142
-[; ;src/app/main-app/main-app.c: 142: void StartSystem( void* args )
-[v _StartSystem `(v ~T0 @X0 1 ef1`*v ]
-"143
-[; ;src/app/main-app/main-app.c: 143: {
-{
-[e :U _StartSystem ]
-"142
-[; ;src/app/main-app/main-app.c: 142: void StartSystem( void* args )
-[v _args `*v ~T0 @X0 1 r1 ]
-"143
-[; ;src/app/main-app/main-app.c: 143: {
-[f ]
-"144
-[; ;src/app/main-app/main-app.c: 144:     uint8_t dht11_response = 0x00;
-[v _dht11_response `uc ~T0 @X0 1 a ]
-[e = _dht11_response -> -> 0 `i `uc ]
-"147
-[; ;src/app/main-app/main-app.c: 147:     Peripheral_Controller(((void*)0));
-[e ( _Peripheral_Controller (1 -> -> 0 `i `*v ]
-"151
-[; ;src/app/main-app/main-app.c: 151:     DisplayLCD_Init();
-[e ( _DisplayLCD_Init ..  ]
-"154
-[; ;src/app/main-app/main-app.c: 154:     Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
-[e ( _Display_WriteString (3 , , :s 3C -> -> 16 `ui `uc -> -> 0 `i `uc ]
-"156
-[; ;src/app/main-app/main-app.c: 156:     Bluetooth_HC_06_Configure();
-[e ( _Bluetooth_HC_06_Configure ..  ]
-"157
-[; ;src/app/main-app/main-app.c: 157:     _delay((unsigned long)((3000)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"160
-[; ;src/app/main-app/main-app.c: 160:     Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"161
-[; ;src/app/main-app/main-app.c: 161:    _delay((unsigned long)((2)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"165
-[; ;src/app/main-app/main-app.c: 165:     if((dht11_response = DHT11_RequestData()) == 0)
-[e $ ! == -> = _dht11_response ( _DHT11_RequestData ..  `i -> 0 `i 303  ]
-"166
-[; ;src/app/main-app/main-app.c: 166:     {
-{
-"167
-[; ;src/app/main-app/main-app.c: 167:         Display_WriteString("DHT11 OK", sizeof("DHT11 OK"), 0);
-[e ( _Display_WriteString (3 , , :s 4C -> -> 9 `ui `uc -> -> 0 `i `uc ]
-"168
-[; ;src/app/main-app/main-app.c: 168:     }else if((dht11_response = DHT11_RequestData()) == 1)
-}
-[e $U 304  ]
-[e :U 303 ]
-[e $ ! == -> = _dht11_response ( _DHT11_RequestData ..  `i -> 1 `i 305  ]
-"169
-[; ;src/app/main-app/main-app.c: 169:     {
-{
-"170
-[; ;src/app/main-app/main-app.c: 170:         Display_WriteString("DHT11 TIMEOUT", sizeof("DHT11 TIMEOUT"), 0);
-[e ( _Display_WriteString (3 , , :s 5C -> -> 14 `ui `uc -> -> 0 `i `uc ]
-"172
-[; ;src/app/main-app/main-app.c: 172:         while(1);
-[e :U 307 ]
-[e :U 306 ]
-[e $U 307  ]
-[e :U 308 ]
-"173
-[; ;src/app/main-app/main-app.c: 173:     }
-}
-[e :U 305 ]
-[e :U 304 ]
-"176
-[; ;src/app/main-app/main-app.c: 176: }
-[e :UE 302 ]
-}
-"178
-[; ;src/app/main-app/main-app.c: 178: void Display_Update(char* temp, char* hum) {
+"207
+[; ;src/app/main-app/main-app.c: 207: void Display_Update(char* temp, char* hum) {
 [v _Display_Update `(v ~T0 @X0 1 ef2`*uc`*uc ]
 {
 [e :U _Display_Update ]
 [v _temp `*uc ~T0 @X0 1 r1 ]
 [v _hum `*uc ~T0 @X0 1 r2 ]
 [f ]
-"179
-[; ;src/app/main-app/main-app.c: 179:     Display_SendByte(0b00000001, 0);
+"208
+[; ;src/app/main-app/main-app.c: 208:     Display_SendByte(0b00000001, 0);
 [e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"180
-[; ;src/app/main-app/main-app.c: 180:     _delay((unsigned long)((5)*(10000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `ul `d .4000.0 `ul ]
-"182
-[; ;src/app/main-app/main-app.c: 182:     Display_WriteString(vetorTemp, sizeof (vetorTemp), 0);
+"209
+[; ;src/app/main-app/main-app.c: 209:     _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"211
+[; ;src/app/main-app/main-app.c: 211:     Display_WriteString(vetorTemp, sizeof (vetorTemp), 0);
 [e ( _Display_WriteString (3 , , &U _vetorTemp -> -> # _vetorTemp `ui `uc -> -> 0 `i `uc ]
-"184
-[; ;src/app/main-app/main-app.c: 184:     Display_WriteByte((temp[0] / 10) + 0x30);
+"213
+[; ;src/app/main-app/main-app.c: 213:     Display_WriteByte((temp[0] / 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + / -> *U + _temp * -> -> 0 `i `x -> -> # *U _temp `i `x `i -> 10 `i -> 48 `i `uc ]
-"185
-[; ;src/app/main-app/main-app.c: 185:     Display_WriteByte((temp[0] % 10) + 0x30);
+"214
+[; ;src/app/main-app/main-app.c: 214:     Display_WriteByte((temp[0] % 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + % -> *U + _temp * -> -> 0 `i `x -> -> # *U _temp `i `x `i -> 10 `i -> 48 `i `uc ]
-"187
-[; ;src/app/main-app/main-app.c: 187:     Display_WriteByte(0xDF);
+"216
+[; ;src/app/main-app/main-app.c: 216:     Display_WriteByte(0xDF);
 [e ( _Display_WriteByte (1 -> -> 223 `i `uc ]
-"188
-[; ;src/app/main-app/main-app.c: 188:     Display_WriteByte(0x43);
+"217
+[; ;src/app/main-app/main-app.c: 217:     Display_WriteByte(0x43);
 [e ( _Display_WriteByte (1 -> -> 67 `i `uc ]
-"191
-[; ;src/app/main-app/main-app.c: 191:     Display_SendByte((0b10000000 | 0b01000000), 0);
+"220
+[; ;src/app/main-app/main-app.c: 220:     Display_SendByte((0b10000000 | 0b01000000), 0);
 [e ( _Display_SendByte (2 , -> | -> 128 `i -> 64 `i `uc -> -> 0 `i `uc ]
-"192
-[; ;src/app/main-app/main-app.c: 192:     _delay((unsigned long)((500)*(10000000UL/4000000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 10000000 `ul `d .4000000.0 `ul ]
-"195
-[; ;src/app/main-app/main-app.c: 195:     Display_WriteString(vetorHum, sizeof (vetorHum), 0);
+"221
+[; ;src/app/main-app/main-app.c: 221:     _delay((unsigned long)((500)*(12000000UL/4000000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000000.0 `ul ]
+"224
+[; ;src/app/main-app/main-app.c: 224:     Display_WriteString(vetorHum, sizeof (vetorHum), 0);
 [e ( _Display_WriteString (3 , , &U _vetorHum -> -> # _vetorHum `ui `uc -> -> 0 `i `uc ]
-"197
-[; ;src/app/main-app/main-app.c: 197:     Display_WriteByte((hum[0] / 10) + 0x30);
+"226
+[; ;src/app/main-app/main-app.c: 226:     Display_WriteByte((hum[0] / 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + / -> *U + _hum * -> -> 0 `i `x -> -> # *U _hum `i `x `i -> 10 `i -> 48 `i `uc ]
-"198
-[; ;src/app/main-app/main-app.c: 198:     Display_WriteByte((hum[0] % 10) + 0x30);
+"227
+[; ;src/app/main-app/main-app.c: 227:     Display_WriteByte((hum[0] % 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + % -> *U + _hum * -> -> 0 `i `x -> -> # *U _hum `i `x `i -> 10 `i -> 48 `i `uc ]
-"200
-[; ;src/app/main-app/main-app.c: 200:     Display_WriteByte(0x25);
+"229
+[; ;src/app/main-app/main-app.c: 229:     Display_WriteByte(0x25);
 [e ( _Display_WriteByte (1 -> -> 37 `i `uc ]
-"202
-[; ;src/app/main-app/main-app.c: 202: }
+"231
+[; ;src/app/main-app/main-app.c: 231: }
 [e :UE 309 ]
 }
-[a 5C 68 72 84 49 49 32 84 73 77 69 79 85 84 0 ]
-[a 4C 68 72 84 49 49 32 79 75 0 ]
-[a 3C 83 84 65 82 84 95 66 76 85 69 84 79 79 84 72 0 ]
-[a 1C 84 69 77 32 69 78 69 82 71 73 65 0 ]
-[a 2C 65 0 ]
+[a 12C 77 69 77 46 32 70 85 76 76 0 ]
+[a 10C 83 69 77 32 76 79 71 0 ]
+[a 11C 74 65 32 76 79 71 0 ]
+[a 8C 84 69 77 32 69 78 69 82 71 73 65 0 ]
+[a 9C 65 0 ]
+[a 2C 32 32 0 ]
+[a 6C 32 32 0 ]
+[a 1C 42 42 42 85 76 84 73 77 79 32 76 79 71 42 42 42 10 0 ]
+[a 5C 42 42 42 32 76 69 73 84 85 82 65 32 65 84 85 65 76 32 42 42 42 10 0 ]
+[a 4C 42 42 42 32 70 73 77 32 76 79 71 32 42 42 42 10 0 ]
+[a 3C 10 0 ]
+[a 7C 10 0 ]

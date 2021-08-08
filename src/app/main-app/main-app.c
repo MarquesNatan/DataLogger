@@ -49,11 +49,12 @@ void main_application( void* args)
     
     static uint8_t localVoltageStatus = 0x00;
     
-    static uint8_t auxTemHum = 0x00;
-    static uint8_t lastAddr = 0x00;
+    static uint8_t addr = 0x00;
     
     char auxText[] = "USER CONECTADO";
     char auxText2[] = "USER DESCONN";
+    
+    uint8_t aux; 
     
     while(1)
     {
@@ -74,12 +75,57 @@ void main_application( void* args)
                 
                 /* Get User Status */
                 localUserState = User_GetState();
+                
                 if(localUserState)
                 {
                     // Usuário conectado, envia o valor de Temperatura e Humidade
                     Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
                     __delay_ms(5);
                     Display_WriteString(auxText, sizeof(auxText), 0);
+                    
+                    // Existe um Log para enviar para o usuário
+                    if(currLog)
+                    {
+                        Bluetooth_HC_06_WriteString("***ULTIMO LOG***\n", 17);
+                        for(addr = 0; addr <= 0x04 /* ADDR_END_MEMORY */; addr++)
+                        {
+                            aux = addr;
+                            aux++;
+                            
+                            auxTemp[0] = EEPROM_DataRead(addr);
+                            auxHum[0] =  EEPROM_DataRead(aux);
+                            
+                            Bluetooth_HC_06_WriteString(vetorTemp, sizeof(vetorTemp));
+                            Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
+                            Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
+                            Bluetooth_HC_06_WriteString("  ", 2);
+                            
+                            Bluetooth_HC_06_WriteString(vetorHum, sizeof(vetorHum));
+                            // Bluetooth_HC_06_WriteString(vetorHum, 1);
+                            Bluetooth_HC_06_WriteByte((localHum[0] / 10) + 0x30);
+                            Bluetooth_HC_06_WriteByte((localHum[0] % 10) + 0x30);
+                            
+                            
+                            Bluetooth_HC_06_WriteString("\n", 1);
+                        }
+                        Bluetooth_HC_06_WriteString("*** FIM LOG ***\n", 16);
+                        currLog = false;
+                    }
+                    else // Não existe log antigo -> Enviar dados atuais
+                    {
+                        Bluetooth_HC_06_WriteString("*** LEITURA ATUAL ***\n", 22);
+                        
+                        Bluetooth_HC_06_WriteString(vetorTemp, sizeof (vetorTemp));
+                        Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
+                        Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
+                        Bluetooth_HC_06_WriteString("  ", 2);
+
+                        Bluetooth_HC_06_WriteString(vetorHum, sizeof (vetorHum));
+                        // Bluetooth_HC_06_WriteString(vetorHum, 1);
+                        Bluetooth_HC_06_WriteByte((localHum[0] / 10));
+                        Bluetooth_HC_06_WriteByte((localHum[0] % 10));
+                        Bluetooth_HC_06_WriteString("\n", 1);
+                        }
                 }
                 else    // Usuário não conectado, devemos ver a condição da energia
                 {
@@ -93,7 +139,6 @@ void main_application( void* args)
                     }
                     else // Falha na tensão
                     {
-                        // Prepara para concatenar
                         auxTemp[0] = *localTemp;
                         auxTemp[2] = *(++localTemp);
                         
@@ -112,16 +157,33 @@ void main_application( void* args)
                                 EEPROM_DataWrite("A", 0);
                                 currLog = true;
                             }
+                            Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                            __delay_ms(5);
+                            Display_WriteString("SEM LOG", 8, 0);    
                         }
                         else // Log Já iniciado
                         {
-                            if(address <= 0xFD)
+                            // Log já iniciado
+                            if(address <= 0x04)
                             {
                                 // Escreve a temperatura registrada
                                 EEPROM_DataWrite(auxTemp[0], address);
 
                                 // Escreve a Humidade registrada
                                 EEPROM_DataWrite(auxHum[0], address);   
+                                
+                                Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                                __delay_ms(5);
+                                Display_WriteString("JA LOG", 7, 0);
+                                
+                            }
+                            else 
+                            {
+                                // LIGA UM ALERTA DE MEMÓRIA CHEIA
+                                // OK
+                                Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                                __delay_ms(5);
+                                Display_WriteString("MEM. FULL", 7, 0);
                             }
                             
                         }
@@ -140,11 +202,6 @@ void main_application( void* args)
             PIN_DIGITAL_WRITE(PIN_HIGH, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
         }
     }
-}
-/*============================================================================*/
-void StartSystem( void* args )
-{
-    
 }
 /*============================================================================*/
 void Display_Update(char* temp, char* hum) {

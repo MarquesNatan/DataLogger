@@ -32,9 +32,111 @@
 #include "../../board/pinout/pinout.h"
 #include "../../pic18f4520/timer/timer.h"
 #include "../../pic18f4520/serial/serial.h"
+
+
+
+
+#include "../display_lcd/display_lcd.h"
+#include "../../pic18f4520/serial/serial.h"
 /*============================================================================*/
-static volatile uint8_t temperature [2]; // [TEMP HIGH BYTE][TEMP LOW BYTE]
-static volatile uint8_t humidity [2]; // [HUM HIGH BYTE][HUM LOW BYTE]
+static  uint8_t temperature [2]; // [TEMP HIGH BYTE][TEMP LOW BYTE]
+static uint8_t humidity [2]; // [HUM HIGH BYTE][HUM LOW BYTE]
+
+
+
+void DHT11_Start( void )
+{
+    PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, DHT11_DATA_PORT, DHT11_DATA_MASK);
+    PIN_DIGITAL_WRITE(PIN_LOW, DHT11_DATA_PORT, DHT11_DATA_MASK);
+    
+    __delay_ms(20);
+    PIN_CONFIGURE_DIGITAL(PIN_INPUT, DHT11_DATA_PORT, DHT11_DATA_MASK);
+}
+
+void DHT11_Check_Response (void)  
+{
+	while (DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT));
+    while (!DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT));
+	while (DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT));
+}
+
+uint8_t read_data (void)
+{
+	uint8_t i,j;
+	for (j=0;j<8;j++)
+	{
+		while (DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT) == 0);
+		__delay_us (40);
+		if (DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT) == 0)
+		{
+			i&= ~(1<<(7-j));
+		}
+		else i|= (1<<(7-j));
+		while (DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT));
+	}
+	return i;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*============================================================================*/
 uint8_t DHT11_RequestData(void) {
@@ -43,11 +145,11 @@ uint8_t DHT11_RequestData(void) {
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, DHT11_DATA_PORT, DHT11_DATA_MASK);
     PIN_DIGITAL_WRITE(PIN_LOW, DHT11_DATA_PORT, DHT11_DATA_MASK);
 
-    __delay_ms(20);
+    __delay_ms(18);
 
     PIN_DIGITAL_WRITE(PIN_HIGH, DHT11_DATA_PORT, DHT11_DATA_MASK);
     PIN_CONFIGURE_DIGITAL(PIN_INPUT, DHT11_DATA_PORT, DHT11_DATA_MASK);
-    __delay_us(60);
+    __delay_us(30);
     
     while( !DIGITAL_PIN_READ(DHT11_DATA_PORT, DHT11_DATA_BIT))
     {
@@ -65,7 +167,7 @@ uint8_t DHT11_RequestData(void) {
         if(!--timeOut)
         {   
             return DHT11_ERROR_TIMEOUT;
-        }
+        }        
     }
     
 
@@ -84,16 +186,14 @@ uint8_t DHT11_ReadData(void) {
     if (!resquestResult) {
         humidity[0] = DHT11_ReadByte();
         humidity[1] = DHT11_ReadByte();
-
+        
         temperature[0] = DHT11_ReadByte();
         temperature[1] = DHT11_ReadByte();
-
-        checkSum = DHT11_ReadByte();
-
-
-        if (checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1])) {
-            return DHT11_ERROR_CHECKSUM;
-        }
+        
+        Display_WriteByte(humidity[0]);
+        Display_WriteByte(temperature[0]);
+        
+        
     } else {
         return resquestResult;
     }

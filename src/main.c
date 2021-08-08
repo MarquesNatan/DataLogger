@@ -43,96 +43,176 @@ adc_config_t adcConfig = {
     .positive_reference = INTERNAL_POSITIVE_REFERENCE,
     .result_format = RIGHT_JUSTIFIED,
     .adc_clock = FOSC_8,
-    .acquisition_time = TAD_2  
+    .acquisition_time = TAD_2
 };
 /*============================================================================*/
 extern global_timer_t global_timer_value;
 /*============================================================================*/
 uint8_t count = 0x00;
-volatile uint8_t vector[3] = {0, 0, 0};
+volatile char vector[3] = {0, 0, 0};
 static uint8_t i = 0x00;
-
+char byteReceived;
+uint8_t firstReceive;
 /*============================================================================*/
 static global_timer_t t = 0;
 extern bool TimeIsElapsed;
+
 /*============================================================================*/
 void tickHook_func(global_timer_t *timer_value) {
     (*timer_value)++;
-    if((*timer_value - t) >= TIME_TO_SEND_MS)
-    {   
+    if ((*timer_value - t) >= TIME_TO_SEND_MS) {
         t = (*timer_value);
         TimeIsElapsed = true;
     }
 }
+
 /*============================================================================*/
 void __interrupt() TC0INT(void) {
-    
+
+
     // Interrupção Timer 0
     if (INTCONbits.TMR0IF == 0x01) {
-        
+
         tickHook_Execute(&global_timer_value);
-        
+
         TMR0 = 0xFB1E; // TMR0 = 0x9E58; 
         INTCONbits.T0IF = 0x00; // Clean Timer Flag 
     }
 
     // Interrupção recepção serial
     if (PIR1bits.RCIF) {
-        count = RCREG;
-        vector[i] = count;
-        
-        if(count != 0x3E)
-        {
-            vector[i] = count;
-            i++;
-        }else 
-        {
-            vector[i] = count;
-            Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-            __delay_ms(5);
-            Display_WriteString(vector, sizeof(vector) + 1, 0);
-            
-            if(vector[1] == 0x43)
-            {
-                User_SetState(true);
-            }else if(vector[1] == 0x44)
-            {
-                User_SetState(false);
+        byteReceived = RCREG;
+
+        // Os primeiros 4 bytes são descartados | HC envia Ready na conexão
+        if (firstReceive <= 0x04) {
+            firstReceive++;
+        } else {
+            if (byteReceived != 0x3E) {
+                vector[i] = byteReceived;
+                i++;
+            } else {
+                vector[i] = byteReceived;
+                Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+                __delay_ms(5);
+                Display_WriteString(vector, sizeof (vector) + 1, 0);
+
+                if (vector[1] == 0x43) {
+                    User_SetState(true);
+                    DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+                } else if (vector[1] == 0x44) {
+                    User_SetState(false);
+                    DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+                }
+
+                i = 0;
             }
-            
-            i = 0;
+
+            /*
+             if(byteReceived == 0x45)
+             {
+                 DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+             }
+             else if(byteReceived == 0x4b)
+             {
+                 DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+             }
+             */
         }
+
+
         PIR1bits.RCIF = 0x00;
     }
 }
-
 /*============================================================================*/
 void main(void) {
-    
-    
-    /**/
+
+
+    /*
     Interrupt_GlobalEnable();
     Timer0_Config(&timerConfig);
     Timer0_SetTickHook(tickHook_func);
-    
+*/
     Serial_1_Config(&serialConfig);
-    
+
     // StartSystem(NULL);
     __delay_ms(300);
     DisplayLCD_Init();
-    
-    
+
+
     EEPROM_Erase();
-    
+
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+
+    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+
     PIN_CONFIGURE_DIGITAL(PIN_INPUT, VOLTAGE_INPUT_PORT, VOLTAGE_INPUT_MASK);
     
     
-    while (1) 
+    uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
+    uint16_t sum, RH, TEMP;
+    uint8_t check = 0;
+    
+    uint8_t s = 0x00;
+    __delay_ms(10000);
+    
+    while (1)
     {
-        main_application(NULL);
+        // main_application(NULL);
+        DHT11_Start();
+        DHT11_Check_Response();
+
+        // Read 40 bits (5 Bytes) of data
+        Rh_byte1 = read_data();
+        Rh_byte2 = read_data();
         
+        Temp_byte1 = read_data();
+        Temp_byte2 = read_data();
+        
+        sum = read_data();
+        
+        if(sum != (Rh_byte1 + Rh_byte2 + Temp_byte1 + Temp_byte2))
+        {
+            Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+            __delay_ms(3);
+            Display_WriteString("ERRO", 5, 0);
+        }
+        
+        Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+        __delay_ms(3);
+        Display_WriteString("HUMD:- ", 8, 0);
+        Display_WriteByte((Rh_byte1 / 10) + 48); // print 1nd digit
+        Display_WriteByte(((Rh_byte1 % 10)) + 48); // print 2st digit
+        Display_WriteByte(0x2e); // print 2st digit
+        Display_WriteByte((Rh_byte2 / 10) + 48); // print 1nd digit
+        Display_WriteByte(((Rh_byte2 % 10)) + 48); // print 2st digit
+        
+        Display_WriteByte(0x20); // print 2st digit
+        Display_WriteByte((sum / 10) + 48); // print 2st digit
+        Display_WriteByte((sum % 10) + 48); // print 2st digit
+        
+        
+        Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
+        Display_WriteString("TEMP:- ", 8, 0);
+        Display_WriteByte((Temp_byte1 / 10) + 48); // print 1nd digit
+        Display_WriteByte(((Temp_byte1 % 10)) + 48); // print 2st digit
+        Display_WriteByte(0x2e); // print 2st digit
+        Display_WriteByte((Temp_byte2 / 10) + 48); // print 1nd digit
+        Display_WriteByte(((Temp_byte2 % 10)) + 48); // print 2st digit
+        
+        Display_WriteByte(0x2e); // print 2st digit
+        Display_WriteByte(s + 48); // print 2st digit
+        __delay_ms(4000);
+        
+        
+        if( s < 9)
+        {
+            s++;
+        }else 
+        {
+            s = 0;
+        }
     }
     return;
 }

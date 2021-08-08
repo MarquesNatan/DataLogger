@@ -62,6 +62,11 @@ void Bluetooth_HC_06_WriteString( char* string, uint8_t length )
         Serial_Transmit(string[auxLength]);
     }
 }
+void Bluetooth_HC_06_WriteByte(char byte)
+{
+    Serial_Transmit(byte);
+}
+
 /*============================================================================*/
 bool User_GetState( void )
 {

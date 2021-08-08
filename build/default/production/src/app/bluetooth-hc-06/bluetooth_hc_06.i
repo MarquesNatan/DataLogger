@@ -4707,6 +4707,7 @@ typedef enum {
 
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
+    void Bluetooth_HC_06_WriteByte(char byte);
     uint8_t Bluetooth_HC_06_Read( void );
     _Bool User_GetState( void );
     _Bool User_SetState( _Bool state );
@@ -4772,6 +4773,11 @@ void Bluetooth_HC_06_WriteString( char* string, uint8_t length )
         Serial_Transmit(string[auxLength]);
     }
 }
+void Bluetooth_HC_06_WriteByte(char byte)
+{
+    Serial_Transmit(byte);
+}
+
 
 _Bool User_GetState( void )
 {

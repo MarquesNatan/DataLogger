@@ -4687,7 +4687,7 @@ char *tempnam(const char *, const char *);
 #pragma config CCP2MX = PORTC
 #pragma config PBADEN = OFF
 #pragma config LPT1OSC = OFF
-#pragma config MCLRE = OFF
+#pragma config MCLRE = ON
 
 
 #pragma config STVREN = ON
@@ -4980,6 +4980,7 @@ typedef enum {
 
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
+    void Bluetooth_HC_06_WriteByte(char byte);
     uint8_t Bluetooth_HC_06_Read( void );
     _Bool User_GetState( void );
     _Bool User_SetState( _Bool state );
@@ -5001,6 +5002,10 @@ typedef enum {
     uint8_t DHT11_ReadByte( void );
     uint8_t* DHT11_GetTemp( void );
     uint8_t* DHT11_GetHum( void );
+
+    void DHT11_Start( void );
+    void DHT11_Check_Response(void);
+    uint8_t read_data (void);
 # 20 "src/main.c" 2
 
 
@@ -5134,23 +5139,26 @@ adc_config_t adcConfig = {
 extern uint32_t global_timer_value;
 
 uint8_t count = 0x00;
-volatile uint8_t vector[3] = {0, 0, 0};
+volatile char vector[3] = {0, 0, 0};
 static uint8_t i = 0x00;
-
+char byteReceived;
+uint8_t firstReceive;
 
 static uint32_t t = 0;
 extern _Bool TimeIsElapsed;
 
+
 void tickHook_func(uint32_t *timer_value) {
     (*timer_value)++;
-    if((*timer_value - t) >= 300)
-    {
+    if ((*timer_value - t) >= 5000) {
         t = (*timer_value);
         TimeIsElapsed = 1;
     }
 }
 
+
 void __attribute__((picinterrupt(("")))) TC0INT(void) {
+
 
 
     if (INTCONbits.TMR0IF == 0x01) {
@@ -5163,61 +5171,128 @@ void __attribute__((picinterrupt(("")))) TC0INT(void) {
 
 
     if (PIR1bits.RCIF) {
-        count = RCREG;
-        vector[i] = count;
+        byteReceived = RCREG;
 
-        if(count != 0x3E)
-        {
-            vector[i] = count;
-            i++;
-        }else
-        {
-            vector[i] = count;
-            Display_SendByte(0b00000001, 0);
-            _delay((unsigned long)((5)*(10000000UL/4000.0)));
-            Display_WriteString(vector, sizeof(vector) + 1, 0);
 
-            if(vector[1] == 0x43)
-            {
-                User_SetState(1);
-            }else if(vector[1] == 0x44)
-            {
-                User_SetState(0);
+        if (firstReceive <= 0x04) {
+            firstReceive++;
+        } else {
+            if (byteReceived != 0x3E) {
+                vector[i] = byteReceived;
+                i++;
+            } else {
+                vector[i] = byteReceived;
+                Display_SendByte(0b00000001, 0);
+                _delay((unsigned long)((5)*(12000000UL/4000.0)));
+                Display_WriteString(vector, sizeof (vector) + 1, 0);
+
+                if (vector[1] == 0x43) {
+                    User_SetState(1);
+                    LATB = (PORTB ^ (1 << 0));;
+                } else if (vector[1] == 0x44) {
+                    User_SetState(0);
+                    LATB = (PORTB ^ (1 << 1));;
+                }
+
+                i = 0;
             }
-
-            i = 0;
+# 120 "src/main.c"
         }
+
+
         PIR1bits.RCIF = 0x00;
     }
 }
-
 
 void main(void) {
 
 
 
-    Interrupt_GlobalEnable();
-    Timer0_Config(&timerConfig);
-    Timer0_SetTickHook(tickHook_func);
+
+
+
 
     Serial_1_Config(&serialConfig);
 
 
-    _delay((unsigned long)((300)*(10000000UL/4000.0)));
+    _delay((unsigned long)((300)*(12000000UL/4000.0)));
     DisplayLCD_Init();
 
 
     EEPROM_Erase();
 
-    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
-    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
-    if(0x01 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 0))); else TRISB = (TRISB | (1 << 0));;
+    if(0x00 == 0x00) TRISB = (TRISB & (~(1 << 1))); else TRISB = (TRISB | (1 << 1));;
 
+    if(0x00 == 0x01) LATB = (PORTB | (1 << 0)); else LATB = (PORTB & ~((1 << 0)));;
+    if(0x00 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+
+    if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
+
+
+    uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
+    uint16_t sum, RH, TEMP;
+    uint8_t check = 0;
+
+    uint8_t s = 0x00;
+    _delay((unsigned long)((10000)*(12000000UL/4000.0)));
 
     while (1)
     {
-        main_application(((void*)0));
 
+        DHT11_Start();
+        DHT11_Check_Response();
+
+
+        Rh_byte1 = read_data();
+        Rh_byte2 = read_data();
+
+        Temp_byte1 = read_data();
+        Temp_byte2 = read_data();
+
+        sum = read_data();
+
+        if(sum != (Rh_byte1 + Rh_byte2 + Temp_byte1 + Temp_byte2))
+        {
+            Display_SendByte(0b00000001, 0);
+            _delay((unsigned long)((3)*(12000000UL/4000.0)));
+            Display_WriteString("ERRO", 5, 0);
+        }
+
+        Display_SendByte(0b00000001, 0);
+        _delay((unsigned long)((3)*(12000000UL/4000.0)));
+        Display_WriteString("HUMD:- ", 8, 0);
+        Display_WriteByte((Rh_byte1 / 10) + 48);
+        Display_WriteByte(((Rh_byte1 % 10)) + 48);
+        Display_WriteByte(0x2e);
+        Display_WriteByte((Rh_byte2 / 10) + 48);
+        Display_WriteByte(((Rh_byte2 % 10)) + 48);
+
+        Display_WriteByte(0x20);
+        Display_WriteByte((sum / 10) + 48);
+        Display_WriteByte((sum % 10) + 48);
+
+
+        Display_SendByte((0b10000000 | 0b01000000), 0);
+        Display_WriteString("TEMP:- ", 8, 0);
+        Display_WriteByte((Temp_byte1 / 10) + 48);
+        Display_WriteByte(((Temp_byte1 % 10)) + 48);
+        Display_WriteByte(0x2e);
+        Display_WriteByte((Temp_byte2 / 10) + 48);
+        Display_WriteByte(((Temp_byte2 % 10)) + 48);
+
+        Display_WriteByte(0x2e);
+        Display_WriteByte(s + 48);
+        _delay((unsigned long)((4000)*(12000000UL/4000.0)));
+
+
+        if( s < 9)
+        {
+            s++;
+        }else
+        {
+            s = 0;
+        }
     }
     return;
 }

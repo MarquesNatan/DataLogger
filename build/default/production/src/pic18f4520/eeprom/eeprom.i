@@ -4647,7 +4647,7 @@ char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr)
 {
 
-    uint8_t STATUS_INTCON = INTCONbits.GIE;
+    uint8_t STATUS_INTCON = INTCONbits.GIE_GIEH;
     while( EECON1bits.WR);
 
     EEADR = addr;
@@ -4663,7 +4663,7 @@ uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr)
     EECON2 = 0xAA;
     EECON1bits.WR = 1;
 
-    INTCONbits.GIE = STATUS_INTCON;
+    INTCONbits.GIE_GIEH = 1;
 
 
     return ++address;

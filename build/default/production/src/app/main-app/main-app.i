@@ -4901,6 +4901,10 @@ char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
     uint8_t DHT11_ReadByte( void );
     uint8_t* DHT11_GetTemp( void );
     uint8_t* DHT11_GetHum( void );
+
+    void DHT11_Start( void );
+    void DHT11_Check_Response(void);
+    uint8_t read_data (void);
 # 14 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
@@ -4940,6 +4944,7 @@ typedef enum {
 
     void Bluetooth_HC_06_Configure(void);
     void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
+    void Bluetooth_HC_06_WriteByte(char byte);
     uint8_t Bluetooth_HC_06_Read( void );
     _Bool User_GetState( void );
     _Bool User_SetState( _Bool state );
@@ -4998,11 +5003,12 @@ void main_application( void* args)
 
     static uint8_t localVoltageStatus = 0x00;
 
-    static uint8_t auxTemHum = 0x00;
-    static uint8_t lastAddr = 0x00;
+    static uint8_t addr = 0x00;
 
     char auxText[] = "USER CONECTADO";
     char auxText2[] = "USER DESCONN";
+
+    uint8_t aux;
 
     while(1)
     {
@@ -5023,12 +5029,57 @@ void main_application( void* args)
 
 
                 localUserState = User_GetState();
+
                 if(localUserState)
                 {
 
                     Display_SendByte(0b00000001, 0);
-                    _delay((unsigned long)((5)*(10000000UL/4000.0)));
+                    _delay((unsigned long)((5)*(12000000UL/4000.0)));
                     Display_WriteString(auxText, sizeof(auxText), 0);
+
+
+                    if(currLog)
+                    {
+                        Bluetooth_HC_06_WriteString("***ULTIMO LOG***\n", 17);
+                        for(addr = 0; addr <= 0x04 ; addr++)
+                        {
+                            aux = addr;
+                            aux++;
+
+                            auxTemp[0] = EEPROM_DataRead(addr);
+                            auxHum[0] = EEPROM_DataRead(aux);
+
+                            Bluetooth_HC_06_WriteString(vetorTemp, sizeof(vetorTemp));
+                            Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
+                            Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
+                            Bluetooth_HC_06_WriteString("  ", 2);
+
+                            Bluetooth_HC_06_WriteString(vetorHum, sizeof(vetorHum));
+
+                            Bluetooth_HC_06_WriteByte((localHum[0] / 10) + 0x30);
+                            Bluetooth_HC_06_WriteByte((localHum[0] % 10) + 0x30);
+
+
+                            Bluetooth_HC_06_WriteString("\n", 1);
+                        }
+                        Bluetooth_HC_06_WriteString("*** FIM LOG ***\n", 16);
+                        currLog = 0;
+                    }
+                    else
+                    {
+                        Bluetooth_HC_06_WriteString("*** LEITURA ATUAL ***\n", 22);
+
+                        Bluetooth_HC_06_WriteString(vetorTemp, sizeof (vetorTemp));
+                        Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
+                        Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
+                        Bluetooth_HC_06_WriteString("  ", 2);
+
+                        Bluetooth_HC_06_WriteString(vetorHum, sizeof (vetorHum));
+
+                        Bluetooth_HC_06_WriteByte((localHum[0] / 10));
+                        Bluetooth_HC_06_WriteByte((localHum[0] % 10));
+                        Bluetooth_HC_06_WriteString("\n", 1);
+                        }
                 }
                 else
                 {
@@ -5037,12 +5088,11 @@ void main_application( void* args)
                     if(localVoltageStatus)
                     {
                         Display_SendByte(0b00000001, 0);
-                        _delay((unsigned long)((5)*(10000000UL/4000.0)));
+                        _delay((unsigned long)((5)*(12000000UL/4000.0)));
                         Display_WriteString("TEM ENERGIA", sizeof("TEM ENERGIA"), 0);
                     }
                     else
                     {
-
                         auxTemp[0] = *localTemp;
                         auxTemp[2] = *(++localTemp);
 
@@ -5061,14 +5111,34 @@ void main_application( void* args)
                                 EEPROM_DataWrite("A", 0);
                                 currLog = 1;
                             }
+                            Display_SendByte(0b00000001, 0);
+                            _delay((unsigned long)((5)*(12000000UL/4000.0)));
+                            Display_WriteString("SEM LOG", 8, 0);
                         }
                         else
                         {
 
-                            EEPROM_DataWrite(auxTemp[0], address);
+                            if(address <= 0x04)
+                            {
+
+                                EEPROM_DataWrite(auxTemp[0], address);
 
 
-                            EEPROM_DataWrite(auxHum[0], address);
+                                EEPROM_DataWrite(auxHum[0], address);
+
+                                Display_SendByte(0b00000001, 0);
+                                _delay((unsigned long)((5)*(12000000UL/4000.0)));
+                                Display_WriteString("JA LOG", 7, 0);
+
+                            }
+                            else
+                            {
+
+
+                                Display_SendByte(0b00000001, 0);
+                                _delay((unsigned long)((5)*(12000000UL/4000.0)));
+                                Display_WriteString("MEM. FULL", 7, 0);
+                            }
 
                         }
                     }
@@ -5083,50 +5153,14 @@ void main_application( void* args)
         }
         else
         {
-            if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+            if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
         }
     }
 }
 
-void StartSystem( void* args )
-{
-    uint8_t dht11_response = 0x00;
-
-
-    Peripheral_Controller(((void*)0));
-
-
-
-    DisplayLCD_Init();
-
-
-    Display_WriteString("START_BLUETOOTH", sizeof("START_BLUETOOTH"), 0);
-
-    Bluetooth_HC_06_Configure();
-    _delay((unsigned long)((3000)*(10000000UL/4000.0)));
-
-
-    Display_SendByte(0b00000001, 0);
-   _delay((unsigned long)((2)*(10000000UL/4000.0)));
-
-
-
-    if((dht11_response = DHT11_RequestData()) == 0)
-    {
-        Display_WriteString("DHT11 OK", sizeof("DHT11 OK"), 0);
-    }else if((dht11_response = DHT11_RequestData()) == 1)
-    {
-        Display_WriteString("DHT11 TIMEOUT", sizeof("DHT11 TIMEOUT"), 0);
-
-        while(1);
-    }
-
-
-}
-
 void Display_Update(char* temp, char* hum) {
     Display_SendByte(0b00000001, 0);
-    _delay((unsigned long)((5)*(10000000UL/4000.0)));
+    _delay((unsigned long)((5)*(12000000UL/4000.0)));
 
     Display_WriteString(vetorTemp, sizeof (vetorTemp), 0);
 
@@ -5138,7 +5172,7 @@ void Display_Update(char* temp, char* hum) {
 
 
     Display_SendByte((0b10000000 | 0b01000000), 0);
-    _delay((unsigned long)((500)*(10000000UL/4000000.0)));
+    _delay((unsigned long)((500)*(12000000UL/4000000.0)));
 
 
     Display_WriteString(vetorHum, sizeof (vetorHum), 0);

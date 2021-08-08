@@ -4617,6 +4617,10 @@ typedef uint32_t uint_fast32_t;
     uint8_t DHT11_ReadByte( void );
     uint8_t* DHT11_GetTemp( void );
     uint8_t* DHT11_GetHum( void );
+
+    void DHT11_Start( void );
+    void DHT11_Check_Response(void);
+    uint8_t read_data (void);
 # 29 "src/app/dht11/dht11.c" 2
 
 # 1 "src/app/dht11/../../board/board_definitions/board_definitions.h" 1
@@ -4733,23 +4737,71 @@ typedef struct {
 # 34 "src/app/dht11/dht11.c" 2
 
 
-static volatile uint8_t temperature [2];
-static volatile uint8_t humidity [2];
 
 
+
+# 1 "src/app/dht11/../display_lcd/display_lcd.h" 1
+# 51 "src/app/dht11/../display_lcd/display_lcd.h"
+    void DisplayLCD_Init( void );
+    void Display_SendByte(uint8_t byte, uint8_t comm);
+    void Display_WriteByte(uint8_t byte);
+    void Display_WriteString(char* string, uint8_t length, uint8_t address);
+    void sendNibble(uint8_t nibble);
+# 39 "src/app/dht11/dht11.c" 2
+
+
+
+static uint8_t temperature [2];
+static uint8_t humidity [2];
+
+
+
+void DHT11_Start( void )
+{
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
+    if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+
+    _delay((unsigned long)((20)*(12000000UL/4000.0)));
+    if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
+}
+
+void DHT11_Check_Response (void)
+{
+ while (((PORTD >> 1)& 0b00000001));
+    while (!((PORTD >> 1)& 0b00000001));
+ while (((PORTD >> 1)& 0b00000001));
+}
+
+uint8_t read_data (void)
+{
+ uint8_t i,j;
+ for (j=0;j<8;j++)
+ {
+  while (((PORTD >> 1)& 0b00000001) == 0);
+  _delay((unsigned long)((40)*(12000000UL/4000000.0)));
+  if (((PORTD >> 1)& 0b00000001) == 0)
+  {
+   i&= ~(1<<(7-j));
+  }
+  else i|= (1<<(7-j));
+  while (((PORTD >> 1)& 0b00000001));
+ }
+ return i;
+}
+# 142 "src/app/dht11/dht11.c"
 uint8_t DHT11_RequestData(void) {
     uint16_t timeOut = 0xFFFF;
 
-    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
+    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
+    if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
 
-    _delay((unsigned long)((20)*(10000000UL/4000.0)));
+    _delay((unsigned long)((18)*(12000000UL/4000.0)));
 
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 0)); else LATD = (PORTD & ~((1 << 0)));;
-    if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 0))); else TRISD = (TRISD | (1 << 0));;
-    _delay((unsigned long)((60)*(10000000UL/4000000.0)));
+    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
+    if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
+    _delay((unsigned long)((30)*(12000000UL/4000000.0)));
 
-    while( !((PORTD >> 0)& 0b00000001))
+    while( !((PORTD >> 1)& 0b00000001))
     {
         if(!--timeOut )
         {
@@ -4760,7 +4812,7 @@ uint8_t DHT11_RequestData(void) {
 
     timeOut = 0xFFFF;
 
-    while(((PORTD >> 0)& 0b00000001))
+    while(((PORTD >> 1)& 0b00000001))
     {
         if(!--timeOut)
         {
@@ -4788,12 +4840,10 @@ uint8_t DHT11_ReadData(void) {
         temperature[0] = DHT11_ReadByte();
         temperature[1] = DHT11_ReadByte();
 
-        checkSum = DHT11_ReadByte();
+        Display_WriteByte(humidity[0]);
+        Display_WriteByte(temperature[0]);
 
 
-        if (checkSum != (humidity[0] + humidity [1] + temperature[0] + temperature[1])) {
-            return 2;
-        }
     } else {
         return resquestResult;
     }
@@ -4809,18 +4859,18 @@ uint8_t DHT11_ReadByte(void) {
 
     for (i = 0b10000000; i; i = (i >> 1)) {
         timeout = 0xFFFF;
-        while (!((PORTD >> 0)& 0b00000001)) {
+        while (!((PORTD >> 1)& 0b00000001)) {
             if (!--timeout) {
                 return 1;
             }
         }
 
-        _delay((unsigned long)((40)*(10000000UL/4000000.0)));
+        _delay((unsigned long)((40)*(12000000UL/4000000.0)));
 
-        if (((PORTD >> 0)& 0b00000001)) {
+        if (((PORTD >> 1)& 0b00000001)) {
             byte = byte | i;
             timeout = 0xFFFF;
-            while (!((PORTD >> 0)& 0b00000001)) {
+            while (!((PORTD >> 1)& 0b00000001)) {
                 if (!--timeout)
                     return 1;
             }

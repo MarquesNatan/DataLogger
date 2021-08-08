@@ -18,6 +18,12 @@ extern "C" {
     uint8_t DHT11_ReadByte( void );
     uint8_t* DHT11_GetTemp( void );
     uint8_t* DHT11_GetHum( void );
+    
+    void DHT11_Start( void );
+    void DHT11_Check_Response(void);
+    uint8_t read_data (void);
+    
+    
 /*============================================================================*/
 #ifdef	__cplusplus
 }

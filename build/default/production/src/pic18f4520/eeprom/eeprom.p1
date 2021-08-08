@@ -504,9 +504,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/eeprom/eeprom.c: 8: {
 [f ]
 "10
-[; ;src/pic18f4520/eeprom/eeprom.c: 10:     uint8_t STATUS_INTCON = INTCONbits.GIE;
+[; ;src/pic18f4520/eeprom/eeprom.c: 10:     uint8_t STATUS_INTCON = INTCONbits.GIE_GIEH;
 [v _STATUS_INTCON `uc ~T0 @X0 1 a ]
-[e = _STATUS_INTCON . . _INTCONbits 1 7 ]
+[e = _STATUS_INTCON . . _INTCONbits 0 7 ]
 "11
 [; ;src/pic18f4520/eeprom/eeprom.c: 11:     while( EECON1bits.WR);
 [e $U 282  ]
@@ -542,8 +542,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/eeprom/eeprom.c: 24:     EECON1bits.WR = 1;
 [e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
 "26
-[; ;src/pic18f4520/eeprom/eeprom.c: 26:     INTCONbits.GIE = STATUS_INTCON;
-[e = . . _INTCONbits 1 7 _STATUS_INTCON ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 26:     INTCONbits.GIE_GIEH = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "29
 [; ;src/pic18f4520/eeprom/eeprom.c: 29:     return ++address;
 [e ) =+ _address -> -> 1 `i `uc ]

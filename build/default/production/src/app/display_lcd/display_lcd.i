@@ -4638,7 +4638,7 @@ char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 void DisplayLCD_Init( void )
 {
 
-    _delay((unsigned long)((20)*(10000000UL/4000.0)));
+    _delay((unsigned long)((20)*(12000000UL/4000.0)));
 
 
     TRISB = 0x00;;
@@ -4660,7 +4660,7 @@ void DisplayLCD_Init( void )
 
 
     Display_SendByte(0b00000001, 0);
-   _delay((unsigned long)((2)*(10000000UL/4000.0)));
+   _delay((unsigned long)((2)*(12000000UL/4000.0)));
 
 
 
@@ -4676,10 +4676,10 @@ void sendNibble(uint8_t nibble)
 
     LATB = ((PORTB & 0x0F) | nibble);;
     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+    _delay((unsigned long)((100)*(12000000UL/4000000.0)));
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
 
-    _delay((unsigned long)((1)*(10000000UL/4000.0)));
+    _delay((unsigned long)((1)*(12000000UL/4000.0)));
 }
 
 void Display_SendByte(uint8_t byte, uint8_t comm)
@@ -4694,7 +4694,7 @@ void Display_SendByte(uint8_t byte, uint8_t comm)
 
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+    _delay((unsigned long)((100)*(12000000UL/4000000.0)));
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
 
     auxByte = (byte << 0x04);
@@ -4703,10 +4703,10 @@ void Display_SendByte(uint8_t byte, uint8_t comm)
 
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+    _delay((unsigned long)((100)*(12000000UL/4000000.0)));
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
 
-    _delay((unsigned long)((1)*(10000000UL/4000.0)));
+    _delay((unsigned long)((1)*(12000000UL/4000.0)));
 }
 
 void Display_WriteByte(uint8_t byte)
@@ -4719,7 +4719,7 @@ void Display_WriteByte(uint8_t byte)
 
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+    _delay((unsigned long)((100)*(12000000UL/4000000.0)));
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
 
 
@@ -4728,10 +4728,10 @@ void Display_WriteByte(uint8_t byte)
 
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
     if(0x01 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
-    _delay((unsigned long)((100)*(10000000UL/4000000.0)));
+    _delay((unsigned long)((100)*(12000000UL/4000000.0)));
     if(0x00 == 0x01) LATB = (PORTB | (1 << 2)); else LATB = (PORTB & ~((1 << 2)));;
 
-    _delay((unsigned long)((2)*(10000000UL/4000.0)));
+    _delay((unsigned long)((2)*(12000000UL/4000.0)));
 }
 
 void Display_WriteString(char* string, uint8_t length, uint8_t address)
