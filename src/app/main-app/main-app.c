@@ -28,6 +28,7 @@ char vetorTempLocal[4] = {35, 0, 0xf8, 0x43};
 char vetorHumLocal[3] = {90, 5, 0x25};
 bool TimeIsElapsed = false;
 
+uint8_t i = 0x00;
 
 
 char vetorTemp [6] = "TEMP: ";
@@ -50,11 +51,14 @@ void main_application(void* args) {
     static uint8_t localVoltageStatus = 0x00;
 
     static uint8_t addr = 0x00;
-
+    uint8_t aux = 0x00;
+    uint8_t aux2 = 0x00;
+    uint8_t aux3 = 0x00;
     char auxText[] = "USER CONECTADO";
     char auxText2[] = "USER DESCONN";
+    
+    
 
-    uint8_t aux;
 
     while (1) {
 
@@ -81,11 +85,30 @@ void main_application(void* args) {
                     // Existe um Log para enviar para o usuário
                     if (log)
                     {
+                        Bluetooth_HC_06_WriteString("\n***ULTIMO LOG***\n", 18);
+                        
+                        /*
                         Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
                         __delay_ms(3);
                         Display_WriteString("Existe Log", 11, 0);
                         __delay_ms(1000);
-                    
+                        */
+                        
+                        for(aux2 = 0x00; aux2 <= 0x08; aux2 += 2)
+                        {
+                            aux = EEPROM_DataRead(aux2);
+                            if(aux != 0xFF)
+                            {
+                                
+                                Bluetooth_HC_06_WriteString("\nAddress: ", 9);
+                                Bluetooth_HC_06_WriteByte(0x31);
+                                Bluetooth_HC_06_WriteString("\nValor Lido: ", 12);
+                                Bluetooth_HC_06_WriteByte(aux);
+                            }
+                        }
+                        
+                        log = false;
+                        address = ADDR_BASE;
                     }
                     else // Não existe log antigo -> Enviar dados atuais
                     {
@@ -93,6 +116,9 @@ void main_application(void* args) {
                         __delay_ms(3);
                         Display_WriteString("Nao tem Log", 12, 0);
                         __delay_ms(1000);
+                        
+                        
+                        Bluetooth_HC_06_WriteString("\n***ENVIA LOG ATUAL: ***\n", 25);
                     }
                     
                 }
@@ -122,13 +148,27 @@ void main_application(void* args) {
                         
                         if(address <= 0x08)
                         {
+                            // Escreve a temperatura registrada
+                            EEPROM_DataWrite(/*vetorTempLocal[0]*/ (0x41 + i), address);
+                            
+                            // Escreve a Humidade registrada
+                            //EEPROM_DataWrite(/*vetorHumLocal[0]*/"B" , address);
+                            
+                            aux = EEPROM_DataRead(address);
+                            
                             Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
                             __delay_ms(5);
-                            Display_WriteString("Escreve em: ", 13, 0);
+                            Display_WriteString("EEPROM:", 8, 0);
+                            
+                            Display_WriteByte(0x20);
+                            Display_WriteByte(aux);
+                            
                             Display_WriteByte(0x20);
                             Display_WriteByte(address + 48);
-                            ++address;
                             __delay_ms(500);
+                            
+                            address++;
+                            i++;
                         }
                         else 
                         {
@@ -190,7 +230,3 @@ void Display_Update(char* temp, char* hum) {
 
 }
 /*============================================================================*/
-
-/*============================================================================
- * 
- */

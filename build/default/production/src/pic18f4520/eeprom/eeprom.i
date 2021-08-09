@@ -4623,14 +4623,14 @@ typedef uint32_t uint_fast32_t;
 
 
 
-unsigned char address = 0x00;
+uint8_t address = 0x00;
 
 
 
 
 
     uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr);
-    unsigned char EEPROM_DataRead( uint8_t addr );
+    unsigned char EEPROM_DataRead( unsigned char addr );
     void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t start, uint8_t length);
     _Bool EEPROM_BlanckCheck( void );
     void EEPROM_Erase( void );
@@ -4666,10 +4666,10 @@ uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr)
     INTCONbits.GIE_GIEH = 1;
 
 
-    return ++address;
+    return address;
 }
 
-unsigned char EEPROM_DataRead( uint8_t addr )
+unsigned char EEPROM_DataRead( unsigned char addr )
 {
     while(EECON1bits.WR);
 

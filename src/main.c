@@ -84,53 +84,16 @@ void __interrupt() TC0INT(void) {
             User_SetState(false);
         }
         
-
-        /*
-         * // Os primeiros 4 bytes são descartados | HC envia Ready na conexão
-        if (firstReceive <= 0x04) {
-            firstReceive++;
-        } else {
-            if (byteReceived != 0x3E) {
-                vector[i] = byteReceived;
-                i++;
-            } else {
-                vector[i] = byteReceived;
-                Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-                __delay_ms(5);
-                Display_WriteString(vector, sizeof (vector) + 1, 0);
-
-                if (vector[1] == 0x43) {
-                    User_SetState(true);
-                    DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-                } else if (vector[1] == 0x44) {
-                    User_SetState(false);
-                    DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-                }
-
-                i = 0;
-            }
-
-         
-         */
-        /*
-         if(byteReceived == 0x45)
-         {
-             DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-         }
-         else if(byteReceived == 0x4b)
-         {
-             DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-         }
-      
-         */
+        byteReceived = 0x00;
         PIR1bits.RCIF = 0x00;
     }
 }
 
 /*============================================================================*/
 void main(void) {
-
-
+    
+    uint8_t a;
+    uint8_t b = 0x00;
     /**/
     Interrupt_GlobalEnable();
     Timer0_Config(&timerConfig);
@@ -149,30 +112,14 @@ void main(void) {
     
     EEPROM_Erase();
     
-    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-    __delay_ms(3);
-    Display_WriteString("EEPROM", 6, 0);
-    
-    
-    
     uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
     uint16_t sum, RH, TEMP;
     uint8_t check = 0;
     
-    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-    __delay_ms(3);
-    Display_WriteString("DEC", 4, 0);
+   __delay_ms(2000);
     
-    __delay_ms(2000);
-    
-    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-    __delay_ms(3);
-    Display_WriteString("DELAY", 6, 0);
-    
-    __delay_ms(2000);
-    while (1) {
-        
-        main_application(NULL);
+    while (1) { 
+         main_application(NULL);
         /*
         DHT11_Start();
         DHT11_Check_Response();

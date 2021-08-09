@@ -5091,14 +5091,14 @@ typedef struct
 
 # 1 "src/pic18f4520/eeprom/eeprom.h" 1
 # 14 "src/pic18f4520/eeprom/eeprom.h"
-unsigned char address = 0x00;
+uint8_t address = 0x00;
 
 
 
 
 
     uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr);
-    unsigned char EEPROM_DataRead( uint8_t addr );
+    unsigned char EEPROM_DataRead( unsigned char addr );
     void EEPROM_ReadBlock(uint8_t* dataRead, uint8_t start, uint8_t length);
     _Bool EEPROM_BlanckCheck( void );
     void EEPROM_Erase( void );
@@ -5168,7 +5168,8 @@ void __attribute__((picinterrupt(("")))) TC0INT(void) {
             LATB = (PORTB ^ (1 << 1));;
             User_SetState(0);
         }
-# 126 "src/main.c"
+
+        byteReceived = 0x00;
         PIR1bits.RCIF = 0x00;
     }
 }
@@ -5176,7 +5177,8 @@ void __attribute__((picinterrupt(("")))) TC0INT(void) {
 
 void main(void) {
 
-
+    uint8_t a;
+    uint8_t b = 0x00;
 
     Interrupt_GlobalEnable();
     Timer0_Config(&timerConfig);
@@ -5195,31 +5197,15 @@ void main(void) {
 
     EEPROM_Erase();
 
-    Display_SendByte(0b00000001, 0);
-    _delay((unsigned long)((3)*(12000000UL/4000.0)));
-    Display_WriteString("EEPROM", 6, 0);
-
-
-
     uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
     uint16_t sum, RH, TEMP;
     uint8_t check = 0;
 
-    Display_SendByte(0b00000001, 0);
-    _delay((unsigned long)((3)*(12000000UL/4000.0)));
-    Display_WriteString("DEC", 4, 0);
+   _delay((unsigned long)((2000)*(12000000UL/4000.0)));
 
-    _delay((unsigned long)((2000)*(12000000UL/4000.0)));
-
-    Display_SendByte(0b00000001, 0);
-    _delay((unsigned long)((3)*(12000000UL/4000.0)));
-    Display_WriteString("DELAY", 6, 0);
-
-    _delay((unsigned long)((2000)*(12000000UL/4000.0)));
     while (1) {
-
-        main_application(((void*)0));
-# 223 "src/main.c"
+         main_application(((void*)0));
+# 170 "src/main.c"
     }
     return;
 }

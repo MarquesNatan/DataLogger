@@ -457,7 +457,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "14 src/pic18f4520/eeprom/eeprom.h
-[; ;src/pic18f4520/eeprom/eeprom.h: 14: unsigned char address = 0x00;
+[; ;src/pic18f4520/eeprom/eeprom.h: 14: uint8_t address = 0x00;
 [v _address `uc ~T0 @X0 1 e ]
 [i _address
 -> -> 0 `i `uc
@@ -545,22 +545,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/eeprom/eeprom.c: 26:     INTCONbits.GIE_GIEH = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "29
-[; ;src/pic18f4520/eeprom/eeprom.c: 29:     return ++address;
-[e ) =+ _address -> -> 1 `i `uc ]
+[; ;src/pic18f4520/eeprom/eeprom.c: 29:     return address;
+[e ) _address ]
 [e $UE 281  ]
 "30
 [; ;src/pic18f4520/eeprom/eeprom.c: 30: }
 [e :UE 281 ]
 }
 "32
-[; ;src/pic18f4520/eeprom/eeprom.c: 32: unsigned char EEPROM_DataRead( uint8_t addr )
+[; ;src/pic18f4520/eeprom/eeprom.c: 32: unsigned char EEPROM_DataRead( unsigned char addr )
 [v _EEPROM_DataRead `(uc ~T0 @X0 1 ef1`uc ]
 "33
 [; ;src/pic18f4520/eeprom/eeprom.c: 33: {
 {
 [e :U _EEPROM_DataRead ]
 "32
-[; ;src/pic18f4520/eeprom/eeprom.c: 32: unsigned char EEPROM_DataRead( uint8_t addr )
+[; ;src/pic18f4520/eeprom/eeprom.c: 32: unsigned char EEPROM_DataRead( unsigned char addr )
 [v _addr `uc ~T0 @X0 1 r1 ]
 "33
 [; ;src/pic18f4520/eeprom/eeprom.c: 33: {

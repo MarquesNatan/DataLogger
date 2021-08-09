@@ -26,10 +26,10 @@ uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr)
     INTCONbits.GIE_GIEH = 1;
     
     
-    return ++address;
+    return address;
 }
 /*============================================================================*/
-unsigned char EEPROM_DataRead( uint8_t addr )
+unsigned char EEPROM_DataRead( unsigned char addr )
 {
     while(EECON1bits.WR);
     

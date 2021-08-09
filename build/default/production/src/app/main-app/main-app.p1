@@ -12,9 +12,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "54 src/app/main-app/../../app/display_lcd/display_lcd.h
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 54:     void Display_WriteString(char* string, uint8_t length, uint8_t address);
 [v _Display_WriteString `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
+"35 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 35:     void Bluetooth_HC_06_WriteString( char* string, uint8_t length );
+[v _Bluetooth_HC_06_WriteString `(v ~T0 @X0 0 ef2`*uc`uc ]
+"21 src/app/main-app/../../pic18f4520/eeprom/eeprom.h
+[; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 21:     unsigned char EEPROM_DataRead( unsigned char addr );
+[v _EEPROM_DataRead `(uc ~T0 @X0 0 ef1`uc ]
+"36 src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h
+[; ;src/app/main-app/../../app/bluetooth-hc-06/bluetooth_hc_06.h: 36:     void Bluetooth_HC_06_WriteByte(char byte);
+[v _Bluetooth_HC_06_WriteByte `(v ~T0 @X0 0 ef1`uc ]
 "11 src/app/main-app/../../app/read_voltage/read_voltage.h
 [; ;src/app/main-app/../../app/read_voltage/read_voltage.h: 11:     uint8_t Voltage_Read(void);
 [v _Voltage_Read `(uc ~T0 @X0 0 ef ]
+"20 src/app/main-app/../../pic18f4520/eeprom/eeprom.h
+[; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 20:     uint8_t EEPROM_DataWrite(unsigned char data, unsigned char addr);
+[v _EEPROM_DataWrite `(uc ~T0 @X0 0 ef2`uc`uc ]
 "53 src/app/main-app/../../app/display_lcd/display_lcd.h
 [; ;src/app/main-app/../../app/display_lcd/display_lcd.h: 53:     void Display_WriteByte(uint8_t byte);
 [v _Display_WriteByte `(v ~T0 @X0 0 ef1`uc ]
@@ -512,7 +524,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "14 src/app/main-app/../../pic18f4520/eeprom/eeprom.h
-[; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 14: unsigned char address = 0x00;
+[; ;src/app/main-app/../../pic18f4520/eeprom/eeprom.h: 14: uint8_t address = 0x00;
 [v _address `uc ~T0 @X0 1 e ]
 [i _address
 -> -> 0 `i `uc
@@ -559,8 +571,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _TimeIsElapsed
 -> -> 0 `i `a
 ]
-"33
-[; ;src/app/main-app/main-app.c: 33: char vetorTemp [6] = "TEMP: ";
+"31
+[; ;src/app/main-app/main-app.c: 31: uint8_t i = 0x00;
+[v _i `uc ~T0 @X0 1 e ]
+[i _i
+-> -> 0 `i `uc
+]
+"34
+[; ;src/app/main-app/main-app.c: 34: char vetorTemp [6] = "TEMP: ";
 [v _vetorTemp `uc ~T0 @X0 -> 6 `i e ]
 [i _vetorTemp
 :U ..
@@ -572,8 +590,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 32 `c
 ..
 ]
-"34
-[; ;src/app/main-app/main-app.c: 34: char vetorHum [7] = "HUM : ";
+"35
+[; ;src/app/main-app/main-app.c: 35: char vetorHum [7] = "HUM : ";
 [v _vetorHum `uc ~T0 @X0 -> 7 `i e ]
 [i _vetorHum
 :U ..
@@ -586,50 +604,40 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"37
-[; ;src/app/main-app/main-app.c: 37: void main_application(void* args) {
+"38
+[; ;src/app/main-app/main-app.c: 38: void main_application(void* args) {
 [v _main_application `(v ~T0 @X0 1 ef1`*v ]
 {
 [e :U _main_application ]
 [v _args `*v ~T0 @X0 1 r1 ]
 [f ]
-"38
-[; ;src/app/main-app/main-app.c: 38:     static uint8_t voltageStatus = 0x00;
-[v F3170 `uc ~T0 @X0 1 s voltageStatus ]
-[i F3170
--> -> 0 `i `uc
-]
-"40
-[; ;src/app/main-app/main-app.c: 40:     static uint8_t localDHT11Result = 0x00;
-[v F3171 `uc ~T0 @X0 1 s localDHT11Result ]
+"39
+[; ;src/app/main-app/main-app.c: 39:     static uint8_t voltageStatus = 0x00;
+[v F3171 `uc ~T0 @X0 1 s voltageStatus ]
 [i F3171
 -> -> 0 `i `uc
 ]
-"42
-[; ;src/app/main-app/main-app.c: 42:     static char *localTemp = ((void*)0);
-[v F3172 `*uc ~T0 @X0 1 s localTemp ]
+"41
+[; ;src/app/main-app/main-app.c: 41:     static uint8_t localDHT11Result = 0x00;
+[v F3172 `uc ~T0 @X0 1 s localDHT11Result ]
 [i F3172
--> -> -> 0 `i `*v `*uc
+-> -> 0 `i `uc
 ]
 "43
-[; ;src/app/main-app/main-app.c: 43:     static char *localHum = ((void*)0);
-[v F3173 `*uc ~T0 @X0 1 s localHum ]
+[; ;src/app/main-app/main-app.c: 43:     static char *localTemp = ((void*)0);
+[v F3173 `*uc ~T0 @X0 1 s localTemp ]
 [i F3173
 -> -> -> 0 `i `*v `*uc
 ]
-"45
-[; ;src/app/main-app/main-app.c: 45:     static char auxTemp[3] = "0.0";
-[v F3174 `uc ~T0 @X0 -> 3 `i s auxTemp ]
+"44
+[; ;src/app/main-app/main-app.c: 44:     static char *localHum = ((void*)0);
+[v F3174 `*uc ~T0 @X0 1 s localHum ]
 [i F3174
-:U ..
--> 48 `c
--> 46 `c
--> 48 `c
-..
+-> -> -> 0 `i `*v `*uc
 ]
 "46
-[; ;src/app/main-app/main-app.c: 46:     static char auxHum[3] = "0.0";
-[v F3175 `uc ~T0 @X0 -> 3 `i s auxHum ]
+[; ;src/app/main-app/main-app.c: 46:     static char auxTemp[3] = "0.0";
+[v F3175 `uc ~T0 @X0 -> 3 `i s auxTemp ]
 [i F3175
 :U ..
 -> 48 `c
@@ -637,29 +645,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 48 `c
 ..
 ]
-"48
-[; ;src/app/main-app/main-app.c: 48:     static _Bool localUserState = 0;
-[v F3176 `a ~T0 @X0 1 s localUserState ]
+"47
+[; ;src/app/main-app/main-app.c: 47:     static char auxHum[3] = "0.0";
+[v F3176 `uc ~T0 @X0 -> 3 `i s auxHum ]
 [i F3176
+:U ..
+-> 48 `c
+-> 46 `c
+-> 48 `c
+..
+]
+"49
+[; ;src/app/main-app/main-app.c: 49:     static _Bool localUserState = 0;
+[v F3177 `a ~T0 @X0 1 s localUserState ]
+[i F3177
 -> -> 0 `i `a
 ]
-"50
-[; ;src/app/main-app/main-app.c: 50:     static uint8_t localVoltageStatus = 0x00;
-[v F3177 `uc ~T0 @X0 1 s localVoltageStatus ]
-[i F3177
--> -> 0 `i `uc
-]
-"52
-[; ;src/app/main-app/main-app.c: 52:     static uint8_t addr = 0x00;
-[v F3178 `uc ~T0 @X0 1 s addr ]
+"51
+[; ;src/app/main-app/main-app.c: 51:     static uint8_t localVoltageStatus = 0x00;
+[v F3178 `uc ~T0 @X0 1 s localVoltageStatus ]
 [i F3178
 -> -> 0 `i `uc
 ]
-[v F3179 `uc ~T0 @X0 -> 15 `i s ]
+"53
+[; ;src/app/main-app/main-app.c: 53:     static uint8_t addr = 0x00;
+[v F3179 `uc ~T0 @X0 1 s addr ]
 [i F3179
-:U ..
+-> -> 0 `i `uc
+]
 "54
-[; ;src/app/main-app/main-app.c: 54:     char auxText[] = "USER CONECTADO";
+[; ;src/app/main-app/main-app.c: 54:     uint8_t aux = 0x00;
+[v _aux `uc ~T0 @X0 1 a ]
+[e = _aux -> -> 0 `i `uc ]
+"55
+[; ;src/app/main-app/main-app.c: 55:     uint8_t aux2 = 0x00;
+[v _aux2 `uc ~T0 @X0 1 a ]
+[e = _aux2 -> -> 0 `i `uc ]
+"56
+[; ;src/app/main-app/main-app.c: 56:     uint8_t aux3 = 0x00;
+[v _aux3 `uc ~T0 @X0 1 a ]
+[e = _aux3 -> -> 0 `i `uc ]
+[v F3183 `uc ~T0 @X0 -> 15 `i s ]
+[i F3183
+:U ..
+"57
+[; ;src/app/main-app/main-app.c: 57:     char auxText[] = "USER CONECTADO";
 -> 85 `c
 -> 83 `c
 -> 69 `c
@@ -678,12 +708,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _auxText `uc ~T0 @X0 -> 15 `i a ]
-[e = _auxText F3179 ]
-[v F3181 `uc ~T0 @X0 -> 13 `i s ]
-[i F3181
+[e = _auxText F3183 ]
+[v F3185 `uc ~T0 @X0 -> 13 `i s ]
+[i F3185
 :U ..
-"55
-[; ;src/app/main-app/main-app.c: 55:     char auxText2[] = "USER DESCONN";
+"58
+[; ;src/app/main-app/main-app.c: 58:     char auxText2[] = "USER DESCONN";
 -> 85 `c
 -> 83 `c
 -> 69 `c
@@ -700,347 +730,404 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _auxText2 `uc ~T0 @X0 -> 13 `i a ]
-[e = _auxText2 F3181 ]
-"57
-[; ;src/app/main-app/main-app.c: 57:     uint8_t aux;
-[v _aux `uc ~T0 @X0 1 a ]
-"59
-[; ;src/app/main-app/main-app.c: 59:     while (1) {
+[e = _auxText2 F3185 ]
+"63
+[; ;src/app/main-app/main-app.c: 63:     while (1) {
 [e :U 287 ]
 {
-"62
-[; ;src/app/main-app/main-app.c: 62:         if (TimeIsElapsed)
-[e $ ! != -> _TimeIsElapsed `i -> 0 `i 289  ]
-"63
-[; ;src/app/main-app/main-app.c: 63:         {
-{
 "66
-[; ;src/app/main-app/main-app.c: 66:             if (1)
-[e $ ! != -> 1 `i -> 0 `i 290  ]
+[; ;src/app/main-app/main-app.c: 66:         if (TimeIsElapsed)
+[e $ ! != -> _TimeIsElapsed `i -> 0 `i 289  ]
 "67
-[; ;src/app/main-app/main-app.c: 67:             {
+[; ;src/app/main-app/main-app.c: 67:         {
 {
-"68
-[; ;src/app/main-app/main-app.c: 68:                 localTemp = &vetorTempLocal;
-[e = F3172 -> &U _vetorTempLocal `*uc ]
-"69
-[; ;src/app/main-app/main-app.c: 69:                 localHum = &vetorHumLocal;
-[e = F3173 -> &U _vetorHumLocal `*uc ]
+"70
+[; ;src/app/main-app/main-app.c: 70:             if (1)
+[e $ ! != -> 1 `i -> 0 `i 290  ]
+"71
+[; ;src/app/main-app/main-app.c: 71:             {
+{
 "72
-[; ;src/app/main-app/main-app.c: 72:                 localUserState = User_GetState();
-[e = F3176 ( _User_GetState ..  ]
-"74
-[; ;src/app/main-app/main-app.c: 74:                 if (localUserState) {
-[e $ ! != -> F3176 `i -> 0 `i 291  ]
-{
+[; ;src/app/main-app/main-app.c: 72:                 localTemp = &vetorTempLocal;
+[e = F3173 -> &U _vetorTempLocal `*uc ]
+"73
+[; ;src/app/main-app/main-app.c: 73:                 localHum = &vetorHumLocal;
+[e = F3174 -> &U _vetorHumLocal `*uc ]
 "76
-[; ;src/app/main-app/main-app.c: 76:                     Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"77
-[; ;src/app/main-app/main-app.c: 77:                     _delay((unsigned long)((3)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+[; ;src/app/main-app/main-app.c: 76:                 localUserState = User_GetState();
+[e = F3177 ( _User_GetState ..  ]
 "78
-[; ;src/app/main-app/main-app.c: 78:                     Display_WriteString("Conectado", 10, 0);
-[e ( _Display_WriteString (3 , , :s 1C -> -> 10 `i `uc -> -> 0 `i `uc ]
-"79
-[; ;src/app/main-app/main-app.c: 79:                     _delay((unsigned long)((1000)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+[; ;src/app/main-app/main-app.c: 78:                 if (localUserState) {
+[e $ ! != -> F3177 `i -> 0 `i 291  ]
+{
+"80
+[; ;src/app/main-app/main-app.c: 80:                     Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"81
+[; ;src/app/main-app/main-app.c: 81:                     _delay((unsigned long)((3)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
 "82
-[; ;src/app/main-app/main-app.c: 82:                     if (log)
-[e $ ! != -> _log `i -> 0 `i 292  ]
+[; ;src/app/main-app/main-app.c: 82:                     Display_WriteString("Conectado", 10, 0);
+[e ( _Display_WriteString (3 , , :s 1C -> -> 10 `i `uc -> -> 0 `i `uc ]
 "83
-[; ;src/app/main-app/main-app.c: 83:                     {
-{
-"84
-[; ;src/app/main-app/main-app.c: 84:                         Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"85
-[; ;src/app/main-app/main-app.c: 85:                         _delay((unsigned long)((3)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+[; ;src/app/main-app/main-app.c: 83:                     _delay((unsigned long)((1000)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
 "86
-[; ;src/app/main-app/main-app.c: 86:                         Display_WriteString("Existe Log", 11, 0);
-[e ( _Display_WriteString (3 , , :s 2C -> -> 11 `i `uc -> -> 0 `i `uc ]
+[; ;src/app/main-app/main-app.c: 86:                     if (log)
+[e $ ! != -> _log `i -> 0 `i 292  ]
 "87
-[; ;src/app/main-app/main-app.c: 87:                         _delay((unsigned long)((1000)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"89
-[; ;src/app/main-app/main-app.c: 89:                     }
-}
-[e $U 293  ]
-"90
-[; ;src/app/main-app/main-app.c: 90:                     else
-[e :U 292 ]
-"91
-[; ;src/app/main-app/main-app.c: 91:                     {
+[; ;src/app/main-app/main-app.c: 87:                     {
 {
-"92
-[; ;src/app/main-app/main-app.c: 92:                         Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"93
-[; ;src/app/main-app/main-app.c: 93:                         _delay((unsigned long)((3)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"94
-[; ;src/app/main-app/main-app.c: 94:                         Display_WriteString("Nao tem Log", 12, 0);
-[e ( _Display_WriteString (3 , , :s 3C -> -> 12 `i `uc -> -> 0 `i `uc ]
-"95
-[; ;src/app/main-app/main-app.c: 95:                         _delay((unsigned long)((1000)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"96
-[; ;src/app/main-app/main-app.c: 96:                     }
-}
+"88
+[; ;src/app/main-app/main-app.c: 88:                         Bluetooth_HC_06_WriteString("\n***ULTIMO LOG***\n", 18);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 2C -> -> 18 `i `uc ]
+"97
+[; ;src/app/main-app/main-app.c: 97:                         for(aux2 = 0x00; aux2 <= 0x08; aux2 += 2)
+{
+[e = _aux2 -> -> 0 `i `uc ]
+[e $ <= -> _aux2 `i -> 8 `i 293  ]
+[e $U 294  ]
 [e :U 293 ]
 "98
-[; ;src/app/main-app/main-app.c: 98:                 }
-}
-[e $U 294  ]
+[; ;src/app/main-app/main-app.c: 98:                         {
+{
 "99
-[; ;src/app/main-app/main-app.c: 99:                 else
-[e :U 291 ]
+[; ;src/app/main-app/main-app.c: 99:                             aux = EEPROM_DataRead(aux2);
+[e = _aux ( _EEPROM_DataRead (1 _aux2 ]
 "100
-[; ;src/app/main-app/main-app.c: 100:                 {
-{
+[; ;src/app/main-app/main-app.c: 100:                             if(aux != 0xFF)
+[e $ ! != -> _aux `i -> 255 `i 296  ]
 "101
-[; ;src/app/main-app/main-app.c: 101:                     Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"102
-[; ;src/app/main-app/main-app.c: 102:                     _delay((unsigned long)((3)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+[; ;src/app/main-app/main-app.c: 101:                             {
+{
 "103
-[; ;src/app/main-app/main-app.c: 103:                     Display_WriteString("Desconectado", 13, 0);
-[e ( _Display_WriteString (3 , , :s 4C -> -> 13 `i `uc -> -> 0 `i `uc ]
+[; ;src/app/main-app/main-app.c: 103:                                 Bluetooth_HC_06_WriteString("\nAddress: ", 9);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 3C -> -> 9 `i `uc ]
 "104
-[; ;src/app/main-app/main-app.c: 104:                     _delay((unsigned long)((1000)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+[; ;src/app/main-app/main-app.c: 104:                                 Bluetooth_HC_06_WriteByte(0x31);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> -> 49 `i `uc ]
+"105
+[; ;src/app/main-app/main-app.c: 105:                                 Bluetooth_HC_06_WriteString("\nValor Lido: ", 12);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 4C -> -> 12 `i `uc ]
+"106
+[; ;src/app/main-app/main-app.c: 106:                                 Bluetooth_HC_06_WriteByte(aux);
+[e ( _Bluetooth_HC_06_WriteByte (1 -> _aux `uc ]
 "107
-[; ;src/app/main-app/main-app.c: 107:                     localVoltageStatus = Voltage_Read();
-[e = F3177 ( _Voltage_Read ..  ]
-"109
-[; ;src/app/main-app/main-app.c: 109:                     if(localVoltageStatus)
-[e $ ! != -> F3177 `i -> 0 `i 295  ]
-"110
-[; ;src/app/main-app/main-app.c: 110:                     {
-{
-"111
-[; ;src/app/main-app/main-app.c: 111:                         Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"112
-[; ;src/app/main-app/main-app.c: 112:                         _delay((unsigned long)((5)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"113
-[; ;src/app/main-app/main-app.c: 113:                         Display_WriteString("Tem energia", 12, 0);
-[e ( _Display_WriteString (3 , , :s 5C -> -> 12 `i `uc -> -> 0 `i `uc ]
-"114
-[; ;src/app/main-app/main-app.c: 114:                         _delay((unsigned long)((500)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"115
-[; ;src/app/main-app/main-app.c: 115:                     }
-}
-[e $U 296  ]
-"116
-[; ;src/app/main-app/main-app.c: 116:                     else
-[e :U 295 ]
-"117
-[; ;src/app/main-app/main-app.c: 117:                     {
-{
-"118
-[; ;src/app/main-app/main-app.c: 118:                         Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"119
-[; ;src/app/main-app/main-app.c: 119:                         _delay((unsigned long)((5)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"120
-[; ;src/app/main-app/main-app.c: 120:                         Display_WriteString("Nao tem energia", 16, 0);
-[e ( _Display_WriteString (3 , , :s 6C -> -> 16 `i `uc -> -> 0 `i `uc ]
-"121
-[; ;src/app/main-app/main-app.c: 121:                         _delay((unsigned long)((500)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"123
-[; ;src/app/main-app/main-app.c: 123:                         if(address <= 0x08)
-[e $ ! <= -> _address `i -> 8 `i 297  ]
-"124
-[; ;src/app/main-app/main-app.c: 124:                         {
-{
-"125
-[; ;src/app/main-app/main-app.c: 125:                             Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"126
-[; ;src/app/main-app/main-app.c: 126:                             _delay((unsigned long)((5)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"127
-[; ;src/app/main-app/main-app.c: 127:                             Display_WriteString("Escreve em: ", 13, 0);
-[e ( _Display_WriteString (3 , , :s 7C -> -> 13 `i `uc -> -> 0 `i `uc ]
-"128
-[; ;src/app/main-app/main-app.c: 128:                             Display_WriteByte(0x20);
-[e ( _Display_WriteByte (1 -> -> 32 `i `uc ]
-"129
-[; ;src/app/main-app/main-app.c: 129:                             Display_WriteByte(address + 48);
-[e ( _Display_WriteByte (1 -> + -> _address `i -> 48 `i `uc ]
-"130
-[; ;src/app/main-app/main-app.c: 130:                             ++address;
-[e =+ _address -> -> 1 `i `uc ]
-"131
-[; ;src/app/main-app/main-app.c: 131:                             _delay((unsigned long)((500)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"132
-[; ;src/app/main-app/main-app.c: 132:                         }
-}
-[e $U 298  ]
-"133
-[; ;src/app/main-app/main-app.c: 133:                         else
-[e :U 297 ]
-"134
-[; ;src/app/main-app/main-app.c: 134:                         {
-{
-"135
-[; ;src/app/main-app/main-app.c: 135:                             Display_SendByte(0b00000001, 0);
-[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"136
-[; ;src/app/main-app/main-app.c: 136:                             _delay((unsigned long)((5)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"137
-[; ;src/app/main-app/main-app.c: 137:                             Display_WriteString("FULL MEM.", 10, 0);
-[e ( _Display_WriteString (3 , , :s 8C -> -> 10 `i `uc -> -> 0 `i `uc ]
-"138
-[; ;src/app/main-app/main-app.c: 138:                             _delay((unsigned long)((350)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"139
-[; ;src/app/main-app/main-app.c: 139:                         }
-}
-[e :U 298 ]
-"141
-[; ;src/app/main-app/main-app.c: 141:                         log = 1;
-[e = _log -> -> 1 `i `a ]
-"142
-[; ;src/app/main-app/main-app.c: 142:                     }
+[; ;src/app/main-app/main-app.c: 107:                             }
 }
 [e :U 296 ]
-"143
-[; ;src/app/main-app/main-app.c: 143:                 }
+"108
+[; ;src/app/main-app/main-app.c: 108:                         }
 }
+[e =+ _aux2 -> -> 2 `i `uc ]
+[e $ <= -> _aux2 `i -> 8 `i 293  ]
 [e :U 294 ]
-"144
-[; ;src/app/main-app/main-app.c: 144:             }
 }
-[e $U 299  ]
-"145
-[; ;src/app/main-app/main-app.c: 145:             else
-[e :U 290 ]
-"146
-[; ;src/app/main-app/main-app.c: 146:             {
+"110
+[; ;src/app/main-app/main-app.c: 110:                         log = 0;
+[e = _log -> -> 0 `i `a ]
+"111
+[; ;src/app/main-app/main-app.c: 111:                         address = 0x00;
+[e = _address -> -> 0 `i `uc ]
+"112
+[; ;src/app/main-app/main-app.c: 112:                     }
+}
+[e $U 297  ]
+"113
+[; ;src/app/main-app/main-app.c: 113:                     else
+[e :U 292 ]
+"114
+[; ;src/app/main-app/main-app.c: 114:                     {
 {
-"147
-[; ;src/app/main-app/main-app.c: 147:                  Display_SendByte(0b00000001, 0);
+"115
+[; ;src/app/main-app/main-app.c: 115:                         Display_SendByte(0b00000001, 0);
 [e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"148
-[; ;src/app/main-app/main-app.c: 148:                  _delay((unsigned long)((3)*(12000000UL/4000.0)));
+"116
+[; ;src/app/main-app/main-app.c: 116:                         _delay((unsigned long)((3)*(12000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"149
-[; ;src/app/main-app/main-app.c: 149:                  Display_WriteString("Erro Sensor", 12, 0);
-[e ( _Display_WriteString (3 , , :s 9C -> -> 12 `i `uc -> -> 0 `i `uc ]
-"150
-[; ;src/app/main-app/main-app.c: 150:                  _delay((unsigned long)((2000)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"151
-[; ;src/app/main-app/main-app.c: 151:             }
+"117
+[; ;src/app/main-app/main-app.c: 117:                         Display_WriteString("Nao tem Log", 12, 0);
+[e ( _Display_WriteString (3 , , :s 5C -> -> 12 `i `uc -> -> 0 `i `uc ]
+"118
+[; ;src/app/main-app/main-app.c: 118:                         _delay((unsigned long)((1000)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"121
+[; ;src/app/main-app/main-app.c: 121:                         Bluetooth_HC_06_WriteString("\n***ENVIA LOG ATUAL: ***\n", 25);
+[e ( _Bluetooth_HC_06_WriteString (2 , :s 6C -> -> 25 `i `uc ]
+"122
+[; ;src/app/main-app/main-app.c: 122:                     }
 }
-[e :U 299 ]
-"153
-[; ;src/app/main-app/main-app.c: 153:             TimeIsElapsed = 0;
-[e = _TimeIsElapsed -> -> 0 `i `a ]
-"154
-[; ;src/app/main-app/main-app.c: 154:         }
+[e :U 297 ]
+"124
+[; ;src/app/main-app/main-app.c: 124:                 }
+}
+[e $U 298  ]
+"125
+[; ;src/app/main-app/main-app.c: 125:                 else
+[e :U 291 ]
+"126
+[; ;src/app/main-app/main-app.c: 126:                 {
+{
+"127
+[; ;src/app/main-app/main-app.c: 127:                     Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"128
+[; ;src/app/main-app/main-app.c: 128:                     _delay((unsigned long)((3)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"129
+[; ;src/app/main-app/main-app.c: 129:                     Display_WriteString("Desconectado", 13, 0);
+[e ( _Display_WriteString (3 , , :s 7C -> -> 13 `i `uc -> -> 0 `i `uc ]
+"130
+[; ;src/app/main-app/main-app.c: 130:                     _delay((unsigned long)((1000)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"133
+[; ;src/app/main-app/main-app.c: 133:                     localVoltageStatus = Voltage_Read();
+[e = F3178 ( _Voltage_Read ..  ]
+"135
+[; ;src/app/main-app/main-app.c: 135:                     if(localVoltageStatus)
+[e $ ! != -> F3178 `i -> 0 `i 299  ]
+"136
+[; ;src/app/main-app/main-app.c: 136:                     {
+{
+"137
+[; ;src/app/main-app/main-app.c: 137:                         Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"138
+[; ;src/app/main-app/main-app.c: 138:                         _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"139
+[; ;src/app/main-app/main-app.c: 139:                         Display_WriteString("Tem energia", 12, 0);
+[e ( _Display_WriteString (3 , , :s 8C -> -> 12 `i `uc -> -> 0 `i `uc ]
+"140
+[; ;src/app/main-app/main-app.c: 140:                         _delay((unsigned long)((500)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"141
+[; ;src/app/main-app/main-app.c: 141:                     }
 }
 [e $U 300  ]
-"155
-[; ;src/app/main-app/main-app.c: 155:         else
-[e :U 289 ]
-"156
-[; ;src/app/main-app/main-app.c: 156:         {
+"142
+[; ;src/app/main-app/main-app.c: 142:                     else
+[e :U 299 ]
+"143
+[; ;src/app/main-app/main-app.c: 143:                     {
 {
-"157
-[; ;src/app/main-app/main-app.c: 157:             Display_SendByte(0b00000001, 0);
+"144
+[; ;src/app/main-app/main-app.c: 144:                         Display_SendByte(0b00000001, 0);
 [e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"158
-[; ;src/app/main-app/main-app.c: 158:             _delay((unsigned long)((5)*(12000000UL/4000.0)));
+"145
+[; ;src/app/main-app/main-app.c: 145:                         _delay((unsigned long)((5)*(12000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"146
+[; ;src/app/main-app/main-app.c: 146:                         Display_WriteString("Nao tem energia", 16, 0);
+[e ( _Display_WriteString (3 , , :s 9C -> -> 16 `i `uc -> -> 0 `i `uc ]
+"147
+[; ;src/app/main-app/main-app.c: 147:                         _delay((unsigned long)((500)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"149
+[; ;src/app/main-app/main-app.c: 149:                         if(address <= 0x08)
+[e $ ! <= -> _address `i -> 8 `i 301  ]
+"150
+[; ;src/app/main-app/main-app.c: 150:                         {
+{
+"152
+[; ;src/app/main-app/main-app.c: 152:                             EEPROM_DataWrite( (0x41 + i), address);
+[e ( _EEPROM_DataWrite (2 , -> + -> 65 `i -> _i `i `uc _address ]
+"157
+[; ;src/app/main-app/main-app.c: 157:                             aux = EEPROM_DataRead(address);
+[e = _aux ( _EEPROM_DataRead (1 _address ]
 "159
-[; ;src/app/main-app/main-app.c: 159:             Display_WriteString("Nao e Hora", 11, 0);
-[e ( _Display_WriteString (3 , , :s 10C -> -> 11 `i `uc -> -> 0 `i `uc ]
+[; ;src/app/main-app/main-app.c: 159:                             Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"160
+[; ;src/app/main-app/main-app.c: 160:                             _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
 "161
-[; ;src/app/main-app/main-app.c: 161:             _delay((unsigned long)((2000)*(12000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"162
-[; ;src/app/main-app/main-app.c: 162:         }
+[; ;src/app/main-app/main-app.c: 161:                             Display_WriteString("EEPROM:", 8, 0);
+[e ( _Display_WriteString (3 , , :s 10C -> -> 8 `i `uc -> -> 0 `i `uc ]
+"163
+[; ;src/app/main-app/main-app.c: 163:                             Display_WriteByte(0x20);
+[e ( _Display_WriteByte (1 -> -> 32 `i `uc ]
+"164
+[; ;src/app/main-app/main-app.c: 164:                             Display_WriteByte(aux);
+[e ( _Display_WriteByte (1 _aux ]
+"166
+[; ;src/app/main-app/main-app.c: 166:                             Display_WriteByte(0x20);
+[e ( _Display_WriteByte (1 -> -> 32 `i `uc ]
+"167
+[; ;src/app/main-app/main-app.c: 167:                             Display_WriteByte(address + 48);
+[e ( _Display_WriteByte (1 -> + -> _address `i -> 48 `i `uc ]
+"168
+[; ;src/app/main-app/main-app.c: 168:                             _delay((unsigned long)((500)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"170
+[; ;src/app/main-app/main-app.c: 170:                             address++;
+[e ++ _address -> -> 1 `i `uc ]
+"171
+[; ;src/app/main-app/main-app.c: 171:                             i++;
+[e ++ _i -> -> 1 `i `uc ]
+"172
+[; ;src/app/main-app/main-app.c: 172:                         }
+}
+[e $U 302  ]
+"173
+[; ;src/app/main-app/main-app.c: 173:                         else
+[e :U 301 ]
+"174
+[; ;src/app/main-app/main-app.c: 174:                         {
+{
+"175
+[; ;src/app/main-app/main-app.c: 175:                             Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"176
+[; ;src/app/main-app/main-app.c: 176:                             _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"177
+[; ;src/app/main-app/main-app.c: 177:                             Display_WriteString("FULL MEM.", 10, 0);
+[e ( _Display_WriteString (3 , , :s 11C -> -> 10 `i `uc -> -> 0 `i `uc ]
+"178
+[; ;src/app/main-app/main-app.c: 178:                             _delay((unsigned long)((350)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"179
+[; ;src/app/main-app/main-app.c: 179:                         }
+}
+[e :U 302 ]
+"181
+[; ;src/app/main-app/main-app.c: 181:                         log = 1;
+[e = _log -> -> 1 `i `a ]
+"182
+[; ;src/app/main-app/main-app.c: 182:                     }
 }
 [e :U 300 ]
-"163
-[; ;src/app/main-app/main-app.c: 163:     }
+"183
+[; ;src/app/main-app/main-app.c: 183:                 }
+}
+[e :U 298 ]
+"184
+[; ;src/app/main-app/main-app.c: 184:             }
+}
+[e $U 303  ]
+"185
+[; ;src/app/main-app/main-app.c: 185:             else
+[e :U 290 ]
+"186
+[; ;src/app/main-app/main-app.c: 186:             {
+{
+"187
+[; ;src/app/main-app/main-app.c: 187:                  Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"188
+[; ;src/app/main-app/main-app.c: 188:                  _delay((unsigned long)((3)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"189
+[; ;src/app/main-app/main-app.c: 189:                  Display_WriteString("Erro Sensor", 12, 0);
+[e ( _Display_WriteString (3 , , :s 12C -> -> 12 `i `uc -> -> 0 `i `uc ]
+"190
+[; ;src/app/main-app/main-app.c: 190:                  _delay((unsigned long)((2000)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"191
+[; ;src/app/main-app/main-app.c: 191:             }
+}
+[e :U 303 ]
+"193
+[; ;src/app/main-app/main-app.c: 193:             TimeIsElapsed = 0;
+[e = _TimeIsElapsed -> -> 0 `i `a ]
+"194
+[; ;src/app/main-app/main-app.c: 194:         }
+}
+[e $U 304  ]
+"195
+[; ;src/app/main-app/main-app.c: 195:         else
+[e :U 289 ]
+"196
+[; ;src/app/main-app/main-app.c: 196:         {
+{
+"197
+[; ;src/app/main-app/main-app.c: 197:             Display_SendByte(0b00000001, 0);
+[e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"198
+[; ;src/app/main-app/main-app.c: 198:             _delay((unsigned long)((5)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"199
+[; ;src/app/main-app/main-app.c: 199:             Display_WriteString("Nao e Hora", 11, 0);
+[e ( _Display_WriteString (3 , , :s 13C -> -> 11 `i `uc -> -> 0 `i `uc ]
+"201
+[; ;src/app/main-app/main-app.c: 201:             _delay((unsigned long)((2000)*(12000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
+"202
+[; ;src/app/main-app/main-app.c: 202:         }
+}
+[e :U 304 ]
+"203
+[; ;src/app/main-app/main-app.c: 203:     }
 }
 [e :U 286 ]
 [e $U 287  ]
 [e :U 288 ]
-"164
-[; ;src/app/main-app/main-app.c: 164: }
+"204
+[; ;src/app/main-app/main-app.c: 204: }
 [e :UE 285 ]
 }
-"167
-[; ;src/app/main-app/main-app.c: 167: void Display_Update(char* temp, char* hum) {
+"207
+[; ;src/app/main-app/main-app.c: 207: void Display_Update(char* temp, char* hum) {
 [v _Display_Update `(v ~T0 @X0 1 ef2`*uc`*uc ]
 {
 [e :U _Display_Update ]
 [v _temp `*uc ~T0 @X0 1 r1 ]
 [v _hum `*uc ~T0 @X0 1 r2 ]
 [f ]
-"168
-[; ;src/app/main-app/main-app.c: 168:     Display_SendByte(0b00000001, 0);
+"208
+[; ;src/app/main-app/main-app.c: 208:     Display_SendByte(0b00000001, 0);
 [e ( _Display_SendByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"169
-[; ;src/app/main-app/main-app.c: 169:     _delay((unsigned long)((5)*(12000000UL/4000.0)));
+"209
+[; ;src/app/main-app/main-app.c: 209:     _delay((unsigned long)((5)*(12000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 12000000 `ul `d .4000.0 `ul ]
-"171
-[; ;src/app/main-app/main-app.c: 171:     Display_WriteString(vetorTemp, sizeof (vetorTemp), 0);
+"211
+[; ;src/app/main-app/main-app.c: 211:     Display_WriteString(vetorTemp, sizeof (vetorTemp), 0);
 [e ( _Display_WriteString (3 , , &U _vetorTemp -> -> # _vetorTemp `ui `uc -> -> 0 `i `uc ]
-"173
-[; ;src/app/main-app/main-app.c: 173:     Display_WriteByte((temp[0] / 10) + 0x30);
+"213
+[; ;src/app/main-app/main-app.c: 213:     Display_WriteByte((temp[0] / 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + / -> *U + _temp * -> -> 0 `i `x -> -> # *U _temp `i `x `i -> 10 `i -> 48 `i `uc ]
-"174
-[; ;src/app/main-app/main-app.c: 174:     Display_WriteByte((temp[0] % 10) + 0x30);
+"214
+[; ;src/app/main-app/main-app.c: 214:     Display_WriteByte((temp[0] % 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + % -> *U + _temp * -> -> 0 `i `x -> -> # *U _temp `i `x `i -> 10 `i -> 48 `i `uc ]
-"176
-[; ;src/app/main-app/main-app.c: 176:     Display_WriteByte(0xDF);
+"216
+[; ;src/app/main-app/main-app.c: 216:     Display_WriteByte(0xDF);
 [e ( _Display_WriteByte (1 -> -> 223 `i `uc ]
-"177
-[; ;src/app/main-app/main-app.c: 177:     Display_WriteByte(0x43);
+"217
+[; ;src/app/main-app/main-app.c: 217:     Display_WriteByte(0x43);
 [e ( _Display_WriteByte (1 -> -> 67 `i `uc ]
-"180
-[; ;src/app/main-app/main-app.c: 180:     Display_SendByte((0b10000000 | 0b01000000), 0);
+"220
+[; ;src/app/main-app/main-app.c: 220:     Display_SendByte((0b10000000 | 0b01000000), 0);
 [e ( _Display_SendByte (2 , -> | -> 128 `i -> 64 `i `uc -> -> 0 `i `uc ]
-"181
-[; ;src/app/main-app/main-app.c: 181:     _delay((unsigned long)((500)*(12000000UL/4000000.0)));
+"221
+[; ;src/app/main-app/main-app.c: 221:     _delay((unsigned long)((500)*(12000000UL/4000000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 12000000 `ul `d .4000000.0 `ul ]
-"184
-[; ;src/app/main-app/main-app.c: 184:     Display_WriteString(vetorHum, sizeof (vetorHum), 0);
+"224
+[; ;src/app/main-app/main-app.c: 224:     Display_WriteString(vetorHum, sizeof (vetorHum), 0);
 [e ( _Display_WriteString (3 , , &U _vetorHum -> -> # _vetorHum `ui `uc -> -> 0 `i `uc ]
-"186
-[; ;src/app/main-app/main-app.c: 186:     Display_WriteByte((hum[0] / 10) + 0x30);
+"226
+[; ;src/app/main-app/main-app.c: 226:     Display_WriteByte((hum[0] / 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + / -> *U + _hum * -> -> 0 `i `x -> -> # *U _hum `i `x `i -> 10 `i -> 48 `i `uc ]
-"187
-[; ;src/app/main-app/main-app.c: 187:     Display_WriteByte((hum[0] % 10) + 0x30);
+"227
+[; ;src/app/main-app/main-app.c: 227:     Display_WriteByte((hum[0] % 10) + 0x30);
 [e ( _Display_WriteByte (1 -> + % -> *U + _hum * -> -> 0 `i `x -> -> # *U _hum `i `x `i -> 10 `i -> 48 `i `uc ]
-"189
-[; ;src/app/main-app/main-app.c: 189:     Display_WriteByte(0x25);
+"229
+[; ;src/app/main-app/main-app.c: 229:     Display_WriteByte(0x25);
 [e ( _Display_WriteByte (1 -> -> 37 `i `uc ]
-"191
-[; ;src/app/main-app/main-app.c: 191: }
-[e :UE 301 ]
+"231
+[; ;src/app/main-app/main-app.c: 231: }
+[e :UE 305 ]
 }
-[a 9C 69 114 114 111 32 83 101 110 115 111 114 0 ]
-[a 4C 68 101 115 99 111 110 101 99 116 97 100 111 0 ]
+[a 12C 69 114 114 111 32 83 101 110 115 111 114 0 ]
+[a 7C 68 101 115 99 111 110 101 99 116 97 100 111 0 ]
 [a 1C 67 111 110 101 99 116 97 100 111 0 ]
-[a 3C 78 97 111 32 116 101 109 32 76 111 103 0 ]
-[a 2C 69 120 105 115 116 101 32 76 111 103 0 ]
-[a 10C 78 97 111 32 101 32 72 111 114 97 0 ]
-[a 6C 78 97 111 32 116 101 109 32 101 110 101 114 103 105 97 0 ]
-[a 5C 84 101 109 32 101 110 101 114 103 105 97 0 ]
-[a 8C 70 85 76 76 32 77 69 77 46 0 ]
-[a 7C 69 115 99 114 101 118 101 32 101 109 58 32 0 ]
+[a 5C 78 97 111 32 116 101 109 32 76 111 103 0 ]
+[a 13C 78 97 111 32 101 32 72 111 114 97 0 ]
+[a 9C 78 97 111 32 116 101 109 32 101 110 101 114 103 105 97 0 ]
+[a 8C 84 101 109 32 101 110 101 114 103 105 97 0 ]
+[a 10C 69 69 80 82 79 77 58 0 ]
+[a 11C 70 85 76 76 32 77 69 77 46 0 ]
+[a 3C 10 65 100 100 114 101 115 115 58 32 0 ]
+[a 4C 10 86 97 108 111 114 32 76 105 100 111 58 32 0 ]
+[a 2C 10 42 42 42 85 76 84 73 77 79 32 76 79 71 42 42 42 10 0 ]
+[a 6C 10 42 42 42 69 78 86 73 65 32 76 79 71 32 65 84 85 65 76 58 32 42 42 42 10 0 ]
