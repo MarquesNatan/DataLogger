@@ -4675,7 +4675,7 @@ typedef struct {
 
 static void (*tickHook_func_prt)(uint32_t*);
 
-void Timer0_Config( timer_config_t* timerConfig )
+    void Timer0_Config( timer_config_t* timerConfig )
 {
 
 
@@ -4721,7 +4721,7 @@ void Timer0_Config( timer_config_t* timerConfig )
 
 
 
-    TMR0 = 0xFB1E;
+    TMR0 = 0xD238;
 
 
     T0CONbits.TMR0ON = 0x01;

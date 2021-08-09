@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [v F2606 `(v ~T0 @X0 0 tf1`*ul ]
 "7 src/pic18f4520/timer/timer.c
-[; ;src/pic18f4520/timer/timer.c: 7: void Timer0_Config( timer_config_t* timerConfig )
+[; ;src/pic18f4520/timer/timer.c: 7:     void Timer0_Config( timer_config_t* timerConfig )
 [c E2559 0 1 .. ]
 [n E2559 . TIMER_LENGTH_16 TIMER_LENGTH_8  ]
 [c E2563 0 1 .. ]
@@ -499,14 +499,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/timer/timer.c: 5: static void (*tickHook_func_prt)(uint32_t*);
 [v _tickHook_func_prt `*F2606 ~T0 @X0 1 s ]
 "7
-[; ;src/pic18f4520/timer/timer.c: 7: void Timer0_Config( timer_config_t* timerConfig )
+[; ;src/pic18f4520/timer/timer.c: 7:     void Timer0_Config( timer_config_t* timerConfig )
 [v _Timer0_Config `(v ~T0 @X0 1 ef1`*S281 ]
 "8
 [; ;src/pic18f4520/timer/timer.c: 8: {
 {
 [e :U _Timer0_Config ]
 "7
-[; ;src/pic18f4520/timer/timer.c: 7: void Timer0_Config( timer_config_t* timerConfig )
+[; ;src/pic18f4520/timer/timer.c: 7:     void Timer0_Config( timer_config_t* timerConfig )
 [v _timerConfig `*S281 ~T0 @X0 1 r1 ]
 "8
 [; ;src/pic18f4520/timer/timer.c: 8: {
@@ -540,8 +540,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/pic18f4520/timer/timer.c: 69:     INTCON2bits.TMR0IP = 0x01;
 [e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
 "73
-[; ;src/pic18f4520/timer/timer.c: 73:     TMR0 = 0xFB1E;
-[e = _TMR0 -> -> 64286 `ui `us ]
+[; ;src/pic18f4520/timer/timer.c: 73:     TMR0 = 0xD238;
+[e = _TMR0 -> -> 53816 `ui `us ]
 "76
 [; ;src/pic18f4520/timer/timer.c: 76:     T0CONbits.TMR0ON = 0x01;
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]

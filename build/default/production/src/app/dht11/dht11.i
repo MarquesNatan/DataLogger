@@ -4611,16 +4611,11 @@ typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c99\\stdint.h" 2 3
 # 6 "src/app/dht11/dht11.h" 2
-# 16 "src/app/dht11/dht11.h"
-    uint8_t DHT11_RequestData(void);
-    uint8_t DHT11_ReadData( void );
-    uint8_t DHT11_ReadByte( void );
-    uint8_t* DHT11_GetTemp( void );
-    uint8_t* DHT11_GetHum( void );
-
+# 17 "src/app/dht11/dht11.h"
     void DHT11_Start( void );
     void DHT11_Check_Response(void);
     uint8_t read_data (void);
+    uint8_t DHT11_GetData(uint8_t* Temp_byte1, uint8_t* Temp_byte2, uint8_t* Rh_byte1, uint8_t* Rh_byte2);
 # 29 "src/app/dht11/dht11.c" 2
 
 # 1 "src/app/dht11/../../board/board_definitions/board_definitions.h" 1
@@ -4754,10 +4749,7 @@ typedef struct {
 static uint8_t temperature [2];
 static uint8_t humidity [2];
 
-
-
-void DHT11_Start( void )
-{
+void DHT11_Start(void) {
     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
     if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
 
@@ -4765,128 +4757,42 @@ void DHT11_Start( void )
     if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
 }
 
-void DHT11_Check_Response (void)
-{
- while (((PORTD >> 1)& 0b00000001));
+void DHT11_Check_Response(void) {
+    while (((PORTD >> 1)& 0b00000001));
     while (!((PORTD >> 1)& 0b00000001));
- while (((PORTD >> 1)& 0b00000001));
+    while (((PORTD >> 1)& 0b00000001));
 }
 
-uint8_t read_data (void)
-{
- uint8_t i,j;
- for (j=0;j<8;j++)
- {
-  while (((PORTD >> 1)& 0b00000001) == 0);
-  _delay((unsigned long)((40)*(12000000UL/4000000.0)));
-  if (((PORTD >> 1)& 0b00000001) == 0)
-  {
-   i&= ~(1<<(7-j));
-  }
-  else i|= (1<<(7-j));
-  while (((PORTD >> 1)& 0b00000001));
- }
- return i;
-}
-# 142 "src/app/dht11/dht11.c"
-uint8_t DHT11_RequestData(void) {
-    uint16_t timeOut = 0xFFFF;
-
-    if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
-    if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-
-    _delay((unsigned long)((18)*(12000000UL/4000.0)));
-
-    if(0x01 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
-    if(0x01 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
-    _delay((unsigned long)((30)*(12000000UL/4000000.0)));
-
-    while( !((PORTD >> 1)& 0b00000001))
-    {
-        if(!--timeOut )
-        {
-            return 1;
-        }
-
-    }
-
-    timeOut = 0xFFFF;
-
-    while(((PORTD >> 1)& 0b00000001))
-    {
-        if(!--timeOut)
-        {
-            return 1;
-        }
-    }
-
-
-    return 0;
-}
-
-
-uint8_t DHT11_ReadData(void) {
-    uint8_t resquestResult = 0x00;
-    uint8_t checkSum = 0x00;
-
-
-    resquestResult = DHT11_RequestData();
-
-
-    if (!resquestResult) {
-        humidity[0] = DHT11_ReadByte();
-        humidity[1] = DHT11_ReadByte();
-
-        temperature[0] = DHT11_ReadByte();
-        temperature[1] = DHT11_ReadByte();
-
-        Display_WriteByte(humidity[0]);
-        Display_WriteByte(temperature[0]);
-
-
-    } else {
-        return resquestResult;
-    }
-
-    return 0;
-}
-
-
-uint8_t DHT11_ReadByte(void) {
-    uint16_t timeout = 0xFFFF;
-    uint8_t i;
-    uint8_t byte;
-
-    for (i = 0b10000000; i; i = (i >> 1)) {
-        timeout = 0xFFFF;
-        while (!((PORTD >> 1)& 0b00000001)) {
-            if (!--timeout) {
-                return 1;
-            }
-        }
-
+uint8_t read_data(void) {
+    uint8_t i, j;
+    for (j = 0; j < 8; j++) {
+        while (((PORTD >> 1)& 0b00000001) == 0);
         _delay((unsigned long)((40)*(12000000UL/4000000.0)));
-
-        if (((PORTD >> 1)& 0b00000001)) {
-            byte = byte | i;
-            timeout = 0xFFFF;
-            while (!((PORTD >> 1)& 0b00000001)) {
-                if (!--timeout)
-                    return 1;
-            }
-
-        }
+        if (((PORTD >> 1)& 0b00000001) == 0)
+        {
+            i &= ~(1 << (7 - j));
+        } else i |= (1 << (7 - j));
+        while (((PORTD >> 1)& 0b00000001));
     }
-
-    return byte;
+    return i;
 }
 
-uint8_t* DHT11_GetTemp( void )
-{
-    return temperature;
-}
+uint8_t DHT11_GetData(uint8_t* Temp_byte1, uint8_t* Temp_byte2, uint8_t* Rh_byte1, uint8_t* Rh_byte2) {
 
-uint8_t* DHT11_GetHum( void )
-{
-    return humidity;
+    uint8_t check;
+    DHT11_Start();
+    DHT11_Check_Response();
+
+
+    *Rh_byte1 = read_data();
+    *Rh_byte2 = read_data();
+
+    *Temp_byte1 = read_data();
+    *Temp_byte2 = read_data();
+
+    check = read_data();
+
+    if (check != (*Rh_byte1 + *Rh_byte2 + *Temp_byte1 + *Temp_byte2)) return 2;
+
+    return 0;
 }

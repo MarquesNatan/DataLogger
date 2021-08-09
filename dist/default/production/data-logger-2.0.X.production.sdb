@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F4520 ]
 [d frameptr 4065 ]
-"25 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+"24 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
 [e E2877 . `uc
 TIMER_LENGTH_16 0
 TIMER_LENGTH_8 1
@@ -30,7 +30,7 @@ TIMER_PRESCALER_64 5
 TIMER_PRESCALER_128 6
 TIMER_PRESCALER_256 7
 ]
-"33
+"32
 [e E2926 . `uc
 SERIAL_ASSYNC_MODE 0
 SERIAL_SYNC_MODE 1
@@ -42,54 +42,6 @@ SERIAL_DATA_LENGTH_9 1
 [e E2934 . `uc
 SERIAL_MASTER_MODE 0
 SERIAL_SLAVE_MODE 1
-]
-"40
-[e E3009 . `uc
-CHANNEL_AN0 0
-CHANNEL_AN1 1
-CHANNEL_AN2 2
-CHANNEL_AN3 3
-CHANNEL_AN4 4
-CHANNEL_AN5 5
-CHANNEL_AN6 6
-CHANNEL_AN7 7
-CHANNEL_AN8 8
-CHANNEL_AN9 9
-CHANNEL_AN10 10
-CHANNEL_AN11 11
-CHANNEL_AN12 12
-]
-[e E3024 . `uc
-INTERNAL_NEGATIVE_REFERENCE 0
-EXTERNAL_NEGATIVE_REFERENCE 1
-]
-[e E3028 . `uc
-INTERNAL_POSITIVE_REFERENCE 0
-EXTERNAL_POSITIVE_REFERENCE 1
-]
-[e E3032 . `uc
-LEFT_JUSTIFIED 0
-RIGHT_JUSTIFIED 1
-]
-[e E3036 . `uc
-TAD_20 7
-TAD_16 6
-TAD_12 5
-TAD_8 4
-TAD_6 3
-TAD_4 2
-TAD_2 1
-TAD_0 0
-]
-[e E3046 . `uc
-FRC 7
-FOSC_64 6
-FOSC_16 5
-FOSC_4 4
-FRC_1 3
-FOSC_32 2
-FOSC_8 1
-FOSC_2 0
 ]
 "46 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/adc/adc.c
 [e E2573 . `uc
@@ -159,10 +111,6 @@ TIMER_PRESCALER_256 7
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
 "19 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
@@ -175,44 +123,35 @@ TIMER_PRESCALER_256 7
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"57 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/bluetooth-hc-06/bluetooth_hc_06.c
-[v _Bluetooth_HC_06_WriteString Bluetooth_HC_06_WriteString `(v  1 e 1 0 ]
-"65
-[v _Bluetooth_HC_06_WriteByte Bluetooth_HC_06_WriteByte `(v  1 e 1 0 ]
-"71
+"71 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/bluetooth-hc-06/bluetooth_hc_06.c
 [v _User_GetState User_GetState `(a  1 e 1 0 ]
 "76
 [v _User_SetState User_SetState `(a  1 e 1 0 ]
-"47 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/dht11/dht11.c
+"45 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/dht11/dht11.c
 [v _DHT11_Start DHT11_Start `(v  1 e 1 0 ]
-"56
+"53
 [v _DHT11_Check_Response DHT11_Check_Response `(v  1 e 1 0 ]
-"63
+"59
 [v _read_data read_data `(uc  1 e 1 0 ]
-"142
-[v _DHT11_RequestData DHT11_RequestData `(uc  1 e 1 0 ]
-"205
-[v _DHT11_ReadByte DHT11_ReadByte `(uc  1 e 1 0 ]
 "10 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/display_lcd/display_lcd.c
 [v _DisplayLCD_Init DisplayLCD_Init `(v  1 e 1 0 ]
 "43
 [v _sendNibble sendNibble `(v  1 e 1 0 ]
 "57
 [v _Display_SendByte Display_SendByte `(v  1 e 1 0 ]
-[v i2_Display_SendByte Display_SendByte `(v  1 e 1 0 ]
 "84
 [v _Display_WriteByte Display_WriteByte `(v  1 e 1 0 ]
-[v i2_Display_WriteByte Display_WriteByte `(v  1 e 1 0 ]
 "109
 [v _Display_WriteString Display_WriteString `(v  1 e 1 0 ]
-[v i2_Display_WriteString Display_WriteString `(v  1 e 1 0 ]
-"207 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/main-app/main-app.c
-[v _Display_Update Display_Update `(v  1 e 1 0 ]
+"37 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/main-app/main-app.c
+[v _main_application main_application `(v  1 e 1 0 ]
 "6 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/read_voltage/read_voltage.c
 [v _Voltage_Read Voltage_Read `(uc  1 e 1 0 ]
-"70 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+"51 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _tickHook_func tickHook_func `(v  1 e 1 0 ]
+"60
 [v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
-"127
+"131
 [v _main main `(v  1 e 1 0 ]
 "7 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/eeprom/eeprom.c
 [v _EEPROM_DataWrite EEPROM_DataWrite `(uc  1 e 1 0 ]
@@ -220,11 +159,17 @@ TIMER_PRESCALER_256 7
 [v _EEPROM_DataRead EEPROM_DataRead `(uc  1 e 1 0 ]
 "70
 [v _EEPROM_Erase EEPROM_Erase `(v  1 e 1 0 ]
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/interrupt/interrupt.c
+[v _Interrupt_GlobalEnable Interrupt_GlobalEnable `(v  1 e 1 0 ]
 "6 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
 [v _Serial_1_Config Serial_1_Config `(v  1 e 1 0 ]
 "131
 [v _Serial_Transmit Serial_Transmit `(v  1 e 1 0 ]
-"89 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+"7 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[v _Timer0_Config Timer0_Config `(v  1 e 1 0 ]
+"84
+[v _Timer0_SetTickHook Timer0_SetTickHook `(v  1 e 1 0 ]
+"89
 [v _tickHook_Execute tickHook_Execute `(v  1 e 1 0 ]
 "271 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f4520.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
@@ -234,7 +179,7 @@ TIMER_PRESCALER_256 7
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
 "1313
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S524 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S433 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -244,7 +189,7 @@ TIMER_PRESCALER_256 7
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1509
-[s S533 . 1 `uc 1 RA0 1 0 :1:0 
+[s S442 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -253,8 +198,8 @@ TIMER_PRESCALER_256 7
 `uc 1 RA6 1 0 :1:6 
 `uc 1 RA7 1 0 :1:7 
 ]
-[u S542 . 1 `S524 1 . 1 0 `S533 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES542  1 e 1 @3986 ]
+[u S451 . 1 `S433 1 . 1 0 `S442 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES451  1 e 1 @3986 ]
 "1699
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "1921
@@ -277,7 +222,7 @@ TIMER_PRESCALER_256 7
 ]
 [u S1023 . 1 `S1010 1 . 1 0 `S1019 1 . 1 0 ]
 [v _PIE1bits PIE1bits `VES1023  1 e 1 @3997 ]
-[s S170 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S122 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -287,13 +232,13 @@ TIMER_PRESCALER_256 7
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "2693
-[s S179 . 1 `uc 1 . 1 0 :4:0 
+[s S131 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IF 1 0 :1:4 
 `uc 1 RC1IF 1 0 :1:5 
 ]
-[u S183 . 1 `S170 1 . 1 0 `S179 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES183  1 e 1 @3998 ]
-[s S1291 . 1 `uc 1 RD 1 0 :1:0 
+[u S135 . 1 `S122 1 . 1 0 `S131 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES135  1 e 1 @3998 ]
+[s S676 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -303,11 +248,11 @@ TIMER_PRESCALER_256 7
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "3044
-[s S1300 . 1 `uc 1 . 1 0 :6:0 
+[s S685 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S1303 . 1 `S1291 1 . 1 0 `S1300 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES1303  1 e 1 @4006 ]
+[u S688 . 1 `S676 1 . 1 0 `S685 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES688  1 e 1 @4006 ]
 "3089
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "3096
@@ -395,71 +340,71 @@ TIMER_PRESCALER_256 7
 ]
 [u S877 . 1 `S857 1 . 1 0 `S866 1 . 1 0 `S871 1 . 1 0 `S874 1 . 1 0 ]
 [v _BAUDCONbits BAUDCONbits `VES877  1 e 1 @4024 ]
-[s S673 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S582 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "4640
-[s S678 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S587 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
 `uc 1 ACQT1 1 0 :1:4 
 `uc 1 ACQT2 1 0 :1:5 
 ]
-[u S685 . 1 `S673 1 . 1 0 `S678 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES685  1 e 1 @4032 ]
-[s S567 . 1 `uc 1 PCFG 1 0 :4:0 
+[u S594 . 1 `S582 1 . 1 0 `S587 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES594  1 e 1 @4032 ]
+[s S476 . 1 `uc 1 PCFG 1 0 :4:0 
 `uc 1 VCFG 1 0 :2:4 
 ]
 "4715
-[s S570 . 1 `uc 1 PCFG0 1 0 :1:0 
+[s S479 . 1 `uc 1 PCFG0 1 0 :1:0 
 `uc 1 PCFG1 1 0 :1:1 
 `uc 1 PCFG2 1 0 :1:2 
 `uc 1 PCFG3 1 0 :1:3 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 ]
-[s S577 . 1 `uc 1 . 1 0 :3:0 
+[s S486 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CHSN3 1 0 :1:3 
 `uc 1 VCFG01 1 0 :1:4 
 `uc 1 VCFG11 1 0 :1:5 
 ]
-[u S582 . 1 `S567 1 . 1 0 `S570 1 . 1 0 `S577 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES582  1 e 1 @4033 ]
-[s S605 . 1 `uc 1 . 1 0 :1:0 
+[u S491 . 1 `S476 1 . 1 0 `S479 1 . 1 0 `S486 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES491  1 e 1 @4033 ]
+[s S514 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "4819
-[s S608 . 1 `uc 1 ADON 1 0 :1:0 
+[s S517 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S612 . 1 `uc 1 . 1 0 :1:0 
+[s S521 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S619 . 1 `uc 1 . 1 0 :1:0 
+[s S528 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S622 . 1 `uc 1 . 1 0 :1:0 
+[s S531 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S625 . 1 `uc 1 . 1 0 :1:0 
+[s S534 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S628 . 1 `uc 1 . 1 0 :1:0 
+[s S537 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[s S631 . 1 `uc 1 . 1 0 :1:0 
+[s S540 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S634 . 1 `S605 1 . 1 0 `S608 1 . 1 0 `S612 1 . 1 0 `S619 1 . 1 0 `S622 1 . 1 0 `S625 1 . 1 0 `S628 1 . 1 0 `S631 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES634  1 e 1 @4034 ]
+[u S543 . 1 `S514 1 . 1 0 `S517 1 . 1 0 `S521 1 . 1 0 `S528 1 . 1 0 `S531 1 . 1 0 `S534 1 . 1 0 `S537 1 . 1 0 `S540 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES543  1 e 1 @4034 ]
 "4901
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "4908
@@ -533,7 +478,7 @@ TIMER_PRESCALER_256 7
 ]
 [u S1201 . 1 `S1186 1 . 1 0 `S1189 1 . 1 0 `S1198 1 . 1 0 ]
 [v _INTCON2bits INTCON2bits `VES1201  1 e 1 @4081 ]
-[s S114 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S66 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -543,7 +488,7 @@ TIMER_PRESCALER_256 7
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6724
-[s S123 . 1 `uc 1 . 1 0 :1:0 
+[s S75 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -552,22 +497,18 @@ TIMER_PRESCALER_256 7
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S132 . 1 `uc 1 . 1 0 :6:0 
+[s S84 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S136 . 1 `S114 1 . 1 0 `S123 1 . 1 0 `S132 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES136  1 e 1 @4082 ]
+[u S88 . 1 `S66 1 . 1 0 `S75 1 . 1 0 `S84 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES88  1 e 1 @4082 ]
 "8668
 [v _TRMT TRMT `VEb  1 e 0 @32097 ]
 "7 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/bluetooth-hc-06/bluetooth_hc_06.c
 [v _UserConnected UserConnected `a  1 s 1 UserConnected ]
-"42 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/dht11/dht11.c
-[v _temperature temperature `[2]uc  1 s 2 temperature ]
-"43
-[v _humidity humidity `[2]uc  1 s 2 humidity ]
 "21 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/main-app/main-app.c
-[v _currLog currLog `a  1 s 1 currLog ]
+[v _log log `a  1 s 1 log ]
 "27
 [v _vetorTempLocal vetorTempLocal `[4]uc  1 e 4 0 ]
 "28
@@ -578,18 +519,17 @@ TIMER_PRESCALER_256 7
 [v _vetorTemp vetorTemp `[6]uc  1 e 6 0 ]
 "34
 [v _vetorHum vetorHum `[7]uc  1 e 7 0 ]
+[s S45 . 5 `E2877 1 timer_length 1 0 `E2881 1 timer_clk_src 1 1 `E2885 1 timer_transition 1 2 `E2889 1 timer_prescaler_assign 1 3 `E2893 1 timer_prescaler_value 1 4 ]
+"24 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _timerConfig timerConfig `S45  1 e 5 0 ]
 [s S60 . 7 `E2926 1 serial_sync_com 1 0 `E2930 1 serial_data_length 1 1 `E2934 1 serial_op_mode 1 2 `l 1 serial_desired_baud 4 3 ]
-"33 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+"32
 [v _serialConfig serialConfig `S60  1 e 7 0 ]
-"52
+"42
 [v _vector vector `VE[3]uc  1 e 3 0 ]
-"53
-[v _i i `uc  1 s 1 i ]
-"54
+"44
 [v _byteReceived byteReceived `uc  1 e 1 0 ]
-"55
-[v _firstReceive firstReceive `uc  1 e 1 0 ]
-"57
+"47
 [v _t t `ul  1 s 4 t ]
 "14 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/eeprom/eeprom.h
 [v _address address `uc  1 e 1 0 ]
@@ -597,134 +537,53 @@ TIMER_PRESCALER_256 7
 [v _tickHook_func_prt tickHook_func_prt `*.37(v  1 s 2 tickHook_func_prt ]
 "10 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.h
 [v _global_timer_value global_timer_value `ul  1 e 4 0 ]
-"127 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+"131 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"154
-[v main@sum sum `us  1 a 2 16 ]
-"153
-[v main@Temp_byte2 Temp_byte2 `uc  1 a 1 21 ]
-[v main@Temp_byte1 Temp_byte1 `uc  1 a 1 20 ]
-[v main@Rh_byte2 Rh_byte2 `uc  1 a 1 19 ]
-[v main@Rh_byte1 Rh_byte1 `uc  1 a 1 18 ]
-"157
-[v main@s s `uc  1 a 1 15 ]
-"218
+"225
 } 0
-"63 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/dht11/dht11.c
-[v _read_data read_data `(uc  1 e 1 0 ]
+"37 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/main-app/main-app.c
+[v _main_application main_application `(v  1 e 1 0 ]
 {
-"65
-[v read_data@j j `uc  1 a 1 27 ]
-[v read_data@i i `uc  1 a 1 26 ]
-"78
+"54
+[v main_application@auxText auxText `[15]uc  1 a 15 0 ]
+"55
+[v main_application@auxText2 auxText2 `[13]uc  1 a 13 15 ]
+"37
+[v main_application@args args `*.2v  1 p 2 31 ]
+"42
+[v main_application@localTemp localTemp `*.39uc  1 s 2 localTemp ]
+"43
+[v main_application@localHum localHum `*.39uc  1 s 2 localHum ]
+"48
+[v main_application@localUserState localUserState `a  1 s 1 localUserState ]
+"50
+[v main_application@localVoltageStatus localVoltageStatus `uc  1 s 1 localVoltageStatus ]
+"52
+[v main_application@F3179 F3179 `[15]uc  1 s 15 F3179 ]
+"54
+[v main_application@F3181 F3181 `[13]uc  1 s 13 F3181 ]
+"164
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"6 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/read_voltage/read_voltage.c
+[v _Voltage_Read Voltage_Read `(uc  1 e 1 0 ]
 {
-"10
-[v ___lwmod@counter counter `uc  1 a 1 28 ]
-"7
-[v ___lwmod@dividend dividend `ui  1 p 2 24 ]
-[v ___lwmod@divisor divisor `ui  1 p 2 26 ]
-"25
+"9
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"71 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/bluetooth-hc-06/bluetooth_hc_06.c
+[v _User_GetState User_GetState `(a  1 e 1 0 ]
 {
-"10
-[v ___lwdiv@quotient quotient `ui  1 a 2 29 ]
-"11
-[v ___lwdiv@counter counter `uc  1 a 1 28 ]
-"7
-[v ___lwdiv@dividend dividend `ui  1 p 2 24 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 26 ]
-"30
-} 0
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 29 ]
-[v ___awmod@counter counter `uc  1 a 1 28 ]
-"7
-[v ___awmod@dividend dividend `i  1 p 2 24 ]
-[v ___awmod@divisor divisor `i  1 p 2 26 ]
-"34
-} 0
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 30 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 29 ]
-[v ___awdiv@counter counter `uc  1 a 1 28 ]
-"7
-[v ___awdiv@dividend dividend `i  1 p 2 24 ]
-[v ___awdiv@divisor divisor `i  1 p 2 26 ]
-"41
-} 0
-"6 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
-[v _Serial_1_Config Serial_1_Config `(v  1 e 1 0 ]
-{
-"38
-[v Serial_1_Config@error_min error_min `uc  1 a 1 12 ]
-"35
-[v Serial_1_Config@error_8HIGH error_8HIGH `uc  1 a 1 11 ]
-"31
-[v Serial_1_Config@brg16HIGH brg16HIGH `uc  1 a 1 10 ]
-"30
-[v Serial_1_Config@brg8HIGH brg8HIGH `uc  1 a 1 9 ]
-"29
-[v Serial_1_Config@brg8LOW brg8LOW `uc  1 a 1 8 ]
-"36
-[v Serial_1_Config@error_16HIGH error_16HIGH `uc  1 a 1 7 ]
-"34
-[v Serial_1_Config@error_8LOW error_8LOW `uc  1 a 1 6 ]
-[s S60 . 7 `E2926 1 serial_sync_com 1 0 `E2930 1 serial_data_length 1 1 `E2934 1 serial_op_mode 1 2 `l 1 serial_desired_baud 4 3 ]
-"6
-[v Serial_1_Config@serialConfig serialConfig `*.39S60  1 p 2 0 ]
-"129
-} 0
-"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\__lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-{
-"10
-[v ___lldiv@quotient quotient `ul  1 a 4 32 ]
-"11
-[v ___lldiv@counter counter `uc  1 a 1 36 ]
-"7
-[v ___lldiv@dividend dividend `ul  1 p 4 24 ]
-[v ___lldiv@divisor divisor `ul  1 p 4 28 ]
-"30
-} 0
-"70 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/eeprom/eeprom.c
-[v _EEPROM_Erase EEPROM_Erase `(v  1 e 1 0 ]
-{
-"72
-[v EEPROM_Erase@addr addr `uc  1 a 1 26 ]
-"80
-} 0
-"7
-[v _EEPROM_DataWrite EEPROM_DataWrite `(uc  1 e 1 0 ]
-{
-[v EEPROM_DataWrite@data data `uc  1 a 1 wreg ]
-[v EEPROM_DataWrite@data data `uc  1 a 1 wreg ]
-[v EEPROM_DataWrite@addr addr `uc  1 p 1 24 ]
-"10
-[v EEPROM_DataWrite@data data `uc  1 a 1 25 ]
-"30
+"74
 } 0
 "109 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/display_lcd/display_lcd.c
 [v _Display_WriteString Display_WriteString `(v  1 e 1 0 ]
 {
 "111
-[v Display_WriteString@auxLength auxLength `uc  1 a 1 31 ]
+[v Display_WriteString@auxLength auxLength `uc  1 a 1 30 ]
 "109
-[v Display_WriteString@string string `*.35uc  1 p 2 27 ]
-[v Display_WriteString@length length `uc  1 p 1 29 ]
-[v Display_WriteString@address address `uc  1 p 1 30 ]
+[v Display_WriteString@string string `*.35uc  1 p 2 19 ]
+[v Display_WriteString@length length `uc  1 p 1 21 ]
+[v Display_WriteString@address address `uc  1 p 1 22 ]
 "118
 } 0
 "84
@@ -732,13 +591,82 @@ TIMER_PRESCALER_256 7
 {
 [v Display_WriteByte@byte byte `uc  1 a 1 wreg ]
 "86
-[v Display_WriteByte@auxByte auxByte `uc  1 a 1 26 ]
+[v Display_WriteByte@auxByte auxByte `uc  1 a 1 18 ]
 "84
 [v Display_WriteByte@byte byte `uc  1 a 1 wreg ]
-[v Display_WriteByte@byte byte `uc  1 a 1 25 ]
+[v Display_WriteByte@byte byte `uc  1 a 1 17 ]
 "107
 } 0
+"84 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
+[v _Timer0_SetTickHook Timer0_SetTickHook `(v  1 e 1 0 ]
+{
+[v Timer0_SetTickHook@tickFunc tickFunc `*.37(v  1 p 2 16 ]
+"87
+} 0
+"7
+[v _Timer0_Config Timer0_Config `(v  1 e 1 0 ]
+{
+[s S45 . 5 `E2877 1 timer_length 1 0 `E2881 1 timer_clk_src 1 1 `E2885 1 timer_transition 1 2 `E2889 1 timer_prescaler_assign 1 3 `E2893 1 timer_prescaler_value 1 4 ]
+[v Timer0_Config@timerConfig timerConfig `*.39S45  1 p 2 16 ]
+"77
+} 0
+"6 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
+[v _Serial_1_Config Serial_1_Config `(v  1 e 1 0 ]
+{
+"38
+[v Serial_1_Config@error_min error_min `uc  1 a 1 41 ]
+"35
+[v Serial_1_Config@error_8HIGH error_8HIGH `uc  1 a 1 40 ]
+"31
+[v Serial_1_Config@brg16HIGH brg16HIGH `uc  1 a 1 39 ]
+"30
+[v Serial_1_Config@brg8HIGH brg8HIGH `uc  1 a 1 38 ]
+"29
+[v Serial_1_Config@brg8LOW brg8LOW `uc  1 a 1 37 ]
+"36
+[v Serial_1_Config@error_16HIGH error_16HIGH `uc  1 a 1 36 ]
+"34
+[v Serial_1_Config@error_8LOW error_8LOW `uc  1 a 1 35 ]
+[s S60 . 7 `E2926 1 serial_sync_com 1 0 `E2930 1 serial_data_length 1 1 `E2934 1 serial_op_mode 1 2 `l 1 serial_desired_baud 4 3 ]
+"6
+[v Serial_1_Config@serialConfig serialConfig `*.39S60  1 p 2 29 ]
+"129
+} 0
+"7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
 "10
+[v ___lldiv@quotient quotient `ul  1 a 4 24 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 28 ]
+"7
+[v ___lldiv@dividend dividend `ul  1 p 4 16 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 20 ]
+"30
+} 0
+"4 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/interrupt/interrupt.c
+[v _Interrupt_GlobalEnable Interrupt_GlobalEnable `(v  1 e 1 0 ]
+{
+"34
+} 0
+"70 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/eeprom/eeprom.c
+[v _EEPROM_Erase EEPROM_Erase `(v  1 e 1 0 ]
+{
+"72
+[v EEPROM_Erase@addr addr `uc  1 a 1 18 ]
+"80
+} 0
+"7
+[v _EEPROM_DataWrite EEPROM_DataWrite `(uc  1 e 1 0 ]
+{
+[v EEPROM_DataWrite@data data `uc  1 a 1 wreg ]
+[v EEPROM_DataWrite@data data `uc  1 a 1 wreg ]
+[v EEPROM_DataWrite@addr addr `uc  1 p 1 16 ]
+"10
+[v EEPROM_DataWrite@data data `uc  1 a 1 17 ]
+"30
+} 0
+"10 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/display_lcd/display_lcd.c
 [v _DisplayLCD_Init DisplayLCD_Init `(v  1 e 1 0 ]
 {
 "41
@@ -748,7 +676,7 @@ TIMER_PRESCALER_256 7
 {
 [v sendNibble@nibble nibble `uc  1 a 1 wreg ]
 [v sendNibble@nibble nibble `uc  1 a 1 wreg ]
-[v sendNibble@nibble nibble `uc  1 a 1 25 ]
+[v sendNibble@nibble nibble `uc  1 a 1 17 ]
 "55
 } 0
 "57
@@ -756,67 +684,29 @@ TIMER_PRESCALER_256 7
 {
 [v Display_SendByte@byte byte `uc  1 a 1 wreg ]
 "59
-[v Display_SendByte@auxByte auxByte `uc  1 a 1 27 ]
+[v Display_SendByte@auxByte auxByte `uc  1 a 1 19 ]
 "57
 [v Display_SendByte@byte byte `uc  1 a 1 wreg ]
-[v Display_SendByte@comm comm `uc  1 p 1 24 ]
-[v Display_SendByte@byte byte `uc  1 a 1 26 ]
+[v Display_SendByte@comm comm `uc  1 p 1 16 ]
+[v Display_SendByte@byte byte `uc  1 a 1 18 ]
 "82
 } 0
-"47 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/dht11/dht11.c
-[v _DHT11_Start DHT11_Start `(v  1 e 1 0 ]
-{
-"54
-} 0
-"56
-[v _DHT11_Check_Response DHT11_Check_Response `(v  1 e 1 0 ]
-{
-"61
-} 0
-"70 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+"60 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
 [v _TC0INT TC0INT `IIH(v  1 e 1 0 ]
 {
-"125
-} 0
-"109 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/display_lcd/display_lcd.c
-[v i2_Display_WriteString Display_WriteString `(v  1 e 1 0 ]
-{
-"111
-[v i2Display_WriteString@auxLength auxLength `uc  1 a 1 14 ]
-"109
-[v i2Display_WriteString@string string `*.35uc  1 p 2 3 ]
-[v i2Display_WriteString@length length `uc  1 p 1 5 ]
-[v i2Display_WriteString@address address `uc  1 p 1 6 ]
-"118
-} 0
-"84
-[v i2_Display_WriteByte Display_WriteByte `(v  1 e 1 0 ]
-{
-[v i2Display_WriteByte@byte byte `uc  1 a 1 wreg ]
-"86
-[v i2Display_WriteByte@auxByte auxByte `uc  1 a 1 2 ]
-"84
-[v i2Display_WriteByte@byte byte `uc  1 a 1 wreg ]
-[v i2Display_WriteByte@byte byte `uc  1 a 1 1 ]
-"107
-} 0
-"57
-[v i2_Display_SendByte Display_SendByte `(v  1 e 1 0 ]
-{
-[v i2Display_SendByte@byte byte `uc  1 a 1 wreg ]
-"59
-[v i2Display_SendByte@auxByte auxByte `uc  1 a 1 3 ]
-"57
-[v i2Display_SendByte@byte byte `uc  1 a 1 wreg ]
-[v i2Display_SendByte@comm comm `uc  1 p 1 0 ]
-[v i2Display_SendByte@byte byte `uc  1 a 1 2 ]
-"82
+"128
 } 0
 "89 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/timer/timer.c
 [v _tickHook_Execute tickHook_Execute `(v  1 e 1 0 ]
 {
-[v tickHook_Execute@global_timer_value global_timer_value `*.39ul  1 p 2 0 ]
+[v tickHook_Execute@global_timer_value global_timer_value `*.39ul  1 p 2 10 ]
 "95
+} 0
+"51 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/main.c
+[v _tickHook_func tickHook_func `(v  1 e 1 0 ]
+{
+[v tickHook_func@timer_value timer_value `*.39ul  1 p 2 0 ]
+"57
 } 0
 "76 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/app/bluetooth-hc-06/bluetooth_hc_06.c
 [v _User_SetState User_SetState `(a  1 e 1 0 ]
@@ -826,4 +716,13 @@ TIMER_PRESCALER_256 7
 "78
 [v User_SetState@state state `a  1 a 1 0 ]
 "79
+} 0
+"131 C:\Users\Natan\MPLABXProjects\data-logger-2.0.X\src/pic18f4520/serial/serial.c
+[v _Serial_Transmit Serial_Transmit `(v  1 e 1 0 ]
+{
+[v Serial_Transmit@data data `uc  1 a 1 wreg ]
+[v Serial_Transmit@data data `uc  1 a 1 wreg ]
+"133
+[v Serial_Transmit@data data `uc  1 a 1 0 ]
+"135
 } 0

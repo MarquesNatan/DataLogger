@@ -37,7 +37,7 @@ char string_hum[sizeof(STRING_TEMP) + sizeof(DEFAULT_DATA_VALUE)] = STRING_HUM;
 #define DATA_LOGGER_DELETE_BACKUP   "<DBK>"
 
 // Time to send data, in ms
-#define TIME_TO_SEND_MS    5000
+#define TIME_TO_SEND_SEG    3
 /*============================================================================*/
 #endif	/* BOARD_DEFINITIONS_H */
 /*============================================================================*/

@@ -4,7 +4,7 @@
 /*============================================================================*/
 static void (*tickHook_func_prt)(global_timer_t*);
 /*============================================================================*/
-void Timer0_Config( timer_config_t* timerConfig )
+    void Timer0_Config( timer_config_t* timerConfig )
 {
     /*
      * TMR0ON: Timer0 On/Off Control bit
@@ -70,7 +70,7 @@ void Timer0_Config( timer_config_t* timerConfig )
     
     
     // TMR0 = 0xD9D9;
-    TMR0 = 0xFB1E;
+    TMR0 = 0xD238;
     // TMR0 = 0xE17B;
     
     T0CONbits.TMR0ON = 0x01;

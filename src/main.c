@@ -1,4 +1,3 @@
-/*============================================================================*/
 #include <xc.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -27,7 +26,7 @@ timer_config_t timerConfig = {
     .timer_clk_src = TIMER_CLKO_SRC,
     .timer_transition = TIMER_TRANSITION_LOW_HIGH,
     .timer_prescaler_assign = TIMER_PRESCALER_IS_ASSIGNED,
-    .timer_prescaler_value = TIMER_PRESCALER_2
+    .timer_prescaler_value = TIMER_PRESCALER_256
 };
 /*============================================================================*/
 serial_config_t serialConfig = {
@@ -35,15 +34,6 @@ serial_config_t serialConfig = {
     .serial_data_length = SERIAL_DATA_LENGTH_8,
     .serial_op_mode = SERIAL_MASTER_MODE,
     .serial_desired_baud = SPEED_SERIAL
-};
-/*============================================================================*/
-adc_config_t adcConfig = {
-    .adc_channel = CHANNEL_AN0,
-    .negative_reference = INTERNAL_NEGATIVE_REFERENCE,
-    .positive_reference = INTERNAL_POSITIVE_REFERENCE,
-    .result_format = RIGHT_JUSTIFIED,
-    .adc_clock = FOSC_8,
-    .acquisition_time = TAD_2
 };
 /*============================================================================*/
 extern global_timer_t global_timer_value;
@@ -60,7 +50,7 @@ extern bool TimeIsElapsed;
 /*============================================================================*/
 void tickHook_func(global_timer_t *timer_value) {
     (*timer_value)++;
-    if ((*timer_value - t) >= TIME_TO_SEND_MS) {
+    if ((*timer_value - t) >= TIME_TO_SEND_SEG) {
         t = (*timer_value);
         TimeIsElapsed = true;
     }
@@ -75,15 +65,28 @@ void __interrupt() TC0INT(void) {
 
         tickHook_Execute(&global_timer_value);
 
-        TMR0 = 0xFB1E; // TMR0 = 0x9E58; 
+        TMR0 = 0xD238; // TMR0 = 0x9E58; 
         INTCONbits.T0IF = 0x00; // Clean Timer Flag 
     }
 
     // Interrupção recepção serial
     if (PIR1bits.RCIF) {
         byteReceived = RCREG;
+        Serial_Transmit(byteReceived);
+        
+        if(byteReceived == 0x43)
+        {
+            DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+            User_SetState(true);
+        }else if(byteReceived == 0x44)
+        {
+            DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+            User_SetState(false);
+        }
+        
 
-        // Os primeiros 4 bytes são descartados | HC envia Ready na conexão
+        /*
+         * // Os primeiros 4 bytes são descartados | HC envia Ready na conexão
         if (firstReceive <= 0x04) {
             firstReceive++;
         } else {
@@ -107,59 +110,70 @@ void __interrupt() TC0INT(void) {
                 i = 0;
             }
 
-            /*
-             if(byteReceived == 0x45)
-             {
-                 DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-             }
-             else if(byteReceived == 0x4b)
-             {
-                 DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-             }
-             */
-        }
-
-
+         
+         */
+        /*
+         if(byteReceived == 0x45)
+         {
+             DIGITAL_PIN_TOGGLE(LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
+         }
+         else if(byteReceived == 0x4b)
+         {
+             DIGITAL_PIN_TOGGLE(LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
+         }
+      
+         */
         PIR1bits.RCIF = 0x00;
     }
 }
+
 /*============================================================================*/
 void main(void) {
 
 
-    /*
+    /**/
     Interrupt_GlobalEnable();
     Timer0_Config(&timerConfig);
     Timer0_SetTickHook(tickHook_func);
-*/
+     
     Serial_1_Config(&serialConfig);
-
-    // StartSystem(NULL);
-    __delay_ms(300);
-    DisplayLCD_Init();
-
-
-    EEPROM_Erase();
 
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-
-    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT1_PORT, LED_HEARTBEAT1_MASK);
-    PIN_DIGITAL_WRITE(PIN_LOW, LED_HEARTBEAT2_PORT, LED_HEARTBEAT2_MASK);
-
     PIN_CONFIGURE_DIGITAL(PIN_INPUT, VOLTAGE_INPUT_PORT, VOLTAGE_INPUT_MASK);
+    
+    // StartSystem(NULL);
+    __delay_ms(300);
+    DisplayLCD_Init();
+    
+    
+    EEPROM_Erase();
+    
+    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+    __delay_ms(3);
+    Display_WriteString("EEPROM", 6, 0);
+    
     
     
     uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
     uint16_t sum, RH, TEMP;
     uint8_t check = 0;
     
-    uint8_t s = 0x00;
-    __delay_ms(10000);
+    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+    __delay_ms(3);
+    Display_WriteString("DEC", 4, 0);
     
-    while (1)
-    {
-        // main_application(NULL);
+    __delay_ms(2000);
+    
+    Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
+    __delay_ms(3);
+    Display_WriteString("DELAY", 6, 0);
+    
+    __delay_ms(2000);
+    while (1) {
+        
+        main_application(NULL);
+        /*
         DHT11_Start();
         DHT11_Check_Response();
 
@@ -179,9 +193,12 @@ void main(void) {
             Display_WriteString("ERRO", 5, 0);
         }
         
+        
+        
+        
         Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
         __delay_ms(3);
-        Display_WriteString("HUMD:- ", 8, 0);
+        Display_WriteString("HUMD: ", 7, 0);
         Display_WriteByte((Rh_byte1 / 10) + 48); // print 1nd digit
         Display_WriteByte(((Rh_byte1 % 10)) + 48); // print 2st digit
         Display_WriteByte(0x2e); // print 2st digit
@@ -194,25 +211,15 @@ void main(void) {
         
         
         Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
-        Display_WriteString("TEMP:- ", 8, 0);
+        Display_WriteString("TEMP: ", 7, 0);
         Display_WriteByte((Temp_byte1 / 10) + 48); // print 1nd digit
         Display_WriteByte(((Temp_byte1 % 10)) + 48); // print 2st digit
         Display_WriteByte(0x2e); // print 2st digit
         Display_WriteByte((Temp_byte2 / 10) + 48); // print 1nd digit
         Display_WriteByte(((Temp_byte2 % 10)) + 48); // print 2st digit
-        
-        Display_WriteByte(0x2e); // print 2st digit
-        Display_WriteByte(s + 48); // print 2st digit
-        __delay_ms(4000);
-        
-        
-        if( s < 9)
-        {
-            s++;
-        }else 
-        {
-            s = 0;
-        }
+       
+        __delay_ms(5000);
+       */
     }
     return;
 }

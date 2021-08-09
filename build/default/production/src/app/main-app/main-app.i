@@ -4895,16 +4895,11 @@ char string_hum[sizeof("TEMP: ") + sizeof("XX.X")] = "HUM: ";
 # 13 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/dht11/dht11.h" 1
-# 16 "src/app/main-app/../../app/dht11/dht11.h"
-    uint8_t DHT11_RequestData(void);
-    uint8_t DHT11_ReadData( void );
-    uint8_t DHT11_ReadByte( void );
-    uint8_t* DHT11_GetTemp( void );
-    uint8_t* DHT11_GetHum( void );
-
+# 17 "src/app/main-app/../../app/dht11/dht11.h"
     void DHT11_Start( void );
     void DHT11_Check_Response(void);
     uint8_t read_data (void);
+    uint8_t DHT11_GetData(uint8_t* Temp_byte1, uint8_t* Temp_byte2, uint8_t* Rh_byte1, uint8_t* Rh_byte2);
 # 14 "src/app/main-app/main-app.c" 2
 
 # 1 "src/app/main-app/../../app/display_lcd/display_lcd.h" 1
@@ -4972,11 +4967,11 @@ unsigned char address = 0x00;
 # 19 "src/app/main-app/main-app.c" 2
 
 
-static _Bool currLog = 0;
+static _Bool log = 0;
 
 
 
-char segundo[sizeof("seg. log")];
+char segundo[sizeof ("seg. log")];
 static uint8_t count = 0x00;
 char vetorTempLocal[4] = {35, 0, 0xf8, 0x43};
 char vetorHumLocal[3] = {90, 5, 0x25};
@@ -4987,8 +4982,8 @@ _Bool TimeIsElapsed = 0;
 char vetorTemp [6] = "TEMP: ";
 char vetorHum [7] = "HUM : ";
 
-void main_application( void* args)
-{
+
+void main_application(void* args) {
     static uint8_t voltageStatus = 0x00;
 
     static uint8_t localDHT11Result = 0x00;
@@ -5010,153 +5005,113 @@ void main_application( void* args)
 
     uint8_t aux;
 
-    while(1)
-    {
+    while (1) {
 
-        if(TimeIsElapsed)
+
+        if (TimeIsElapsed)
         {
 
 
-            if(1)
+            if (1)
             {
-
-
-
-
-
                 localTemp = &vetorTempLocal;
                 localHum = &vetorHumLocal;
 
 
                 localUserState = User_GetState();
 
-                if(localUserState)
-                {
+                if (localUserState) {
 
                     Display_SendByte(0b00000001, 0);
-                    _delay((unsigned long)((5)*(12000000UL/4000.0)));
-                    Display_WriteString(auxText, sizeof(auxText), 0);
+                    _delay((unsigned long)((3)*(12000000UL/4000.0)));
+                    Display_WriteString("Conectado", 10, 0);
+                    _delay((unsigned long)((1000)*(12000000UL/4000.0)));
 
 
-                    if(currLog)
+                    if (log)
                     {
-                        Bluetooth_HC_06_WriteString("***ULTIMO LOG***\n", 17);
-                        for(addr = 0; addr <= 0x04 ; addr++)
-                        {
-                            aux = addr;
-                            aux++;
+                        Display_SendByte(0b00000001, 0);
+                        _delay((unsigned long)((3)*(12000000UL/4000.0)));
+                        Display_WriteString("Existe Log", 11, 0);
+                        _delay((unsigned long)((1000)*(12000000UL/4000.0)));
 
-                            auxTemp[0] = EEPROM_DataRead(addr);
-                            auxHum[0] = EEPROM_DataRead(aux);
-
-                            Bluetooth_HC_06_WriteString(vetorTemp, sizeof(vetorTemp));
-                            Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
-                            Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
-                            Bluetooth_HC_06_WriteString("  ", 2);
-
-                            Bluetooth_HC_06_WriteString(vetorHum, sizeof(vetorHum));
-
-                            Bluetooth_HC_06_WriteByte((localHum[0] / 10) + 0x30);
-                            Bluetooth_HC_06_WriteByte((localHum[0] % 10) + 0x30);
-
-
-                            Bluetooth_HC_06_WriteString("\n", 1);
-                        }
-                        Bluetooth_HC_06_WriteString("*** FIM LOG ***\n", 16);
-                        currLog = 0;
                     }
                     else
                     {
-                        Bluetooth_HC_06_WriteString("*** LEITURA ATUAL ***\n", 22);
+                        Display_SendByte(0b00000001, 0);
+                        _delay((unsigned long)((3)*(12000000UL/4000.0)));
+                        Display_WriteString("Nao tem Log", 12, 0);
+                        _delay((unsigned long)((1000)*(12000000UL/4000.0)));
+                    }
 
-                        Bluetooth_HC_06_WriteString(vetorTemp, sizeof (vetorTemp));
-                        Bluetooth_HC_06_WriteByte((localTemp[0] / 10) + 0x30);
-                        Bluetooth_HC_06_WriteByte((localTemp[0] % 10) + 0x30);
-                        Bluetooth_HC_06_WriteString("  ", 2);
-
-                        Bluetooth_HC_06_WriteString(vetorHum, sizeof (vetorHum));
-
-                        Bluetooth_HC_06_WriteByte((localHum[0] / 10));
-                        Bluetooth_HC_06_WriteByte((localHum[0] % 10));
-                        Bluetooth_HC_06_WriteString("\n", 1);
-                        }
                 }
                 else
                 {
+                    Display_SendByte(0b00000001, 0);
+                    _delay((unsigned long)((3)*(12000000UL/4000.0)));
+                    Display_WriteString("Desconectado", 13, 0);
+                    _delay((unsigned long)((1000)*(12000000UL/4000.0)));
+
 
                     localVoltageStatus = Voltage_Read();
+
                     if(localVoltageStatus)
                     {
                         Display_SendByte(0b00000001, 0);
                         _delay((unsigned long)((5)*(12000000UL/4000.0)));
-                        Display_WriteString("TEM ENERGIA", sizeof("TEM ENERGIA"), 0);
+                        Display_WriteString("Tem energia", 12, 0);
+                        _delay((unsigned long)((500)*(12000000UL/4000.0)));
                     }
                     else
                     {
-                        auxTemp[0] = *localTemp;
-                        auxTemp[2] = *(++localTemp);
+                        Display_SendByte(0b00000001, 0);
+                        _delay((unsigned long)((5)*(12000000UL/4000.0)));
+                        Display_WriteString("Nao tem energia", 16, 0);
+                        _delay((unsigned long)((500)*(12000000UL/4000.0)));
 
-                        auxHum[0] = *localHum;
-                        auxHum[2] = *(++localHum);
-
-                        Display_Update(auxTemp, auxHum);
-
-
-                        if(!currLog)
+                        if(address <= 0x08)
                         {
-                            if (EEPROM_DataRead(0) == 0xFF) {
-
-                                EEPROM_Erase();
-
-                                EEPROM_DataWrite("A", 0);
-                                currLog = 1;
-                            }
                             Display_SendByte(0b00000001, 0);
                             _delay((unsigned long)((5)*(12000000UL/4000.0)));
-                            Display_WriteString("SEM LOG", 8, 0);
+                            Display_WriteString("Escreve em: ", 13, 0);
+                            Display_WriteByte(0x20);
+                            Display_WriteByte(address + 48);
+                            ++address;
+                            _delay((unsigned long)((500)*(12000000UL/4000.0)));
                         }
                         else
                         {
-
-                            if(address <= 0x04)
-                            {
-
-                                EEPROM_DataWrite(auxTemp[0], address);
-
-
-                                EEPROM_DataWrite(auxHum[0], address);
-
-                                Display_SendByte(0b00000001, 0);
-                                _delay((unsigned long)((5)*(12000000UL/4000.0)));
-                                Display_WriteString("JA LOG", 7, 0);
-
-                            }
-                            else
-                            {
-
-
-                                Display_SendByte(0b00000001, 0);
-                                _delay((unsigned long)((5)*(12000000UL/4000.0)));
-                                Display_WriteString("MEM. FULL", 7, 0);
-                            }
-
+                            Display_SendByte(0b00000001, 0);
+                            _delay((unsigned long)((5)*(12000000UL/4000.0)));
+                            Display_WriteString("FULL MEM.", 10, 0);
+                            _delay((unsigned long)((350)*(12000000UL/4000.0)));
                         }
+
+                        log = 1;
                     }
                 }
-
-            }else
+            }
+            else
             {
-
+                 Display_SendByte(0b00000001, 0);
+                 _delay((unsigned long)((3)*(12000000UL/4000.0)));
+                 Display_WriteString("Erro Sensor", 12, 0);
+                 _delay((unsigned long)((2000)*(12000000UL/4000.0)));
             }
 
             TimeIsElapsed = 0;
         }
         else
         {
-            if(0x01 == 0x01) LATB = (PORTB | (1 << 1)); else LATB = (PORTB & ~((1 << 1)));;
+            Display_SendByte(0b00000001, 0);
+            _delay((unsigned long)((5)*(12000000UL/4000.0)));
+            Display_WriteString("Nao e Hora", 11, 0);
+
+            _delay((unsigned long)((2000)*(12000000UL/4000.0)));
         }
     }
 }
+
 
 void Display_Update(char* temp, char* hum) {
     Display_SendByte(0b00000001, 0);
