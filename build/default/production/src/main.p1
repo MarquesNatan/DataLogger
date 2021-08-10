@@ -760,8 +760,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;src/main.c: 52:     (*timer_value)++;
 [e ++ *U _timer_value -> -> -> 1 `i `l `ul ]
 "53
-[; ;src/main.c: 53:     if ((*timer_value - t) >= 3) {
-[e $ ! >= - *U _timer_value _t -> -> -> 3 `i `l `ul 287  ]
+[; ;src/main.c: 53:     if ((*timer_value - t) >= 5) {
+[e $ ! >= - *U _timer_value _t -> -> -> 5 `i `l `ul 287  ]
 {
 "54
 [; ;src/main.c: 54:         t = (*timer_value);
@@ -939,18 +939,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 302 ]
 {
 "122
-[; ;src/main.c: 122:          main_application(((void*)0));
+[; ;src/main.c: 122:         main_application(((void*)0));
 [e ( _main_application (1 -> -> 0 `i `*v ]
-"170
-[; ;src/main.c: 170:     }
+"171
+[; ;src/main.c: 171:     }
 }
 [e :U 301 ]
 [e $U 302  ]
 [e :U 303 ]
-"171
-[; ;src/main.c: 171:     return;
-[e $UE 294  ]
 "172
-[; ;src/main.c: 172: }
+[; ;src/main.c: 172:     return;
+[e $UE 294  ]
+"173
+[; ;src/main.c: 173: }
 [e :UE 294 ]
 }

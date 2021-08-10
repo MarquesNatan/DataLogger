@@ -5135,7 +5135,7 @@ extern _Bool TimeIsElapsed;
 
 void tickHook_func(uint32_t *timer_value) {
     (*timer_value)++;
-    if ((*timer_value - t) >= 3) {
+    if ((*timer_value - t) >= 5) {
         t = (*timer_value);
         TimeIsElapsed = 1;
     }
@@ -5204,8 +5204,8 @@ void main(void) {
    _delay((unsigned long)((2000)*(12000000UL/4000.0)));
 
     while (1) {
-         main_application(((void*)0));
-# 170 "src/main.c"
+        main_application(((void*)0));
+# 171 "src/main.c"
     }
     return;
 }

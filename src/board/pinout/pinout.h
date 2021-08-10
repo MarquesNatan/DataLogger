@@ -64,7 +64,7 @@
 #define BLUETOOTH_RX_MASK               ( 1 << BLUETOOTH_RX_BIT ) 
 
 /*==============================================================================
- *                      DISPLAY LCD INTERFACE (74HC595)
+ *                              VOLTAGE INPUT
  ===============================================================================
  */
 #define VOLTAGE_INPUT_PORT              D

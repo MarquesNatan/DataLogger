@@ -119,55 +119,9 @@ void main(void) {
    __delay_ms(2000);
     
     while (1) { 
-         main_application(NULL);
-        /*
-        DHT11_Start();
-        DHT11_Check_Response();
-
-        // Read 40 bits (5 Bytes) of data
-        Rh_byte1 = read_data();
-        Rh_byte2 = read_data();
-        
-        Temp_byte1 = read_data();
-        Temp_byte2 = read_data();
-        
-        sum = read_data();
-        
-        if(sum != (Rh_byte1 + Rh_byte2 + Temp_byte1 + Temp_byte2))
-        {
-            Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-            __delay_ms(3);
-            Display_WriteString("ERRO", 5, 0);
-        }
-        
-        
-        
-        
-        Display_SendByte(DISPLAY_CLEAR, DISPLAY_COMMAND);
-        __delay_ms(3);
-        Display_WriteString("HUMD: ", 7, 0);
-        Display_WriteByte((Rh_byte1 / 10) + 48); // print 1nd digit
-        Display_WriteByte(((Rh_byte1 % 10)) + 48); // print 2st digit
-        Display_WriteByte(0x2e); // print 2st digit
-        Display_WriteByte((Rh_byte2 / 10) + 48); // print 1nd digit
-        Display_WriteByte(((Rh_byte2 % 10)) + 48); // print 2st digit
-        
-        Display_WriteByte(0x20); // print 2st digit
-        Display_WriteByte((sum / 10) + 48); // print 2st digit
-        Display_WriteByte((sum % 10) + 48); // print 2st digit
-        
-        
-        Display_SendByte((DISPLAY_DDRAM_ADD | DISPLAY_DDRAM_ADD_2_1), DISPLAY_COMMAND);
-        Display_WriteString("TEMP: ", 7, 0);
-        Display_WriteByte((Temp_byte1 / 10) + 48); // print 1nd digit
-        Display_WriteByte(((Temp_byte1 % 10)) + 48); // print 2st digit
-        Display_WriteByte(0x2e); // print 2st digit
-        Display_WriteByte((Temp_byte2 / 10) + 48); // print 1nd digit
-        Display_WriteByte(((Temp_byte2 % 10)) + 48); // print 2st digit
-       
-        __delay_ms(5000);
-       */
+        main_application(NULL);
     }
     return;
 }
+/*============================================================================*/
 /*============================================================================*/

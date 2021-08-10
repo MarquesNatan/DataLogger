@@ -42,6 +42,11 @@
 static uint8_t temperature [2]; // [TEMP HIGH BYTE][TEMP LOW BYTE]
 static uint8_t humidity [2]; // [HUM HIGH BYTE][HUM LOW BYTE]
 
+
+
+uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
+uint16_t sum, RH, TEMP;
+
 void DHT11_Start(void) {
     PIN_CONFIGURE_DIGITAL(PIN_OUTPUT, DHT11_DATA_PORT, DHT11_DATA_MASK);
     PIN_DIGITAL_WRITE(PIN_LOW, DHT11_DATA_PORT, DHT11_DATA_MASK);

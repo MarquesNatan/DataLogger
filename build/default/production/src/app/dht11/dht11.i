@@ -4749,6 +4749,11 @@ typedef struct {
 static uint8_t temperature [2];
 static uint8_t humidity [2];
 
+
+
+uint8_t Rh_byte1, Rh_byte2, Temp_byte1, Temp_byte2;
+uint16_t sum, RH, TEMP;
+
 void DHT11_Start(void) {
     if(0x00 == 0x00) TRISD = (TRISD & (~(1 << 1))); else TRISD = (TRISD | (1 << 1));;
     if(0x00 == 0x01) LATD = (PORTD | (1 << 1)); else LATD = (PORTD & ~((1 << 1)));;
